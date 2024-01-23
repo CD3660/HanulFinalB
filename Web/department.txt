@@ -1,0 +1,29 @@
+update departments set department_name = '경영관리' where DEPARTMENT_ID = 10;
+update departments set department_name = '마케팅' where DEPARTMENT_ID = 20;
+update departments set department_name = '구매' where DEPARTMENT_ID = 30;
+update departments set department_name = '인사' where DEPARTMENT_ID = 40;
+update departments set department_name = '배송' where DEPARTMENT_ID = 50;
+update departments set department_name = 'IT' where DEPARTMENT_ID = 60;
+update departments set department_name = '홍보' where DEPARTMENT_ID = 70;
+update departments set department_name = '영업' where DEPARTMENT_ID = 80;
+update departments set department_name = '경영' where DEPARTMENT_ID = 90;
+update departments set department_name = '재무' where DEPARTMENT_ID = 100;
+update departments set department_name = '회계' where DEPARTMENT_ID = 110;
+update departments set department_name = '자금' where DEPARTMENT_ID = 120;
+update departments set department_name = '세무' where DEPARTMENT_ID = 130;
+update departments set department_name = '신용관리' where DEPARTMENT_ID = 140;
+update departments set department_name = '주주서비스' where DEPARTMENT_ID = 150;
+update departments set department_name = '복지' where DEPARTMENT_ID = 160;
+update departments set department_name = '생산' where DEPARTMENT_ID = 170;
+update departments set department_name = '건설' where DEPARTMENT_ID = 180;
+update departments set department_name = '계약' where DEPARTMENT_ID = 190;
+update departments set department_name = '운영' where DEPARTMENT_ID = 200;
+update departments set department_name = 'IT지원' where DEPARTMENT_ID = 210;
+update departments set department_name = '네트워크운영센터' where DEPARTMENT_ID = 220;
+update departments set department_name = 'IT헬프데스크' where DEPARTMENT_ID = 230;
+update departments set department_name = '정부영업' where DEPARTMENT_ID = 240;
+update departments set department_name = '소매영업' where DEPARTMENT_ID = 250;
+update departments set department_name = '채용' where DEPARTMENT_ID = 260;
+update departments set department_name = '급여' where DEPARTMENT_ID = 270;
+
+
