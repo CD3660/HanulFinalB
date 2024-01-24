@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.finalb.product.ProductService;
 
-@RequestMapping("/prod")
+
 @Controller
+@RequestMapping("/prod")
 public class ProductController {
 	@Autowired
 	private ProductService service;
