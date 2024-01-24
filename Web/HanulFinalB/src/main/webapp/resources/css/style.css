@@ -50,7 +50,7 @@ CSS STRUCTURE:
 
 /* Fonts */
 :root {
-  --body-font: "Poppins", sans-serif;
+  --body-font: 400 16px/1.2 Pretendard,Tahoma,sans-serif;
   --heading-font: "Cinzel", sans-serif;
 }
 
