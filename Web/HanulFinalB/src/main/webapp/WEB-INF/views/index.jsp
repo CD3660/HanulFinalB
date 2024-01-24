@@ -376,10 +376,10 @@
                     </div>
                     <div class="cart-concern">
                       <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Black Sofa Set</a>
+                        <a href="single-product.html" class="text-primary">${vo.name}</a>
                       </h3>
                       <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART"><span>$200</span></a>
+                        <a class="pseudo-text-effect" href="#" data-after="자세히 보기"><span>${vo.price}</span></a>
                       </div>
                     </div>
                   </div>
