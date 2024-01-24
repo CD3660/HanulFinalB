@@ -1,40 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/member/login.css">
 </head>
 <body>
+ <body class="text-center">
+    
+    <!--  html ÀüÃ¼ ¿µ¿ªÀ» ÁöÁ¤ÇÏ´Â container -->
+    <div id="container">
+      <!--  login Æû ¿µ¿ªÀ» : loginBox -->
+      <div id="loginBox">
+      
+        <!-- ·Î±×ÀÎ ÆäÀÌÁö Å¸ÀÌÆ² -->
+        <div id="loginBoxTitle">CodeZone Login</div>
+        <!-- ¾ÆÀÌµð, ºñ¹ø, ¹öÆ° ¹Ú½º -->
+        <div id="inputBox">
+          <div class="input-form-box"><span>¾ÆÀÌµð </span><input type="text" name="uid" class="form-control"></div>
+          <div class="input-form-box"><span>ºñ¹Ð¹øÈ£ </span><input type="password" name="upw" class="form-control"></div>
+          <div class="button-login-box" >
+            <button type="button" class="btn btn-primary btn-xs" style="width:100%">·Î±×ÀÎ</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 
-<div class="wrapper">
-	
-	<div class="wrap">
-		<div class="logo_wrap">
-			<span>Smart Home</span>
-		</div>
-		<div class="login_wrap"> 
-			<div class="id_wrap">
-					<div class="id_input_box">
-					<input class="id_input">
-				</div>
-			</div>
-			<div class="pw_wrap">
-				<div class="pw_input_box">
-					<input class="pw_iput">
-				</div>
-			</div>
-			<div class="login_button_wrap">
-				<input type="button" class="login_button" value="ë¡œê·¸ì¸">
-			</div>			
-		</div>
-		
-		
-	</div>
-
-</div>
-
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
