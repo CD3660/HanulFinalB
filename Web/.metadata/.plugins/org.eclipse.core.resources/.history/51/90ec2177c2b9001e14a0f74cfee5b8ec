@@ -1,0 +1,11 @@
+db.driver=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@localhost:1521:xe
+hanul.user=hanul
+hanul.pw=0000
+hr.user=hr
+hr.pw=hr
+naver.id=cksdud4188@naver.com
+naver.pw=2020sus^^7
+naver.clientId = BrFVeTcif7MUZc3Vqv0w
+naver.clientPw = Ei8ezF4e9b
+kakao.clientId = c3d030d171a011a90baac227fbb7d60a
