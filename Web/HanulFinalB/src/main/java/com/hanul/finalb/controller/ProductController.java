@@ -17,11 +17,11 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
-	/* Á¦Ç° ¼Ò°³ ÆäÀÌÁö ÀüÈ¯½Ã ¸ÞÀÎ ÆäÀÌÁö */
+	/* ï¿½ï¿½Ç° ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		//productservice¿¡¼­ Á¦Ç° ¸®½ºÆ® Á¶È¸ ÈÄ ÀüÈ¯
+		//productserviceï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸ ï¿½ï¿½ ï¿½ï¿½È¯
 		model.addAttribute("list", service.list());
 		
 		return "product/list";
