@@ -42,47 +42,49 @@
 					</div>
 				</div>
 			</div>
-			<c:forEach items="${list}" var="vo">
-				<div class="row g-3 post-grid">
+			<div class="row g-3 post-grid">
+				<c:forEach items="${list}" var="vo">
+
 					<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 						<div
 							class="product-card image-zoom-effect link-effect d-flex flex-wrap">
 							<div class="image-holder">
-								<img src="images/product-item1.jpg" alt="product-item"
-									class="product-image img-fluid">
+								<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
+									alt="product-item" class="product-image img-fluid prod${vo.prod_id}">
 							</div>
 							<div class="cart-concern">
 								<h3 class="card-title text-uppercase pt-3 text-primary">
-									<a href="single-product.html" class="text-primary">${vo.prod_name}</a>
+									<a href="single-product.html" class="text-primary prod${vo.prod_id}">${vo.prod_name}</a>
 								</h3>
 								<div class="cart-info">
-									<a class="pseudo-text-effect" href="#" data-after="ADD TO CART"><span>${vo.price}</span></a>
+									<a class="pseudo-text-effect prod${vo.prod_id}" data-after="자세히 보기"><span>${vo.price}</span></a>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Modal -->
-				<div class="modal fade" id="exampleModal" tabindex="-1"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<div class="modal-body">...</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save
-									changes</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">...</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save
+										changes</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
 	</section>
 	<c:forEach items="list" var="vo">
