@@ -50,30 +50,35 @@
 							class="product-card image-zoom-effect link-effect d-flex flex-wrap">
 							<div class="image-holder">
 								<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
-									alt="product-item" class="product-image img-fluid prod${vo.prod_id}">
+									alt="product-item"
+									class="product-image img-fluid prod${vo.prod_id}">
 							</div>
 							<div class="cart-concern">
 								<h3 class="card-title text-uppercase pt-3 text-primary">
-									<a href="single-product.html" class="text-primary prod${vo.prod_id}">${vo.prod_name}</a>
+									<a class="text-primary prod${vo.prod_id}">${vo.prod_name}</a>
 								</h3>
 								<div class="cart-info">
-									<a class="pseudo-text-effect prod${vo.prod_id}" data-after="자세히 보기"><span>${vo.price}</span></a>
+									<a class="pseudo-text-effect prod${vo.prod_id}"
+										data-after="자세히 보기"><span>${vo.price}원</span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
+					<div class="modal fade" id="modal${vo.prod_id}" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
+						<div class="modal-dialog modal-prod">
+							<div class="modal-content modal-prod">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<h5 class="modal-title" id="exampleModalLabel">${vo.prod_name}</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
-								<div class="modal-body">...</div>
+								<div class="modal-body">
+									<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
+										alt="product-item"
+										class="product-image img-fluid prod${vo.prod_id}">${vo.detail}</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-bs-dismiss="modal">Close</button>
@@ -87,11 +92,11 @@
 			</div>
 		</div>
 	</section>
-	<c:forEach items="list" var="vo">
+	<c:forEach items="${list}" var="vo">
 		<script>
-			$('#test').click(function(e) {
+			$('.prod${vo.prod_id}').click(function(e) {
 				e.preventDefault();
-				$('#exampleModal').modal("show");
+				$('#modal${vo.prod_id}').modal("show");
 			});
 		</script>
 	</c:forEach>
