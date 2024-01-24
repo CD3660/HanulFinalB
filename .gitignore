@@ -61,3 +61,16 @@ replay_pid*
 /*/target/
 *.properties
 
+Web/.metadata/.plugins/org.eclipse.wst.validation/dep.index
+Web/.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser
+Web/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
+Web/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+Web/.metadata/.plugins/org.eclipse.core.resources/3.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+Web/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.syncinfo.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.markers.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/HanulFinalB/.syncinfo.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/HanulFinalB/.markers.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.syncinfo.snap
+Web/.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.markers.snap
