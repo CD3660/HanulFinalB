@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "index";
+		return "no";
 	}
 	@RequestMapping(value = "/prod", method = RequestMethod.GET)
 	public String product(Locale locale, Model model) {
