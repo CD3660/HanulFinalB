@@ -12,18 +12,17 @@ import com.hanul.finalb.product.ProductService;
 
 
 @Controller
-@RequestMapping("/prod")
-public class ProductController {
-	@Autowired
-	private ProductService service;
+@RequestMapping("/member")
+public class MemberController {
+	
 
-	/* ï¿½ï¿½Ç° ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	/* Á¦Ç° ¼Ò°³ ÆäÀÌÁö ÀüÈ¯½Ã ¸ÞÀÎ ÆäÀÌÁö */
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		//productserviceï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸ ï¿½ï¿½ ï¿½ï¿½È¯
-		model.addAttribute("list", service.list());
+
 		
-		return "product/list";
+		
+		return "member/login";
 	}
 }
