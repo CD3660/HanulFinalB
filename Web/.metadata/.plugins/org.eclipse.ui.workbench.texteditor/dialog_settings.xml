@@ -13,8 +13,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="bg"/>
+		<item key="selection" value="246"/>
 		<list key="findhistory">
+			<item value="246"/>
+			<item value="bs"/>
+			<item value="bootstrap"/>
 			<item value="bg"/>
 			<item value="READ OUR ARTICLES"/>
 		</list>

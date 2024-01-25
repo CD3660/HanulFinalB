@@ -15,7 +15,8 @@ html, body {
 
 #loginBox {
 
-  width: 300px;
+  width: 800px;
+  height: 800px;
   text-align: center;
   --bs-body-bg-rgb: 246, 245, 242;
 }
@@ -50,4 +51,11 @@ html, body {
 
 #inputBox button {
   padding: 3px 5px;
+}
+#find-btn{
+	text-align: center;
+}
+#find-btn1{
+	
+	display :inline-block;
 }

@@ -5,43 +5,65 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>로그인</title>
 <link rel="stylesheet" href="<c:url value='/css/member/login.css'/>">
 </head>
 <body>
-<body class="text-center">
 
-	<!--  html 전체 영역을 지정하는 container -->
-	<div id="container">
-		<!--  login 폼 영역을 : loginBox -->
-		<div id="loginBox">
+	<div class="container py-5 h-100">
+		<div class="row d-flex justify-content-center align-items-center h-95">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="card shadow-2-strong" style="border-radius: 1rem;">
+					<div class="card-body p-5 text-center">
 
-			<!-- 로그인 페이지 타이틀 -->
-			<div id="loginBoxTitle">MySmartHome</div>
-			<!-- 아이디, 비번, 버튼 박스 -->
-			<div id="inputBox">
-				<div class="input-form-box">
-					<span>아이디 </span><input type="text" name="uid" class="form-control">
-				</div>
-				<div class="input-form-box">
-					<span>비밀번호 </span><input type="password" name="upw"
-						class="form-control">
-				</div>
-				<div class="button-login-box">
-					<button type="button" class="btn btn-primary btn-xs"
-						style="width: 100%">로그인</button>
-				<div class="button-login-box">
-					<button type="button" class="btn btn-primary btn-xs"
-						style="width: 100%">네이버</button>
-				<div class="button-login-box">
-					<button type="button" class="btn btn-primary btn-xs"
-						style="width: 100%">카카오톡</button>
-						
+						<h3 class="mb-5">로그인</h3>
+
+						<div class="form-outline mb-4">
+							<label class="form-label" for="typeEmailX-2">아이디</label> <input
+								type="email" id="typeEmailX-2"
+								class="form-control form-control-lg" />
+
+						</div>
+
+						<div class="form-outline mb-4">
+							<label class="form-label" for="typePasswordX-2">비밀번호</label> <input
+								type="password" id="typePasswordX-2"
+								class="form-control form-control-lg" />
+
+						</div>
+
+						<!-- Checkbox -->
+						<div class="form-check d-flex justify-content-start mb-4">
+							<input class="form-check-input" type="checkbox" value=""
+								id="form1Example3" /> <label class="form-check-label"
+								for="form1Example3"> Remember password </label>
+						</div>
+
+						<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+
+						<hr class="my-4">
+			<!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  회원가입
+                </button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>다른 계정으로 로그인</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-naver-f"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-kakao"></i>
+                  </button>
+
+                  
+                </div>
+					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
-
 </body>
 </html>
