@@ -108,10 +108,10 @@
     </div> 
 
     <header id="header" class="site-header text-black">
-      <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+      <nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" class="logo">
+            <img src="images/logo-main-w-icon.png" class="logo">
             
             
           </a>
