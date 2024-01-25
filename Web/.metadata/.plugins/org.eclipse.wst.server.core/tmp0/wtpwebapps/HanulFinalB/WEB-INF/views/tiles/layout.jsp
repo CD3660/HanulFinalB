@@ -5,6 +5,14 @@
 
 <html>
 <head>
+
+<!-- Font Awesome CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+
+
 <title>My Smart Home</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -140,10 +148,11 @@
 	</div>
 
 	<header id="header" class="site-header text-black">
-		<nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+		<nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="<c:url value='/'/>"> <img
-					src="<c:url value='/images/logo.png'/>" class="logo">
+				<a class="navbar-brand" href="index.html"> <img
+					src="/images/logo-main-w-icon.png" class="logo"
+					style="margin-top: 16px;">
 
 
 				</a>
@@ -168,24 +177,45 @@
 					<div class="offcanvas-body">
 						<ul id="navbar"
 							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-							<li class="nav-item dropdown"><a
-								class="nav-link me-4 active dropdown-toggle" href="#billboard"
-								id="dropdownPages" data-bs-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">제품소개</a></li>
+
+							<li class="nav-item"><a class="nav-link me-4"
+								href="#about-us">제품소개</a></li>
+
 							<li class="nav-item"><a class="nav-link me-4"
 								href="#about-us">공지사항</a></li>
+
+
+							<li class="nav-item"><a class="nav-link me-4" href="#">Q&A</a>
+							</li>
+
+
+							<li class="nav-item"><a class="nav-link me-4" href="#">제품구매</a>
+							</li>
+
+
+
 							<li class="nav-item dropdown me-4"><a
 								class="nav-link dropdown-toggle" href="#" id="dropdownPages"
 								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">Q&A</a></li>
-							<li class="nav-item dropdown me-4"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdownPages"
-								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">제품구매</a></li>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdownPages"
-								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">로그인</a></li>
+								aria-expanded="false">로그인</a>
+								<ul class="dropdown-menu list-unstyled"
+									aria-labelledby="dropdownPages">
+									<li><a href="shop-sidebar.html"
+										class="dropdown-item item-anchor">로그인 <span
+											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+									<li><a href="shop-four-column.html"
+										class="dropdown-item item-anchor">회원가입 <span
+											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+								</ul></li>
+
+
+
+
+
+
+
+
+
 							<li class="nav-item">
 								<div class="user-items ps-5">
 									<ul class="d-flex justify-content-end list-unstyled">
@@ -220,8 +250,7 @@
 
 
 
-	
-	<div class="container-fluid p-4 mid">
+	<div>
 		<tiles:insertAttribute name="container" />
 	</div>
 
@@ -239,51 +268,44 @@
 
 
 
-	<footer id="footer"
-		class="overflow-hidden padding-large border-top py-4">
+	<footer id="footer" class="overflow-hidden padding-large">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="row d-flex flex-wrap justify-content-between">
-					<div class="col-lg-3 col-sm-6 pb-3 pe-4">
+					<div class="col-lg-3 col-sm-6 pb-3 pe-4" style="padding-top: 20px;">
 						<div class="footer-menu">
-							<img src="<c:url value='/images/logo.png'/>" alt="logo"
-								class="pb-3">
-							<p>Mi facilisis facilisis orci vitae. Cum nisi morbi integer
-								tincidunt ornare ac praesent in. Dolor tempus arcu sit quis nunc
-								arcu facilisis quis eget nisi morbi integer.</p>
+
+							<i class="fa-solid fa-house" style="margin-bottom: 10px;"></i>
+							<p>한울201, 2024 프로젝트 B팀</p>
 						</div>
 						<div class="copyright">
-							<p>
-								Â© Copyright 2023. Design by <a
-									href="https://templatesjungle.com/">TemplatesJungle</a>
-								Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-							</p>
+							<p>Copyright © 2024 Hanul.</p>
 						</div>
 					</div>
 					<div class="col-lg-2 col-sm-6 pb-3">
 						<div class="footer-menu text-uppercase">
 							<h5 class="widget-title pb-2">Quick Links</h5>
 							<ul class="menu-list list-unstyled text-uppercase">
-								<li class="menu-item pb-2"><a href="#billboard">Home</a></li>
-								<li class="menu-item pb-2"><a href="#about-us">About</a></li>
-								<li class="menu-item pb-2"><a href="#company-services">Services</a>
+								<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
+								<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
+								<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
 								</li>
-								<li class="menu-item pb-2"><a href="#latest-blog">Blogs</a>
+								<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
 								</li>
-								<li class="menu-item pb-2"><a href="#contact">Contact</a></li>
+								<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-2 col-sm-6 pb-3">
 						<div class="footer-menu text-uppercase">
-							<h5 class="widget-title pb-2">Social</h5>
+							<h5 class="widget-title pb-2">Member</h5>
 							<div class="social-links">
 								<ul class="list-unstyled">
-									<li class="pb-2"><a href="#">Facebook</a></li>
-									<li class="pb-2"><a href="#">Twitter</a></li>
-									<li class="pb-2"><a href="#">Pinterest</a></li>
-									<li class="pb-2"><a href="#">Instagram</a></li>
-									<li><a href="#">Youtube</a></li>
+									<li class="pb-2"><a href="#">Chan</a></li>
+									<li class="pb-2"><a href="#">chung</a></li>
+									<li class="pb-2"><a href="#">Se</a></li>
+									<li class="pb-2"><a href="#">Ji</a></li>
+
 								</ul>
 							</div>
 						</div>
@@ -292,12 +314,12 @@
 						<div class="footer-menu contact-item">
 							<h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
 							<p>
-								<a href="">+ 12(0) 34 56 78 910</a>
+								<a href="">062-362-7797</a>
 							</p>
 							<p>
-								<a href="mailto:">hello@templatesjungle.com</a>
+								<a href="mailto:">hanul7797@naver.com</a>
 							</p>
-							<p>tea berry, marinette, USA</p>
+							<p>경열로 3 (농성동 271-4)</p>
 						</div>
 					</div>
 				</div>

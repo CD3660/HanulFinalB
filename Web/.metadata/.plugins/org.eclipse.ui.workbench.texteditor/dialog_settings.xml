@@ -13,8 +13,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="load"/>
+		<item key="selection" value="display"/>
 		<list key="findhistory">
+			<item value="display"/>
+			<item value="container-fluid"/>
+			<item value="bill"/>
+			<item value="main-logo.png"/>
 			<item value="load"/>
 			<item value="--bs-body-bg-rgb"/>
 			<item value="background-color"/>
