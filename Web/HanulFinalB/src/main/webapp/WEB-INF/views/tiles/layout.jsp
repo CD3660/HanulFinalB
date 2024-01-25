@@ -115,7 +115,7 @@
       <nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">
-            <img src="images/logo-main-w-icon.png" class="logo" style="margin-top: 16px;">
+            <img src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo" style="margin-top: 16px;">
             
             
             
