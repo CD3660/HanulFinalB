@@ -23,18 +23,20 @@ CSS STRUCTURE:
 /*--------------------------------------------------------------
 /** 1. VARIABLES
 --------------------------------------------------------------*/
-:root { --accent-color: #0d0d0d; 
-	--bs-gray-100: #f3f3f3; 
-	--bs-gray-200: #e7e5e2; 
-	--bs-primary: #787d62; 
-	--bs-secondary: #F6F5F2; 
-	--bs-primary-rgb: 120, 125, 98; 
-	--bs-body-bg-rgb: 246, 245, 242; 
-	--bs-light: #fff; 
-	--bs-dark: #000; 
-	--navbar-color-color: #131814; 
-	--swiper-theme-color: #787d62 !important; 
-	--swiper-pagination-color: #787d62 !important;
+:root {
+  --accent-color: #0d0d0d;
+  --bs-gray-100: #f3f3f3;
+  --bs-gray-200: #e7e5e2;
+  --bs-primary: #F0CA61;
+  /* --bs-primary: #787d62; */
+  --bs-secondary: #F6F5F2;
+  --bs-primary-rgb: 240, 202, 097;
+  --bs-body-bg-rgb: 246, 245, 242;
+  --bs-light: #fff;
+  --bs-dark: #000;
+  --swiper-theme-color: #787d62 !important;
+  --swiper-pagination-color: #787d62 !important;
+
 }
 
 /* on mobile devices below 600px
@@ -180,9 +182,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .btn.btn-medium {
-	padding: 1.1em 2.8em;
-	font-size: 1.1em;
-	letter-spacing: 2px;
+  padding: 1.1em 2.8em;
+  font-size: 1.1em;
+  letter-spacing: 2px;
 }
 
 .btn.btn-large {
