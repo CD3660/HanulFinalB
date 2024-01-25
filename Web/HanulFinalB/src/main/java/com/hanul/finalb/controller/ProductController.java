@@ -24,9 +24,8 @@ public class ProductController {
 	public String home(Locale locale, Model model) {
 		
 		List<ProductVO> list = service.list();
-		//productservice���� ��ǰ ����Ʈ ��ȸ �� ��ȯ
+		//productservice
 		model.addAttribute("list", list);
-		System.out.println(list.get(1).getDetail());
 		
 		return "product/list";
 	}

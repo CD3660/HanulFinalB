@@ -10,8 +10,8 @@
 				<div class="col-md-12">
 					<div
 						class="display-header d-flex flex-wrap justify-content-between pb-3">
-						<h2 class="display-2 text-dark fw-bold">제품 소개</h2>
-						<a href="<c:url value='shop/list'/>"
+						<h2 class="display-2 text-dark fw-bold ms-3">제품 소개</h2>
+						<a href="<c:url value='/shop/list'/>"
 							class="btn btn-medium btn-arrow btn-normal position-relative">
 							<span class="">제품 구매</span> <svg
 								class="arrow-right position-absolute" width="18" height="20">
@@ -38,7 +38,7 @@
 								</h3>
 								<div class="cart-info">
 									<a class="pseudo-text-effect prod${vo.prod_id}"
-										data-after="자세히 보기"><span>${vo.price}원</span></a>
+										data-after="자세히 보기"><span style="opacity: 0">hidden</span></a>
 								</div>
 							</div>
 						</div>

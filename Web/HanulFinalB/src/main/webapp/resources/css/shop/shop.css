@@ -1,0 +1,11 @@
+@charset "EUC-KR";
+
+.search-icon {
+	position: relative;
+	right: 22px;
+	display: none;
+}
+
+.search:focus {
+	border-color: var(- -bs-primary);
+}

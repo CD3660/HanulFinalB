@@ -1087,6 +1087,7 @@ height
 }
 
 /* ------------------------custom---------------------------------------------- */
+
 .modal-dialog.modal-prod {
 	width: 80%;
 	max-width: 80%;
@@ -1097,5 +1098,14 @@ height
 .modal-content.modal-prod {
 	width: 100%;
 	min-height: 80%;
-	border-radius: 0;
+	border-radius: 20px;
+}
+
+.logo{
+	width: 100px;
+	height: 70px;
+}
+
+.mid{
+	flex: 1 0 auto; 
 }
