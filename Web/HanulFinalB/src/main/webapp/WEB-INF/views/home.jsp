@@ -21,12 +21,12 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="banner-item" style="background-image: url(images/banner-image1.jpg); background-repeat: no-repeat; background-position: right; height: 700px;">
+                  <div class="banner-item" style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 700px;">
                     <div class="banner-content padding-large">
                       <h1 class="display-1 text-uppercase pb-2 text-primary">My Smart Home</h1>
-                      <p>   편리해지세요</p>                      
+                      <p style="margin-left: 30px;">지금 체험해보세요</p>                      
                       <a href="shop.html" class="btn btn-medium btn-arrow position-relative mt-5">
-                        <span class="text-uppercase">구매하기  </span>            
+                        <span class="text-uppercase">구매하기</span>            
                         <svg class="arrow-right position-absolute" width="18" height="20">
                           <use xlink:href="#arrow-right"></use>
                         </svg>
@@ -39,6 +39,9 @@
           </div>
 
     </section>
+
+
+
 
 
 
