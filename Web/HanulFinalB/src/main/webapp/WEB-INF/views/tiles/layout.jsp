@@ -106,6 +106,10 @@
         </form>
       </div>
     </div> 
+    
+    
+    
+    
 
     <header id="header" class="site-header text-black">
       <nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
@@ -114,12 +118,22 @@
             <img src="images/logo-main-w-icon.png" class="logo" style="margin-top: 16px;">
             
             
+            
+            
+            
+            
+            
+            
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon" width="50" height="50">
               <use xlink:href="#navbar-icon"></use>
             </svg>
           </button>
+          
+          
+          
+          
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
               <a class="navbar-brand" href="index.html">
@@ -127,6 +141,12 @@
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
+            
+            
+            
+            
+            
+            
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
               
