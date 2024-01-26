@@ -17,10 +17,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<p>This is the main content.</p>
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<!-- 작은 화면에서 보이는 버튼 -->
 				<button type="button" class="btn btn-primary d-block d-sm-none"
 					data-bs-toggle="collapse" data-bs-target="#hiddenList">
@@ -33,6 +30,46 @@
 						<li class="list-group-item">Item 3</li>
 					</ul>
 				</div>
+
+				<div class="search-filter-content d-sm-none d-md-block p-3">
+					<h4>필터</h4>
+					<div class="search-filter-options search-service-filter"
+						data-address-rocket-wow-eligible="false">
+						<h5>쿠팡서비스</h5>
+						<div id="searchServiceFilter" class="search-filter-option-list">
+							<ul class="search-option-items search-customized-checkbox">
+								<li class="search-option-item"><input type="checkbox"
+									value="free"> <label class="item-name"> <span
+										class="service-filter-free">무료배송</span>
+								</label></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-3 shop-item">
+						<p>asdfasdfasdf</p>
+					</div>
+					<div class="col-3">
+						<p>asdfasdfasdf</p>
+					</div>
+					<div class="col-3">
+						<p>asdfasdfasdf</p>
+					</div>
+					<div class="col-3">
+						<p>asdfasdfasdf</p>
+					</div>
+				</div>
+				<script type="text/javascript">
+					$(".shop-item").mouseenter(function() {
+						$(this).addClass("shadow");
+					})
+					$(".shop-item").mouseleave(function() {
+						$(this).removeClass("shadow");
+					})
+				</script>
 			</div>
 		</div>
 	</div>

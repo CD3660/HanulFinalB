@@ -9,3 +9,16 @@
 .search:focus {
 	border-color: var(- -bs-primary);
 }
+
+.search-filter-content{
+	border: 1px solid lightgray;
+	background: white;
+}
+
+.shop-item:hover {
+	border: 1px solid lightgray;
+}
+
+.shop-item {
+	border: none;
+}
