@@ -19,8 +19,8 @@ html, body {
 #loginBox {
 	width: 800px;
 	height: 800px;
-	text-align: center; -
-	-bs-body-bg-rgb: 246, 245, 242;
+	text-align: center; 
+	--bs-body-bg-rgb: 246, 245, 242;
 }
 
 .input-form-box {

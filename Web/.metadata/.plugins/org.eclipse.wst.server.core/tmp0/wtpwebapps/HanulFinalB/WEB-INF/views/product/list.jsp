@@ -1,29 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
-<!-- 임시로 달아둔 구역, 타일 완료 시 삭제 예정 -->
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/bootstrap.min.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/style.css'/>">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@200;300;400;500&display=swap"
-	rel="stylesheet">
-<!-- script
-    ================================================== -->
-<script src="<c:url value='/js/modernizr.js'/>"></script>
-<script src="<c:url value='/js/jquery-1.11.0.min.js'/>"></script>
-<script src="<c:url value='/js/bootstrap.bundle.min.js'/>"></script>
-</head>
-<!-- 임시로 달아둔 구역, 타일 완료 시 삭제 예정 -->
 <body>
 	<section id="latest-blog">
 		<div class="container-fluid">
@@ -31,8 +10,8 @@
 				<div class="col-md-12">
 					<div
 						class="display-header d-flex flex-wrap justify-content-between pb-3">
-						<h2 class="display-2 text-dark fw-bold">제품 소개</h2>
-						<a href="<c:url value='shop/list'/>"
+						<h2 class="display-2 text-dark fw-bold ms-3">제품 소개</h2>
+						<a href="<c:url value='/shop/list'/>"
 							class="btn btn-medium btn-arrow btn-normal position-relative">
 							<span class="">제품 구매</span> <svg
 								class="arrow-right position-absolute" width="18" height="20">
@@ -59,7 +38,7 @@
 								</h3>
 								<div class="cart-info">
 									<a class="pseudo-text-effect prod${vo.prod_id}"
-										data-after="자세히 보기"><span>${vo.price}원</span></a>
+										data-after="자세히 보기"><span style="opacity: 0">hidden</span></a>
 								</div>
 							</div>
 						</div>
@@ -76,14 +55,31 @@
 										aria-label="Close"></button>
 								</div>
 								<div class="modal-body">
-									<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
-										alt="product-item"
-										class="product-image img-fluid prod${vo.prod_id}">${vo.detail}</div>
+									<div class="container">
+										<div class="row">
+											<!-- 왼쪽 컬럼 -->
+											<div class="col-md-6">
+												<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
+													alt="product-item"
+													class="product-image img-fluid prod${vo.prod_id}">
+											</div>
+
+											<!-- 오른쪽 컬럼 -->
+											<div class="col-md-6">
+												<jsp:scriptlet>pageContext.setAttribute("newline", "\n");</jsp:scriptlet>
+												<c:out value="${fn:replace(vo.detail, newline, '<br>')}"
+													escapeXml="false" />
+
+
+											</div>
+										</div>
+									</div>
+
+								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save
-										changes</button>
+										data-bs-dismiss="modal">닫기</button>
+									<button type="button" class="btn btn-primary" id="btn${vo.prod_id}">상품 구매</button>
 								</div>
 							</div>
 						</div>
@@ -97,6 +93,9 @@
 			$('.prod${vo.prod_id}').click(function(e) {
 				e.preventDefault();
 				$('#modal${vo.prod_id}').modal("show");
+			});
+			$('#btn${vo.prod_id}').click(function(e) {
+				 window.open("/shop/info?prod_id=${vo.prod_id}", '_blank');
 			});
 		</script>
 	</c:forEach>
