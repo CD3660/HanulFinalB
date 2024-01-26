@@ -1,0 +1,4 @@
+db.driver=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@118.40.91.135:1521:xe
+user=BTEAM
+pw=0000

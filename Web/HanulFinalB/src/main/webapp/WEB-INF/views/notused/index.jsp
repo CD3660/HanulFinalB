@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -383,10 +383,10 @@
                     </div>
                     <div class="cart-concern">
                       <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Black Sofa Set</a>
+                        <a href="single-product.html" class="text-primary">${vo.name}</a>
                       </h3>
                       <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART"><span>$200</span></a>
+                        <a class="pseudo-text-effect" href="#" data-after="자세히 보기"><span>${vo.price}</span></a>
                       </div>
                     </div>
                   </div>
