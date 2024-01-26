@@ -1109,5 +1109,8 @@ height
 }
 
 .mid{
-	flex: 1 0 auto; 
+	flex: 2 0 0; 
+}
+.fill{
+	width: 100%;
 }

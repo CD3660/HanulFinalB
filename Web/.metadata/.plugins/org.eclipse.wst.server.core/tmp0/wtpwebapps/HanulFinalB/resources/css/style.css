@@ -27,10 +27,10 @@ CSS STRUCTURE:
   --accent-color: #0d0d0d;
   --bs-gray-100: #f3f3f3;
   --bs-gray-200: #e7e5e2;
-  --bs-primary: #F0CA61;
+  --bs-primary: #E8CEC2;
   /* --bs-primary: #787d62; */
   --bs-secondary: #F6F5F2;
-  --bs-primary-rgb: 240, 202, 097;
+  --bs-primary-rgb: 066, 001, 000;
   --bs-body-bg-rgb: 246, 245, 242;
   --bs-light: #fff;
   --bs-dark: #000;
@@ -1109,5 +1109,8 @@ height
 }
 
 .mid{
-	flex: 1 0 auto; 
+	flex: 2 0 0; 
+}
+.fill{
+	width: 100%;
 }

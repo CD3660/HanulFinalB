@@ -143,99 +143,106 @@
 				<svg class="search" width="22" height="22">
             <use xlink:href="#search"></use>
           </svg>
-        </form>
-      </div>
-    </div> 
-    
-    
-    
-    
+			</form>
+		</div>
+	</div>
 
-    <header id="header" class="site-header text-black">
-      <nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/logo-main-w-icon.png" class="logo" style="margin-top: 16px;">
-            
-            
-            
-            
-            
-            
-            
-            
-          </a>
-          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <svg class="navbar-icon" width="50" height="50">
+
+
+
+
+	<header id="header" class="site-header text-black">
+		<nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html"> <img
+					src="images/logo-main-w-icon.png" class="logo"
+					style="margin-top: 16px;">
+
+
+
+
+
+
+
+
+				</a>
+				<button class="navbar-toggler d-flex d-lg-none order-3 p-2"
+					type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+					aria-controls="bdNavbar" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<svg class="navbar-icon" width="50" height="50">
               <use xlink:href="#navbar-icon"></use>
             </svg>
-          </button>
-          
-          
-          
-          
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-            <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
-              </a>
-              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-            </div>
-            
-            
-            
-            
-            
-            
-            <div class="offcanvas-body">
-              <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              
-                  <li class="nav-item">
-                  <a class="nav-link me-4" href="#about-us">제품소개</a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#about-us">공지사항</a>
-                </li>
-                
-                
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#">Q&A</a>
-                </li>
-                
-                
-                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#">제품구매</a>
-                </li>
-                
-                  
-               
-                <li class="nav-item dropdown me-4">
-                  <a class="nav-link dropdown-toggle" href="#" id="dropdownPages" data-bs-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">로그인</a>
-                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
-                    <li>
-                      <a href="shop-sidebar.html" class="dropdown-item item-anchor">로그인 <span class="badge bg-secondary text-dark ms-2">기존</span></a>
-                    </li>
-                    <li>
-                      <a href="shop-four-column.html" class="dropdown-item item-anchor">회원가입 <span class="badge bg-secondary text-dark ms-2">신규</span></a>
-                    </li>
-                  </ul>
-                </li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <li class="nav-item">
-                  <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3" data-bs-toggle="collapse" data-bs-target="#search-box" aria-controls="search-box" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg class="search" width="18" height="18">
+				</button>
+
+
+
+
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
+					aria-labelledby="bdNavbarOffcanvasLabel">
+					<div class="offcanvas-header px-4 pb-0">
+						<a class="navbar-brand" href="index.html"> <img
+							src="images/main-logo.png" class="logo">
+						</a>
+						<button type="button" class="btn-close btn-close-black"
+							data-bs-dismiss="offcanvas" aria-label="Close"
+							data-bs-target="#bdNavbar"></button>
+					</div>
+
+
+
+
+
+
+					<div class="offcanvas-body">
+						<ul id="navbar"
+							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+
+							<li class="nav-item"><a class="nav-link me-4"
+								href="#about-us">제품소개</a></li>
+
+							<li class="nav-item"><a class="nav-link me-4"
+								href="#about-us">공지사항</a></li>
+
+
+							<li class="nav-item"><a class="nav-link me-4" href="#">Q&A</a>
+							</li>
+
+
+							<li class="nav-item"><a class="nav-link me-4" href="#">제품구매</a>
+							</li>
+
+
+
+							<li class="nav-item dropdown me-4"><a
+								class="nav-link dropdown-toggle" href="#" id="dropdownPages"
+								data-bs-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">로그인</a>
+								<ul class="dropdown-menu list-unstyled"
+									aria-labelledby="dropdownPages">
+									<li><a href="shop-sidebar.html"
+										class="dropdown-item item-anchor">로그인 <span
+											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+									<li><a href="shop-four-column.html"
+										class="dropdown-item item-anchor">회원가입 <span
+											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+								</ul></li>
+
+
+
+
+
+
+
+
+
+							<li class="nav-item">
+								<div class="user-items ps-5">
+									<ul class="d-flex justify-content-end list-unstyled">
+										<li class="search-item pe-3" data-bs-toggle="collapse"
+											data-bs-target="#search-box" aria-controls="search-box"
+											aria-expanded="false" aria-label="Toggle navigation"><svg
+												class="search" width="18" height="18">
                           <use xlink:href="#search"></use>
                         </svg></li>
 										<li class="pe-3"><a href="#"> <svg class="user"
@@ -262,14 +269,12 @@
 
 
 
-
-	<div>
-		<tiles:insertAttribute name="container" />
-	</div>
-
-
-
-
+	<div style="display: flex;">
+		<div class="container-fluid mid">
+			<div class="fill">
+				<tiles:insertAttribute name="container" />
+			</div>
+		</div>
 
 
 
@@ -277,68 +282,65 @@
 
 
 
+		<footer id="footer" class="overflow-hidden padding-small">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="row d-flex flex-wrap justify-content-between">
+						<div class="col-lg-3 col-sm-6 pb-3 pe-4"
+							style="padding-top: 20px;">
+							<div class="footer-menu">
 
-
-
-
-	<footer id="footer" class="overflow-hidden padding-large">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="row d-flex flex-wrap justify-content-between">
-					<div class="col-lg-3 col-sm-6 pb-3 pe-4" style="padding-top: 20px;">
-						<div class="footer-menu">
-
-							<i class="fa-solid fa-house" style="margin-bottom: 10px;"></i>
-							<p>한울201, 2024 프로젝트 B팀</p>
+								<i class="fa-solid fa-house" style="margin-bottom: 10px;"></i>
+								<p>한울201, 2024 프로젝트 B팀</p>
+							</div>
+							<div class="copyright">
+								<p>Copyright © 2024 Hanul.</p>
+							</div>
 						</div>
-						<div class="copyright">
-							<p>Copyright © 2024 Hanul.</p>
-						</div>
-					</div>
-					<div class="col-lg-2 col-sm-6 pb-3">
-						<div class="footer-menu text-uppercase">
-							<h5 class="widget-title pb-2">Quick Links</h5>
-							<ul class="menu-list list-unstyled text-uppercase">
-								<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
-								<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
-								<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
-								</li>
-								<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
-								</li>
-								<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-2 col-sm-6 pb-3">
-						<div class="footer-menu text-uppercase">
-							<h5 class="widget-title pb-2">Member</h5>
-							<div class="social-links">
-								<ul class="list-unstyled">
-									<li class="pb-2"><a href="#">Chan</a></li>
-									<li class="pb-2"><a href="#">chung</a></li>
-									<li class="pb-2"><a href="#">Se</a></li>
-									<li class="pb-2"><a href="#">Ji</a></li>
-
+						<div class="col-lg-2 col-sm-6 pb-3">
+							<div class="footer-menu text-uppercase">
+								<h5 class="widget-title pb-2">Quick Links</h5>
+								<ul class="menu-list list-unstyled text-uppercase">
+									<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
+									<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
+									<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
+									</li>
+									<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
+									</li>
+									<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
 								</ul>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6">
-						<div class="footer-menu contact-item">
-							<h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-							<p>
-								<a href="">062-362-7797</a>
-							</p>
-							<p>
-								<a href="mailto:">hanul7797@naver.com</a>
-							</p>
-							<p>경열로 3 (농성동 271-4)</p>
+						<div class="col-lg-2 col-sm-6 pb-3">
+							<div class="footer-menu text-uppercase">
+								<h5 class="widget-title pb-2">Member</h5>
+								<div class="social-links">
+									<ul class="list-unstyled">
+										<li class="pb-2"><a href="#">Chan</a></li>
+										<li class="pb-2"><a href="#">chung</a></li>
+										<li class="pb-2"><a href="#">Se</a></li>
+										<li class="pb-2"><a href="#">Ji</a></li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-sm-6">
+							<div class="footer-menu contact-item">
+								<h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
+								<p>
+									<a href="">062-362-7797</a>
+								</p>
+								<p>
+									<a href="mailto:">hanul7797@naver.com</a>
+								</p>
+								<p>경열로 3 (농성동 271-4)</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-
+		</footer>
+	</div>
 </body>
 </html>
