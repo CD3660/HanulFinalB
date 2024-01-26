@@ -1,5 +1,6 @@
 package com.hanul.finalb.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.finalb.product.ProductService;
+import com.hanul.finalb.product.ProductVO;
 
 
 @Controller
@@ -21,8 +23,9 @@ public class ProductController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		//productservice���� ��ǰ ����Ʈ ��ȸ �� ��ȯ
-		model.addAttribute("list", service.list());
+		List<ProductVO> list = service.list();
+		//productservice
+		model.addAttribute("list", list);
 		
 		return "product/list";
 	}
