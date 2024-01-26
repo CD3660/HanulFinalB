@@ -21,17 +21,19 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="banner-item" style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 600px; position: relative;">
-                   	 <div class="blur-overlay"></div>
+                  <div class="banner-item">
+                  <div class="banner-item" style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 630px;"></div>
+                   
                    	 
                    	 
                    	 
                    	 
                     <div class="banner-content padding-large">
-                      <h1 class="display-1 text-uppercase pb-2 text-primary">My Smart Home</h1>
-                      <p style="margin-left: 30px;">IoT 지금 체험해보세요</p>                      
+                      <h1 class="display-1 text-uppercase pb-2 text-primary" style="display: inline; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">My Smart</h1>
+                      <h1 class="display-1 text-uppercase pb-2" style="color: #EFFAFD; display: inline; font-weight: bold; margin-left: 0.1em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"> Home</h1>
+                      <p style="margin-left: 30px; margin-top: 30px; font-weight: bold; font-size: 1.4em;">IoT 지금 체험해보세요</p>                      
                       <a href="shop.html" class="btn btn-medium btn-arrow position-relative mt-5">
-                        <span class="text-uppercase">구매하기</span>            
+                        <span class="text-uppercase" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">구매하기</span>            
                         <svg class="arrow-right position-absolute" width="18" height="20">
                           <use xlink:href="#arrow-right"></use>
                         </svg>
@@ -62,7 +64,7 @@
                 </svg>
               </div>
               <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">Quick delivery</h3>
+                <h3 class="card-title text-uppercase text-dark">제품구매</h3>
               </div>
             </div>
           </div>
@@ -74,7 +76,7 @@
                 </svg>
               </div>
               <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">Pick up in store</h3>
+                <h3 class="card-title text-uppercase text-dark">장바구니</h3>
               </div>
             </div>
           </div>
@@ -86,7 +88,7 @@
                 </svg>
               </div>
               <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">Special Packaging</h3>
+                <h3 class="card-title text-uppercase text-dark">제품소개</h3>
               </div>
             </div>
           </div>
@@ -98,7 +100,7 @@
                 </svg>
               </div>
               <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">Return & refund policy</h3>
+                <h3 class="card-title text-uppercase text-dark">로그인</h3>
               </div>
             </div>
           </div>

@@ -147,15 +147,11 @@
 		</div>
 	</div>
 
-
-
-
-
 	<header id="header" class="site-header text-black">
 		<nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html"> <img
-					src="images/logo-main-w-icon.png" class="logo"
+					src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
 					style="margin-top: 16px;">
 
 
@@ -269,12 +265,11 @@
 
 
 
-	<div style="display: flex;">
-		<div class="container-fluid mid">
-			<div class="fill">
-				<tiles:insertAttribute name="container" />
-			</div>
-		</div>
+
+
+	<div class="container-fluid mid">
+		<tiles:insertAttribute name="container" />
+	</div>
 
 
 
@@ -282,65 +277,66 @@
 
 
 
-		<footer id="footer" class="overflow-hidden padding-small">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="row d-flex flex-wrap justify-content-between">
-						<div class="col-lg-3 col-sm-6 pb-3 pe-4"
-							style="padding-top: 20px;">
-							<div class="footer-menu">
 
-								<i class="fa-solid fa-house" style="margin-bottom: 10px;"></i>
-								<p>한울201, 2024 프로젝트 B팀</p>
-							</div>
-							<div class="copyright">
-								<p>Copyright © 2024 Hanul.</p>
-							</div>
+
+	<footer id="footer" class="overflow-hidden padding-small">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="row d-flex flex-wrap justify-content-between">
+					<div class="col-lg-3 col-sm-6 pb-3 pe-4" style="padding-top: 20px;">
+						<div class="footer-menu">
+
+							<i class="fa-solid fa-house" style="margin-bottom: 10px;"></i>
+							<p>한울201, 2024 프로젝트 B팀</p>
 						</div>
-						<div class="col-lg-2 col-sm-6 pb-3">
-							<div class="footer-menu text-uppercase">
-								<h5 class="widget-title pb-2">Quick Links</h5>
-								<ul class="menu-list list-unstyled text-uppercase">
-									<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
-									<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
-									<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
-									</li>
-									<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
-									</li>
-									<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
+						<div class="copyright">
+							<p>Copyright © 2024 Hanul.</p>
+						</div>
+					</div>
+					<div class="col-lg-2 col-sm-6 pb-3">
+						<div class="footer-menu text-uppercase">
+							<h5 class="widget-title pb-2">Quick Links</h5>
+							<ul class="menu-list list-unstyled text-uppercase">
+								<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
+								<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
+								<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
+								</li>
+								<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
+								</li>
+								<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-sm-6 pb-3">
+						<div class="footer-menu text-uppercase">
+							<h5 class="widget-title pb-2">Member</h5>
+							<div class="social-links">
+								<ul class="list-unstyled">
+									<li class="pb-2"><a href="#">Chan</a></li>
+									<li class="pb-2"><a href="#">chung</a></li>
+									<li class="pb-2"><a href="#">Se</a></li>
+									<li class="pb-2"><a href="#">Ji</a></li>
+
 								</ul>
 							</div>
 						</div>
-						<div class="col-lg-2 col-sm-6 pb-3">
-							<div class="footer-menu text-uppercase">
-								<h5 class="widget-title pb-2">Member</h5>
-								<div class="social-links">
-									<ul class="list-unstyled">
-										<li class="pb-2"><a href="#">Chan</a></li>
-										<li class="pb-2"><a href="#">chung</a></li>
-										<li class="pb-2"><a href="#">Se</a></li>
-										<li class="pb-2"><a href="#">Ji</a></li>
-
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-sm-6">
-							<div class="footer-menu contact-item">
-								<h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-								<p>
-									<a href="">062-362-7797</a>
-								</p>
-								<p>
-									<a href="mailto:">hanul7797@naver.com</a>
-								</p>
-								<p>경열로 3 (농성동 271-4)</p>
-							</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="footer-menu contact-item">
+							<h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
+							<p>
+								<a href="">062-362-7797</a>
+							</p>
+							<p>
+								<a href="mailto:">hanul7797@naver.com</a>
+							</p>
+							<p>경열로 3 (농성동 271-4)</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-	</div>
+		</div>
+	</footer>
+
 </body>
 </html>

@@ -13,8 +13,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="display"/>
+		<item key="selection" value="Home"/>
 		<list key="findhistory">
+			<item value="home"/>
 			<item value="display"/>
 			<item value="container-fluid"/>
 			<item value="bill"/>
