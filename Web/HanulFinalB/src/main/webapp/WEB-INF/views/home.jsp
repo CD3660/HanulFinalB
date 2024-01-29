@@ -11,10 +11,6 @@
 
 
 
-
-
-
-
 	<section id="main" class="overflow-hidden">
 		<div class="container-fluid" style="height: 85%;">
 			<div class="banner-item"
@@ -42,9 +38,10 @@
                         </svg>
 					</a>
 				</div>
-
+				
+				
 			</div>
-			</div>
+		</div>
 	</section>
 
 
@@ -53,22 +50,25 @@
 
 
 
-	<section id="company-services" class="padding-large"
+
+
+
+	<section id="main-icon" class="padding-large"
 		style="padding-top: 0em; padding-bottom: 5em; padding-left: 6em;">
 		<div class="container-fluid">
 			<div class="row">
+			
+			
+			
 				<div class="col-lg-3 col-md-6 pb-3">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-
 							<svg class="gift">
-                  <use xlink:href="#gift" />
-                </svg>
+                  				<use xlink:href="#gift" />
+                			</svg>
 						</div>
 						<div class="icon-box-content ps-3">
 							<h3 class="card-title text-uppercase text-dark">제품소개</h3>
-
-
 						</div>
 					</div>
 				</div>
@@ -79,56 +79,88 @@
 				<div class="col-lg-3 col-md-6 pb-3">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-
-
-
 							<svg class="shipping-fast">
-                  <use xlink:href="#shipping-fast" />
-                </svg>
+                 				<use xlink:href="#shipping-fast" />
+               				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
 							<h3 class="card-title text-uppercase text-dark">제품구매</h3>
-
-
-
-
-
 						</div>
 					</div>
 				</div>
+				
+				
+				
+				
 				<div class="col-lg-3 col-md-6 pb-3">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-
-
 							<svg class="shopping-cart">
-                  <use xlink:href="#shopping-cart" />
-                </svg>
+                  				<use xlink:href="#shopping-cart" />
+                			</svg>
 						</div>
 						<div class="icon-box-content ps-3">
 							<h3 class="card-title text-uppercase text-dark">장바구니</h3>
-
-
 						</div>
 					</div>
 				</div>
+				
+				
+				
+				
 				<div class="col-lg-3 col-md-6 pb-3">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
 							<svg class="return">
-                  <use xlink:href="#return" />
-                </svg>
+                 				 <use xlink:href="#return" />
+               				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
 							<h3 class="card-title text-uppercase text-dark">로그인</h3>
 						</div>
 					</div>
 				</div>
+				
+				
+							
+				
 			</div>
 		</div>
 	</section>
 
-	<section id="about-us">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section id="NewProduct">
 		<div class="container-fluid" style="margin-top: 5em;">
 			<div class="row align-items-center justify-content-between g-5">
 				<div class="col-lg-6">
