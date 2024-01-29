@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
@@ -14,38 +15,37 @@
 
 
 
-    <section id="billboard" class="overflow-hidden">
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="banner-item">
-                  <div class="banner-item" style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 630px;"></div>
-                   
-                   	 
-                   	 
-                   	 
-                   	 
-                    <div class="banner-content padding-large">
-                      <h1 class="display-1 text-uppercase pb-2 text-primary" style="display: inline; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">My Smart</h1>
-                      <h1 class="display-1 text-uppercase pb-2" style="color: #EFFAFD; display: inline; font-weight: bold; margin-left: 0.1em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"> Home</h1>
-                      <p style="margin-left: 30px; margin-top: 30px; font-weight: bold; font-size: 1.4em;">IoT 지금 체험해보세요</p>                      
-                      <a href="shop.html" class="btn btn-medium btn-arrow position-relative mt-5">
-                        <span class="text-uppercase" style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">구매하기</span>            
-                        <svg class="arrow-right position-absolute" width="18" height="20">
+	<section id="main" class="overflow-hidden">
+		<div class="container-fluid" style="height: 85%;">
+			<div class="banner-item"
+				style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 600px; position: relative; background-size: 66%">
+
+
+
+
+				<div class="banner-content padding-large">
+					<h1 class="display-1 text-uppercase pb-2 text-primary"
+						style="color: #000042; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">My
+						Smart</h1>
+					<h1 class="display-1 text-uppercase pb-2"
+						style="color: #000000; font-weight: bold; margin-left: 2.7em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+						Home</h1>
+					<p
+						style="margin-left: 30px; margin-top: 30px; font-weight: bold; font-size: 1.4em;">IoT
+						지금 체험해보세요</p>
+					<a href="shop.html"
+						class="btn btn-medium btn-arrow position-relative mt-5"> <span
+						class="text-uppercase"
+						style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">구매하기</span>
+						<svg class="arrow-right position-absolute" width="18" height="20">
                           <use xlink:href="#arrow-right"></use>
                         </svg>
-                      </a>   
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+					</a>
+				</div>
 
-    </section>
+			</div>
+			</div>
+	</section>
 
 
 
@@ -53,591 +53,244 @@
 
 
 
-    <section id="company-services" class="padding-large">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex align-items-center">
-              <div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-                <svg class="shipping-fast">
-                  <use xlink:href="#shipping-fast" />
-                </svg>
-              </div>
-              <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">제품구매</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex align-items-center">
-              <div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-                <svg class="shopping-cart">
-                  <use xlink:href="#shopping-cart" />
-                </svg>
-              </div>
-              <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">장바구니</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex align-items-center">
-              <div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-                <svg class="gift">
+	<section id="company-services" class="padding-large"
+		style="padding-top: 0em; padding-bottom: 5em; padding-left: 6em;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 pb-3">
+					<div class="icon-box d-flex align-items-center">
+						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
+
+							<svg class="gift">
                   <use xlink:href="#gift" />
                 </svg>
-              </div>
-              <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">제품소개</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex align-items-center">
-              <div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-                <svg class="return">
+						</div>
+						<div class="icon-box-content ps-3">
+							<h3 class="card-title text-uppercase text-dark">제품소개</h3>
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="col-lg-3 col-md-6 pb-3">
+					<div class="icon-box d-flex align-items-center">
+						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
+
+
+
+							<svg class="shipping-fast">
+                  <use xlink:href="#shipping-fast" />
+                </svg>
+						</div>
+						<div class="icon-box-content ps-3">
+							<h3 class="card-title text-uppercase text-dark">제품구매</h3>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 pb-3">
+					<div class="icon-box d-flex align-items-center">
+						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
+
+
+							<svg class="shopping-cart">
+                  <use xlink:href="#shopping-cart" />
+                </svg>
+						</div>
+						<div class="icon-box-content ps-3">
+							<h3 class="card-title text-uppercase text-dark">장바구니</h3>
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 pb-3">
+					<div class="icon-box d-flex align-items-center">
+						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
+							<svg class="return">
                   <use xlink:href="#return" />
                 </svg>
-              </div>
-              <div class="icon-box-content ps-3">
-                <h3 class="card-title text-uppercase text-dark">로그인</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+						</div>
+						<div class="icon-box-content ps-3">
+							<h3 class="card-title text-uppercase text-dark">로그인</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <section id="about-us">
-      <div class="container-fluid">
-        <div class="row align-items-center justify-content-between g-5">
-          <div class="col-lg-6">
-            <div class="image-holder mb-4 jarallax">
-                <img src="images/single-image1.jpg" alt="single" class="img-fluid jarallax-img">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="detail p-5">
-              <div class="display-header">
-                <h2 class="display-2 text-uppercase text-dark pb-2">About Us</h2>
-                <p class="pb-3">Ac varius lectus tellus tellus quisque tristique aenean. Volutpat velit nulla eu iaculis risus in urna. Eu morbi vel purus velit dui vel egestas purus sed. Eget turpis tincidunt faucibus montes arcu in nullam tortor orci. Nulla tellus sed purus vestibulum sagittis pretium donec nec mattis ollis porta sit ut.</p>
-                <p>Facilisi ut vulputate volutpat a aliquet. Facilisis sed quis pretium amet hac. Justo tristique sagittis sodales viverra venenatis integer fringilla. </p>
-                <a href="about-us.html" class="btn btn-medium btn-arrow outline-dark position-relative mt-3">
-                  <span class="text-uppercase">About us</span>            
-                  <svg class="arrow-right position-absolute" width="18" height="20">
+	<section id="about-us">
+		<div class="container-fluid" style="margin-top: 5em;">
+			<div class="row align-items-center justify-content-between g-5">
+				<div class="col-lg-6">
+					<div class="image-holder mb-4 jarallax">
+
+						<img src="<c:url value='/images/prod_img/cctv.png'/>" alt="CCTV"
+							class="img-fluid jarallax-img">
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="detail p-5">
+						<div class="display-header">
+							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>
+							<p class="pb-3">설명</p>
+							<a href="about-us.html"
+								class="btn btn-medium btn-arrow outline-dark position-relative mt-3">
+								<span class="text-uppercase">신제품 보기</span> <svg
+									class="arrow-right position-absolute" width="18" height="20">
                     <use xlink:href="#arrow-right"></use>
                   </svg>
-                </a>  
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <section id="featured-products" class="product-store position-relative padding-large">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="display-header pb-3 d-flex justify-content-between flex-wrap col-md-12">
-            <h2 class="display-2 text-dark text-uppercase">Our Featured Products</h2> 
-            <a href="shop.html" class="btn btn-medium btn-arrow btn-normal position-relative">
-              <span class="text-uppercase">Shop All</span>            
-              <svg class="arrow-right position-absolute" width="18" height="20">
-                <use xlink:href="#arrow-right"></use>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="row">
-          <div id="featured-swiper" class="product-swiper col-md-12">
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item1.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Black Sofa Set</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART"><span>$200</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item2.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Circle Dining Table</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item3.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Minimal Sofa</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item4.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Pattern Tea Table</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item5.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Black Sofa Set</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item6.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html" class="text-primary">Minimal Sofa</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-pagination text-center mt-5"></div>
-          </div>
-        </div>
-      </div>      
-    </section>
 
-    <section id="testimonials" class="position-relative">
-      <div class="container">
-        <div class="row">
-          <div class="review-content position-relative">
-            <div class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center justify-content-center">
-              <svg class="icon-arrow" width="25" height="25">
+
+
+
+	<section id="testimonials" class="position-relative">
+		<div class="container" style="padding-top: 7em; padding-bottom: 3em;">
+			<div class="row">
+				<div class="review-content position-relative">
+					<div
+						class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center justify-content-center">
+						<svg class="icon-arrow" width="25" height="25">
                 <use xlink:href="#arrow-left" />
               </svg>
-            </div>
-            <div class="swiper testimonial-swiper">
-              <div class="quotation text-center">
-                <svg class="quote">
+					</div>
+					<div class="swiper testimonial-swiper">
+						<div class="quotation text-center">
+							<svg class="quote">
                   <use xlink:href="#quote" />
                 </svg>
-              </div>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide text-center d-flex justify-content-center">
-                  <div class="review-item col-md-10">
-                    <i class="icon icon-review"></i>
-                    <blockquote class="fs-4">âTempus oncu enim pellen tesque este pretium in neque, elit morbi sagittis lorem habi mattis Pellen tesque pretium feugiat vel morbi suspen dise sagittis lorem habi tasse morbi.â</blockquote>
-                    <div class="author-detail">
-                      <div class="name text-primary text-uppercase pt-2">Hana Kimusaki</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide text-center d-flex justify-content-center">
-                  <div class="review-item col-md-10">
-                    <i class="icon icon-review"></i>
-                    <blockquote class="fs-4">âA blog is a digital publication that can complement a website or exist independently. A blog may include articles, short posts, listicles, infographics, videos, and other digital content.â</blockquote>
-                    <div class="author-detail">
-                      <div class="name text-primary text-uppercase pt-2">Jennie Rose</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-icon swiper-arrow swiper-arrow-next position-absolute d-flex align-items-center justify-content-center">
-              <svg class="icon-arrow" width="25" height="25">
-                <use xlink:href="#arrow-right" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>      
-      <div class="swiper-pagination text-center position-absolute"></div>
-    </section>
+						</div>
 
-    <section id="collections" class="position-relative padding-large">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="swiper collection-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide overflow-hidden">
-                <div class="product-card">
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="shop.html">Living Rooms</a>
-                    </h3>
-                  </div>
-                  <div class="image-overlay position-relative">
-                    <div class="product-image">
-                      <img src="images/product-item5.jpg" alt="product-item" class="product-image img-fluid">
-                      <div class="text-box box-slide position-absolute">
-                        <div class="text-content p-5 bg-light">
-                          <h3>About Room</h3>
-                          <p>Assumenda temporibus quidem ipsam. fuga corporis iusto similique voluptates sint quibusdam.</p>
-                          <ul>
-                            <li>Various Types of Bedroom</li>
-                            <li>Different Size of Bed</li>
-                            <li>Comfortable and Clean Room</li>
-                          </ul>
-                          <a href="#" class="btn btn-normal mt-3">Learn More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-              <div class="swiper-slide overflow-hidden">
-                <div class="product-card">
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="shop.html">Bed Rooms</a>
-                    </h3>
-                  </div>
-                  <div class="image-overlay position-relative">
-                    <div class="product-image">
-                      <img src="images/product-item6.jpg" alt="product-item" class="product-image img-fluid">
+						<div class="swiper-wrapper">
+							<div
+								class="swiper-slide text-center d-flex justify-content-center">
+								<div class="review-item col-md-10">
+									<i class="icon icon-review"></i>
+									<blockquote class="fs-4">blah, blah, blah~ blah,
+										blah, blah~blah, blah, blah~blah, blah, blah~blah, blah,
+										blah~blah, blah, blah~blah, blah, blah~blah, blah, blah~blah,
+										blah, blah~blah, blah, blah~</blockquote>
+									<div class="author-detail">
+										<div class="name text-primary text-uppercase pt-2">Hanul
+											Team B</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
-                      <div class="text-box box-slide position-absolute">
-                        <div class="text-content p-5 bg-light">
-                          <h3>About Room</h3>
-                          <p>Assumenda temporibus quidem ipsam. fuga corporis iusto similique voluptates sint quibusdam.</p>
-                          <ul>
-                            <li>Various Types of Bedroom</li>
-                            <li>Different Size of Bed</li>
-                            <li>Comfortable and Clean Room</li>
-                          </ul>
-                          <a href="#" class="btn btn-normal mt-3">Learn More</a>
-                        </div>
-                      </div>
-                    </div>
-                  <!-- product-image -->
-                  </div>                  
-                </div>
-              </div>
-              <div class="swiper-slide overflow-hidden">
-                <div class="product-card">
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="shop.html">Kitchens</a>
-                    </h3>
-                  </div>
-                  <div class="image-overlay position-relative">
-                    <div class="product-image">
-                      <img src="images/product-item7.jpg" alt="product-item" class="product-image img-fluid">
+					</div>
 
-                      <div class="text-box box-slide position-absolute">
-                        <div class="text-content p-5 bg-light">
-                          <h3>About Kitchen</h3>
-                          <p>Assumenda temporibus quidem ipsam. fuga corporis iusto similique voluptates sint quibusdam.</p>
-                          <ul>
-                            <li>Various Types of Bedroom</li>
-                            <li>Different Size of Bed</li>
-                            <li>Comfortable and Clean Room</li>
-                          </ul>
-                          <a href="#" class="btn btn-normal mt-3">Learn More</a>
-                        </div>
-                      </div>
-                    </div>
-                  <!-- product-image -->
-                  </div>                  
-                </div>
-              </div>
-              <div class="swiper-slide overflow-hidden">
-                <div class="product-card">
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="shop.html">Guest Rooms</a>
-                    </h3>
-                  </div>
-                  <div class="image-overlay position-relative">
-                    <div class="product-image">
-                      <img src="images/product-item8.jpg" alt="product-item" class="product-image img-fluid">
 
-                      <div class="text-box box-slide position-absolute">
-                        <div class="text-content p-5 bg-light">
-                          <h3>About Kitchen</h3>
-                          <p>Assumenda temporibus quidem ipsam. fuga corporis iusto similique voluptates sint quibusdam.</p>
-                          <ul>
-                            <li>Various Types of Bedroom</li>
-                            <li>Different Size of Bed</li>
-                            <li>Comfortable and Clean Room</li>
-                          </ul>
-                          <a href="#" class="btn btn-normal mt-3">Learn More</a>
-                        </div>
-                      </div>
-                    </div>
-                  <!-- product-image -->
-                  </div>                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination position-absolute text-center"></div>
-    </section>
 
-    <section class="subscribe">
-      <div class="container">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
-            <div class="subscribe-content padding-large">
-              <div class="subscribe-header">
-                <h2 class="display-4">Get offers & discounts by subscribing us</h2>
-              </div>
-              <form id="form">
-                <input type="text" name="email" placeholder="Enter Your Email Addresss" class="w-100 bg-light border-0 ps-5 fst-italic">
-                <button class="btn btn-full btn-black text-uppercase">Subscribe Now</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="trending-products" class="product-store padding-large">
-      <div class="container-fluid">
-        <div class="row overflow-hidden">
-          <div class="display-header pb-3 d-flex justify-content-between col-md-12">
-            <h2 class="display-2 text-dark text-uppercase">Trending products</h2>
-            <a href="shop.html" class="btn btn-medium btn-arrow btn-normal position-relative">
-              <span class="text-uppercase">Shop all</span> 
-              <svg class="arrow-right position-absolute" width="18" height="20">
-                <use xlink:href="#arrow-right"></use>
-              </svg>
-            </a>
-          </div>
-          <div id="trending-swiper" class="product-swiper col-md-12">
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item1.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Black Sofa Set</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART"><span>$200</span></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item2.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Circle Dining Table</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item3.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Minimal Sofa</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item4.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Pattern Tea Table</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item5.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Black Sofa Set</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="product-card image-zoom-effect link-effect d-flex flex-wrap">
-                    <div class="image-holder">
-                      <img src="images/product-item6.jpg" alt="product-item" class="product-image img-fluid">
-                    </div>
-                    <div class="cart-concern">
-                      <h3 class="card-title text-uppercase pt-3 text-primary">
-                        <a href="single-product.html">Minimal Sofa</a>
-                      </h3>
-                      <div class="cart-info">
-                        <a class="pseudo-text-effect" href="#" data-after="ADD TO CART">
-                          <span>$200</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-pagination text-center mt-5"></div>
-            </div>
-          </div>
-        </div>
-      </div>      
-    </section>
+				</div>
 
-    <section id="latest-blog">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="display-header d-flex flex-wrap justify-content-between pb-3">
-              <h2 class="display-2 text-dark text-uppercase">Read Our Articles</h2>
-              <a href="blog.html" class="btn btn-medium btn-arrow btn-normal position-relative">
-                <span class="text-uppercase">See all articles</span>            
-                <svg class="arrow-right position-absolute" width="18" height="20">
+			</div>
+		</div>
+		<div class="swiper-pagination text-center position-absolute"></div>
+	</section>
+
+
+
+
+
+
+
+	<section id="latest-blog">
+
+		<div class="container-fluid" style="margin-bottom: 8em;">
+			<div class="row">
+				<div class="col-md-12">
+					<div
+						class="display-header d-flex flex-wrap justify-content-between pb-3"
+						style="margin-top: 10em;">
+						<h2 class="display-2 text-dark text-uppercase">베스트 셀러</h2>
+						<a href="blog.html"
+							class="btn btn-medium btn-arrow btn-normal position-relative">
+							<span class="text-uppercase">모든 제품 보기</span> <svg
+								class="arrow-right position-absolute" width="18" height="20">
                   <use xlink:href="#arrow-right"></use>
                 </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="row g-3 post-grid">
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-            <div class="card-item">
-              <div class="card border-0 bg-transparent">
-                <div class="card-image">
-                  <img src="images/post-item1.jpg" alt="" class="post-image img-fluid">
-                </div>
-              </div>
-              <div class="card-body p-0 mt-4">
-                <h3 class="card-title text-uppercase">
-                  <a href="single-post.html">Best looking interior things for bedrooms</a>
-                </h3>
-                <p>Enim ut nunc, ultrices mauris felis viverra amet. Ante sed dictum nisi suscipit ac ut faucibus pretium interdum.</p>
-                <a href="single-post.html" class="btn btn-normal text-uppercase p-0"><em>Read More</em></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-            <div class="card-item">
-              <div class="card border-0">
-                <div class="card-image">
-                  <img src="images/post-item2.jpg" alt="" class="post-image img-fluid">
-                </div>
-              </div>
-              <div class="card-body p-0 mt-4">
-                <h3 class="card-title text-uppercase">
-                  <a href="single-post.html">Trending modern furniture design in 2022</a>
-                </h3>
-                <p>Enim ut nunc, ultrices mauris felis viverra amet. Ante sed dictum nisi suscipit ac ut faucibus pretium interdum.</p>
-                <a href="single-post.html" class="btn btn-normal text-uppercase p-0"><em>Read More</em></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-            <div class="card-item">
-              <div class="card border-0">
-                <div class="card-image">
-                  <img src="images/post-item3.jpg" alt="" class="post-image img-fluid">
-                </div>
-              </div>
-              <div class="card-body p-0 mt-4">
-                <h3 class="card-title text-uppercase">
-                  <a href="single-post.html">Why is simple firniture design looks fabulous</a>
-                </h3>
-                <p>Enim ut nunc, ultrices mauris felis viverra amet. Ante sed dictum nisi suscipit ac ut faucibus pretium interdum.</p>
-                <a href="single-post.html" class="btn btn-normal text-uppercase p-0"><em>Read More</em></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row g-3 post-grid">
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+					<div class="card-item">
+						<div class="card border-0 bg-transparent">
+							<div class="card-image">
+								<img src="<c:url value='/images/prod_img/dust.png'/>" alt="dust"
+									class="post-image img-fluid">
+							</div>
+						</div>
+						<div class="card-body p-0 mt-4">
+							<h3 class="card-title text-uppercase">
+								<a href="single-post.html">미세먼지 측정기</a>
+							</h3>
+							<p>설명.</p>
+							<a href="single-post.html"
+								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+					<div class="card-item">
+						<div class="card border-0">
+							<div class="card-image">
+								<img src="<c:url value='/images/prod_img/fire.png'/>" alt="fire"
+									class="post-image img-fluid">
+							</div>
+						</div>
+						<div class="card-body p-0 mt-4">
+							<h3 class="card-title text-uppercase">
+								<a href="single-post.html">불꽃 측정기</a>
+							</h3>
+							<p>설명.</p>
+							<a href="single-post.html"
+								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
+					<div class="card-item">
+						<div class="card border-0">
+							<div class="card-image">
+								<img src="<c:url value='/images/prod_img/gas.png'/>" alt="gas"
+									class="post-image img-fluid">
+							</div>
+						</div>
+						<div class="card-body p-0 mt-4">
+							<h3 class="card-title text-uppercase">
+								<a href="single-post.html">가스 측정기</a>
+							</h3>
+							<p>설명.</p>
+							<a href="single-post.html"
+								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<hr>
 
 
 
