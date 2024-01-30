@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<head>
-<title></title>
-</head>
-<body>
 
 
 
@@ -14,10 +10,8 @@
 
 
 
-	<section id="main" class="overflow-hidden">	
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
+
+	<section id="main">
             <div class="container-fluid" style="height: 85%;">
               <div class="row">
                 <div class="col-md-12">		
@@ -51,7 +45,8 @@
 				
 			</div>
 		</div>
-		</div></div></div></div></div>
+		</div>
+		</div>
 	</section>
 
 
@@ -349,5 +344,4 @@
 
 
 
-</body>
 </html>
