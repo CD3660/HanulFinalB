@@ -42,28 +42,35 @@
 						<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
 
 						<hr class="my-4">
-			<!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  회원가입
-                </button>
 
-                <!-- Register buttons -->
-                <div class="text-center">
-                  <p>다른 계정으로 로그인</p>
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-naver-f"></i>
-                  </button>
+						<div class="row pt-3 justify-content-center">
+							<div class="col pb-4 mx-auto">
+								<ul class="lgacc-tab">
+									<li class="tab-item"><a class="tab-link"
+										id="btn-search-id" href="javascript:void(0);">아이디 찾기</a></li>
+									<li class="tab-item"><a id="reset-password"
+										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
+								</ul>
+								<ul class="lgacc-tab justify-content-center">
+									<li class="tab-item"><a id="btn-register" class="tab-link"
+										href="javascript:void(0);" onclick="return false;"> 
+										<u>회원가입</u>
+									</a></li>
+								</ul>
+							</div>
+						</div>
 
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-kakao"></i>
-                  </button>
+						<!-- Register buttons -->
+						<div class="text-center">
+							<p>다른 계정으로 로그인</p>
+							<button type="button" class="btn btn-link btn-floating mx-1">
+								<i class="fab fa-naver-f"></i>
+							</button>
 
-                  
-                </div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

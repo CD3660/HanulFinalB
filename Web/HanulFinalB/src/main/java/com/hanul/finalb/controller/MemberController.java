@@ -16,7 +16,7 @@ import com.hanul.finalb.product.ProductService;
 public class MemberController {
 	
 
-	/* Á¦Ç° ¼Ò°³ ÆäÀÌÁö ÀüÈ¯½Ã ¸ÞÀÎ ÆäÀÌÁö */
+	/* ï¿½ï¿½Ç° ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
@@ -25,6 +25,13 @@ public class MemberController {
 		
 		return "member/login";
 	}
-	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String home( Model model) {
+		
+
+		
+		
+		return "member/join";
+	}
 	
 }
