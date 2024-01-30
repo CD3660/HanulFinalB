@@ -9,3 +9,47 @@
 .search:focus {
 	border-color: var(- -bs-primary);
 }
+
+.search-filter-content {
+	border: 1px solid lightgray;
+	background: white;
+}
+
+.shop-item:hover {
+	border: 1px solid;
+	border-color: lightgray;
+	box-shadow: 0 0 5px rgba(100, 100, 100, 0.5); /* 모든 방향으로 동일한 그림자 */
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.shop-item {
+	border: 1px solid;
+	border-color: #f6f5f2;
+	transition: 0.3s;
+}
+
+.shop-img {
+	width: 210px;
+	height: 210px;
+}
+
+.rate {
+	background: url(/finalb/images/shop/star_bg02.png) no-repeat;
+	width: 121px;
+	height: 20px;
+	position: relative;
+}
+
+.rate span {
+	position: absolute;
+	background: url(/finalb/images/shop/star02.png);
+	width: auto;
+	height: 20px;
+}
+
+.price {
+	color: red;
+	font-weight: bold;
+	font-size: 1.2em;
+}

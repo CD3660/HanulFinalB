@@ -1,6 +1,0 @@
-INDEX VERSION 1.4+D:\HanulFinalB\Web\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1992523223.index
-1992523223.index
-1943994314.index
-709117802.index
-2723707944.index
