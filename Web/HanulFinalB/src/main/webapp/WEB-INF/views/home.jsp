@@ -199,7 +199,7 @@
 
 
 
-	<section id="testimonials" class="position-relative">
+	<section id="home-comment" class="position-relative">
 		<div class="container" style="padding-top: 7em; padding-bottom: 9em;">
 			<div class="row">
 				<div class="review-content position-relative">
@@ -229,17 +229,10 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-
-
-
-
 				</div>
-
 			</div>
 		</div>
-		<div class="swiper-pagination text-center position-absolute"></div>
 	</section>
 
 
@@ -248,8 +241,13 @@
 
 
 
-	<section id="latest-blog">
 
+
+
+
+
+
+	<section id="BestSeller">
 		<div class="container-fluid" style="margin-bottom: 8em;">
 			<div class="row">
 				<div class="col-md-12">
@@ -268,7 +266,11 @@
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="row g-3 post-grid">
+			
+			
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item">
 						<div class="card border-0 bg-transparent">
@@ -279,14 +281,16 @@
 						</div>
 						<div class="card-body p-0 mt-4">
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">미세먼지 측정기</a>
+								<a href="single-post.html">미세먼지모듈</a>
 							</h3>
-							<p>설명.</p>
+							<p>미세먼지측정모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 						</div>
 					</div>
 				</div>
+				
+				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item">
 						<div class="card border-0">
@@ -297,14 +301,16 @@
 						</div>
 						<div class="card-body p-0 mt-4">
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">불꽃 측정기</a>
+								<a href="single-post.html">화재감지모듈</a>
 							</h3>
-							<p>설명.</p>
+							<p>화재감지모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 						</div>
 					</div>
 				</div>
+				
+				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item">
 						<div class="card border-0">
@@ -315,9 +321,9 @@
 						</div>
 						<div class="card-body p-0 mt-4">
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">가스 측정기</a>
+								<a href="single-post.html">가스누출감지모듈</a>
 							</h3>
-							<p>설명.</p>
+							<p>가스누출감지모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 						</div>

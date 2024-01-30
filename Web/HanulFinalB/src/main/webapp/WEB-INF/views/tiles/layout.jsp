@@ -217,11 +217,14 @@
 								aria-expanded="false">로그인</a>
 								<ul class="dropdown-menu list-unstyled"
 									aria-labelledby="dropdownPages">
-									<li><a href="shop-sidebar.html"
+									
+									<li><a href="<c:url value='/member/login'/>"
 										class="dropdown-item item-anchor">로그인 <span
 											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
-									<li><a href="shop-four-column.html"
-										class="dropdown-item item-anchor">회원가입 <span
+											
+											
+									<li><a href="<c:url value='/member/join'/>"
+											class="dropdown-item item-anchor">회원가입 <span
 											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
 								</ul></li>
 
