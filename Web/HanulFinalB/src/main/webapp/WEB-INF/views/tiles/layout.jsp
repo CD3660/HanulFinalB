@@ -281,8 +281,6 @@
 
 
 
-
-
 	<footer id="footer" class="overflow-hidden padding-small">
 		<div class="container-fluid">
 			<div class="row">
