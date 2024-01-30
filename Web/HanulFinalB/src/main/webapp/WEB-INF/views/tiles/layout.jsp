@@ -192,7 +192,7 @@
 							style="font-size:1.2em; font-weight: bold; ">
 
 							<li class="nav-item"><a class="nav-link me-4"
-								href="#about-us">제품소개</a></li>
+								href="<c:url value='/prod/list'/>">제품소개</a></li>
 
 							<li class="nav-item"><a class="nav-link me-4"
 								href="#about-us">공지사항</a></li>
@@ -202,7 +202,7 @@
 							</li>
 
 
-							<li class="nav-item"><a class="nav-link me-4" href="#">제품구매</a>
+							<li class="nav-item"><a class="nav-link me-4" href="<c:url value='/shop/list'/>">제품구매</a>
 							</li>
 
 
