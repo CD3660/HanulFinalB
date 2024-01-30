@@ -58,11 +58,10 @@
 
 
 
-	<section id="main-icon" class="padding-large"
+	<section id="home-simple-icon" class="padding-large"
 		style="padding-top: 0em; padding-bottom: 10em; padding-left: 6em;">
 		<div class="container-fluid">
 			<div class="row">
-			
 			
 			
 				<div class="col-lg-3 col-md-6 pb-3">
@@ -170,7 +169,8 @@
 			<div class="row align-items-center justify-content-between g-5">
 				<div class="col-lg-6">
 					<div class="image-holder mb-4 jarallax">
-<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;"><i class="fa-solid fa-rocket"></i>   신제품</h2>
+					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
+					<i class="fa-solid fa-rocket"></i>   신제품</h2>
 						<img src="<c:url value='/images/prod_img/cctv.png'/>" alt="CCTV"
 							class="img-fluid jarallax-img">
 					</div>
@@ -179,7 +179,8 @@
 					<div class="detail p-5">
 						<div class="display-header">
 							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>
-							<p class="pb-3">설명</p>
+							<p class="pb-3">
+높은 해상도의 고품질 영상과 최첨단 기술을 적용한 CCTV 제품을 소개합니다. 저조도 및 야간 감시 기능으로 24시간 안전을 지키며, 스마트폰이나 웹 브라우저를 통한 원격 모니터링과 제어가 가능합니다. 또한, 이벤트 알림을 통해 실시간으로 상황에 대응할 수 있습니다.</p>
 							<a href="about-us.html"
 								class="btn btn-medium btn-arrow outline-dark position-relative mt-3">
 								<span class="text-uppercase">신제품 보기</span> <svg
@@ -220,10 +221,7 @@
 								class="swiper-slide text-center d-flex justify-content-center">
 								<div class="review-item col-md-10">
 									<i class="icon icon-review"></i>
-									<blockquote class="fs-4">blah, blah, blah~ blah,
-										blah, blah~blah, blah, blah~blah, blah, blah~blah, blah,
-										blah~blah, blah, blah~blah, blah, blah~blah, blah, blah~blah,
-										blah, blah~blah, blah, blah~</blockquote>
+									<blockquote class="fs-4">안전하고 신뢰성 있는 보안 솔루션으로 데이터 보호 및 암호화, 내구성 및 방수 기능을 갖추어 고객의 안전을 최우선에 두고 있습니다. 전문가 그룹의 기술 지원과 서비스를 통해 CCTV 설치, 유지보수, 사용자 교육 등 다양한 영역에서 고객에게 최상의 서비스를 제공합니다.</blockquote>
 									<div class="author-detail">
 										<div class="name text-primary text-uppercase pt-2">Hanul
 											Team B</div>
