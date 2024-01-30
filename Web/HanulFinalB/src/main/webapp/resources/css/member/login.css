@@ -67,7 +67,7 @@ html, body {
 #find-btn1 {
 	display: inline-block;
 }
-<<<<<<< Updated upstream
+
 
 .lgacc-tab {
 	list-style: none;
@@ -78,14 +78,4 @@ html, body {
 .tab-item {
 	margin-right: 10px; /* Optional: Adjust the spacing between items */
 }
-=======
- .lgacc-tab {
-        list-style: none;
-        display: flex; /* Use flexbox for horizontal alignment */
-        justify-content: center; /* Center the items horizontally */
-    }
 
-    .tab-item {
-        margin-right: 10px; /* Optional: Adjust the spacing between items */
-    }
->>>>>>> Stashed changes
