@@ -11,8 +11,17 @@
 
 
 
-	<section id="main" class="overflow-hidden">
-		<div class="container-fluid" style="height: 85%;">
+
+
+
+	<section id="main" class="overflow-hidden">	
+      <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="container-fluid" style="height: 85%;">
+              <div class="row">
+                <div class="col-md-12">		
+		
 			<div class="banner-item"
 				style="background-image: url(images/banner-image1.png); background-repeat: no-repeat; background-position: right; height: 600px; position: relative; background-size: 66%">
 
@@ -21,13 +30,13 @@
 
 				<div class="banner-content padding-large">
 					<h1 class="display-1 text-uppercase pb-2 text-primary"
-						style="color: #000042; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">My
+						style="color: #000063; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">My
 						Smart</h1>
 					<h1 class="display-1 text-uppercase pb-2"
-						style="color: #000000; font-weight: bold; margin-left: 2.7em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+						style="color: #00003F; font-weight: bold; margin-left: 2.7em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
 						Home</h1>
 					<p
-						style="margin-left: 30px; margin-top: 30px; font-weight: bold; font-size: 1.4em;">IoT
+						style="margin-left: 30px; margin-top: 30px; font-size: 1.4em;">IoT
 						지금 체험해보세요</p>
 					<a href="shop.html"
 						class="btn btn-medium btn-arrow position-relative mt-5"> <span
@@ -42,6 +51,7 @@
 				
 			</div>
 		</div>
+		</div></div></div></div></div>
 	</section>
 
 
@@ -54,7 +64,7 @@
 
 
 	<section id="main-icon" class="padding-large"
-		style="padding-top: 0em; padding-bottom: 5em; padding-left: 6em;">
+		style="padding-top: 0em; padding-bottom: 10em; padding-left: 6em;">
 		<div class="container-fluid">
 			<div class="row">
 			
@@ -165,7 +175,7 @@
 			<div class="row align-items-center justify-content-between g-5">
 				<div class="col-lg-6">
 					<div class="image-holder mb-4 jarallax">
-
+<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;"><i class="fa-solid fa-rocket"></i>   신제품</h2>
 						<img src="<c:url value='/images/prod_img/cctv.png'/>" alt="CCTV"
 							class="img-fluid jarallax-img">
 					</div>
@@ -194,7 +204,7 @@
 
 
 	<section id="testimonials" class="position-relative">
-		<div class="container" style="padding-top: 7em; padding-bottom: 3em;">
+		<div class="container" style="padding-top: 7em; padding-bottom: 9em;">
 			<div class="row">
 				<div class="review-content position-relative">
 					<div
@@ -253,7 +263,8 @@
 					<div
 						class="display-header d-flex flex-wrap justify-content-between pb-3"
 						style="margin-top: 10em;">
-						<h2 class="display-2 text-dark text-uppercase">베스트 셀러</h2>
+						<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
+						<i class="fa-solid fa-crown"></i>   베스트 셀러</h2>
 						<a href="blog.html"
 							class="btn btn-medium btn-arrow btn-normal position-relative">
 							<span class="text-uppercase">모든 제품 보기</span> <svg

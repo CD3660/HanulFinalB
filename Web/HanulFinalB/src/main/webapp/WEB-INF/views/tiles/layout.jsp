@@ -192,7 +192,8 @@
 
 					<div class="offcanvas-body">
 						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
+							style="font-size:1.2em; font-weight: bold; ">
 
 							<li class="nav-item"><a class="nav-link me-4"
 								href="#about-us">제품소개</a></li>
