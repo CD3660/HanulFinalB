@@ -25,5 +25,13 @@ public class MemberController {
 		
 		return "member/login";
 	}
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String home( Model model) {
+		
+
+		
+		
+		return "member/join";
+	}
 	
 }

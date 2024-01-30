@@ -11,15 +11,15 @@ body {
 }
 
 .joinForm {
-  position:absolute;
+  
   width:400px;
-  height:400px;
+  margin: 0 auto;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
   top:40%;
   left:50%;
-  transform: translate(-50%,-50%);
+  
   border-radius: 15px;
 }
 

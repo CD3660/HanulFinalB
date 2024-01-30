@@ -53,7 +53,8 @@
 								</ul>
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
-										href="javascript:void(0);" onclick="return false;"> <u>회원가입</u>
+										href="javascript:void(0);" onclick="return false;"> 
+										<u>회원가입</u>
 									</a></li>
 								</ul>
 							</div>
@@ -66,10 +67,10 @@
 								<i class="fab fa-naver-f"></i>
 							</button>
 
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
