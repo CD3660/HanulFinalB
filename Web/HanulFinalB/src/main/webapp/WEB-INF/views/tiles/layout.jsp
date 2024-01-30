@@ -153,15 +153,11 @@
 				<a class="navbar-brand" href="index.html"> <img
 					src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
 					style="margin-top: 16px;">
-
-
-
-
-
-
-
-
 				</a>
+				
+				
+				
+				
 				<button class="navbar-toggler d-flex d-lg-none order-3 p-2"
 					type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
 					aria-controls="bdNavbar" aria-expanded="false"
