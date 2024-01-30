@@ -192,7 +192,8 @@
 
 					<div class="offcanvas-body">
 						<ul id="navbar"
-							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
+							style="font-size:1.2em; font-weight: bold; ">
 
 							<li class="nav-item"><a class="nav-link me-4"
 								href="#about-us">제품소개</a></li>
@@ -216,11 +217,14 @@
 								aria-expanded="false">로그인</a>
 								<ul class="dropdown-menu list-unstyled"
 									aria-labelledby="dropdownPages">
-									<li><a href="shop-sidebar.html"
+									
+									<li><a href="<c:url value='/member/login'/>"
 										class="dropdown-item item-anchor">로그인 <span
 											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
-									<li><a href="shop-four-column.html"
-										class="dropdown-item item-anchor">회원가입 <span
+											
+											
+									<li><a href="<c:url value='/member/join'/>"
+											class="dropdown-item item-anchor">회원가입 <span
 											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
 								</ul></li>
 
@@ -265,12 +269,21 @@
 
 
 
-	<div style="display: flex; min-height: 55%">
-		<div class="container-fluid mid">
-			<tiles:insertAttribute name="container" />
-		</div>
+
+
+	<div class="container-fluid mid">
+		<tiles:insertAttribute name="container" />
 	</div>
-	<footer id="footer" class="overflow-hidden pt-3 pb-3">
+
+
+
+
+
+
+
+
+
+	<footer id="footer" class="overflow-hidden padding-small">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="row d-flex flex-wrap justify-content-between">
