@@ -1,27 +1,3 @@
-.banner-item {
-	position: relative;
-}
-
-.blur-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(images/banner-image1.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  filter: blur(5px); /* 흐리게 만들기 */
-}
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -53,10 +29,10 @@ CSS STRUCTURE:
   --accent-color: #0d0d0d;
   --bs-gray-100: #f3f3f3;
   --bs-gray-200: #e7e5e2;
-  --bs-primary: #E8CEC2;
-  /* --bs-primary: #787d62; */
+  --bs-primary: #787d62;
+/* --bs-primary: #787d62; #E8CEC2; #BAE3EF*/
   --bs-secondary: #F6F5F2;
-  --bs-primary-rgb: 066, 001, 000;
+  --bs-primary-rgb: 000, 000, 099;
   --bs-body-bg-rgb: 246, 245, 242;
   --bs-light: #fff;
   --bs-dark: #000;

@@ -178,7 +178,7 @@
 					aria-labelledby="bdNavbarOffcanvasLabel">
 					<div class="offcanvas-header px-4 pb-0">
 						<a class="navbar-brand" href="index.html"> <img
-							src="images/main-logo.png" class="logo">
+							src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo">
 						</a>
 						<button type="button" class="btn-close btn-close-black"
 							data-bs-dismiss="offcanvas" aria-label="Close"
