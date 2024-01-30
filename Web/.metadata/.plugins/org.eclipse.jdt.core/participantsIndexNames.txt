@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-D:\HanulFianlB\Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4276316936.index
-\HanulFinalB\src\main\java
-D:\HanulFianlB\Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\709117802.index
-\HanulFinalB\src\main\java
