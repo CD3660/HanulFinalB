@@ -150,8 +150,8 @@
 	<header id="header" class="site-header text-black">
 		<nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html"> <img
-					src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
+				<a class="navbar-brand" href="<c:url value='/'/>">
+				<img src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
 					style="margin-top: 16px;">
 				</a>
 				
