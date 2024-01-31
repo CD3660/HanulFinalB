@@ -32,10 +32,10 @@
 					<p
 						style="margin-left: 30px; margin-top: 30px; font-size: 1.4em;">IoT
 						지금 체험해보세요</p>
-					<a href="shop.html"
+					<a href="<c:url value='/prod/list'/>"
 						class="btn btn-medium btn-arrow position-relative mt-5"> <span
 						class="text-uppercase"
-						style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">구매하기</span>
+						style="font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">제품보기</span>
 						<svg class="arrow-right position-absolute" width="18" height="20">
                           <use xlink:href="#arrow-right"></use>
                         </svg>
@@ -72,7 +72,7 @@
                 			</svg>
 						</div>
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark">제품소개</h3>
+							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/prod/list'/>">제품소개</a></h3>
 						</div>
 					</div>
 				</div>
@@ -88,7 +88,7 @@
                				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark">제품구매</h3>
+							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/shop/list'/>">제품구매</a></h3>
 						</div>
 					</div>
 				</div>
@@ -120,7 +120,7 @@
                				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark">로그인</h3>
+							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/member/login'/>">로그인</a></h3>
 						</div>
 					</div>
 				</div>
@@ -181,21 +181,24 @@
 							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>
 							<p class="pb-3">
 높은 해상도의 고품질 영상과 최첨단 기술을 적용한 CCTV 제품을 소개합니다. 저조도 및 야간 감시 기능으로 24시간 안전을 지키며, 스마트폰이나 웹 브라우저를 통한 원격 모니터링과 제어가 가능합니다. 또한, 이벤트 알림을 통해 실시간으로 상황에 대응할 수 있습니다.</p>
-							<a href="about-us.html"
-								class="btn btn-medium btn-arrow outline-dark position-relative mt-3">
-								<span class="text-uppercase">신제품 보기</span> <svg
+							
+							
+							<a class="btn btn-medium btn-arrow outline-dark position-relative mt-3" id="cctv-detail">
+								<span class="text-uppercase">자세히 보기</span> <svg
 									class="arrow-right position-absolute" width="18" height="20">
                     <use xlink:href="#arrow-right"></use>
                   </svg>
 							</a>
+							<%@ include file="/WEB-INF/views/product/modal.jsp" %>
+							
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-
+	
 
 
 
@@ -237,16 +240,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 	<section id="BestSeller">
 		<div class="container-fluid" style="margin-bottom: 8em;">
 			<div class="row">
@@ -256,7 +249,7 @@
 						style="margin-top: 10em;">
 						<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
 						<i class="fa-solid fa-crown"></i>   베스트 셀러</h2>
-						<a href="blog.html"
+						<a href="<c:url value='/shop/list'/>"
 							class="btn btn-medium btn-arrow btn-normal position-relative">
 							<span class="text-uppercase">모든 제품 보기</span> <svg
 								class="arrow-right position-absolute" width="18" height="20">
@@ -338,6 +331,15 @@
 
 
 
+		<script>
+			$('#cctv-detail').click(function(e) {
+				e.preventDefault();
+				$('#modal${vo.prod_id}').modal("show");
+			});
+			$('#btn${vo.prod_id}').click(function(e) {
+				 window.open("/shop/info?prod_id=${vo.prod_id}", '_blank');
+			});
+		</script>
 
 
 
