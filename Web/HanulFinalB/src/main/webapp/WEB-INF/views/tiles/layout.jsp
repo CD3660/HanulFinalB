@@ -295,13 +295,13 @@
 						<div class="footer-menu text-uppercase">
 							<h5 class="widget-title pb-2">Quick Links</h5>
 							<ul class="menu-list list-unstyled text-uppercase">
-								<li class="menu-item pb-2"><a href="#billboard">제품소개</a></li>
-								<li class="menu-item pb-2"><a href="#about-us">공지사항</a></li>
-								<li class="menu-item pb-2"><a href="#company-services">Q&A</a>
+								<li class="menu-item pb-2"><a href="<c:url value='/prod/list'/>">제품소개</a></li>
+								<li class="menu-item pb-2"><a href="#">공지사항</a></li>
+								<li class="menu-item pb-2"><a href="#">Q&A</a>
 								</li>
-								<li class="menu-item pb-2"><a href="#latest-blog">제품구매</a>
+								<li class="menu-item pb-2"><a href="<c:url value='/shop/list'/>">제품구매</a>
 								</li>
-								<li class="menu-item pb-2"><a href="#contact">로그인</a></li>
+								<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
 							</ul>
 						</div>
 					</div>

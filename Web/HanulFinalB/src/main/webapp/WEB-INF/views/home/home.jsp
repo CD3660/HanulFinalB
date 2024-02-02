@@ -30,7 +30,7 @@
 						style="color: #00003F; font-weight: bold; margin-left: 2.7em; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
 						Home</h1>
 					<p
-						style="margin-left: 30px; margin-top: 30px; font-size: 1.4em;">IoT
+						style="margin-left: 30px; margin-top: 30px; font-size: 1.6em; text-shadow: 5px 5px 5px #888888;">IoT
 						지금 체험해보세요</p>
 					<a href="<c:url value='/prod/list'/>"
 						class="btn btn-medium btn-arrow position-relative mt-5"> <span
@@ -189,7 +189,16 @@
                     <use xlink:href="#arrow-right"></use>
                   </svg>
 							</a>
-							<%@ include file="/WEB-INF/views/product/modal.jsp" %>
+							
+							
+							
+							<!-- 모달 소환  -->
+							<%@ include file="/WEB-INF/views/home/modal.jsp" %>
+						
+							
+							
+							
+							
 							
 							
 						</div>
@@ -334,7 +343,25 @@
 		<script>
 			$('#cctv-detail').click(function(e) {
 				e.preventDefault();
-				$('#modal${vo.prod_id}').modal("show");
+				
+				$.ajax({
+		            url: '/homemodal',
+		            type: 'GET',
+		            success: function(data) {
+		                // 서버에서 받은 데이터로 모달을 표시
+		                $('#myModalContainer').html(data);
+		                $('#myModal').modal('show');
+		            },
+		            error: function(xhr, status, error) {
+		                // 오류 처리
+		                console.error('Error: ' + status);
+		            }
+		        });
+				
+			
+					$('#modal${vo.prod_id}').modal("show");
+				
+				
 			});
 			$('#btn${vo.prod_id}').click(function(e) {
 				 window.open("/shop/info?prod_id=${vo.prod_id}", '_blank');
