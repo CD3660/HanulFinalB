@@ -19,7 +19,7 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
-	/* ��ǰ �Ұ� ������ ��ȯ�� ���� ������ */
+	/*  */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
