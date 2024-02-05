@@ -1,6 +1,7 @@
 package com.hanul.finalb;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,57 +22,22 @@ public class HomeController {
 	@Autowired private HomeService service;
 	
 	
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home/home";
-	}
-	@RequestMapping(value = "/prod", method = RequestMethod.GET)
-	public String product(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "product/list";
-	}
+	public String home(Model model) {
+
+		List<ProductVO> list = new ArrayList<ProductVO>();
+		list.add(service.product_info(2));
+		list.add(service.product_info(3));
+		list.add(service.product_info(4));
+		list.add(service.product_info(6));
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//홈화면 모달창
-	@RequestMapping("/homemodal")
-	public String mainModal(Model model, int id) {
-		
-		//해당 물품 아이디를 DB에서 조회 -> 화면에 출력 할 수 있도록 Model 객체에 담기
-		ProductVO vo = service.product_info(id);
-		model.addAttribute( "vo", vo );
+		model.addAttribute("list", list);
 		
 		return "home/home";
-		
 	}
+	
+	
+	
+	
 	
 }

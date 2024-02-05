@@ -183,7 +183,7 @@
 높은 해상도의 고품질 영상과 최첨단 기술을 적용한 CCTV 제품을 소개합니다. 저조도 및 야간 감시 기능으로 24시간 안전을 지키며, 스마트폰이나 웹 브라우저를 통한 원격 모니터링과 제어가 가능합니다. 또한, 이벤트 알림을 통해 실시간으로 상황에 대응할 수 있습니다.</p>
 							
 							
-							<a class="btn btn-medium btn-arrow outline-dark position-relative mt-3" id="cctv-detail">
+							<a class="btn btn-medium btn-arrow outline-dark position-relative mt-3" id="cctv">
 								<span class="text-uppercase">자세히 보기</span> <svg
 									class="arrow-right position-absolute" width="18" height="20">
                     <use xlink:href="#arrow-right"></use>
@@ -192,8 +192,7 @@
 							
 							
 							
-							<!-- 모달 소환  -->
-							<%@ include file="/WEB-INF/views/home/modal.jsp" %>
+			
 						
 							
 							
@@ -274,7 +273,7 @@
 			
 			
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-					<div class="card-item">
+					<div class="card-item" id=dust>
 						<div class="card border-0 bg-transparent">
 							<div class="card-image">
 								<img src="<c:url value='/images/prod_img/dust.png'/>" alt="dust"
@@ -288,46 +287,49 @@
 							<p>미세먼지측정모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+															
 						</div>
 					</div>
 				</div>
 				
 				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-					<div class="card-item">
+					<div class="card-item" id=fire>
 						<div class="card border-0">
 							<div class="card-image">
 								<img src="<c:url value='/images/prod_img/fire.png'/>" alt="fire"
 									class="post-image img-fluid">
 							</div>
 						</div>
-						<div class="card-body p-0 mt-4">
+						<div class="card-body p-0 mt-4" >
 							<h3 class="card-title text-uppercase">
 								<a href="single-post.html">화재감지모듈</a>
 							</h3>
 							<p>화재감지모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+															
 						</div>
 					</div>
 				</div>
 				
 				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-					<div class="card-item">
+					<div class="card-item" id=gas>
 						<div class="card border-0">
 							<div class="card-image">
 								<img src="<c:url value='/images/prod_img/gas.png'/>" alt="gas"
-									class="post-image img-fluid">
+									class="post-image img-fluid"></a>
 							</div>
 						</div>
-						<div class="card-body p-0 mt-4">
+						<div class="card-body p-0 mt-4" >
 							<h3 class="card-title text-uppercase">
 								<a href="single-post.html">가스누출감지모듈</a>
 							</h3>
 							<p>가스누출감지모듈입니다.</p>
 							<a href="single-post.html"
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
+														
 						</div>
 					</div>
 				</div>
@@ -339,41 +341,73 @@
 
 
 
+<c:forEach items="${list}" var="vo">
+
+				<!-- 모달 소환  -->
+							<%@ include file="/WEB-INF/views/home/modal.jsp" %>
+
+</c:forEach>
+
+
+
 
 		<script>
-			$('#cctv-detail').click(function(e) {
+		
+			$('#cctv').click(function(e) {
+				console.log("cctv클릭");
 				e.preventDefault();
-				
-				$.ajax({
-		            url: '/homemodal',
-		            type: 'GET',
-		            success: function(data) {
-		                // 서버에서 받은 데이터로 모달을 표시
-		                $('#myModalContainer').html(data);
-		                $('#myModal').modal('show');
-		            },
-		            error: function(xhr, status, error) {
-		                // 오류 처리
-		                console.error('Error: ' + status);
-		            }
-		        });
-				
 			
-					$('#modal${vo.prod_id}').modal("show");
-				
-				
+				$('#modal2').modal("show");
+		    });
+
+			$('#btn2').click(function(e) {
+				window.open("/shop/info?prod_id=2", '_blank');
 			});
-			$('#btn${vo.prod_id}').click(function(e) {
-				 window.open("/shop/info?prod_id=${vo.prod_id}", '_blank');
+			
+			
+			
+			
+			
+			$('#dust').click(function(e) {
+				e.preventDefault();
+			
+				$('#modal6').modal("show");
+		    });
+
+			$('#btn6').click(function(e) {
+				window.open("/shop/info?prod_id=6", '_blank');
+			});
+			
+			
+			
+			
+			
+			
+			$('#fire').click(function(e) {
+				e.preventDefault();
+			
+				$('#modal3').modal("show");
+		    });
+
+			$('#btn3').click(function(e) {
+				window.open("/shop/info?prod_id=3", '_blank');
+			});
+			
+			
+			
+			
+			
+			
+			$('#gas').click(function(e) {
+				e.preventDefault();
+			
+				$('#modal4').modal("show");
+		    });
+
+			$('#btn4').click(function(e) {
+				window.open("/shop/info?prod_id=4", '_blank');
 			});
 		</script>
-
-
-
-
-
-
-
 
 
 
