@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <body>
+	
 	<section id="latest-blog">
 		<div class="container-fluid">
 			<div class="row">
