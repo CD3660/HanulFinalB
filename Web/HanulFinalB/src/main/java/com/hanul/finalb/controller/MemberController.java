@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.product.ProductService;
 
 
@@ -25,6 +26,10 @@ public class MemberController {
 		
 		return "member/login";
 	}
+	@SuppressWarnings("unused")
+	@Autowired
+	private MemberService memberservice;
+	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String home( Model model) {
 		
@@ -33,5 +38,7 @@ public class MemberController {
 		
 		return "member/join";
 	}
+	
+	
 	
 }
