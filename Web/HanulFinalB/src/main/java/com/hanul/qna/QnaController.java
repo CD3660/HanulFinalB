@@ -7,6 +7,15 @@ public class QnaController {
 	
 	
 	
-	public void 
+	public String a() {
+		
+		
+		
+		return "qna/qna";
+	}
 
+	
+	
+	
+	
 }
