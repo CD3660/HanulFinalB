@@ -32,6 +32,8 @@ public class QnaService {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
 		page.setList(null);
 		
+		
+		return null;
 	}
 	
 	
