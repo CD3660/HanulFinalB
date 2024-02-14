@@ -27,9 +27,10 @@ public class QnaService {
 	
 	//방명록 신규등록화면 요청
 	
-	//방명록 목록화면 요청
+	//방명록 목록 조회
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
+		page.setList(null);
 		
 	}
 	
