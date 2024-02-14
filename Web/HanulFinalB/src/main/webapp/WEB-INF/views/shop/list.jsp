@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>>
 <html>
 <body>
+	<div class="container">
+		<div class="row justify-content-between">
+			
+		</div>
+	</div>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
@@ -53,12 +58,15 @@
 				<div class="container">
 					<div class="row">
 						<c:forEach items="${list }" var="vo" varStatus="i">
-							<div class="col shop-item mt-2" onclick="shop_info(${vo.prod_id})"
+							<div class="col shop-item mt-2"
+								onclick="shop_info(${vo.prod_id})"
 								style="word-wrap: break-word; height: 500px; width: 240px; max-width: 240px">
 								<img src="<c:url value='/images/prod_img/${vo.prod_img }'/>"
 									class="shop-img center-block m-auto" />
 								<p class="mt-2">${vo.prod_name}</p>
-								<p class="price"><fmt:formatNumber value="${vo.price}" pattern="###,###원"/></p>
+								<p class="price">
+									<fmt:formatNumber value="${vo.price}" pattern="###,###원" />
+								</p>
 								<div class="rate">
 									<span style="width: ${i.index*10}%"></span>
 								</div>

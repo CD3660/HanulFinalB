@@ -19,4 +19,10 @@ public class ShopController {
 		
 		return "shop/list";
 	}
+	@RequestMapping("/info")
+	public String info(Model model, int id) {
+		model.addAttribute("info", service.info(id));
+		
+		return "shop/info";
+	}
 }

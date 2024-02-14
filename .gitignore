@@ -87,6 +87,7 @@ hs_err_pid*
 replay_pid*
 
 /Servers/
+/googleDrive/
 /*/target/
 *.properties
 
@@ -145,3 +146,5 @@ Web/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/HanulFinalB/W
 Web/.metadata/.plugins/org.eclipse.wst.validation/dep.index
 Web/.metadata/.plugins/org.springsource.ide.eclipse.dashboard.ui/feeds/dashboard.feeds.blogs/-549550714.xml
 Web/.metadata/version.ini
+Web/HanulFinalB/src/main/resources/db/credentials.json
+Web/HanulFinalB/src/main/resources/credentials.json
