@@ -15,7 +15,7 @@ public class QnaVO {
 	private Date wirtedate;
 	
 	
-	private List<FileVO> fileList;
+	private List<FileVO> fileList; //****************
 	
 
 }

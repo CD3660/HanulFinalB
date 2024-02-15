@@ -30,10 +30,9 @@ public class QnaService {
 	//방명록 목록 조회
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
-		page.setList(null);
+		page.setList(sql.selectList("board.list", page));
 		
-		
-		return null;
+		return page;
 	}
 	
 	
