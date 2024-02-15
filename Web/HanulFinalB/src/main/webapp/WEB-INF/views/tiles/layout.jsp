@@ -13,8 +13,18 @@
 
 
 
+		<c:choose>
+			<c:when test="${category eq 'cu'}"><c:set var="title" value="고객관리: "/></c:when>  <!-- ******************** -->
+			<c:when test="${category eq 'hr'}"><c:set var="title" value="사원관리: "/></c:when>  <!-- ********************* -->
+			<c:when test="${category eq 'no'}"><c:set var="title" value="공지사항: "/></c:when>  <!-- ******************* -->
+			<c:when test="${category eq 'qna'}"><c:set var="title" value="Q&A: "/></c:when>
+			<c:when test="${category eq 'da'}"><c:set var="title" value="공공데이터: "/></c:when>  <!-- ******************** -->
+			<c:when test="${category eq 'join'}"><c:set var="title" value="회원가입: "/></c:when>  <!-- ****************** -->
+		</c:choose>
 
-<title>My Smart Home</title>
+<title>${title}My Smart Home</title>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -199,7 +209,7 @@
 								href="#about-us">공지사항</a></li>
 
 
-							<li class="nav-item"><a class="nav-link me-4" href="#">Q&A</a>
+							<li class="nav-item"><a class="nav-link me-4" href="<c:url value="/qna/list"/>">Q&A</a>
 							</li>
 
 

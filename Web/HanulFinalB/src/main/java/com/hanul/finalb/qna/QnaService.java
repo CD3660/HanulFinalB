@@ -1,4 +1,4 @@
-package com.hanul.qna;
+package com.hanul.finalb.qna;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

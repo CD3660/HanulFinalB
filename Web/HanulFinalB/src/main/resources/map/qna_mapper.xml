@@ -49,7 +49,7 @@
 
 
 <!-- 해당페이지의 10건의 정보목록 조회 -->
-<select id="list" resultType="board">
+<select id="list" resultType="qnaVO">
 select ( select count(*) form board_file f where board_id = b.id ) filecnt, b.*
 from ( select b.*, name, row_number() over(order by id) no
 		from board b left outer join member m on b.writer = m.user_id <include refid="searchWhere"/> ) b

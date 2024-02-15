@@ -7,7 +7,14 @@
 <title>QnA 목록</title>
 </head>
 <body>
+
+
+
+
 <h3 class="mt-4">Q&A</h3>
+
+
+
 
 
 

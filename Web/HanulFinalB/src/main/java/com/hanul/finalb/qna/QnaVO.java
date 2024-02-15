@@ -1,4 +1,4 @@
-package com.hanul.qna;
+package com.hanul.finalb.qna;
 
 import java.sql.Date;
 import java.util.List;
