@@ -9,7 +9,7 @@ import com.hanul.finalb.common.PageVO;
 
 @Service
 public class QnaService {
-	@Autowired @Qualifier("hanul") private SqlSession sql;
+	@Autowired private SqlSession sql;
 	
 	
 	
@@ -30,7 +30,7 @@ public class QnaService {
 	//방명록 목록 조회
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
-		page.setList(sql.selectList("board.list", page));
+		page.setList(sql.selectList("qna.list", page));
 		
 		return page;
 	}
