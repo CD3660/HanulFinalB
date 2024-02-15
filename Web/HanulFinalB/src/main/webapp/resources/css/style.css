@@ -1113,3 +1113,12 @@ height
 .mid{
 	flex: 2 0 0; 
 }
+
+
+
+.modal-home {
+        position: fixed;
+        top: 50%; /* 모달을 세로 중앙에 위치시킵니다. */
+        left: 50%; /* 모달을 가로 중앙에 위치시킵니다. */
+        transform: translate(-50%, -50%); /* 중앙 정렬을 보정합니다. */
+    }

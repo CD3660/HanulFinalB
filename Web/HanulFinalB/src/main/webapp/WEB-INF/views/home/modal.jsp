@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%
-	
-%>
+
+
 <html>
 <body>
 	<!-- Modal -->
-	<div class="modal fade" id="modal${vo.prod_id}" tabindex="-1"
+	<div class="modal fade modal-home" style=" margin-top: 80px;" id="modal${vo.prod_id}" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-prod">
 			<div class="modal-content modal-prod">
@@ -32,6 +31,8 @@
 								<jsp:scriptlet>pageContext.setAttribute("newline", "\n");</jsp:scriptlet>
 								<c:out value="${fn:replace(vo.detail, newline, '<br>')}"
 									escapeXml="false" />
+
+
 							</div>
 						</div>
 					</div>
