@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
@@ -22,7 +23,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
-	/* ��ǰ �Ұ� ������ ��ȯ�� ���� ������ */
+	/* 占쏙옙품 占쌀곤옙 占쏙옙占쏙옙占쏙옙 占쏙옙환占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 
@@ -56,17 +57,19 @@ public class MemberController {
 	
 
 	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/secuTest", method = RequestMethod.GET)
     public void secuTest() {
         
-        String rawPassword = "hanul123";                //���ڵ� �� �޼���
-        String encdoePassword1;                        // ���ڵ��� �޼���
-        String encdoePassword2;                        // �Ȱ��� ��й�ȣ �����͸� encdoe()�޼��带 ������� �� ������ ���ڵ��� ���� �������� Ȯ���ϱ� ���� �߰�
+        String rawPassword = "hanul123";                //占쏙옙占쌘듸옙 占쏙옙 占쌨쇽옙占쏙옙
+        String encdoePassword1;                        // 占쏙옙占쌘듸옙占쏙옙 占쌨쇽옙占쏙옙
+        String encdoePassword2;                        // 占싫곤옙占쏙옙 占쏙옙橘占싫� 占쏙옙占쏙옙占싶몌옙 encdoe()占쌨쇽옙占썲를 占쏙옙占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌘듸옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 확占쏙옙占싹깍옙 占쏙옙占쏙옙 占쌩곤옙
         
         encdoePassword1 = pwEncoder.encode(rawPassword);
         encdoePassword2 = pwEncoder.encode(rawPassword);
         
-        // ���ڵ��� �н����� ���
+        // 占쏙옙占쌘듸옙占쏙옙 占싻쏙옙占쏙옙占쏙옙 占쏙옙占�
         System.out.println("encdoePassword1 : " +encdoePassword1);
         System.out.println(" encdoePassword2 : " + encdoePassword2);
         
