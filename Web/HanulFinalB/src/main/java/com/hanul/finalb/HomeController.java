@@ -35,11 +35,6 @@ public class HomeController {
 		return "home/home";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/sensor/data_in")
-	public String sensor(int dust, int gas, int fire, int temp, int humid) {
-		
-		return "connect success";
-	}
+
 
 }
