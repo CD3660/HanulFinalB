@@ -32,8 +32,6 @@
 								<jsp:scriptlet>pageContext.setAttribute("newline", "\n");</jsp:scriptlet>
 								<c:out value="${fn:replace(vo.detail, newline, '<br>')}"
 									escapeXml="false" />
-
-
 							</div>
 						</div>
 					</div>

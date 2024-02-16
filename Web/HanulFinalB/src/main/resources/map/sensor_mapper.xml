@@ -2,16 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="prod">
-	<select id="list" resultType="prodVO">
-		select *
-		from product
+<mapper namespace="sensor">
+	<select id="insert">
+		insert into datas (USER_ID, DUST, GAS, FIRE, TEMP, HUMID) values (#{user_id}, #{dust}, #{gas}, #{fire}, #{temp}, #{humid})
 	</select>
-	<select id="info" resultType="prodVO">
+	<select id="info" resultType="sensVO">
 		select * 
 		from product 
 		where prod_id = ${id}
 	</select>
 </mapper>
-
-

@@ -38,9 +38,9 @@
 								id="form1Example3" /> <label class="form-check-label"
 								for="form1Example3"> Remember password </label>
 						</div>
-
-						<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
-
+						<form  method="GET">
+							<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+						</form>
 						<hr class="my-4">
 
 						<div class="row pt-3 justify-content-center">
@@ -53,9 +53,8 @@
 								</ul>
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
-										href="javascript:void(0);" onclick="return false;"> 
-										<u>회원가입</u>
-									</a></li>
+										href="http://localhost:8080/finalb/member/join"> 회원가입</a></li>
+									
 								</ul>
 							</div>
 						</div>
@@ -72,5 +71,15 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		<script type="text/javascript">
+		$(function() {
+			if(${!empty fail}) alert("아이디나 비밀번호가 일치하지 않습니다.");
+		})
+	
+		$("#naver, #kakao").click(function() {
+			location = $(this).attr("id") + "Login";
+		})	
+	</script>
 </body>
 </html>
