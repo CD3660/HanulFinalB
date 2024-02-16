@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hanul.finalb.member.MemberMapperTests;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
 
@@ -37,15 +36,17 @@ public class MemberController {
 	}
 
 	@RequestMapping(path = "/join", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public String joinpass(MemberVO member) throws Exception {
 		
+=======
+	public String finalb(MemberVO member) throws Exception {
+
+>>>>>>> main
 		service.memberJoin(member);
 
 		return "redirect:/member/login";
 		
-
-	
-	
 
 	}
 	@RequestMapping(path = "/login", method = RequestMethod.POST)

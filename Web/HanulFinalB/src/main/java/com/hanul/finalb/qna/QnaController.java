@@ -32,9 +32,12 @@ public class QnaController {
 	//방명록 신규등록처리 요청
 	
 	//방명록 신규등록화면 요청
+	@RequestMapping("/register")
+	public String register() {
+		return "board/regiser";
+	}
 	
 	//방명록 목록화면 조회
-	
 	@RequestMapping("/list")
 	public String list(PageVO page, Model model, HttpSession session) {
 		session.setAttribute("category", "qna");

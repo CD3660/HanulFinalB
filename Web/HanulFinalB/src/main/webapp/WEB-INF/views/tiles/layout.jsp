@@ -14,12 +14,12 @@
 
 
 		<c:choose>
-			<c:when test="${category eq 'cu'}"><c:set var="title" value="고객관리: "/></c:when>  <!-- ******************** -->
-			<c:when test="${category eq 'hr'}"><c:set var="title" value="사원관리: "/></c:when>  <!-- ********************* -->
-			<c:when test="${category eq 'no'}"><c:set var="title" value="공지사항: "/></c:when>  <!-- ******************* -->
+			<c:when test="${category eq 'product'}"><c:set var="title" value="제품소개: "/></c:when> 
+			<c:when test="${category eq 'notice'}"><c:set var="title" value="공지사항: "/></c:when>  
 			<c:when test="${category eq 'qna'}"><c:set var="title" value="Q&A: "/></c:when>
-			<c:when test="${category eq 'da'}"><c:set var="title" value="공공데이터: "/></c:when>  <!-- ******************** -->
-			<c:when test="${category eq 'join'}"><c:set var="title" value="회원가입: "/></c:when>  <!-- ****************** -->
+			<c:when test="${category eq 'shop'}"><c:set var="title" value="제품구매: "/></c:when>
+			<c:when test="${category eq 'login'}"><c:set var="title" value="로그인: "/></c:when>
+			<c:when test="${category eq 'signin'}"><c:set var="title" value="회원가입: "/></c:when> 
 		</c:choose>
 
 <title>${title}My Smart Home</title>
