@@ -236,6 +236,11 @@
 									<div class="author-detail">
 										<div class="name text-primary text-uppercase pt-2">Hanul
 											Team B</div>
+											<div class="swiper testimonial-swiper">
+						<div class="quotation text-center">
+											<svg class="quote">
+                  <use xlink:href="#quote"></use>
+                </svg></div></div>
 									</div>
 								</div>
 							</div>
@@ -269,14 +274,17 @@
 			</div>
 			
 			
+			
+			
+	
+
+			
 			<div class="row g-3 post-grid">
-			
-			
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item" id=dust>
 						<div class="card border-0 bg-transparent">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/dust.png'/>" alt="dust"
+								<img src="<c:url value='/images/prod_img/${list[3].prod_img}'/>" alt="dust"
 									class="post-image img-fluid">
 							</div>
 						</div>
@@ -297,7 +305,7 @@
 					<div class="card-item" id=fire>
 						<div class="card border-0">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/fire.png'/>" alt="fire"
+								<img src="<c:url value='/images/prod_img/${list[1].prod_img}'/>" alt="fire"
 									class="post-image img-fluid">
 							</div>
 						</div>
@@ -315,10 +323,10 @@
 				
 				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-					<div class="card-item" id=gas>
+					<div class="card-item" id=gas a href="">
 						<div class="card border-0">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/gas.png'/>" alt="gas"
+								<img src="<c:url value='/images/prod_img/${list[2].prod_img}'/>" alt="gas"
 									class="post-image img-fluid"></a>
 							</div>
 						</div>
@@ -337,6 +345,7 @@
 		</div>
 	</section>
 	<hr>
+
 
 
 
