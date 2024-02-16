@@ -51,11 +51,6 @@ public class MemberController {
 		service.memberJoin(member);
 
 		return "redirect:/member/login";
-		
-
-	
-	
-
 	}
 	
 	@ResponseBody
