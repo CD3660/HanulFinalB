@@ -4,5 +4,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.hanul.finalb.product.ProductVO" alias="prodVO"/>
+		<typeAlias type="com.hanul.finalb.sensor.SensorVO" alias="sensVO"/>
+		<typeAlias type="com.hanul.finalb.qna.QnaVO" alias="qnaVO"/>
+		
 	</typeAliases>
 </configuration>
