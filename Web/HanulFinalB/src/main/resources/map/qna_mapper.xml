@@ -52,7 +52,7 @@
 <select id="list" resultType="qnaVO">
 select ( select count(*) from qna_file f where qna_id = q1.id ) filecnt, q1.*
 from ( select q.*, name, row_number() over(order by id) no
-		from qna q left outer join member m on q.writer = m.user_id <include refid="searchWhere"/> ) q1
+		from qna q left outer join users u on q.writer = u.user_id <include refid="searchWhere"/> ) q1
 where no between #{beginList} and #{endList}
 order by no desc
 
