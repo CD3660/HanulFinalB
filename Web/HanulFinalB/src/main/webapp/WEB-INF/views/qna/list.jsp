@@ -116,6 +116,23 @@
 
 <script>
 
+$("[name=pageLis]").change(function({
+	$("form").submit()
+})
+
+
+
+//해당 목록수가 선택되어져 있게
+$("[name=pageList]").val()
+
+
+function info(id) {
+	$("[name=id]").val(id);
+	$("[name=curPage]").val( ${page.curPage} );
+	$("form").attr("action", "info").submit();
+}
+
+
 
 </script>
 
