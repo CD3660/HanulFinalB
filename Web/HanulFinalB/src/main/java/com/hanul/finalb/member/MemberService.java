@@ -15,4 +15,24 @@ public class MemberService {
 		sql.insert("member.register", member);
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//테스트용 임시 로그인처리 // 회원정보조회
+	public MemberVO member_info(String user_id) {
+		return sql.selectOne("member.info", user_id);
+	}
+	
+	
+	
 }
