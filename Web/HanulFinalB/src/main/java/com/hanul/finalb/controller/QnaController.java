@@ -1,24 +1,28 @@
 package com.hanul.finalb.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.google.api.client.util.StringUtils;
+import com.hanul.finalb.common.Common;
 import com.hanul.finalb.common.PageVO;
 import com.hanul.finalb.qna.QnaService;
+import com.hanul.finalb.qna.QnaVO;
 
 @Controller @RequestMapping("/qna")
 public class QnaController {
 	
 	@Autowired private QnaService service;
+	@Autowired private Common common;
 	
 	
 
-	
-	
 	
 	//방명록 수정저장처리 요청
 	
@@ -41,7 +45,20 @@ public class QnaController {
 	}
 	
 	
+	
 	//방명록 신규등록처리 요청
+	@RequestMapping("/insert")
+	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) {
+		//첨부된 파일들을 QnaVO 의 fileList에 담기
+		vo.setFileList(common.multipleFileUpload("qna", file, request));
+		
+		//화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
+		service.qna_register(vo);
+		return "redirect:list";
+		
+	}
+	
+	
 	
 	
 	

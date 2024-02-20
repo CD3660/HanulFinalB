@@ -6,6 +6,21 @@
 
 
 
+
+<!-- 신규 글저장  -->
+<insert id="register">
+
+ <selectKey>
+	select seq_qna.currval from dual
+ </selectKey>
+
+insert into qna ( title, content, writer )
+values ( ${title}, #{content}, #{writer} )
+</insert>
+
+
+
+
 <!-- 총 글건수 조회 -->
 	<select id="totalList" resultType="integer">
 	select count(id) from qna <include refid="searchWhere"/>

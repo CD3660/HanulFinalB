@@ -34,6 +34,8 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/common.css'/>">
+<link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/bootstrap.min.css'/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/style.css'/>">
@@ -56,6 +58,7 @@
 <script src="<c:url value='/js/modernizr.js'/>"></script>
 <script src="<c:url value='/js/plugins.js'/>"></script>
 <script src="<c:url value='/js/script.js'/>"></script>
+<script src="<c:url value='/js/common.js'/>"></script>
 <script src="https://kit.fontawesome.com/fb330bb215.js"
 	crossorigin="anonymous"></script>
 

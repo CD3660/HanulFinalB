@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,8 +67,7 @@
 <script>
 
 var fileList = new FileList();
-var test = "abc";
-var tag = `<span>\${test}</span>`
+
 
 $("#btn-save").click(function () {
 	if( emptyCheck() ) { //입력되어 있는 경우만 서브밋 

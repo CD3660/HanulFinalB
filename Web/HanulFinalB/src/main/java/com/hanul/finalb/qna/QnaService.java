@@ -14,6 +14,13 @@ public class QnaService {
 	
 	
 	//신규 방명록 글 저장처리
+	public int qna_register(QnaVO vo) {
+		int dml= sql.insert("qna.register", vo);
+		if ( dml ==1 && vo.getFileList() != null) {
+			
+		}
+		return dml;
+	}
 	
 	
 	//방명록 목록 조회

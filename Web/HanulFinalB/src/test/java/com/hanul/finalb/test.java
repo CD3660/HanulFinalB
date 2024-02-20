@@ -1,3 +1,4 @@
+package com.hanul.finalb;
 import org.junit.Test;
 
 public class test {
@@ -8,5 +9,22 @@ public class test {
 		System.out.println(f.getAbsoluteFile());
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@Test
+	public void join() {
+		
+
+		
+		
+		
+	}
+	
 
 }
