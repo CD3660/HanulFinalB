@@ -32,12 +32,9 @@ public class HomeController {
 	public String home(Model model, HttpSession session) {
 		
 		//테스트용 임시 로그인 처리---------------------------
-		String user_id = "hanul", user_pw = "1234,1234";
+		String user_id = "hanul";
 		MemberVO vo = member.member_info(user_id);
-		if( pwEncoder.matches(user_pw, vo.getUser_pw())) {
-			session.setAttribute("loginInfo", vo);
-		}
-		
+		session.setAttribute("loginInfo", vo);
 		
 		//-----------------------------------------------
 		
