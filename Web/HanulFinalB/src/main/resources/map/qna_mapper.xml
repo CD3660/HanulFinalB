@@ -100,6 +100,10 @@ select * from qna_file where qna_id = #{id}
 </select>
 
 
+<!-- 첨부파일정보 조회 -->
+<select id="fileInfo" resultType="fileVO">
+select * from qna_file where no = #{no}
+</select>
 
 
 

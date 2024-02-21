@@ -1,25 +1,26 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -36,6 +37,7 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
+
 
 
 @Service
@@ -170,7 +172,7 @@ public class Common {
 	
 	//다중 파일업로드
 	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws GeneralSecurityException, IOException {
 
 		ArrayList<FileVO> list = null;
 		for( MultipartFile file: files ) {
@@ -178,7 +180,7 @@ public class Common {
 			if( list== null ) list = new ArrayList<FileVO>();
 			FileVO vo = new FileVO();
 			vo.setFilename( file.getOriginalFilename() );
-			vo.setFilepath( fileUpload( category, file, request ));
+			vo.setFilepath( fileUpload( file ));
 			list.add(vo);
 		}
 		return list;
@@ -187,59 +189,82 @@ public class Common {
 	
 	
 	
-	//단일 파일업로드
-	public String fileUpload (String category, MultipartFile file, HttpServletRequest request ) {
-		
-		String upload = "d://app/upload/" + category
-				+ new SimpleDateFormat("/yyyy/MM/dd").format(new Date()); 
-		
-			
-		//해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기
-		java.io.File dir = new java.io.File( upload );
-		if( ! dir.exists()	) dir.mkdirs();
-		
-		
-		//업로드할 파일명을 
-		String filename = UUID.randomUUID().toString() + "." + 
-						StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
-		
-		
-		
-		
-		
-		try {
-			file.transferTo(new java.io.File(upload, filename));
-			
-		}catch(Exception e) {
-			
-		}
-		
-		
-		return upload.replace("d://app/upload", fileURL(request)) + filename;
-		
-	}
+	
+	
+	
+	
+	/* 구굴 드라이버로 사용
+	 * 
+	 * 
+	 * //단일 파일업로드 public String fileUpload (String category, MultipartFile file,
+	 * HttpServletRequest request ) {
+	 * 
+	 * String upload = "d://app/upload/" + category + new
+	 * SimpleDateFormat("/yyyy/MM/dd").format(new Date());
+	 * 
+	 * 
+	 * //해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기 java.io.File dir = new java.io.File( upload
+	 * ); if( ! dir.exists() ) dir.mkdirs();
+	 * 
+	 * 
+	 * //업로드할 파일명을 String filename = UUID.randomUUID().toString() + "." +
+	 * StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * try { file.transferTo(new java.io.File(upload, filename));
+	 * 
+	 * }catch(Exception e) {
+	 * 
+	 * }
+	 * 
+	 * 
+	 * return upload.replace("d://app/upload", fileURL(request)) + filename;
+	 * 
+	 * }
+	 */
 	
 	
 	
 
 	
 	
-	//파일서비스받을 URL
-	public String fileURL(HttpServletRequest request) {
-		StringBuffer url = new StringBuffer("http://");
-		url.append(request.getServerName()).append(":");
-		url.append(request.getServerPort());
-		url.append("/file");
-		
-		return url.toString();
-	}
+//	구굴 드라이버로 사용
+//
+//	//파일서비스받을 URL
+//	public String fileURL(HttpServletRequest request) {
+//	  StringBuffer url = new StringBuffer("http://");
+//	  url.append(request.getServerName()).append(":");
+//	  url.append(request.getServerPort());
+//	  url.append("/file");
+//	  
+//	  return url.toString(); 
+//	}
 	
 	
 	
 	
-	
-	
-	
+//	구굴 드라이버로 사용
+//	
+//	파일다운로드
+//	public void fileDownload(String filename, String filepath, HttpServletRequest request,
+//			HttpServletResponse response) throws FileNotFoundException, IOException {
+//		
+//	
+//	filepath = filepath.replace( fileURL(request), "d://app/upload");
+//	java.io.File file = new java.io.File( filepath );
+//	
+//	
+//	response.setContentType( request.getSession().getServletContext().getMimeType(filename));
+//	
+//	filename = URLEncoder.encode(filename, "utf-8");
+//	
+//	response.setHeader("content-disposition", "attachment; filename=" + filename);
+//	FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
+//	
+//	}
 	
 	
 	

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class FileVO {
-	private int id;
+	private int no;
 	private String filename, filepath;
 
 }

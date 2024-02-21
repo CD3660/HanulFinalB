@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.hanul.finalb.common.FileVO;
 import com.hanul.finalb.common.PageVO;
 
 @Service
@@ -65,7 +66,14 @@ public class QnaService {
 	
 	
 	//파일목록 조회
+	
 	//파일정보 조회
+	public FileVO qna_file_info(int no) { //qna_file의 no
+		return sql.selectOne("qna.fileInfo", no);
+	}
+	
+	
+	
 	//파일삭제
 	
 	

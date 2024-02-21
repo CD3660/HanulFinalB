@@ -1,6 +1,10 @@
 package com.hanul.finalb.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.api.client.util.StringUtils;
 import com.hanul.finalb.common.Common;
+import com.hanul.finalb.common.FileVO;
 import com.hanul.finalb.common.PageVO;
 import com.hanul.finalb.qna.QnaService;
 import com.hanul.finalb.qna.QnaVO;
@@ -31,6 +35,16 @@ public class QnaController {
 	//방명록 글삭제처리 요청
 	
 	//방명록 첨부파일 다운로드 요청
+	@RequestMapping("/download")
+	public void download(int no, HttpServletRequest request, HttpServletResponse response) {
+		//해당 파일정보를 조회해와 클라이언트에 다운로드하기
+		FileVO vo = service.qna_file_info(no);
+		/*
+		 * common.fileDownload(vo.getFilename(), vo.getFilepath(), request, response);   -> 다운로드처리 후 살려야함
+		 */
+		
+	}
+	
 	
 	//방명록 정보화면 요청
 	@RequestMapping("/info")
@@ -48,7 +62,7 @@ public class QnaController {
 	
 	//방명록 신규등록처리 요청
 	@RequestMapping("/insert")
-	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) {
+	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) throws GeneralSecurityException, IOException {
 		//첨부된 파일들을 QnaVO 의 fileList에 담기
 		vo.setFileList(common.multipleFileUpload("qna", file, request));
 		

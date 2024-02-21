@@ -107,12 +107,33 @@ function FileList() {
 		$(".file-drag").html( tag );
 		console.log(">>  ", this )
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
+
+
+
+
+
+
+
+
+// 파일선택시
+$("input#file-single").change(function() {
+	var _preview = $(this).closest(".file-info").find(".file-preview")
+	var _delete = $(this).closest(".file-info").find(".file-delete")
+	var _name = $(this).closest(".file-info").find(".file-name")
+	
+	var attached = this.files[0];
+	console.log('attached>', attched)
+	
+	if(attached) {
+		
+		
+	}
+	
+	
+	
+	
+	
+})
 
