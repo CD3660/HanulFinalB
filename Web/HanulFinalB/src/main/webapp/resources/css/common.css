@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+
+
+/* 파일선택태그는 폰트이미지로 대체해서 사용  */
+input[type=file] { display: none; }

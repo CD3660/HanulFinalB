@@ -1,6 +1,7 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,11 +9,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.GeneralSecurityException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -28,7 +36,6 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.drive.model.File;
 
 @Service
 @PropertySource("classpath:db/conninfo.properties")
@@ -153,5 +160,89 @@ public class Common {
 		}
 		return apiURL;
 	}
+	
+	
+	
+	
+	
+	
+	
+	//다중 파일업로드
+	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files, HttpServletRequest request) {
+		
+		ArrayList<FileVO> list = null;
+		for( MultipartFile file: files ) {
+			if( file.isEmpty() ) continue;
+			if(list==null) list = new ArrayList<FileVO>();
+			FileVO vo = new FileVO();
+			vo.setFilename(file.getOriginalFilename());
+			vo.setFilepath(fileUpload( category, file, request ));
+			list.add(vo);
+			
+			
+		}
+		return list;
+	}
+	
+	
+	
+	
+	//단일 파일업로드
+	public String fileUpload (String category, MultipartFile file, HttpServletRequest request ) {
+		
+		String upload = "d://app/upload/" + category
+				+ new SimpleDateFormat("/yyyy/MM/dd").format(new Date()); 
+		
+			
+		//해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기
+		File dir = new File( upload );
+		if( ! dir.exists()	) dir.mkdirs();
+		
+		
+		//업로드할 파일명을 
+		String filename = UUID.randomUUID().toString() + "." + 
+						StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
+		
+		
+		
+		
+		
+		try {
+			file.transferTo(new File(upload, filename));
+			
+		}catch(Exception e) {
+			
+		}
+		
+		
+		return upload.replace("d://app/upload", fileURL(request)) + filename;
+		
+	}
+	
+	
+	
+
+	
+	
+	//파일서비스받을 URL
+	public String fileURL(HttpServletRequest request) {
+		StringBuffer url = new StringBuffer("http://");
+		url.append(request.getServerName()).append(":");
+		url.append(request.getServerPort());
+		url.append("/file");
+		
+		return url.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -21,4 +21,21 @@
 	                 		   , #{phone})
     </insert>
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  <!-- 테스트용 임시 로그인처리 // 아이디에 해당하는 회원정보조회  -->
+  <select id="info" resultType="memberVO">
+  select * from users
+  where user_id = #{user_id}
+  </select>
+   
+   
 </mapper>

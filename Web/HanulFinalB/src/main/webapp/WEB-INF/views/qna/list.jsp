@@ -49,11 +49,12 @@
 		
 			
 			<!-- 로그인되어 있는 경우만 -->
-			<c:if test= "${! empty loginInfo}">
+			<c:if test="${ ! empty loginInfo }">
 				<div class="col-auto">
-					<button type="button" class="btn btn-primary" onclick="location='register'">글쓰기</button>
+					<button type="button" class="btn btn-primary"
+						onclick="location='register'">글쓰기</button>
 				</div>
-			</c:if>	
+			</c:if>
 		
 		
 	</div>
@@ -85,7 +86,7 @@
 
 		<c:if test="${empty page.list}">
 			<tr>
-				<td colspan="5">방명록 글이 없습니다</td>
+				<td colspan="5" style="text-align: center;">방명록 글이 없습니다</td>
 			</tr>
 		</c:if>
 
@@ -111,10 +112,28 @@
 	</table>
 
 
-	<jsp:include page="/WEB-INF/views/include/page.jsp" />
+	<%-- <jsp:include page="/WEB-INF/views/include/page.jsp" /> --%>
 
 
 <script>
+
+
+$("[name=pageList]").change(function(){
+	$("form").submit()
+})
+
+
+
+//해당 목록수가 선택되어져 있게
+$("[name=pageList]").val( ${page.pageList}).prop("selected", true)
+
+
+function info(id) {
+	$("[name=id]").val(id);
+	$("[name=curPage]").val( ${page.curPage} );
+	$("form").attr("action", "info").submit();
+}
+
 
 
 </script>
