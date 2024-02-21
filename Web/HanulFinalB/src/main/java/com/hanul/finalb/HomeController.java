@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hanul.finalb.A.B;
 import com.hanul.finalb.product.ProductVO;
 
 @Controller
