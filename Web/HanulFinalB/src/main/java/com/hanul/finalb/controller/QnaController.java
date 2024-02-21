@@ -21,22 +21,22 @@ public class QnaController {
 	@Autowired private QnaService service;
 	@Autowired private Common common;
 	
-	
+
 
 	
-	//¹æ¸í·Ï ¼öÁ¤ÀúÀåÃ³¸® ¿äÃ»
+	//ë°©ëª…ë¡ ìˆ˜ì •ì €ì¥ì²˜ë¦¬ ìš”ì²­
 	
-	//¹æ¸í·Ï ¼öÁ¤È­¸é ¿äÃ»
+	//ë°©ëª…ë¡ ìˆ˜ì •í™”ë©´ ìš”ì²­
 	
-	//¹æ¸í·Ï ±Û»èÁ¦Ã³¸® ¿äÃ»
+	//ë°©ëª…ë¡ ê¸€ì‚­ì œì²˜ë¦¬ ìš”ì²­
 	
-	//¹æ¸í·Ï Ã·ºÎÆÄÀÏ ´Ù¿î·Îµå ¿äÃ»
+	//ë°©ëª…ë¡ ì²¨ë¶€íŒŒì¼ ë‹¤ìš´ë¡œë“œ ìš”ì²­
 	
-	//¹æ¸í·Ï Á¤º¸È­¸é ¿äÃ»
+	//ë°©ëª…ë¡ ì •ë³´í™”ë©´ ìš”ì²­
 	@RequestMapping("/info")
 	public String info(int id, Model model, PageVO page) {
-		//ÇØ´ç idÀÇ Á¤º¸¸¦ DB¿¡¼­ Á¶È¸ÇØ¿Í Á¤º¸È­¸é¿¡ Ãâ·ÂÇÒ ¼ö ÀÖµµ·Ï Model¿¡ ´ã±â
-		service.qna_read(id); //Á¶È¸¼ö º¯°æ
+		//í•´ë‹¹ idì˜ ì •ë³´ë¥¼ DBì—ì„œ ì¡°íšŒí•´ì™€ ì •ë³´í™”ë©´ì— ì¶œë ¥í•  ìˆ˜ ìˆë„ë¡ Modelì— ë‹´ê¸°
+		service.qna_read(id); //ì¡°íšŒìˆ˜ ë³€ê²½
 		model.addAttribute("vo", service.qna_info(id));
 		model.addAttribute("crlf", "\r\n");
 		model.addAttribute("page", page);
@@ -46,13 +46,13 @@ public class QnaController {
 	
 	
 	
-	//¹æ¸í·Ï ½Å±Ôµî·ÏÃ³¸® ¿äÃ»
+	//ë°©ëª…ë¡ ì‹ ê·œë“±ë¡ì²˜ë¦¬ ìš”ì²­
 	@RequestMapping("/insert")
 	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) {
-		//Ã·ºÎµÈ ÆÄÀÏµéÀ» QnaVO ÀÇ fileList¿¡ ´ã±â
+		//ì²¨ë¶€ëœ íŒŒì¼ë“¤ì„ QnaVO ì˜ fileListì— ë‹´ê¸°
 		vo.setFileList(common.multipleFileUpload("qna", file, request));
 		
-		//È­¸é¿¡¼­ ÀÔ·ÂÇÑ Á¤º¸·Î DB¿¡ ½Å±Ô»ğÀÔÀúÀåÃ³¸® -> È­¸é¿¬°á:¸ñ·Ï
+		//í™”ë©´ì—ì„œ ì…ë ¥í•œ ì •ë³´ë¡œ DBì— ì‹ ê·œì‚½ì…ì €ì¥ì²˜ë¦¬ -> í™”ë©´ì—°ê²°:ëª©ë¡
 		service.qna_register(vo);
 		return "redirect:list";
 		
@@ -62,17 +62,17 @@ public class QnaController {
 	
 	
 	
-	//¹æ¸í·Ï ½Å±Ôµî·ÏÈ­¸é ¿äÃ»
+	//ë°©ëª…ë¡ ì‹ ê·œë“±ë¡í™”ë©´ ìš”ì²­
 	@RequestMapping("/register")
 	public String register() {
 		return "qna/register";
 	}
 	
-	//¹æ¸í·Ï ¸ñ·ÏÈ­¸é Á¶È¸
+	//ë°©ëª…ë¡ ëª©ë¡í™”ë©´ ì¡°íšŒ
 	@RequestMapping("/list")
 	public String list(PageVO page, Model model, HttpSession session) {
 		session.setAttribute("category", "qna");
-		//DB¿¡¼­ ¹æ¸í·Ï ±ÛÀ» ÇÑ ÆäÀÌÁö Á¤º¸¸¦ Á¶È¸ÇØ¿Í È­¸é¿¡ Ãâ·ÂÇÒ ¼ö ÀÖµµ·Ï Model¿¡ ´ã±â
+		//DBì—ì„œ ë°©ëª…ë¡ ê¸€ì„ í•œ í˜ì´ì§€ ì •ë³´ë¥¼ ì¡°íšŒí•´ì™€ í™”ë©´ì— ì¶œë ¥í•  ìˆ˜ ìˆë„ë¡ Modelì— ë‹´ê¸°
 		model.addAttribute("page", service.qna_list(page));
 
 		return "qna/list";
@@ -84,14 +84,13 @@ public class QnaController {
 	
 	
 	
-	//´ñ±Û »èÁ¦Ã³¸® ¿äÃ»
+	//ëŒ“ê¸€ ì‚­ì œì²˜ë¦¬ ìš”ì²­
 
-	//´ñ±Û º¯°æÀúÀåÃ³¸® ¿äÃ»
+	//ëŒ“ê¸€ ë³€ê²½ì €ì¥ì²˜ë¦¬ ìš”ì²­
 
-	//´ñ±Û ¸ñ·ÏÁ¶È¸
+	//ëŒ“ê¸€ ëª©ë¡ì¡°íšŒ
 	
-	//´ñ±Û µî·ÏÀúÀåÃ³¸® ¿äÃ»
-	
+	//ëŒ“ê¸€ ë“±ë¡ì €ì¥ì²˜ë¦¬ ìš”ì²­
 	
 	
 	

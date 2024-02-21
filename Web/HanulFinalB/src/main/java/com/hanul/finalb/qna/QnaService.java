@@ -2,76 +2,57 @@ package com.hanul.finalb.qna;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.hanul.finalb.common.PageVO;
 
 @Service
 public class QnaService {
-	@Autowired private SqlSession sql;
-	
-	
-	
-	//½Å±Ô ¹æ¸í·Ï ±Û ÀúÀåÃ³¸®
+	@Autowired
+	private SqlSession sql;
+
+	// ì‹ ê·œ ë°©ëª…ë¡ ê¸€ ì €ì¥ì²˜ë¦¬
 	public int qna_register(QnaVO vo) {
-		int dml= sql.insert("qna.register", vo);
-		if ( dml ==1 && vo.getFileList() != null) {
-			
+		int dml = sql.insert("qna.register", vo);
+		if (dml == 1 && vo.getFileList() != null) {
+
 		}
 		return dml;
 	}
-	
-	
-	//¹æ¸í·Ï ¸ñ·Ï Á¶È¸
+
+	// ë°©ëª…ë¡ ëª©ë¡ ì¡°íšŒ
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
 		page.setList(sql.selectList("qna.list", page));
-		
+
 		return page;
 	}
-	
-	//¼±ÅÃÇÑ ¹æ¸í·Ï Á¤º¸ Á¶È¸
+
+	// ì„ íƒí•œ ë°©ëª…ë¡ ì •ë³´ ì¡°íšŒ
 	public QnaVO qna_info(int id) {
 		QnaVO vo = sql.selectOne("qna.info", id);
-		//Ã·ºÎµÈ ÆÄÀÏÁ¤º¸ Á¶È¸
+		// ì²¨ë¶€ëœ íŒŒì¼ì •ë³´ ì¡°íšŒ
 		vo.setFileList(sql.selectList("qna.fileList", id));
-		
+
 		return vo;
 	}
-	
-	//¹æ¸í·Ï Á¤º¸ º¯°æÀúÀåÃ³¸®
-	
-	//¹æ¸í·Ï Á¤º¸ Á¶È¸¼ö º¯°æÀúÀå
+
+	// ë°©ëª…ë¡ ì •ë³´ ë³€ê²½ì €ì¥ì²˜ë¦¬
+
+	// ë°©ëª…ë¡ ì •ë³´ ì¡°íšŒìˆ˜ ë³€ê²½ì €ì¥
 	public int qna_read(int id) {
 		return sql.update("qna.read", id);
 	}
-	
-	//¹æ¸í·Ï Á¤º¸ »èÁ¦Ã³¸®
-	
-	
-	
-	
-	
-	
-	//´ñ±Û µî·ÏÀúÀåÃ³¸®
-	//´ñ±Û º¯°æÀúÀåÃ³¸®
-	//´ñ±Û »èÁ¦Ã³¸®
-	//´ñ±Û ¸ñ·ÏÁ¶È¸
-	
-	
-	
-	
-	
-	
-	//ÆÄÀÏ¸ñ·Ï Á¶È¸
-	//ÆÄÀÏÁ¤º¸ Á¶È¸
-	//ÆÄÀÏ»èÁ¦
-	
-	
 
-	
-	
-	
-	
+	// ë°©ëª…ë¡ ì •ë³´ ì‚­ì œì²˜ë¦¬
+
+	// ëŒ“ê¸€ ë“±ë¡ì €ì¥ì²˜ë¦¬
+	// ëŒ“ê¸€ ë³€ê²½ì €ì¥ì²˜ë¦¬
+	// ëŒ“ê¸€ ì‚­ì œì²˜ë¦¬
+	// ëŒ“ê¸€ ëª©ë¡ì¡°íšŒ
+
+	// íŒŒì¼ëª©ë¡ ì¡°íšŒ
+	// íŒŒì¼ì •ë³´ ì¡°íšŒ
+	// íŒŒì¼ì‚­ì œ
+
 }
