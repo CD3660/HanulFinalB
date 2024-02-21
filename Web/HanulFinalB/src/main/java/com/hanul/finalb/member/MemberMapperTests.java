@@ -3,9 +3,6 @@ package com.hanul.finalb.member;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-import com.hanul.finalb.member.MemberVO;
-
-
 public class MemberMapperTests {
 
 	@Autowired
