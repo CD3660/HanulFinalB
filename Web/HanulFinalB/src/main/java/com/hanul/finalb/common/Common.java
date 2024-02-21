@@ -133,7 +133,7 @@ public class Common {
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
 	}
-	
+
 	public String requestAPI(String apiURL) {
 		try {
 			URL url = new URL(apiURL);
@@ -160,86 +160,57 @@ public class Common {
 		}
 		return apiURL;
 	}
-	
-	
-	
-	
-	
-	//���� ���Ͼ��ε�
-	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
-			HttpServletRequest request) {
+
+	// 다중 파일업로드
+	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files, HttpServletRequest request) {
 
 		ArrayList<FileVO> list = null;
-		for( MultipartFile file: files ) {
-			if( file.isEmpty() ) continue;
-			if( list== null ) list = new ArrayList<FileVO>();
+		for (MultipartFile file : files) {
+			if (file.isEmpty())
+				continue;
+			if (list == null)
+				list = new ArrayList<FileVO>();
 			FileVO vo = new FileVO();
-			vo.setFilename( file.getOriginalFilename() );
-			vo.setFilepath( fileUpload( category, file, request ));
+			vo.setFilename(file.getOriginalFilename());
+			vo.setFilepath(fileUpload(category, file, request));
 			list.add(vo);
 		}
 		return list;
 	}
-	
-	
-	
-	
-	//���� ���Ͼ��ε�
-	public String fileUpload (String category, MultipartFile file, HttpServletRequest request ) {
-		
-		String upload = "d://app/upload/" + category
-				+ new SimpleDateFormat("/yyyy/MM/dd").format(new Date()); 
-		
-			
-		//�ش� ������ �ִ��� Ȯ���ؼ� ������ ���ٸ� ���� �����
-		java.io.File dir = new java.io.File( upload );
-		if( ! dir.exists()	) dir.mkdirs();
-		
-		
-		//���ε��� ���ϸ��� 
-		String filename = UUID.randomUUID().toString() + "." + 
-						StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
-		
-		
-		
-		
-		
+
+	// 단일 파일업로드
+	public String fileUpload(String category, MultipartFile file, HttpServletRequest request) {
+
+		String upload = "d://app/upload/" + category + new SimpleDateFormat("/yyyy/MM/dd").format(new Date());
+
+		// 해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기
+		java.io.File dir = new java.io.File(upload);
+		if (!dir.exists())
+			dir.mkdirs();
+
+		// 업로드할 파일명을
+		String filename = UUID.randomUUID().toString() + "."
+				+ StringUtils.getFilenameExtension(file.getOriginalFilename());
+
 		try {
 			file.transferTo(new java.io.File(upload, filename));
-			
-		}catch(Exception e) {
-			
-		}
-		
-		
-		return upload.replace("d://app/upload", fileURL(request)) + filename;
-		
-	}
-	
-	
-	
 
-	
-	
-	//���ϼ��񽺹��� URL
+		} catch (Exception e) {
+
+		}
+
+		return upload.replace("d://app/upload", fileURL(request)) + filename;
+
+	}
+
+	// 파일서비스받을 URL
 	public String fileURL(HttpServletRequest request) {
 		StringBuffer url = new StringBuffer("http://");
 		url.append(request.getServerName()).append(":");
 		url.append(request.getServerPort());
 		url.append("/file");
-		
+
 		return url.toString();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
