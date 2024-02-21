@@ -41,7 +41,7 @@ import com.google.api.services.drive.model.File;
 @PropertySource("classpath:db/conninfo.properties")
 public class Common {
 	/**
-	 * ���� �̸�
+	 * 어플 이름
 	 */
 	private static final String APPLICATION_NAME = "hanul-b";
 	/**
@@ -49,7 +49,7 @@ public class Common {
 	 */
 	private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 	/**
-	 * ��ū ���� ��ġ ����
+	 * 토큰 저장 위치 정보
 	 */
 	private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
@@ -57,18 +57,18 @@ public class Common {
 	 * Global instance of the scopes required by this quickstart. If modifying these
 	 * scopes, delete your previously saved tokens/ folder.
 	 *
-	 * ���� ������ �����ؾ� ���� �б⸸ �Ұ��� ���⸻�Ѱ��� ����� ������ �� �ְ�, �Ź� ��ū ���� ó���ϴ°� �ƴ϶� StoredToken��
-	 * ����Ǳ� ������ tokens������ �ִ� StoredCredential�� �����������
+	 * 여기 권한을 수정해야 파일 읽기만 할건지 쓰기말한거지 등등을 결정할 수 있고, 매번 토큰 새로 처리하는게 아니라 StoredToken이
+	 * 저장되기 때문에 tokens폴더에 있는 StoredCredential를 삭제해줘야함
 	 */
 //    private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_METADATA_READONLY);
 	private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);
 	private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
 	/**
-	 * ������ ��ü ����
+	 * 인증서 객체 생성
 	 */
 	private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-		// ������ �������� ��������, Common �κ��� ������ �ּҰ� ��ġ�� ������ import, ����� Common���Ͽ� ����Ǿ�����.
+		// 인증서 파일정보 가져오기, Common 부분은 인증서 주소가 위치한 파일을 import, 현재는 Common파일에 저장되어있음.
 		InputStream in = Common.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
 		if (in == null) {
 			throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
@@ -87,7 +87,7 @@ public class Common {
 	}
 
 	/**
-	 * ���۵���̺꿡 ���� ���ε� ���� ���� �� ���̵� ��ȯ
+	 * 구글드라이브에 파일 업로드 파일 저장 후 아이디 반환
 	 */
 	public String fileUpload(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 		// Build a new authorized API client service.
@@ -95,27 +95,27 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// ��Ƽ��Ʈ ������ �̿��� ���� ��ü ����
+		// 멀티파트 파일을 이용해 파일 객체 생성
 		java.io.File f = new java.io.File(multipartFile.getOriginalFilename());
 		multipartFile.transferTo(f);
 
-		// ���� ����̺꿡�� �����ϴ� ���� ��ü ����
+		// 구글 드라이브에서 제공하는 파일 객체 생성
 		File fileMetaData = new File();
-		// ���ε� �ϴ� ���� �̸�
+		// 업로드 하는 파일 이름
 		fileMetaData.setName(multipartFile.getOriginalFilename());
-		// ���ε� �� ���� id
+		// 업로드 할 폴더 id
 		fileMetaData.setParents(Collections.singletonList("1McmcIzcUSQAIpdkV0KmI6k6YMe-y1tqq"));
-		// ���� �ǹ� ������ ���� ��ü ����
+		// 파일 실물 정보를 담을 객체 생성
 		FileContent fileContent = new FileContent("image/jpeg", f);
-		// ����̺� ���񽺸� �̿��Ͽ� ���۵���̺꿡 ���ε� �Ѵ�. File�� FileContent ��ü�� ���� ��� �����ϰ�, ���� �����
-		// File�� ���·� ��ȯ�Ѵ�.
+		// 드라이브 서비스를 이용하여 구글드라이브에 업로드 한다. File과 FileContent 객체를 같이 묶어서 전송하고, 전송 결과를
+		// File의 형태로 반환한다.
 		File file = service.files().create(fileMetaData, fileContent).execute();
-		// ������ ������ id ��ȯ
+		// 저장한 파일의 id 반환
 		return file.getId();
 	}
 
 	/**
-	 * ���� ���̵�� ���۵���̺� ����� ���� ����
+	 * 파일 아이디로 구글드라이브 저장된 파일 삭제
 	 */
 	public void fileDelete(String id) throws GeneralSecurityException, IOException {
 		// Build a new authorized API client service.
@@ -123,12 +123,12 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// id�� �޾ƿͼ� ���۵���̺� ���� ����
+		// id를 받아와서 구글드라이브 파일 삭제
 		service.files().delete(id).execute();
 	}
 
 	/**
-	 * HTML�� img �±��� src�� �� �� �ִ� ������ URL�� ��ȯ
+	 * HTML의 img 태그의 src에 들어갈 수 있는 형태의 URL을 반환
 	 */
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
@@ -141,9 +141,9 @@ public class Common {
 			con.setRequestMethod("GET");
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
-			if (responseCode == 200) { // ���� ȣ��
+			if (responseCode == 200) { // 정상 호출
 				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-			} else { // ���� �߻�
+			} else { // 에러 발생
 				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
 			}
 			String inputLine;
@@ -156,12 +156,10 @@ public class Common {
 				apiURL = res.toString();
 			}
 		} catch (Exception e) {
-			// Exception �α�
+			// Exception 로깅
 		}
 		return apiURL;
 	}
-	
-	
 	
 	
 	
