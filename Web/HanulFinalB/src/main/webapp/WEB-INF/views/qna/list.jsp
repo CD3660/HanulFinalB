@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA 목록</title>
+
+
+
+
 </head>
 <body>
 
@@ -36,25 +40,27 @@
 			
 			
 			
-			<div class="col-auto">
+			<div class="col-auto d-flex justify-content-end">
 				<select name="pageList" class="form-select">
 					<c:forEach var="i" begin="1" end="5">
 						<option value="${10*i }">${10*i}개씩</option>
 					</c:forEach>
 				</select>
-			</div>
+			
 			
 	
 		
 		
+				
+				<!-- 로그인되어 있는 경우만 -->
+				<c:if test="${ ! empty loginInfo }">
+					<div class="col-auto">
+						<button type="button" class="btn btn-primary"
+							onclick="location='register'">글쓰기</button>
+					</div>
+				</c:if>
 			
-			<!-- 로그인되어 있는 경우만 -->
-			<c:if test="${ ! empty loginInfo }">
-				<div class="col-auto">
-					<button type="button" class="btn btn-primary"
-						onclick="location='register'">글쓰기</button>
-				</div>
-			</c:if>
+			</div>
 		
 		
 	</div>

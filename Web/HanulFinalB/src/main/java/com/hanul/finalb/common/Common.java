@@ -41,7 +41,7 @@ import com.google.api.services.drive.model.File;
 @PropertySource("classpath:db/conninfo.properties")
 public class Common {
 	/**
-	 * ¾îÇÃ ÀÌ¸§
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 */
 	private static final String APPLICATION_NAME = "hanul-b";
 	/**
@@ -49,7 +49,7 @@ public class Common {
 	 */
 	private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 	/**
-	 * ÅäÅ« ÀúÀå À§Ä¡ Á¤º¸
+	 * ï¿½ï¿½Å« ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
 	 */
 	private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
@@ -57,18 +57,18 @@ public class Common {
 	 * Global instance of the scopes required by this quickstart. If modifying these
 	 * scopes, delete your previously saved tokens/ folder.
 	 *
-	 * ¿©±â ±ÇÇÑÀ» ¼öÁ¤ÇØ¾ß ÆÄÀÏ ÀÐ±â¸¸ ÇÒ°ÇÁö ¾²±â¸»ÇÑ°ÅÁö µîµîÀ» °áÁ¤ÇÒ ¼ö ÀÖ°í, ¸Å¹ø ÅäÅ« »õ·Î Ã³¸®ÇÏ´Â°Ô ¾Æ´Ï¶ó StoredTokenÀÌ
-	 * ÀúÀåµÇ±â ¶§¹®¿¡ tokensÆú´õ¿¡ ÀÖ´Â StoredCredential¸¦ »èÁ¦ÇØÁà¾ßÇÔ
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±â¸¸ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¸»ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½Å¹ï¿½ ï¿½ï¿½Å« ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½Æ´Ï¶ï¿½ StoredTokenï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ tokensï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ StoredCredentialï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 //    private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_METADATA_READONLY);
 	private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);
 	private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
 	/**
-	 * ÀÎÁõ¼­ °´Ã¼ »ý¼º
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 	 */
 	private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-		// ÀÎÁõ¼­ ÆÄÀÏÁ¤º¸ °¡Á®¿À±â, Common ºÎºÐÀº ÀÎÁõ¼­ ÁÖ¼Ò°¡ À§Ä¡ÇÑ ÆÄÀÏÀ» import, ÇöÀç´Â CommonÆÄÀÏ¿¡ ÀúÀåµÇ¾îÀÖÀ½.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Common ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ import, ï¿½ï¿½ï¿½ï¿½ï¿½ Commonï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½.
 		InputStream in = Common.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
 		if (in == null) {
 			throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
@@ -87,7 +87,7 @@ public class Common {
 	}
 
 	/**
-	 * ±¸±Ûµå¶óÀÌºê¿¡ ÆÄÀÏ ¾÷·Îµå ÆÄÀÏ ÀúÀå ÈÄ ¾ÆÀÌµð ¹ÝÈ¯
+	 * ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½Ìºê¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½È¯
 	 */
 	public String fileUpload(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 		// Build a new authorized API client service.
@@ -95,27 +95,27 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// ¸ÖÆ¼ÆÄÆ® ÆÄÀÏÀ» ÀÌ¿ëÇØ ÆÄÀÏ °´Ã¼ »ý¼º
+		// ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		java.io.File f = new java.io.File(multipartFile.getOriginalFilename());
 		multipartFile.transferTo(f);
 
-		// ±¸±Û µå¶óÀÌºê¿¡¼­ Á¦°øÇÏ´Â ÆÄÀÏ °´Ã¼ »ý¼º
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ìºê¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		File fileMetaData = new File();
-		// ¾÷·Îµå ÇÏ´Â ÆÄÀÏ ÀÌ¸§
+		// ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 		fileMetaData.setName(multipartFile.getOriginalFilename());
-		// ¾÷·Îµå ÇÒ Æú´õ id
+		// ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ id
 		fileMetaData.setParents(Collections.singletonList("1McmcIzcUSQAIpdkV0KmI6k6YMe-y1tqq"));
-		// ÆÄÀÏ ½Ç¹° Á¤º¸¸¦ ´ãÀ» °´Ã¼ »ý¼º
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		FileContent fileContent = new FileContent("image/jpeg", f);
-		// µå¶óÀÌºê ¼­ºñ½º¸¦ ÀÌ¿ëÇÏ¿© ±¸±Ûµå¶óÀÌºê¿¡ ¾÷·Îµå ÇÑ´Ù. File°ú FileContent °´Ã¼¸¦ °°ÀÌ ¹­¾î¼­ Àü¼ÛÇÏ°í, Àü¼Û °á°ú¸¦
-		// FileÀÇ ÇüÅÂ·Î ¹ÝÈ¯ÇÑ´Ù.
+		// ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ñ½º¸ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½Ìºê¿¡ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ñ´ï¿½. Fileï¿½ï¿½ FileContent ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Fileï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 		File file = service.files().create(fileMetaData, fileContent).execute();
-		// ÀúÀåÇÑ ÆÄÀÏÀÇ id ¹ÝÈ¯
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ id ï¿½ï¿½È¯
 		return file.getId();
 	}
 
 	/**
-	 * ÆÄÀÏ ¾ÆÀÌµð·Î ±¸±Ûµå¶óÀÌºê ÀúÀåµÈ ÆÄÀÏ »èÁ¦
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void fileDelete(String id) throws GeneralSecurityException, IOException {
 		// Build a new authorized API client service.
@@ -123,12 +123,12 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// id¸¦ ¹Þ¾Æ¿Í¼­ ±¸±Ûµå¶óÀÌºê ÆÄÀÏ »èÁ¦
+		// idï¿½ï¿½ ï¿½Þ¾Æ¿Í¼ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		service.files().delete(id).execute();
 	}
 
 	/**
-	 * HTMLÀÇ img ÅÂ±×ÀÇ src¿¡ µé¾î°¥ ¼ö ÀÖ´Â ÇüÅÂÀÇ URLÀ» ¹ÝÈ¯
+	 * HTMLï¿½ï¿½ img ï¿½Â±ï¿½ï¿½ï¿½ srcï¿½ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ URLï¿½ï¿½ ï¿½ï¿½È¯
 	 */
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
@@ -141,9 +141,9 @@ public class Common {
 			con.setRequestMethod("GET");
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
-			if (responseCode == 200) { // Á¤»ó È£Ãâ
+			if (responseCode == 200) { // ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-			} else { // ¿¡·¯ ¹ß»ý
+			} else { // ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
 			}
 			String inputLine;
@@ -156,7 +156,7 @@ public class Common {
 				apiURL = res.toString();
 			}
 		} catch (Exception e) {
-			// Exception ·Î±ë
+			// Exception ï¿½Î±ï¿½
 		}
 		return apiURL;
 	}
@@ -167,19 +167,18 @@ public class Common {
 	
 	
 	
-	//´ÙÁß ÆÄÀÏ¾÷·Îµå
-	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files, HttpServletRequest request) {
-		
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
+	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
+			HttpServletRequest request) {
+
 		ArrayList<FileVO> list = null;
 		for( MultipartFile file: files ) {
 			if( file.isEmpty() ) continue;
-			if(list==null) list = new ArrayList<FileVO>();
+			if( list== null ) list = new ArrayList<FileVO>();
 			FileVO vo = new FileVO();
-			vo.setFilename(file.getOriginalFilename());
-			vo.setFilepath(fileUpload( category, file, request ));
+			vo.setFilename( file.getOriginalFilename() );
+			vo.setFilepath( fileUpload( category, file, request ));
 			list.add(vo);
-			
-			
 		}
 		return list;
 	}
@@ -187,19 +186,19 @@ public class Common {
 	
 	
 	
-	//´ÜÀÏ ÆÄÀÏ¾÷·Îµå
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 	public String fileUpload (String category, MultipartFile file, HttpServletRequest request ) {
 		
 		String upload = "d://app/upload/" + category
 				+ new SimpleDateFormat("/yyyy/MM/dd").format(new Date()); 
 		
 			
-		//ÇØ´ç Æú´õ°¡ ÀÖ´ÂÁö È®ÀÎÇØ¼­ Æú´õ°¡ ¾ø´Ù¸é Æú´õ ¸¸µé±â
-		File dir = new File( upload );
+		//ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		java.io.File dir = new java.io.File( upload );
 		if( ! dir.exists()	) dir.mkdirs();
 		
 		
-		//¾÷·ÎµåÇÒ ÆÄÀÏ¸íÀ» 
+		//ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ 
 		String filename = UUID.randomUUID().toString() + "." + 
 						StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
 		
@@ -208,7 +207,7 @@ public class Common {
 		
 		
 		try {
-			file.transferTo(new File(upload, filename));
+			file.transferTo(new java.io.File(upload, filename));
 			
 		}catch(Exception e) {
 			
@@ -224,7 +223,7 @@ public class Common {
 
 	
 	
-	//ÆÄÀÏ¼­ºñ½º¹ÞÀ» URL
+	//ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ñ½º¹ï¿½ï¿½ï¿½ URL
 	public String fileURL(HttpServletRequest request) {
 		StringBuffer url = new StringBuffer("http://");
 		url.append(request.getServerName()).append(":");
