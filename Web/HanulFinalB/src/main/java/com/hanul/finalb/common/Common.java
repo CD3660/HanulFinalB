@@ -1,7 +1,6 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +35,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import com.google.api.services.drive.model.File;
+
 
 @Service
 @PropertySource("classpath:db/conninfo.properties")
@@ -168,18 +169,17 @@ public class Common {
 	
 	
 	//다중 파일업로드
-	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files, HttpServletRequest request) {
-		
+	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
+			HttpServletRequest request) {
+
 		ArrayList<FileVO> list = null;
 		for( MultipartFile file: files ) {
 			if( file.isEmpty() ) continue;
-			if(list==null) list = new ArrayList<FileVO>();
+			if( list== null ) list = new ArrayList<FileVO>();
 			FileVO vo = new FileVO();
-			vo.setFilename(file.getOriginalFilename());
-			vo.setFilepath(fileUpload( category, file, request ));
+			vo.setFilename( file.getOriginalFilename() );
+			vo.setFilepath( fileUpload( category, file, request ));
 			list.add(vo);
-			
-			
 		}
 		return list;
 	}
@@ -195,7 +195,7 @@ public class Common {
 		
 			
 		//해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기
-		File dir = new File( upload );
+		java.io.File dir = new java.io.File( upload );
 		if( ! dir.exists()	) dir.mkdirs();
 		
 		
@@ -208,7 +208,7 @@ public class Common {
 		
 		
 		try {
-			file.transferTo(new File(upload, filename));
+			file.transferTo(new java.io.File(upload, filename));
 			
 		}catch(Exception e) {
 			
