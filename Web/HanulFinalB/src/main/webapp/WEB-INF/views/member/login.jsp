@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>로그인</title>
+
 <link rel="stylesheet" href="<c:url value='/css/member/login.css'/>">
 </head>
 <body>
@@ -17,17 +18,17 @@
 					<div class="card-body p-5 text-center">
 
 						<h3 class="mb-5">로그인</h3>
-
+						<form method="post" action="loginPOST">
 						<div class="form-outline mb-4">
 							<label class="form-label" for="typeEmailX-2">아이디</label> <input
-								type="email" id="typeEmailX-2"
+								type="text" id="typeEmailX-2" name="user_id"
 								class="form-control form-control-lg" />
 
 						</div>
 
 						<div class="form-outline mb-4">
 							<label class="form-label" for="typePasswordX-2">비밀번호</label> <input
-								type="password" id="typePasswordX-2"
+								type="password" id="typePasswordX-2" name="user_pw"
 								class="form-control form-control-lg" />
 
 						</div>
@@ -38,8 +39,9 @@
 								id="form1Example3" /> <label class="form-check-label"
 								for="form1Example3"> Remember password </label>
 						</div>
-						<form  method="GET">
-							<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+
+							<!-- 폼 내용 유지 -->
+						<button class="login_button">로그인</button>
 						</form>
 						<hr class="my-4">
 
@@ -54,7 +56,7 @@
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
 										href="http://localhost:8080/finalb/member/join"> 회원가입</a></li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -68,11 +70,14 @@
 
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
-		</div>
-		<script type="text/javascript">
+
+	</div>
+
+	<script type="text/javascript">
 		$(function() {
 			if(${!empty fail}) alert("아이디나 비밀번호가 일치하지 않습니다.");
 		})
@@ -80,6 +85,17 @@
 		$("#naver, #kakao").click(function() {
 			location = $(this).attr("id") + "Login";
 		})	
+		
+		/* 로그인 버튼 클릭 메서드 */
+    $(".login_button").click(function(){
+        
+        /*alert("로그인 버튼 작동");
+        /* 로그인 메서드 서버 요청 */
+        $("#login_form").submit();
+    });
+ 
+		
 	</script>
+
 </body>
 </html>
