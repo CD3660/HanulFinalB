@@ -1,12 +1,15 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,9 +19,11 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,6 +33,7 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.FileContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -128,6 +134,35 @@ public class Common {
 	}
 
 	/**
+	 * 파일 아이디로 구글드라이브 저장된 파일 다운로드
+	 */
+	public void fileDownload(FileVO vo, HttpServletRequest req, HttpServletResponse resp) throws GeneralSecurityException, IOException {
+		// Build a new authorized API client service.
+		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME).build();
+
+		// id를 받아와서 구글드라이브 파일 삭제
+		try {
+			//구글드리이브에서 바이너리 데이터를 받는 부분
+			OutputStream outputStream = new ByteArrayOutputStream();
+			service.files().get(vo.getId()).executeMediaAndDownloadTo(outputStream);
+			
+			//바이너리 데이터를 바이트 배열로 바꾸고 응답 객체에 담아서 반환하기
+			ByteArrayOutputStream byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
+			String filename = URLEncoder.encode(vo.getFilename(), "utf-8");
+			resp.setContentType(req.getSession().getServletContext().getMimeType(filename));
+			resp.setHeader("content-disposition", "attachment; filename=" + filename);
+			FileCopyUtils.copy(byteArrayOutputStream.toByteArray(), resp.getOutputStream());
+			
+		} catch (GoogleJsonResponseException e) {
+			// TODO(developer) - handle error appropriately
+			System.err.println("Unable to move file: " + e.getDetails());
+			throw e;
+		}
+	}
+
+	/**
 	 * HTML의 img 태그의 src에 들어갈 수 있는 형태의 URL을 반환
 	 */
 	public String fileURL(String id) {
@@ -159,58 +194,6 @@ public class Common {
 			// Exception 로깅
 		}
 		return apiURL;
-	}
-
-	// 다중 파일업로드
-	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files, HttpServletRequest request) {
-
-		ArrayList<FileVO> list = null;
-		for (MultipartFile file : files) {
-			if (file.isEmpty())
-				continue;
-			if (list == null)
-				list = new ArrayList<FileVO>();
-			FileVO vo = new FileVO();
-			vo.setFilename(file.getOriginalFilename());
-			vo.setFilepath(fileUpload(category, file, request));
-			list.add(vo);
-		}
-		return list;
-	}
-
-	// 단일 파일업로드
-	public String fileUpload(String category, MultipartFile file, HttpServletRequest request) {
-
-		String upload = "d://app/upload/" + category + new SimpleDateFormat("/yyyy/MM/dd").format(new Date());
-
-		// 해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기
-		java.io.File dir = new java.io.File(upload);
-		if (!dir.exists())
-			dir.mkdirs();
-
-		// 업로드할 파일명을
-		String filename = UUID.randomUUID().toString() + "."
-				+ StringUtils.getFilenameExtension(file.getOriginalFilename());
-
-		try {
-			file.transferTo(new java.io.File(upload, filename));
-
-		} catch (Exception e) {
-
-		}
-
-		return upload.replace("d://app/upload", fileURL(request)) + filename;
-
-	}
-
-	// 파일서비스받을 URL
-	public String fileURL(HttpServletRequest request) {
-		StringBuffer url = new StringBuffer("http://");
-		url.append(request.getServerName()).append(":");
-		url.append(request.getServerPort());
-		url.append("/file");
-
-		return url.toString();
 	}
 
 }

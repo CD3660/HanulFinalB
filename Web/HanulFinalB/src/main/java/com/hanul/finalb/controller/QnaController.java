@@ -50,7 +50,7 @@ public class QnaController {
 	@RequestMapping("/insert")
 	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) {
 		//첨부된 파일들을 QnaVO 의 fileList에 담기
-		vo.setFileList(common.multipleFileUpload("qna", file, request));
+		//vo.setFileList(common.multipleFileUpload("qna", file, request));
 		
 		//화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
 		service.qna_register(vo);
