@@ -152,3 +152,19 @@ $(".file-drag")
 
 
 
+
+
+
+
+
+
+
+$(document)
+.on("click", ".file-item .btn-close", function(){
+	//console.log( 'idx> ', $(this).data("seq") )
+	fileList.removeFile( $(this).data("seq")  )
+	fileList.showFile()
+})
+
+
+
