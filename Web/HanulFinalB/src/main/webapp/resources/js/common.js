@@ -116,24 +116,39 @@ function FileList() {
 
 
 
+//드래그 앤 드롭
+$(".file-drag")
+.on("dragover dragleave drop", function(e) {
+	e.preventDefault();
+})
 
-// 파일선택시
-$("input#file-single").change(function() {
-	var _preview = $(this).closest(".file-info").find(".file-preview")
-	var _delete = $(this).closest(".file-info").find(".file-delete")
-	var _name = $(this).closest(".file-info").find(".file-name")
+.on("drop", function(e){
+	colsole.log( "e>", e )
+	console.log( "e>", e.originalEvent.dataTransfer.files )
 	
-	var attached = this.files[0];
-	console.log('attached>', attched)
+	var files = filterFolder( e.originalEvent.dataTransfer );
 	
-	if(attached) {
-		
-		
-	}
+	$(files).each( function() {
+		fileList.setFile( this )
+	})
 	
-	
-	
-	
+	fileList.showFile();
 	
 })
+;
+	
+	
+	
+	
+	
+
+	$("body")
+	.on("dragover dragleave drop", function(e){ 
+		e.preventDefault(); 
+	});
+
+
+
+
+
 

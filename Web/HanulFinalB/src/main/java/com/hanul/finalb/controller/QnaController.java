@@ -2,6 +2,7 @@ package com.hanul.finalb.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,9 +31,21 @@ public class QnaController {
 	
 	//방명록 수정저장처리 요청
 	
-	//방명록 수정화면 요청
 	
-	//방명록 글삭제처리 요청
+	//방명록 수정화면 요청
+	@RequestMapping("/modify")
+	public String modify() {
+		
+		
+		
+		return "qna/modify";
+	}
+	
+	
+
+	
+	
+	
 	
 	//방명록 첨부파일 다운로드 요청
 	@RequestMapping("/download")
@@ -48,10 +61,10 @@ public class QnaController {
 	
 	//방명록 정보화면 요청
 	@RequestMapping("/info")
-	public String info(int id, Model model, PageVO page) {
+	public String info(int qna_id, Model model, PageVO page) {
 		//해당 id의 정보를 DB에서 조회해와 정보화면에 출력할 수 있도록 Model에 담기
-		service.qna_read(id); //조회수 변경
-		model.addAttribute("vo", service.qna_info(id));
+		service.qna_read(qna_id); //조회수 변경
+		model.addAttribute("vo", service.qna_info(qna_id));
 		model.addAttribute("crlf", "\r\n");
 		model.addAttribute("page", page);
 		
@@ -95,6 +108,29 @@ public class QnaController {
 
 	
 	
+	//방명록 글삭제처리 요청
+	@RequestMapping("delete")
+	public String delete(int qna_id, PageVO page, Model model, HttpServletRequest request) throws GeneralSecurityException, IOException {
+		//첨부파일이 있는경우 물리적인 파일을 삭제할 수 있도록 파일정보를 조회해둔다.
+		List<FileVO> list = service.qna_file_list(qna_id);
+		
+		//해당 방명록 글을 DB에서 삭제하기
+		//qna를 삭제하면 table설계시 fk(외래키)에 on delete cascade에 의해 qna_file도 함께 자동 삭제
+		if( service.qna_delete(qna_id) == 1 )  {
+			for( FileVO vo : list) {
+				common.fileDelete( vo.getFile_id() );
+			}
+		}
+		
+		
+		//삭제후 목록화면으로 연결
+		model.addAttribute("page", page);
+		model.addAttribute("qna_id", qna_id);
+		model.addAttribute("url", "qna/list");
+		
+		
+		return "include/redirect";
+	}
 	
 	
 	

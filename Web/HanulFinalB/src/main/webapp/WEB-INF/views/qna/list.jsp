@@ -66,7 +66,7 @@
 	</div>
 	
 	
-			<input type="hidden" name="id">
+			<input type="hidden" name="qna_id">
 			<input type="hidden" name="curPage" value="1">
 	
 	
@@ -101,7 +101,7 @@
 			<c:forEach items="${page.list}" var="vo">
 				<tr>
 					<td>${vo.no}</td>
-					<td class="text-start"><a href="javascript:info( ${vo.id } )">${vo.title }</a>
+					<td class="text-start"><a href="javascript:info( ${vo.qna_id } )">${vo.title }</a>
 						<c:if test="${vo.filecnt gt 0}">
 							<i class="fa-solid fa-paperclip"></i>
 						</c:if></td>
@@ -134,8 +134,8 @@ $("[name=pageList]").change(function(){
 $("[name=pageList]").val( ${page.pageList}).prop("selected", true)
 
 
-function info(id) {
-	$("[name=id]").val(id);
+function info(qna_id) {
+	$("[name=qna_id]").val(qna_id);
 	$("[name=curPage]").val( ${page.curPage} );
 	$("form").attr("action", "info").submit();
 }

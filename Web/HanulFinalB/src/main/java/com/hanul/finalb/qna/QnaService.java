@@ -1,8 +1,9 @@
 package com.hanul.finalb.qna;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.hanul.finalb.common.FileVO;
@@ -33,10 +34,10 @@ public class QnaService {
 	}
 	
 	//선택한 방명록 정보 조회
-	public QnaVO qna_info(int id) {
-		QnaVO vo = sql.selectOne("qna.info", id);
+	public QnaVO qna_info(int qna_id) {
+		QnaVO vo = sql.selectOne("qna.info", qna_id);
 		//첨부된 파일정보 조회
-		vo.setFileList(sql.selectList("qna.fileList", id));
+		vo.setFileList(sql.selectList("qna.fileList", qna_id));
 		
 		return vo;
 	}
@@ -44,11 +45,14 @@ public class QnaService {
 	//방명록 정보 변경저장처리
 	
 	//방명록 정보 조회수 변경저장
-	public int qna_read(int id) {
-		return sql.update("qna.read", id);
+	public int qna_read(int qna_id) {
+		return sql.update("qna.read", qna_id);
 	}
 	
 	//방명록 정보 삭제처리
+	public int qna_delete(int qna_id) {
+		return sql.delete("qna.delete", qna_id);
+	}
 	
 	
 	
@@ -66,10 +70,13 @@ public class QnaService {
 	
 	
 	//파일목록 조회
+	public List<FileVO> qna_file_list(int qna_id) {	//qna의 qna_id
+		return sql.selectList("qna.fileList", qna_id);
+	}
 	
 	//파일정보 조회
-	public FileVO qna_file_info(int no) { //qna_file의 no
-		return sql.selectOne("qna.fileInfo", no);
+	public FileVO qna_file_info(int file_id) { //qna_file의 file_id
+		return sql.selectOne("qna.fileInfo", file_id);
 	}
 	
 	

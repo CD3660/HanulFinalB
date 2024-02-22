@@ -25,7 +25,7 @@
 	<td colspan="5">${vo.title }</td>
 </tr>
 <tr><th>작성자</th><td>${vo.name }</td>
-	<th>작성일자</th><td>${vo.wirtedate }</td>
+	<th>작성일자</th><td>${vo.writedate }</td>
 	<th>조회수</th><td>${vo.readcnt }</td>
 </tr>
 <tr><th>내용</th>
@@ -37,7 +37,7 @@
 			<div class="row py-1">
 				<div class="col-auto">
 					<span class="file-name">${f.filename }</span>
-					<i role="button" data-file="${f.no }" class="file-download ms-4 fa-solid fa-file-arrow-down fs-2"></i> 
+					<i role="button" data-file="${f.file_id }" class="file-download ms-4 fa-solid fa-file-arrow-down fs-2"></i> 
 				</div>
 			</div>		
 		</c:forEach>
@@ -60,15 +60,14 @@
 
 
 
-
-
+<!-- vo = QnaVO -->
 <form method="post">
-<input type="hidden" name="id" value="${vo.id }">
+<input type="hidden" name="qna_id" value="${vo.qna_id }">  
 <input type="hidden" name="curPage" value="${page.curPage }">
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">
 <input type="hidden" name="pageList" value="${page.pageList }">
-<input type="hidden" name="url" value="board/info">
+<input type="hidden" name="url" value="qna/info">
 </form>
 
 
@@ -90,6 +89,18 @@ $(".file-download").click(function() {
 
 
 
+$("#btn-list, #btn-modify, #btn-delete").click(function() {
+	var id = $(this).attr("id");
+	id = id.substr( id.indexOf("-")+1 );
+	$("form").attr("action", id);
+	if( id == "delete" ) {
+		if( confirm("정말 삭제하시겠습니까?") ) {
+			$("form").submit();
+		}
+		
+	}else $("form").submit();
+	
+})
 
 
 
