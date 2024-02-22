@@ -10,12 +10,12 @@ import lombok.Setter;
 
 @Getter @Setter
 public class QnaVO {
-	private int id, readcnt, no, filecnt;
+	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
-	private Date wirtedate;
+	private Date writedate;
 	
 	
-	private List<FileVO> fileList; //****************
+	private List<FileVO> fileList;
 	
 
 }

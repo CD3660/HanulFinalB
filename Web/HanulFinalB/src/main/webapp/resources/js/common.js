@@ -107,12 +107,64 @@ function FileList() {
 		$(".file-drag").html( tag );
 		console.log(">>  ", this )
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
+
+
+
+
+
+
+
+//드래그 앤 드롭
+$(".file-drag")
+.on("dragover dragleave drop", function(e) {
+	e.preventDefault();
+})
+
+.on("drop", function(e){
+	colsole.log( "e>", e )
+	console.log( "e>", e.originalEvent.dataTransfer.files )
+	
+	var files = filterFolder( e.originalEvent.dataTransfer );
+	
+	$(files).each( function() {
+		fileList.setFile( this )
+	})
+	
+	fileList.showFile();
+	
+})
+;
+	
+	
+	
+	
+	
+
+	$("body")
+	.on("dragover dragleave drop", function(e){ 
+		e.preventDefault(); 
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document)
+.on("click", ".file-item .btn-close", function(){
+	//console.log( 'idx> ', $(this).data("seq") )
+	fileList.removeFile( $(this).data("seq")  )
+	fileList.showFile()
+})
+
+
 
