@@ -143,7 +143,7 @@ public class Common {
 		try {
 			//구글드리이브에서 바이너리 데이터를 받는 부분
 			OutputStream outputStream = new ByteArrayOutputStream();
-			service.files().get(vo.getId()).executeMediaAndDownloadTo(outputStream);
+			service.files().get(vo.getFile_id()).executeMediaAndDownloadTo(outputStream);
 			
 			//바이너리 데이터를 바이트 배열로 바꾸고 응답 객체에 담아서 반환하기
 			ByteArrayOutputStream byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
