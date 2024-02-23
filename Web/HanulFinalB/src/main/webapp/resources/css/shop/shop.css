@@ -53,3 +53,22 @@
 	font-weight: bold;
 	font-size: 1.2em;
 }
+
+.bg-title {
+	background-color: var(--gray-color);
+}
+
+.gray-border {
+	border: solid 1px var(--gray-color);
+	width: 1000px;
+}
+.insert-col1{
+	background-color: #ebebeb;
+	width: 200px;
+}
+.prod-name{
+	color: skyblue;
+}
+.insert table, .insert th, .insert td {
+  border: 1px solid lightgray;
+}

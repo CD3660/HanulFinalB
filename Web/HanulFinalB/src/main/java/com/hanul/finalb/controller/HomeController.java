@@ -69,6 +69,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	
 	@RequestMapping("/test")
 	public String testPage() {
 		

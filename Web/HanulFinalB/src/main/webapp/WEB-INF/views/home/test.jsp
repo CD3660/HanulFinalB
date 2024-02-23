@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="download">	
-		<input type="text" name="id" value="1sDGp10ksdadW3dGrPrk6huhwYPy2l8OT"/>
+		<input type="text" name="file_id" value="1sDGp10ksdadW3dGrPrk6huhwYPy2l8OT"/>
 		<input type="text" name="filename" value="cctv.png"/>
 		<input type="submit"/>
 	</form>
