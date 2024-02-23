@@ -75,9 +75,10 @@ public class QnaController {
 	
 	//방명록 신규등록처리 요청
 	@RequestMapping("/insert")
-	public String insert(QnaVO vo, MultipartFile[] file, HttpServletRequest request) throws GeneralSecurityException, IOException {
+	public String insert(QnaVO vo, MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
+		
 		//첨부된 파일들을 QnaVO 의 fileList에 담기
-		vo.setFileList(common.multipleFileUpload("qna", file, request));
+		vo.setFileList(common.multipleFileUpload("qna", files, request));
 		
 		//화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
 		service.qna_register(vo);

@@ -159,12 +159,35 @@ $(".file-drag")
 
 
 
-$(document)
+/*$(document)
 .on("click", ".file-item .btn-close", function(){
 	//console.log( 'idx> ', $(this).data("seq") )
 	fileList.removeFile( $(this).data("seq")  )
 	fileList.showFile()
-})
+})*/
 
 
 
+
+
+/*	$(".file-delete").click(function() {
+		//선택했던 파일정보 삭제. 미리보기도 안보이게, 삭제버튼도 안보이게
+//		var _info = $(this).closest(".file-info");
+//		_info.find(".file-preview").empty();
+//		_info.find("input[type=file]").val("");
+//		$(this).addClass("d-none")
+		initFileInfo(  $(this) )
+	})*/
+	
+	
+	
+	
+/*	
+//선택했던 파일정보 삭제. 미리보기도 안보이게, 삭제버튼도 안보이게, 
+function initFileInfo( tag ){
+	var _info = tag.closest(".file-info");
+	_info.find(".file-name").empty(); 				//선택한 파일명 안보이게
+	_info.find(".file-preview").empty(); 			//미리보기 이미지 안보이게
+	_info.find("input[type=file]").val(""); 		//선택한 파일정보 초기화
+	_info.find(".file-delete").addClass("d-none") 	//삭제버튼 안보이게
+}*/

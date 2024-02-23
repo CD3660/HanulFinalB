@@ -55,12 +55,15 @@
 <script src="<c:url value='/js/modernizr.js'/>"></script>
 <script src="<c:url value='/js/bootstrap.bundle.min.js'/>"></script>
 <script src="<c:url value='/js/jquery-1.11.0.min.js'/>"></script>
-<script src="<c:url value='/js/modernizr.js'/>"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="<c:url value='/js/plugins.js'/>"></script>
 <script src="<c:url value='/js/script.js'/>"></script>
 <script src="<c:url value='/js/common.js'/>"></script>
 <script src="https://kit.fontawesome.com/fb330bb215.js"
 	crossorigin="anonymous"></script>
+
+
+
 
 
 
@@ -218,25 +221,68 @@
 
 
 
-							<li class="nav-item dropdown me-4"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdownPages"
-								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">로그인</a>
-								<ul class="dropdown-menu list-unstyled"
-									aria-labelledby="dropdownPages">
-									
-									<li><a href="<c:url value='/member/login'/>"
-										class="dropdown-item item-anchor">로그인 <span
-											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
-											
-											
-									<li><a href="<c:url value='/member/join'/>"
-											class="dropdown-item item-anchor">회원가입 <span
-											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
-								</ul></li>
 
 
+							<!-- 로그인을 하지 않은 경우  -->
+							<c:if test="${empty loginInfo }">
+							
+								<li class="nav-item dropdown me-4">
+									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
+												data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">로그인</a>
+										<ul class="dropdown-menu list-unstyled"
+													aria-labelledby="dropdownPages">
+										
+											<li><a href="<c:url value='/member/login'/>"
+												class="dropdown-item item-anchor">로그인 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+													
+													
+											<li><a href="<c:url value='/member/join'/>"
+													class="dropdown-item item-anchor">회원가입 <span
+													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+										</ul>
+								</li>
+							</c:if>
 
+
+							<!-- 로그인을 한 경우 -->
+							<c:if test="${ ! empty loginInfo }">
+							
+							
+							
+<!-- 				 <li class="nav-item me-4"> -->
+<!-- 	                <div class="user-info"> -->
+<%-- 	                    <a href="<c:url value='/member/logout'/>">${loginInfo.name}님<br>로그아웃</a> --%>
+<!-- 	                </div> -->
+<!-- 	            </li> -->
+          				
+          				
+          				
+          				
+          				
+          				
+          				
+								<li class="nav-item dropdown me-4">
+									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
+												data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">${loginInfo.name}님</a>
+										<ul class="dropdown-menu list-unstyled"
+													aria-labelledby="dropdownPages">
+										
+											<li><a href="<c:url value='/member/mypage'/>"
+												class="dropdown-item item-anchor">마이페이지 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+													
+													
+											<li><a href="<c:url value='/member/logout'/>"
+													class="dropdown-item item-anchor">로그아웃 <span
+													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+										</ul>
+								</li>
+								
+								
+							</c:if>
 
 
 
@@ -258,7 +304,15 @@
                         				
                         				
 										<li class="pe-3">
-											<a href="<c:url value='/member/login'/>">
+											<!--로그인 한 경우  -->
+											<c:if test="${! empty loginInfo }">
+												<a href="<c:url value='/member/mypage'/>">
+											</c:if>
+											<!-- 로그인 안한 경우  -->
+											<c:if test="${ empty loginInfo }">
+												<a href="<c:url value='/member/login'/>">
+											</c:if>
+											
 												<svg class="user" width="18" height="18">
 		                           					<use xlink:href="#user"></use>
 		                        				</svg>
