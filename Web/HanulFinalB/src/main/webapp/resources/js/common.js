@@ -90,23 +90,22 @@ function FileList() {
 	
 	
 	
-	this.showFile = function() {
-		var tag = ""
-		if( this.files.length > 0 ) { //파일목록에 파일이 있는 경우
-			for(i=0; i<this.files.length; i++) {
+	this.showFile = function(){
+		var tag = "";
+		if( this.files.length > 0 ){ //파일목록에 파일이 있는 경우
+			for(i=0; i<this.files.length; i++){
 				tag += `
-					<div class="file-item d flex gap-2">
+					<div class="file-item d-flex gap-2 my-1">
 						<button type="button" class="btn-close small" data-seq="${i}"></button>
 						<span>${ this.files[i].name }</span>
 					</div>
 				`;
-				
 			}
 		}else{
-		
+			tag = `<div class="py-3 text-center">첨부할 파일을 마우스로 끌어 오세요</div>`
 		}
 		$(".file-drag").html( tag );
-		console.log(">>  ", this )
+		console.log(">> ", this)		
 	}
 
 
@@ -138,18 +137,17 @@ $(function() {
 	})
 	
 	.on("drop", function(e){
-		colsole.log( "e>", e )
+		console.log( "e>", e )
 		console.log( "e>", e.originalEvent.dataTransfer.files )
-		
 		var files = filterFolder( e.originalEvent.dataTransfer );
-		
-		$(files).each( function() {
+		 
+		$(files).each(function(){
 			fileList.setFile( this )
 		})
-		
-		fileList.showFile();
-		
+		console.log( 'fileList> ', fileList )
+		fileList.showFile(); //끌어온 파일목록 보이게
 	})
+	
 	;	
 
 	
