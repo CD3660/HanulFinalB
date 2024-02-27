@@ -12,7 +12,7 @@
 	<div class="full">
 		<div class="container">
 			<div class="area_inputs wow fadeIn">
-				<div class="sub_title font-weight-bold text-white">
+				<div class="sub_title font-weight-bold text-black">
 					<h3>아이디/비밀번호 찾기</h3>
 					<p>인증된 이메일만 정보 찾기가 가능합니다</p>
 				</div>
@@ -20,25 +20,25 @@
 					class="custom-control custom-radio custom-control-inline">
 					<input type="radio" class="custom-control-input" id="search_1"
 						name="search_total" onclick="search_check(1)" checked="checked">
-					<label class="custom-control-label font-weight-bold text-white"
+					<label class="custom-control-label font-weight-bold text-black"
 						for="search_1">아이디 찾기</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
 					<input type="radio" class="custom-control-input" id="search_2"
 						name="search_total" onclick="search_check(2)"> <label
-						class="custom-control-label font-weight-bold text-white"
+						class="custom-control-label font-weight-bold text-black"
 						for="search_2">비밀번호 찾기</label>
 				</div>
 				<div id="searchI">
 					<div class="form-group">
-						<label class="font-weight-bold text-white" for="inputName_1">이름</label>
+						<label class="font-weight-bold text-black" for="inputName_1">이름</label>
 						<div>
 							<input type="text" class="form-control" id="inputName_1"
 								name="inputName_1" placeholder="ex) 홍길동">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="font-weight-bold text-white" for="inputPhone_1">휴대폰번호</label>
+						<label class="font-weight-bold text-black" for="inputPhone_1">휴대폰번호</label>
 						<div>
 							<input type="text" class="form-control" id="inputPhone_1"
 								name="inputPhone_1" placeholder="ex) 010123456789">
@@ -53,14 +53,14 @@
 				</div>
 				<div id="searchP" style="display: none;">
 					<div class="form-group">
-						<label class="font-weight-bold text-white" for="inputId">아이디</label>
+						<label class="font-weight-bold text-black" for="inputId">아이디</label>
 						<div>
 							<input type="text" class="form-control" id="inputId"
 								name="inputId_2" placeholder="ex) gildonghong">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="font-weight-bold text-white" for="inputEmail_2">이메일</label>
+						<label class="font-weight-bold text-black" for="inputEmail_2">이메일</label>
 						<div>
 							<input type="email" class="form-control" id="inputEmail_2"
 								name="inputEmail_2" placeholder="ex) gildonghong@gmail.com">
