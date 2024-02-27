@@ -38,7 +38,7 @@ CSS STRUCTURE:
   --bs-dark: #000;
   --swiper-theme-color: #787d62 !important;
   --swiper-pagination-color: #787d62 !important;
-
+  --gray-color: #8b93a9;
 }
 
 /* on mobile devices below 600px
@@ -1114,11 +1114,13 @@ height
 	flex: 2 0 0; 
 }
 
-
+.w-100{
+	width: 100%;
+}
 
 .modal-home {
         position: fixed;
-        top: 50%; /* ¸ð´ÞÀ» ¼¼·Î Áß¾Ó¿¡ À§Ä¡½ÃÅµ´Ï´Ù. */
-        left: 50%; /* ¸ð´ÞÀ» °¡·Î Áß¾Ó¿¡ À§Ä¡½ÃÅµ´Ï´Ù. */
-        transform: translate(-50%, -50%); /* Áß¾Ó Á¤·ÄÀ» º¸Á¤ÇÕ´Ï´Ù. */
+        top: 50%; /* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Åµï¿½Ï´ï¿½. */
+        left: 50%; /* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Åµï¿½Ï´ï¿½. */
+        transform: translate(-50%, -50%); /* ï¿½ß¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½. */
     }

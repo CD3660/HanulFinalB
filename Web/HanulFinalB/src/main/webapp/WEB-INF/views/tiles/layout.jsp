@@ -13,16 +13,28 @@
 
 
 
-		<c:choose>
-			<c:when test="${category eq 'product'}"><c:set var="title" value="제품소개: "/></c:when> 
-			<c:when test="${category eq 'notice'}"><c:set var="title" value="공지사항: "/></c:when>  
-			<c:when test="${category eq 'qna'}"><c:set var="title" value="Q&A: "/></c:when>
-			<c:when test="${category eq 'shop'}"><c:set var="title" value="제품구매: "/></c:when>
-			<c:when test="${category eq 'login'}"><c:set var="title" value="로그인: "/></c:when>
-			<c:when test="${category eq 'signin'}"><c:set var="title" value="회원가입: "/></c:when> 
-		</c:choose>
+<c:choose>
+	<c:when test="${category eq 'product'}">
+		<c:set var="title" value="제품소개: " />
+	</c:when>
+	<c:when test="${category eq 'notice'}">
+		<c:set var="title" value="공지사항: " />
+	</c:when>
+	<c:when test="${category eq 'qna'}">
+		<c:set var="title" value="Q&A: " />
+	</c:when>
+	<c:when test="${category eq 'shop'}">
+		<c:set var="title" value="제품구매: " />
+	</c:when>
+	<c:when test="${category eq 'login'}">
+		<c:set var="title" value="로그인: " />
+	</c:when>
+	<c:when test="${category eq 'signin'}">
+		<c:set var="title" value="회원가입: " />
+	</c:when>
+</c:choose>
 
-<title>${title}My Smart Home</title>
+<title>${title}MySmart Home</title>
 
 
 <meta charset="utf-8">
@@ -50,17 +62,26 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@200;300;400;500&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/summernote/summernote-lite.css'/>">
 <!-- script
     ================================================== -->
 <script src="<c:url value='/js/modernizr.js'/>"></script>
 <script src="<c:url value='/js/bootstrap.bundle.min.js'/>"></script>
-<script src="<c:url value='/js/jquery-1.11.0.min.js'/>"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="<c:url value='/js/modernizr.js'/>"></script>
 <script src="<c:url value='/js/plugins.js'/>"></script>
 <script src="<c:url value='/js/script.js'/>"></script>
 <script src="<c:url value='/js/common.js'/>"></script>
 <script src="https://kit.fontawesome.com/fb330bb215.js"
 	crossorigin="anonymous"></script>
+<script src="<c:url value='/js/summernote/summernote-lite.js'/>"></script>
+<script src="<c:url value='/js/summernote/lang/summernote-ko-KR.js'/>"></script>
+
 
 
 
@@ -163,29 +184,29 @@
 
 	<header id="header" class="site-header text-black">
 		<nav id="header-nav" class="navbar navbar-expand-lg px-5 mb-3">
-			
-				<div class="container-fluid">
-							<a class="navbar-brand" href="<c:url value='/'/>">
-							<img src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
-								style="margin-top: 16px;">
-							</a>
-							
-							
-							
-							
-							<button class="navbar-toggler d-flex d-lg-none order-3 p-2"
-								type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
-								aria-controls="bdNavbar" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<svg class="navbar-icon" width="50" height="50">
+
+			<div class="container-fluid">
+				<a class="navbar-brand" href="<c:url value='/'/>"> <img
+					src="<c:url value='/images/logo-main-w-icon.png'/>" class="logo"
+					style="margin-top: 16px;">
+				</a>
+
+
+
+
+				<button class="navbar-toggler d-flex d-lg-none order-3 p-2"
+					type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+					aria-controls="bdNavbar" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<svg class="navbar-icon" width="50" height="50">
 			              <use xlink:href="#navbar-icon"></use>
 			            </svg>
-							</button>
+				</button>
 
 
 
 
-			     <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar"
 					aria-labelledby="bdNavbarOffcanvasLabel">
 					<div class="offcanvas-header px-4 pb-0">
 						<a class="navbar-brand" href="index.html"> <img
@@ -204,17 +225,21 @@
 					<div class="offcanvas-body">
 						<ul id="navbar"
 							class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
-							style="font-size:1.2em; font-weight: bold; ">
+							style="font-size: 1.2em; font-weight: bold;">
 
-							<li class="nav-item"><a class="nav-link me-4" href="<c:url value='/prod/list'/>">제품소개</a></li>
+							<li class="nav-item"><a class="nav-link me-4"
+								href="<c:url value='/prod/list'/>">제품소개</a></li>
 
-							<li class="nav-item"><a class="nav-link me-4" href="<c:url value="/notice/list"/>">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link me-4"
+								href="<c:url value="/notice/list"/>">공지사항</a></li>
 
 
-							<li class="nav-item"><a class="nav-link me-4" href="<c:url value="/qna/list"/>">Q&A</a></li>
+							<li class="nav-item"><a class="nav-link me-4"
+								href="<c:url value="/qna/list"/>">Q&A</a></li>
 
 
-							<li class="nav-item"><a class="nav-link me-4" href="<c:url value='/shop/list'/>">제품구매</a></li>
+							<li class="nav-item"><a class="nav-link me-4"
+								href="<c:url value='/shop/list'/>">제품구매</a></li>
 
 
 
@@ -224,14 +249,14 @@
 								aria-expanded="false">로그인</a>
 								<ul class="dropdown-menu list-unstyled"
 									aria-labelledby="dropdownPages">
-									
+
 									<li><a href="<c:url value='/member/login'/>"
 										class="dropdown-item item-anchor">로그인 <span
 											class="badge bg-secondary text-dark ms-2">기존</span></a></li>
-											
-											
+
+
 									<li><a href="<c:url value='/member/join'/>"
-											class="dropdown-item item-anchor">회원가입 <span
+										class="dropdown-item item-anchor">회원가입 <span
 											class="badge bg-secondary text-dark ms-2">신규</span></a></li>
 								</ul></li>
 
@@ -246,48 +271,43 @@
 							<li class="nav-item">
 								<div class="user-items ps-5">
 									<ul class="d-flex justify-content-end list-unstyled">
-									
-									
+
+
 										<li class="search-item pe-3" data-bs-toggle="collapse"
-													data-bs-target="#search-box" aria-controls="search-box"
-													aria-expanded="false" aria-label="Toggle navigation">
-											<svg class="search" width="18" height="18">
+											data-bs-target="#search-box" aria-controls="search-box"
+											aria-expanded="false" aria-label="Toggle navigation"><svg
+												class="search" width="18" height="18">
                          				 		<use xlink:href="#search"></use>
-                       					 	</svg>
-                        				</li>
-                        				
-                        				
-										<li class="pe-3">
-											<a href="<c:url value='/member/login'/>">
+                       					 	</svg></li>
+
+
+										<li class="pe-3"><a href="<c:url value='/member/login'/>">
 												<svg class="user" width="18" height="18">
 		                           					<use xlink:href="#user"></use>
 		                        				</svg>
-											</a>
-										</li>
-										
-										
-										<li>
-											<a href="<c:url value='/shop/list'/>">
-												<svg class="cart" width="18" height="18">
+										</a></li>
+
+
+										<li><a href="<c:url value='/shop/list'/>"> <svg
+													class="cart" width="18" height="18">
                            							<use xlink:href="#cart"></use>
                          						</svg>
-											</a>
-										</li>
-										
-										
-										
-										
+										</a></li>
+
+
+
+
 									</ul>
 								</div>
 							</li>
-							
-							
-							
-							
+
+
+
+
 						</ul>
 					</div>
-					
-					
+
+
 				</div>
 			</div>
 		</nav>
@@ -327,13 +347,16 @@
 						<div class="footer-menu text-uppercase">
 							<h5 class="widget-title pb-2">Quick Links</h5>
 							<ul class="menu-list list-unstyled text-uppercase">
-								<li class="menu-item pb-2"><a href="<c:url value='/prod/list'/>">제품소개</a></li>
-								<li class="menu-item pb-2"><a href="<c:url value='/notice/list'/>">공지사항</a></li>
-								<li class="menu-item pb-2"><a href="<c:url value='/qna/list'/>">Q&A</a>
-								</li>
-								<li class="menu-item pb-2"><a href="<c:url value='/shop/list'/>">제품구매</a>
-								</li>
-								<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								<li class="menu-item pb-2"><a
+									href="<c:url value='/prod/list'/>">제품소개</a></li>
+								<li class="menu-item pb-2"><a
+									href="<c:url value='/notice/list'/>">공지사항</a></li>
+								<li class="menu-item pb-2"><a
+									href="<c:url value='/qna/list'/>">Q&A</a></li>
+								<li class="menu-item pb-2"><a
+									href="<c:url value='/shop/list'/>">제품구매</a></li>
+								<li class="menu-item pb-2"><a
+									href="<c:url value='/member/login'/>">로그인</a></li>
 							</ul>
 						</div>
 					</div>
@@ -345,7 +368,7 @@
 									<li class="pb-2">Yeong</a></li>
 									<li class="pb-2">Hyun</a></li>
 									<li class="pb-2">Hee</a></li>
-									
+
 
 								</ul>
 							</div>

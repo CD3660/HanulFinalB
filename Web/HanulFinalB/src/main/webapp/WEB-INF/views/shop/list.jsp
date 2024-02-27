@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <body>
-	<div class="container">
-		<div class="row justify-content-between">
-			
+	<c:if test="${loginInfo.admin == 'Y'}">
+		<div class="col-auto">
+			<button type="button" class="btn btn-primary" id="btn-insert">상품 등록</button>
 		</div>
-	</div>
+	</c:if>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
@@ -61,7 +61,7 @@
 							<div class="col shop-item mt-2"
 								onclick="shop_info(${vo.prod_id})"
 								style="word-wrap: break-word; height: 500px; width: 240px; max-width: 240px">
-								<img src="<c:url value='/images/prod_img/${vo.prod_img }'/>"
+								<img src="${vo.prod_img }"
 									class="shop-img center-block m-auto" />
 								<p class="mt-2">${vo.prod_name}</p>
 								<p class="price">
@@ -81,7 +81,9 @@
 		function shop_info(id){
 			location = "info?id="+id;
 		}
-		
+		$("#btn-insert").click(function() {
+			location = "insertPage";
+		});
 	</script>
 
 </body>
