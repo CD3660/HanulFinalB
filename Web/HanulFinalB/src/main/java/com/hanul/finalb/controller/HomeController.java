@@ -46,10 +46,10 @@ public class HomeController {
 		
 
 		List<ProductVO> list = new ArrayList<ProductVO>();
-		list.add(service.product_info(2)); //0
-		list.add(service.product_info(3)); //1
-		list.add(service.product_info(4)); //2
-		list.add(service.product_info(6)); //3
+		list.add(service.product_info(2)); //0 cctv
+		list.add(service.product_info(3)); //1 화재
+		list.add(service.product_info(4)); //2 가스
+		list.add(service.product_info(6)); //3 미세먼지
 	
 		model.addAttribute("list", list);
 

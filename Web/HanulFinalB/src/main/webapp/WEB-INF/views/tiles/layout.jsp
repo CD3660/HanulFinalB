@@ -248,21 +248,6 @@
 
 							<!-- 로그인을 한 경우 -->
 							<c:if test="${ ! empty loginInfo }">
-							
-							
-							
-<!-- 				 <li class="nav-item me-4"> -->
-<!-- 	                <div class="user-info"> -->
-<%-- 	                    <a href="<c:url value='/member/logout'/>">${loginInfo.name}님<br>로그아웃</a> --%>
-<!-- 	                </div> -->
-<!-- 	            </li> -->
-          				
-          				
-          				
-          				
-          				
-          				
-          				
 								<li class="nav-item dropdown me-4">
 									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
 												data-bs-toggle="dropdown" aria-haspopup="true"
@@ -279,10 +264,9 @@
 													class="dropdown-item item-anchor">로그아웃 <span
 													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
 										</ul>
-								</li>
-								
-								
-							</c:if>
+							     </li>
+						 	</c:if>
+
 
 
 
@@ -304,10 +288,12 @@
                         				
                         				
 										<li class="pe-3">
+										
 											<!--로그인 한 경우  -->
 											<c:if test="${! empty loginInfo }">
 												<a href="<c:url value='/member/mypage'/>">
 											</c:if>
+											
 											<!-- 로그인 안한 경우  -->
 											<c:if test="${ empty loginInfo }">
 												<a href="<c:url value='/member/login'/>">

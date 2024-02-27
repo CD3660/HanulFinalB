@@ -61,7 +61,7 @@
 							<div class="col shop-item mt-2"
 								onclick="shop_info(${vo.prod_id})"
 								style="word-wrap: break-word; height: 500px; width: 240px; max-width: 240px">
-								<img src="<c:url value='/images/prod_img/${vo.prod_img }'/>"
+								<img src="${vo.prod_img }"
 									class="shop-img center-block m-auto" />
 								<p class="mt-2">${vo.prod_name}</p>
 								<p class="price">
