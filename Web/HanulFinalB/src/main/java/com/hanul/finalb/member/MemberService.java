@@ -31,8 +31,8 @@ public class MemberService {
 		return 0;
 	}
 
-	public MemberVO memberLogin(MemberVO member) throws Exception {
-        
-        return memberLogin(member);
+	public MemberVO memberLogin(MemberVO member){
+		
+        return sql.selectOne("member.loginPOST", member);
     }
 }

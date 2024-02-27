@@ -22,12 +22,6 @@
 	</insert>
 	<!-- 로그인 -->
 	<select id="loginPOST" resultType="com.hanul.finalb.member.MemberVO">
-		select USER_ID
-		, USER_PW
-		, NAME
-		, ADDRESS
-		, ADDRESS2
-		, EMAIL
-		, PHONE from users where user_id = #{user_id} and user_pw = #{user_pw}
+		select * from users where user_id = #{user_id} 
 	</select>
 </mapper>

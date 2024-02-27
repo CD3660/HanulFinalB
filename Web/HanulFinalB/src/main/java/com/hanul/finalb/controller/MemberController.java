@@ -54,13 +54,13 @@ public class MemberController {
 	}
 	/* 濡쒓렇�씤 */
 	@RequestMapping(value="/loginPOST", method=RequestMethod.POST)
-	public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr, MemberService memberservice) throws Exception {
+	public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) {
 
 		HttpSession session = request.getSession();
         String rawPw = "";
         String encodePw = "";
     
-        MemberVO lvo = memberservice.memberLogin(member);    // �젣異쒗븳�븘�씠�뵒�� �씪移섑븯�뒗 �븘�씠�뵒 �엳�뒗吏� 
+        MemberVO lvo = service.memberLogin(member);    // �젣異쒗븳�븘�씠�뵒�� �씪移섑븯�뒗 �븘�씠�뵒 �엳�뒗吏� 
         
         if(lvo != null) {            // �씪移섑븯�뒗 �븘�씠�뵒 議댁옱�떆
             
