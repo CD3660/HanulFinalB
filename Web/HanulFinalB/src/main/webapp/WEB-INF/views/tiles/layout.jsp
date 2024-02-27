@@ -81,7 +81,7 @@
 	crossorigin="anonymous"></script>
 <script src="<c:url value='/js/summernote/summernote-lite.js'/>"></script>
 <script src="<c:url value='/js/summernote/lang/summernote-ko-KR.js'/>"></script>
-<script src="<c:url value='/js/shop.js'/>"></script>
+
 
 
 
