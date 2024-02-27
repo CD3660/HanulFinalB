@@ -87,6 +87,9 @@
 
 
 
+
+
+
 </head>
 <body class="bg-body" data-bs-spy="scroll" data-bs-target="#navbar"
 	data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
@@ -261,6 +264,49 @@
 								</ul></li>
 
 
+							<!-- 로그인을 하지 않은 경우  -->
+							<c:if test="${empty loginInfo }">
+							
+								<li class="nav-item dropdown me-4">
+									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
+												data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">로그인</a>
+										<ul class="dropdown-menu list-unstyled"
+													aria-labelledby="dropdownPages">
+										
+											<li><a href="<c:url value='/member/login'/>"
+												class="dropdown-item item-anchor">로그인 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+													
+													
+											<li><a href="<c:url value='/member/join'/>"
+													class="dropdown-item item-anchor">회원가입 <span
+													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+										</ul>
+								</li>
+							</c:if>
+
+
+							<!-- 로그인을 한 경우 -->
+							<c:if test="${ ! empty loginInfo }">
+								<li class="nav-item dropdown me-4">
+									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
+												data-bs-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false">${loginInfo.name}님</a>
+										<ul class="dropdown-menu list-unstyled"
+													aria-labelledby="dropdownPages">
+										
+											<li><a href="<c:url value='/member/mypage'/>"
+												class="dropdown-item item-anchor">마이페이지 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+													
+													
+											<li><a href="<c:url value='/member/logout'/>"
+													class="dropdown-item item-anchor">로그아웃 <span
+													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
+										</ul>
+							     </li>
+						 	</c:if>
 
 
 
@@ -278,10 +324,22 @@
 											aria-expanded="false" aria-label="Toggle navigation"><svg
 												class="search" width="18" height="18">
                          				 		<use xlink:href="#search"></use>
-                       					 	</svg></li>
-
-
-										<li class="pe-3"><a href="<c:url value='/member/login'/>">
+                       					 	</svg>
+                        				</li>
+                        				
+                        				
+										<li class="pe-3">
+										
+											<!--로그인 한 경우  -->
+											<c:if test="${! empty loginInfo }">
+												<a href="<c:url value='/member/mypage'/>">
+											</c:if>
+											
+											<!-- 로그인 안한 경우  -->
+											<c:if test="${ empty loginInfo }">
+												<a href="<c:url value='/member/login'/>">
+											</c:if>
+											
 												<svg class="user" width="18" height="18">
 		                           					<use xlink:href="#user"></use>
 		                        				</svg>

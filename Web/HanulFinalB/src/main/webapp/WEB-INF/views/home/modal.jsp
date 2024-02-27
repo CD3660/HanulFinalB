@@ -21,7 +21,7 @@
 						<div class="row">
 							<!-- 왼쪽 컬럼 -->
 							<div class="col-md-6">
-								<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
+								<img src="${vo.prod_img}"
 									alt="product-item"
 									class="product-image img-fluid prod${vo.prod_id}">
 							</div>

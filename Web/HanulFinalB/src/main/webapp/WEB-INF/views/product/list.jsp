@@ -28,7 +28,7 @@
 						<div
 							class="product-card image-zoom-effect link-effect d-flex flex-wrap">
 							<div class="image-holder">
-								<img src="<c:url value='/images/prod_img/${vo.prod_img}'/>"
+								<img src="${vo.prod_img}"
 									alt="product-item"
 									class="product-image img-fluid prod${vo.prod_id}">
 							</div>
