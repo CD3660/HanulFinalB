@@ -328,6 +328,17 @@ h1, h2, h3, h4, h5 {
 	color: var(--bs-light);
 }
 
+.btn.btn-outline-primary {
+	background: rgba(var(--bs-body-bg-rgb),var(--bs-bg-opacity));
+	color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn.btn-outline-primary:hover {
+	background-color: var(--bs-dark);
+	color: var(--bs-light);
+}
+
 /* - Buttons Aligns
 ------------------------------------------------------------- */
 .btn-left {

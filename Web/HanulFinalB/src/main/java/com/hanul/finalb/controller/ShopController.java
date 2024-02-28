@@ -36,9 +36,23 @@ public class ShopController {
 
 	@RequestMapping("/info")
 	public String info(Model model, int id) {
-		model.addAttribute("info", service.info(id));
+		model.addAttribute("vo", service.info(id));
 
 		return "shop/info";
+	}
+	
+	@RequestMapping("/to_cart")
+	public String to_cart(Model model, int prod_id, int ea) {
+		
+
+		return "shop/info";
+	}
+	
+	@RequestMapping("/order")
+	public String order(Model model, int prod_id, int ea) {
+		
+
+		return "shop/order";
 	}
 
 	@RequestMapping("/insertPage")
@@ -103,4 +117,5 @@ public class ShopController {
 
 		return comm.fileURL(id);
 	}
+	
 }

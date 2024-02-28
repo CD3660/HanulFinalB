@@ -78,7 +78,7 @@ public class QnaController {
 	public String insert(QnaVO vo, MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
 		
 		//÷�ε� ���ϵ��� QnaVO �� fileList�� ���
-		vo.setFileList(common.multipleFileUpload("qna", files, request));
+		//vo.setFileList(common.multipleFileUpload("qna", files, request));
 		
 		//화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
 		service.qna_register(vo);
