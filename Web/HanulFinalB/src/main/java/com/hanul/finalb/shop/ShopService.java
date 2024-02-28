@@ -13,30 +13,12 @@ public class ShopService {
 	@Autowired
 	private SqlSession sql;
 
-	/** ì „ì²´ ìƒí’ˆ ë‚´ìš© ì¡°íšŒ */
+	/** ÆÇ¸Å Á¦Ç° ¸®½ºÆ®¸¦ °¡Á®¿À´Â ¸Ş¼Òµå */
 	public List<ProductVO> list() {
 		return sql.selectList("prod.list");
 	}
-	/** ì•„ì´ë””ë¡œ ìƒí’ˆ ê°œë³„ ë‚´ìš© ì¡°íšŒ */
+	/** ÆÇ¸Å Á¦Ç° ¸®½ºÆ®¸¦ °¡Á®¿À´Â ¸Ş¼Òµå */
 	public ProductVO info(int id) {
 		return sql.selectOne("prod.info", id);
-	}
-	/** ìƒí’ˆ ì •ë³´ ë“±ë¡ */
-	public int insert(ProductVO vo) {
-		
-		return sql.insert("prod.insert", vo);
-	}
-	/** ìƒí’ˆ ì •ë³´ ìˆ˜ì • */
-	public int update(ProductVO vo, boolean maintain) {
-		int result = sql.update("prod.update", vo);
-		if(!maintain) {
-			sql.update("prod.updateFile", vo);
-		}
-		return result;
-	}
-	/** ìƒí’ˆ ì •ë³´ ì‚­ì œ */
-	public int delete(int id) {
-		
-		return sql.delete("prod.delete", id);
 	}
 }

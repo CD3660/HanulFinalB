@@ -1,12 +1,8 @@
 package com.hanul.finalb.controller;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.finalb.HomeService;
-import com.hanul.finalb.common.Common;
-import com.hanul.finalb.common.FileVO;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
 import com.hanul.finalb.product.ProductVO;
@@ -31,49 +25,44 @@ public class HomeController {
 	@Autowired
 	private MemberService member;
 	@Autowired
-	private Common comm;
-	@Autowired
 	private BCryptPasswordEncoder pwEncoder;
+	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
-
-		// ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½---------------------------
+		
+		//Å×½ºÆ®¿ë ÀÓ½Ã ·Î±×ÀÎ Ã³¸®---------------------------
 		String user_id = "hanul";
 		MemberVO vo = member.member_info(user_id);
 		session.setAttribute("loginInfo", vo);
-
-		// -----------------------------------------------
-
+		
+		//-----------------------------------------------
+		
 		session.removeAttribute("category");
+		
+		
+		
+		
+		
 
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		list.add(service.product_info(2)); //0 cctv
-		list.add(service.product_info(3)); //1 È­ï¿½ï¿½
-		list.add(service.product_info(4)); //2 ï¿½ï¿½ï¿½ï¿½
-		list.add(service.product_info(6)); //3 ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		list.add(service.product_info(3)); //1 È­Àç
+		list.add(service.product_info(4)); //2 °¡½º
+		list.add(service.product_info(6)); //3 ¹Ì¼¼¸ÕÁö
 	
 		model.addAttribute("list", list);
 
 		return "home/home";
 	}
+
+
 	
-	/* *
-	 * FileVOì— ë‹´ê¸´ íŒŒì¼ëª…ê³¼ idë¥¼ ì´ìš©í•˜ì—¬ êµ¬ê¸€ë“œë¼ì´ë¸Œì— ì—…ë¡œë“œ ëœ íŒŒì¼ì„ ë‹¤ìš´ë¡œë“œ í•œë‹¤. 
-	 */
-	@RequestMapping("/download")
-	public void download(HttpSession session, HttpServletRequest req, HttpServletResponse resp, FileVO vo) {
-		try {
-			comm.fileDownload(vo, req, resp);
-		} catch (GeneralSecurityException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	@RequestMapping("/test")
-	public String testPage() {
-		
-		return "home/test";
-	}
+	
+	
+	
+	
+	
 
 }

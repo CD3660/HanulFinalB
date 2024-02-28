@@ -2,24 +2,33 @@ package com.hanul.finalb.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+import com.hanul.finalb.member.MemberVO;
+
+
 public class MemberMapperTests {
 
 	@Autowired
-	private MemberService service; // MemberMapper.java ì¸í„°í˜ì´ìŠ¤ ì˜ì¡´ì„± ì£¼ì…
-
-	public void memberJoin() throws Exception {
+	private MemberService service;			//MemberMapper.java ÀÎÅÍÆäÀÌ½º ÀÇÁ¸¼º ÁÖÀÔ
+	
+	
+	public void memberJoin() throws Exception{
 		MemberVO member = new MemberVO();
-
-		member.setUser_id("test"); // íšŒì› id
-		member.setUser_pw("test"); // íšŒì› ë¹„ë°€ë²ˆí˜¸
-		member.setName("test"); // íšŒì› ì´ë¦„
-		member.setEmail("test"); // íšŒì› ë©”ì¼
-		member.setAddress("test"); // íšŒì› ìš°í¸ë²ˆí˜¸
-		member.setAddress2("test"); // íšŒì› ì£¼ì†Œ
-		member.setPhone("test"); // íšŒì› ë²ˆí˜¸
-
-		service.memberJoin(member); // ì¿¼ë¦¬ ë©”ì„œë“œ ì‹¤í–‰
-
+		
+		member.setUser_id("test");			//È¸¿ø id
+		member.setUser_pw("test");			//È¸¿ø ºñ¹Ğ¹øÈ£
+		member.setName("test");		//È¸¿ø ÀÌ¸§
+		member.setEmail("test");		//È¸¿ø ¸ŞÀÏ
+		member.setAddress("test");		//È¸¿ø ¿ìÆí¹øÈ£
+		member.setAddress2("test");		//È¸¿ø ÁÖ¼Ò
+		member.setPhone("test");		//È¸¿ø ¹øÈ£
+		
+		service.memberJoin(member);			//Äõ¸® ¸Ş¼­µå ½ÇÇà
+		
 	}
 
+	
+	
+	
+	
 }
