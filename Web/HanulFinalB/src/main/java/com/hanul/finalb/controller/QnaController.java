@@ -26,13 +26,13 @@ public class QnaController {
 	@Autowired private QnaService service;
 	@Autowired private Common common;
 	
-	
+
 
 	
-	//¹æ¸í·Ï ¼öÁ¤ÀúÀåÃ³¸® ¿äÃ»
+	//ë°©ëª…ë¡ ìˆ˜ì •ì €ì¥ì²˜ë¦¬ ìš”ì²­
 	
 	
-	//¹æ¸í·Ï ¼öÁ¤È­¸é ¿äÃ»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½Ã»
 	@RequestMapping("/modify")
 	public String modify() {
 		
@@ -47,23 +47,23 @@ public class QnaController {
 	
 	
 	
-	//¹æ¸í·Ï Ã·ºÎÆÄÀÏ ´Ù¿î·Îµå ¿äÃ»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½Îµï¿½ ï¿½ï¿½Ã»
 	@RequestMapping("/download")
 	public void download(int no, HttpServletRequest request, HttpServletResponse response) {
-		//ÇØ´ç ÆÄÀÏÁ¤º¸¸¦ Á¶È¸ÇØ¿Í Å¬¶óÀÌ¾ğÆ®¿¡ ´Ù¿î·ÎµåÇÏ±â
+		//ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¿ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½Ù¿ï¿½Îµï¿½ï¿½Ï±ï¿½
 		FileVO vo = service.qna_file_info(no);
 		/*
-		 * common.fileDownload(vo.getFilename(), vo.getFilepath(), request, response);   -> ´Ù¿î·ÎµåÃ³¸® ÈÄ »ì·Á¾ßÇÔ
+		 * common.fileDownload(vo.getFilename(), vo.getFilepath(), request, response);   -> ï¿½Ù¿ï¿½Îµï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		
 	}
 	
 	
-	//¹æ¸í·Ï Á¤º¸È­¸é ¿äÃ»
+	//ë°©ëª…ë¡ ì •ë³´í™”ë©´ ìš”ì²­
 	@RequestMapping("/info")
 	public String info(int qna_id, Model model, PageVO page) {
-		//ÇØ´ç idÀÇ Á¤º¸¸¦ DB¿¡¼­ Á¶È¸ÇØ¿Í Á¤º¸È­¸é¿¡ Ãâ·ÂÇÒ ¼ö ÀÖµµ·Ï Model¿¡ ´ã±â
-		service.qna_read(qna_id); //Á¶È¸¼ö º¯°æ
+		//ï¿½Ø´ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ Modelï¿½ï¿½ ï¿½ï¿½ï¿½
+		service.qna_read(qna_id); //ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		model.addAttribute("vo", service.qna_info(qna_id));
 		model.addAttribute("crlf", "\r\n");
 		model.addAttribute("page", page);
@@ -73,14 +73,14 @@ public class QnaController {
 	
 	
 	
-	//¹æ¸í·Ï ½Å±Ôµî·ÏÃ³¸® ¿äÃ»
+	//ë°©ëª…ë¡ ì‹ ê·œë“±ë¡ì²˜ë¦¬ ìš”ì²­
 	@RequestMapping("/insert")
 	public String insert(QnaVO vo, MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
 		
-		//Ã·ºÎµÈ ÆÄÀÏµéÀ» QnaVO ÀÇ fileList¿¡ ´ã±â
+		//Ã·ï¿½Îµï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ QnaVO ï¿½ï¿½ fileListï¿½ï¿½ ï¿½ï¿½ï¿½
 		vo.setFileList(common.multipleFileUpload("qna", files, request));
 		
-		//È­¸é¿¡¼­ ÀÔ·ÂÇÑ Á¤º¸·Î DB¿¡ ½Å±Ô»ğÀÔÀúÀåÃ³¸® -> È­¸é¿¬°á:¸ñ·Ï
+		//í™”ë©´ì—ì„œ ì…ë ¥í•œ ì •ë³´ë¡œ DBì— ì‹ ê·œì‚½ì…ì €ì¥ì²˜ë¦¬ -> í™”ë©´ì—°ê²°:ëª©ë¡
 		service.qna_register(vo);
 		return "redirect:list";
 		
@@ -90,17 +90,17 @@ public class QnaController {
 	
 	
 	
-	//¹æ¸í·Ï ½Å±Ôµî·ÏÈ­¸é ¿äÃ»
+	//ë°©ëª…ë¡ ì‹ ê·œë“±ë¡í™”ë©´ ìš”ì²­
 	@RequestMapping("/register")
 	public String register() {
 		return "qna/register";
 	}
 	
-	//¹æ¸í·Ï ¸ñ·ÏÈ­¸é Á¶È¸
+	//ë°©ëª…ë¡ ëª©ë¡í™”ë©´ ì¡°íšŒ
 	@RequestMapping("/list")
 	public String list(PageVO page, Model model, HttpSession session) {
 		session.setAttribute("category", "qna");
-		//DB¿¡¼­ ¹æ¸í·Ï ±ÛÀ» ÇÑ ÆäÀÌÁö Á¤º¸¸¦ Á¶È¸ÇØ¿Í È­¸é¿¡ Ãâ·ÂÇÒ ¼ö ÀÖµµ·Ï Model¿¡ ´ã±â
+		//DBì—ì„œ ë°©ëª…ë¡ ê¸€ì„ í•œ í˜ì´ì§€ ì •ë³´ë¥¼ ì¡°íšŒí•´ì™€ í™”ë©´ì— ì¶œë ¥í•  ìˆ˜ ìˆë„ë¡ Modelì— ë‹´ê¸°
 		model.addAttribute("page", service.qna_list(page));
 
 		return "qna/list";
@@ -109,14 +109,14 @@ public class QnaController {
 
 	
 	
-	//¹æ¸í·Ï ±Û»èÁ¦Ã³¸® ¿äÃ»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û»ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½Ã»
 	@RequestMapping("delete")
 	public String delete(int qna_id, PageVO page, Model model, HttpServletRequest request) throws GeneralSecurityException, IOException {
-		//Ã·ºÎÆÄÀÏÀÌ ÀÖ´Â°æ¿ì ¹°¸®ÀûÀÎ ÆÄÀÏÀ» »èÁ¦ÇÒ ¼ö ÀÖµµ·Ï ÆÄÀÏÁ¤º¸¸¦ Á¶È¸ÇØµĞ´Ù.
+		//Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Â°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ØµĞ´ï¿½.
 		List<FileVO> list = service.qna_file_list(qna_id);
 		
-		//ÇØ´ç ¹æ¸í·Ï ±ÛÀ» DB¿¡¼­ »èÁ¦ÇÏ±â
-		//qna¸¦ »èÁ¦ÇÏ¸é table¼³°è½Ã fk(¿Ü·¡Å°)¿¡ on delete cascade¿¡ ÀÇÇØ qna_fileµµ ÇÔ²² ÀÚµ¿ »èÁ¦
+		//ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+		//qnaï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ tableï¿½ï¿½ï¿½ï¿½ï¿½ fk(ï¿½Ü·ï¿½Å°)ï¿½ï¿½ on delete cascadeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ qna_fileï¿½ï¿½ ï¿½Ô²ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 		if( service.qna_delete(qna_id) == 1 )  {
 			for( FileVO vo : list) {
 				common.fileDelete( vo.getFile_id() );
@@ -124,7 +124,7 @@ public class QnaController {
 		}
 		
 		
-		//»èÁ¦ÈÄ ¸ñ·ÏÈ­¸éÀ¸·Î ¿¬°á
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		model.addAttribute("page", page);
 		model.addAttribute("qna_id", qna_id);
 		model.addAttribute("url", "qna/list");
@@ -135,14 +135,13 @@ public class QnaController {
 	
 	
 	
-	//´ñ±Û »èÁ¦Ã³¸® ¿äÃ»
+	//ëŒ“ê¸€ ì‚­ì œì²˜ë¦¬ ìš”ì²­
 
-	//´ñ±Û º¯°æÀúÀåÃ³¸® ¿äÃ»
+	//ëŒ“ê¸€ ë³€ê²½ì €ì¥ì²˜ë¦¬ ìš”ì²­
 
-	//´ñ±Û ¸ñ·ÏÁ¶È¸
+	//ëŒ“ê¸€ ëª©ë¡ì¡°íšŒ
 	
-	//´ñ±Û µî·ÏÀúÀåÃ³¸® ¿äÃ»
-	
+	//ëŒ“ê¸€ ë“±ë¡ì €ì¥ì²˜ë¦¬ ìš”ì²­
 	
 	
 	
