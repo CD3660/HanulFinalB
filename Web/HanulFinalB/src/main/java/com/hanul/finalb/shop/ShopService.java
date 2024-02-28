@@ -13,11 +13,11 @@ public class ShopService {
 	@Autowired
 	private SqlSession sql;
 
-	/** ÆÇ¸Å Á¦Ç° ¸®½ºÆ®¸¦ °¡Á®¿À´Â ¸Ş¼Òµå */
+	/** íŒë§¤ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ */
 	public List<ProductVO> list() {
 		return sql.selectList("prod.list");
 	}
-	/** ÆÇ¸Å Á¦Ç° ¸®½ºÆ®¸¦ °¡Á®¿À´Â ¸Ş¼Òµå */
+	/** íŒë§¤ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ */
 	public ProductVO info(int id) {
 		return sql.selectOne("prod.info", id);
 	}

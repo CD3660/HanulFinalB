@@ -28,7 +28,7 @@ public class MemberService {
 	
 	
 	
-	//Å×½ºÆ®¿ë ÀÓ½Ã ·Î±×ÀÎÃ³¸® // È¸¿øÁ¤º¸Á¶È¸
+	//í…ŒìŠ¤íŠ¸ìš© ì„ì‹œ ë¡œê·¸ì¸ì²˜ë¦¬ // íšŒì›ì •ë³´ì¡°íšŒ
 	public MemberVO member_info(String user_id) {
 		return sql.selectOne("member.info", user_id);
 	}

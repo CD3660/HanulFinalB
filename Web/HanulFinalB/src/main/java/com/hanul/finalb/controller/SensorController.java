@@ -26,7 +26,7 @@ public class SensorController {
 	@ResponseBody
 	@RequestMapping("/data_in")
 	public String sensor(SensorVO vo) {
-		System.out.println("µ¥ÀÌÅÍ ÀÔ·Â");
+		System.out.println("ë°ì´í„° ì…ë ¥");
 		service.insertSensorData(vo);
 		return "connect success";
 	}
@@ -45,9 +45,9 @@ public class SensorController {
 	
 	@PostMapping("/saveVideo")
     public String saveVideo(MultipartFile videoFile) {
-        String filePath = "path/to/save/" + new Date().getTime() + ".mp4"; // ÀúÀåÇÒ ÆÄÀÏ °æ·Î ¹× ÀÌ¸§
+        String filePath = "path/to/save/" + new Date().getTime() + ".mp4"; // ì €ì¥í•  íŒŒì¼ ê²½ë¡œ ë° ì´ë¦„
         try {
-            // MultipartFile·ÎºÎÅÍ ÆÄÀÏÀ» ÀúÀå
+            // MultipartFileë¡œë¶€í„° íŒŒì¼ì„ ì €ì¥
             byte[] bytes = videoFile.getBytes();
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
             stream.write(bytes);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 	@Autowired private SqlSession sql;
 	
-	/** ÆÇ¸Å Á¦Ç° ¸®½ºÆ®¸¦ °¡Á®¿À´Â ¸Ş¼Òµå */
+	/** íŒë§¤ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ */
 	public List<ProductVO> list() {
 		return sql.selectList("prod.list");
 	}
