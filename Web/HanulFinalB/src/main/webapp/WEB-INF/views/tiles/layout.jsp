@@ -251,7 +251,7 @@
 								<li class="nav-item dropdown me-4">
 									<a class="nav-link dropdown-toggle" href="#" id="dropdownPages"
 												data-bs-toggle="dropdown" aria-haspopup="true"
-												aria-expanded="false">${loginInfo.name}님</a>
+												aria-expanded="false">${loginInfo.name}님 환영합니다</a>
 										<ul class="dropdown-menu list-unstyled"
 													aria-labelledby="dropdownPages">
 										
