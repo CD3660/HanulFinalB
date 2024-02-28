@@ -14,7 +14,7 @@ public class HomeService {
 	
 	
 	
-	//¸ŞÀÎÈ­¸é ¸ğ´ŞÃ¢À» À§ÇÑ ¸®½ºÆ® 
+	//ë©”ì¸í™”ë©´ ëª¨ë‹¬ì°½ì„ ìœ„í•œ ë¦¬ìŠ¤íŠ¸ 
 	public ProductVO product_info(int id) {
 		
 		return sql.selectOne("home.info", id);

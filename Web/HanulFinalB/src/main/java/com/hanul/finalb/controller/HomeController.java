@@ -31,7 +31,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
 		
-		//Å×½ºÆ®¿ë ÀÓ½Ã ·Î±×ÀÎ Ã³¸®---------------------------
+		//í…ŒìŠ¤íŠ¸ìš© ì„ì‹œ ë¡œê·¸ì¸ ì²˜ë¦¬---------------------------
 		String user_id = "hanul";
 		MemberVO vo = member.member_info(user_id);
 		session.setAttribute("loginInfo", vo);
@@ -47,9 +47,9 @@ public class HomeController {
 
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		list.add(service.product_info(2)); //0 cctv
-		list.add(service.product_info(3)); //1 È­Àç
-		list.add(service.product_info(4)); //2 °¡½º
-		list.add(service.product_info(6)); //3 ¹Ì¼¼¸ÕÁö
+		list.add(service.product_info(3)); //1 í™”ì¬
+		list.add(service.product_info(4)); //2 ê°€ìŠ¤
+		list.add(service.product_info(6)); //3 ë¯¸ì„¸ë¨¼ì§€
 	
 		model.addAttribute("list", list);
 

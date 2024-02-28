@@ -15,7 +15,7 @@ public class QnaService {
 	
 	
 	
-	//½Å±Ô ¹æ¸í·Ï ±Û ÀúÀåÃ³¸®
+	//ì‹ ê·œ ë°©ëª…ë¡ ê¸€ ì €ì¥ì²˜ë¦¬
 	public int qna_register(QnaVO vo) {
 		int dml= sql.insert("qna.register", vo);
 		if ( dml ==1 && vo.getFileList() != null) {
@@ -25,7 +25,7 @@ public class QnaService {
 	}
 	
 	
-	//¹æ¸í·Ï ¸ñ·Ï Á¶È¸
+	//ë°©ëª…ë¡ ëª©ë¡ ì¡°íšŒ
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
 		page.setList(sql.selectList("qna.list", page));
@@ -33,23 +33,23 @@ public class QnaService {
 		return page;
 	}
 	
-	//¼±ÅÃÇÑ ¹æ¸í·Ï Á¤º¸ Á¶È¸
+	//ì„ íƒí•œ ë°©ëª…ë¡ ì •ë³´ ì¡°íšŒ
 	public QnaVO qna_info(int qna_id) {
 		QnaVO vo = sql.selectOne("qna.info", qna_id);
-		//Ã·ºÎµÈ ÆÄÀÏÁ¤º¸ Á¶È¸
+		//ì²¨ë¶€ëœ íŒŒì¼ì •ë³´ ì¡°íšŒ
 		vo.setFileList(sql.selectList("qna.fileList", qna_id));
 		
 		return vo;
 	}
 	
-	//¹æ¸í·Ï Á¤º¸ º¯°æÀúÀåÃ³¸®
+	//ë°©ëª…ë¡ ì •ë³´ ë³€ê²½ì €ì¥ì²˜ë¦¬
 	
-	//¹æ¸í·Ï Á¤º¸ Á¶È¸¼ö º¯°æÀúÀå
+	//ë°©ëª…ë¡ ì •ë³´ ì¡°íšŒìˆ˜ ë³€ê²½ì €ì¥
 	public int qna_read(int qna_id) {
 		return sql.update("qna.read", qna_id);
 	}
 	
-	//¹æ¸í·Ï Á¤º¸ »èÁ¦Ã³¸®
+	//ë°©ëª…ë¡ ì •ë³´ ì‚­ì œì²˜ë¦¬
 	public int qna_delete(int qna_id) {
 		return sql.delete("qna.delete", qna_id);
 	}
@@ -59,29 +59,29 @@ public class QnaService {
 	
 	
 	
-	//´ñ±Û µî·ÏÀúÀåÃ³¸®
-	//´ñ±Û º¯°æÀúÀåÃ³¸®
-	//´ñ±Û »èÁ¦Ã³¸®
-	//´ñ±Û ¸ñ·ÏÁ¶È¸
+	//ëŒ“ê¸€ ë“±ë¡ì €ì¥ì²˜ë¦¬
+	//ëŒ“ê¸€ ë³€ê²½ì €ì¥ì²˜ë¦¬
+	//ëŒ“ê¸€ ì‚­ì œì²˜ë¦¬
+	//ëŒ“ê¸€ ëª©ë¡ì¡°íšŒ
 	
 	
 	
 	
 	
 	
-	//ÆÄÀÏ¸ñ·Ï Á¶È¸
-	public List<FileVO> qna_file_list(int qna_id) {	//qnaÀÇ qna_id
+	//íŒŒì¼ëª©ë¡ ì¡°íšŒ
+	public List<FileVO> qna_file_list(int qna_id) {	//qnaì˜ qna_id
 		return sql.selectList("qna.fileList", qna_id);
 	}
 	
-	//ÆÄÀÏÁ¤º¸ Á¶È¸
-	public FileVO qna_file_info(int file_id) { //qna_fileÀÇ file_id
+	//íŒŒì¼ì •ë³´ ì¡°íšŒ
+	public FileVO qna_file_info(int file_id) { //qna_fileì˜ file_id
 		return sql.selectOne("qna.fileInfo", file_id);
 	}
 	
 	
 	
-	//ÆÄÀÏ»èÁ¦
+	//íŒŒì¼ì‚­ì œ
 	
 	
 
