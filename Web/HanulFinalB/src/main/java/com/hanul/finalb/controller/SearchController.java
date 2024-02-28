@@ -19,7 +19,7 @@ public class SearchController {
 		private UserMailSendService mailsender;
 		
 		// 아이디 찾기
-		@RequestMapping(value = "/user/userSearch", method = RequestMethod.POST)
+		@RequestMapping(value = "/member/userSearch", method = RequestMethod.POST)
 		@ResponseBody
 		public String userIdSearch(@RequestParam("inputName_1") String user_name, 
 				@RequestParam("inputPhone_1") String user_phone) {
@@ -30,7 +30,7 @@ public class SearchController {
 		}
 		
 		// 비밀번호 찾기
-		@RequestMapping(value = "/user/searchPassword", method = RequestMethod.GET)
+		@RequestMapping(value = "/member/searchPassword", method = RequestMethod.GET)
 		@ResponseBody
 		public String passwordSearch(@RequestParam("userId")String user_id,
 				@RequestParam("userEmail")String user_email,
