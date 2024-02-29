@@ -26,6 +26,7 @@ public class HomeController {
 	private MemberService member;
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder;
+
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

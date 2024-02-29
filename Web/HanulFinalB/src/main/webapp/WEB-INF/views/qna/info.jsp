@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="mb-4">방명록 글정보</h3>
+<h3 class="mb-4">Q&A 글정보</h3>
 
 
 <table class="table tb-row">

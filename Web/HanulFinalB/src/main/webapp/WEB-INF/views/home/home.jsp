@@ -214,38 +214,38 @@
 		<div class="container" style="padding-top: 7em; padding-bottom: 9em;">
 			<div class="row">
 				<div class="review-content position-relative">
-					<div
-						class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center justify-content-center">
-						<svg class="icon-arrow" width="25" height="25">
-                <use xlink:href="#arrow-left" />
-              </svg>
-					</div>
-					<div class="swiper testimonial-swiper">
+				
+				
+				
+				
+					
+					
+					
+				
 						<div class="quotation text-center">
 							<svg class="quote">
                   <use xlink:href="#quote" />
                 </svg>
 						</div>
 
-						<div class="swiper-wrapper">
+					
 							<div
-								class="swiper-slide text-center d-flex justify-content-center">
+								class="text-center d-flex justify-content-center">
 								<div class="review-item col-md-10">
 									<i class="icon icon-review"></i>
 									<blockquote class="fs-4">안전하고 신뢰성 있는 보안 솔루션으로 데이터 보호 및 암호화, 내구성 및 방수 기능을 갖추어 고객의 안전을 최우선에 두고 있습니다. 전문가 그룹의 기술 지원과 서비스를 통해 CCTV 설치, 유지보수, 사용자 교육 등 다양한 영역에서 고객에게 최상의 서비스를 제공합니다.</blockquote>
 									<div class="author-detail">
 										<div class="name text-primary text-uppercase pt-2">Hanul
 											Team B</div>
-											<div class="swiper testimonial-swiper">
+										
 						<div class="quotation text-center">
 											<svg class="quote">
                   <use xlink:href="#quote"></use>
-                </svg></div></div>
+                </svg></div>
+             
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

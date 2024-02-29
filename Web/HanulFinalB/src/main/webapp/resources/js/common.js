@@ -121,16 +121,18 @@ function FileList() {
 
 	//폴더 제한하기
 	function filterFolder( transfer ) {
-	var files = [], folder = false;
-	for( i = 0; i<transfer.items.length; i++) {
-		var entry = transfer.items[i].webkitGetAsEntry();
-		
-	}	
-		
-		
-		
-		
-	}
+		var files = [], folder = false;
+		for( i = 0; i<transfer.items.length; i++) {
+			var entry = transfer.items[i].webkitGetAsEntry();
+			console.log('idx> ', i,  entry )
+			if( entry.isFile ) files.push( transfer.files[i] );
+			
+			}	
+					
+			return files;		
+			
+			
+		}
 	
 	
 	
