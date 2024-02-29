@@ -194,4 +194,19 @@ public class Common {
 		}
 		return apiURL;
 	}
+	//다중 파일업로드
+		public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
+				HttpServletRequest request) throws GeneralSecurityException, IOException {
+
+			ArrayList<FileVO> list = null;
+			for( MultipartFile file: files ) {
+				if( file.isEmpty() ) continue;
+				if( list== null ) list = new ArrayList<FileVO>();
+				FileVO vo = new FileVO();
+				vo.setFilename( file.getOriginalFilename() );
+				vo.setFilepath( fileUpload( file ));
+				list.add(vo);
+			}
+			return list;
+		}
 }
