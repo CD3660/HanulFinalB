@@ -1,5 +1,3 @@
-@charset "EUC-KR";
-
 .search-icon {
 	position: relative;
 	right: 22px;
@@ -7,7 +5,7 @@
 }
 
 .search:focus {
-	border-color: var(- -bs-primary);
+	border-color: var(--bs-primary);
 }
 
 .search-filter-content {
@@ -18,7 +16,7 @@
 .shop-item:hover {
 	border: 1px solid;
 	border-color: lightgray;
-	box-shadow: 0 0 5px rgba(100, 100, 100, 0.5); /* ¸ğµç ¹æÇâÀ¸·Î µ¿ÀÏÇÑ ±×¸²ÀÚ */
+	box-shadow: 0 0 5px rgba(100, 100, 100, 0.5); /* å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ìŒ“ëªŒì˜™å ì™ì˜™ */
 	cursor: pointer;
 	transition: 0.3s;
 }
@@ -52,4 +50,36 @@
 	color: red;
 	font-weight: bold;
 	font-size: 1.2em;
+}
+
+.bg-title {
+	background-color: var(--gray-color);
+}
+
+.gray-border {
+	border: solid 1px var(--gray-color);
+	width: 1000px;
+}
+.insert-col1{
+	background-color: #ebebeb;
+	width: 200px;
+}
+.insert-col2{
+	width: 800px;
+	max-width: 800px;
+}
+.prod-name{
+	color: skyblue;
+}
+.insert table, .insert th, .insert td {
+  border: 1px solid lightgray;
+}
+.bg-lightgray {
+	background-color: #ebebeb;
+}
+.t-readonly{
+	outline:none;
+}
+.t-readonly:focus{
+	outline:none !important;
 }
