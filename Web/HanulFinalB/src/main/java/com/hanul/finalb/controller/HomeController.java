@@ -48,11 +48,11 @@ public class HomeController {
 		session.removeAttribute("category");
 
 		List<ProductVO> list = new ArrayList<ProductVO>();
-		list.add(service.product_info(2)); // 0
-		list.add(service.product_info(3)); // 1
-		list.add(service.product_info(4)); // 2
-		list.add(service.product_info(6)); // 3
-
+		list.add(service.product_info(2)); //0 cctv
+		list.add(service.product_info(3)); //1 ȭ��
+		list.add(service.product_info(4)); //2 ����
+		list.add(service.product_info(6)); //3 �̼�����
+	
 		model.addAttribute("list", list);
 
 		return "home/home";
@@ -69,6 +69,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	
 	@RequestMapping("/test")
 	public String testPage() {
 		

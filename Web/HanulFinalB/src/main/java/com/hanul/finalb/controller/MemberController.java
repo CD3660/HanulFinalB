@@ -70,7 +70,7 @@ public class MemberController {
             if(pwEncoder.matches(rawPw, encodePw)) {        // 鍮꾨�踰덊샇 �씪移섏뿬遺� �뙋�떒
                 
                 lvo.setUser_pw("");                    // �씤肄붾뵫�맂 鍮꾨�踰덊샇 �젙蹂� 吏���
-                session.setAttribute("member", lvo);     // session�뿉 �궗�슜�옄�쓽 �젙蹂� ���옣
+                session.setAttribute("loginInfo", lvo);     // session�뿉 �궗�슜�옄�쓽 �젙蹂� ���옣
                 return "redirect:/";        // 硫붿씤�럹�씠吏� �씠�룞
                 
                 

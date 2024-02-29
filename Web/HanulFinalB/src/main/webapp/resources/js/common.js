@@ -23,12 +23,13 @@ function multipleFileUpload() {
 	//FileList 객체의 files의 파일정보를 input file태그에 넣기
 	var transfer = new DataTransfer();
 	var files = fileList.getFile();
-	if(files.length > 0 ) {
-		for(i=0; i<files.length; i++) {
-			
-			
+	if( files.length > 0 ){
+		for(i=0; i<files.length; i++){
+			if( fileList.info.upload[i] ) transfer.items.add( files[i] ); //upload 대상인 파일만 추가
 		}
 	}
+	console.log(' transfer.files> ', transfer.files )
+	$("#file-multiple").prop("files", transfer.files )
 }
 
 
@@ -108,6 +109,8 @@ function FileList() {
 		console.log(">>  ", this )
 	}
 
+
+
 }
 
 
@@ -116,27 +119,39 @@ function FileList() {
 
 
 
-//드래그 앤 드롭
-$(".file-drag")
-.on("dragover dragleave drop", function(e) {
-	e.preventDefault();
-})
 
-.on("drop", function(e){
-	colsole.log( "e>", e )
-	console.log( "e>", e.originalEvent.dataTransfer.files )
-	
-	var files = filterFolder( e.originalEvent.dataTransfer );
-	
-	$(files).each( function() {
-		fileList.setFile( this )
+
+
+
+$(function() {
+
+
+
+
+
+
+
+	//드래그 앤 드롭
+	$(".file-drag")
+	.on("dragover dragleave drop", function(e) {
+		e.preventDefault();
 	})
 	
-	fileList.showFile();
-	
-})
-;
-	
+	.on("drop", function(e){
+		colsole.log( "e>", e )
+		console.log( "e>", e.originalEvent.dataTransfer.files )
+		
+		var files = filterFolder( e.originalEvent.dataTransfer );
+		
+		$(files).each( function() {
+			fileList.setFile( this )
+		})
+		
+		fileList.showFile();
+		
+	})
+	;	
+
 	
 	
 	
@@ -151,6 +166,13 @@ $(".file-drag")
 
 
 
+	$("#file-multiple").on("change", function(){
+			var files = this.files;
+			$(files).each(function(){
+				fileList.setFile( this )
+			})
+			fileList.showFile();
+		})
 
 
 
@@ -159,12 +181,62 @@ $(".file-drag")
 
 
 
-$(document)
-.on("click", ".file-item .btn-close", function(){
-	//console.log( 'idx> ', $(this).data("seq") )
-	fileList.removeFile( $(this).data("seq")  )
-	fileList.showFile()
-})
 
 
 
+	$(".file-delete").click(function() {
+			//선택했던 파일정보 삭제. 미리보기도 안보이게, 삭제버튼도 안보이게
+	//		var _info = $(this).closest(".file-info");
+	//		_info.find(".file-preview").empty();
+	//		_info.find("input[type=file]").val("");
+	//		$(this).addClass("d-none")
+			initFileInfo(  $(this) )
+		})
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	})
+
+
+
+
+
+
+	//선택했던 파일정보 삭제. 미리보기도 안보이게, 삭제버튼도 안보이게, 
+	function initFileInfo( tag ){
+		var _info = tag.closest(".file-info");
+		_info.find("input[type=file]").val(""); 		//선택한 파일정보 초기화
+		_info.find(".file-preview").empty(); 			//미리보기 이미지 안보이게
+		_info.find(".file-name").empty(); 				//선택한 파일명 안보이게
+		_info.find(".file-delete").addClass("d-none") 	//삭제버튼 안보이게
+	
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	$(document)
+	.on("click", ".file-item .btn-close", function(){
+		//console.log( 'idx> ', $(this).data("seq") )
+		fileList.removeFile( $(this).data("seq")  )
+		fileList.showFile()
+	})
+	
+	
+	
+	

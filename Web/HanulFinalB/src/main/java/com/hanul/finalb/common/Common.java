@@ -98,8 +98,8 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// 멀티파트 파일을 이용해 파일 객체 생성
-		java.io.File f = new java.io.File(multipartFile.getOriginalFilename());
+		// 멀티파트 파일을 이용해 파일 객체 생성, 임시 파일 생성
+		java.io.File f = new java.io.File("C://upload/"+multipartFile.getOriginalFilename());
 		multipartFile.transferTo(f);
 
 		// 구글 드라이브에서 제공하는 파일 객체 생성
@@ -113,6 +113,8 @@ public class Common {
 		// 드라이브 서비스를 이용하여 구글드라이브에 업로드 한다. File과 FileContent 객체를 같이 묶어서 전송하고, 전송 결과를
 		// File의 형태로 반환한다.
 		File file = service.files().create(fileMetaData, fileContent).execute();
+		//임시 파일을 삭제한다.
+		f.delete();
 		// 저장한 파일의 id 반환
 		return file.getId();
 	}

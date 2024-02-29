@@ -8,10 +8,35 @@
 		from product
 	</select>
 	<select id="info" resultType="prodVO">
-		select * 
-		from product 
-		where prod_id = ${id}
+		select *
+		from product
+		where prod_id =
+		${id}
 	</select>
+	<insert id="insert">
+		insert into product
+		(prod_name, detail, prod_img,
+		prod_img_id, price, stock)
+		values (#{prod_name}, #{detail,
+		jdbcType=VARCHAR},
+		#{prod_img, jdbcType=VARCHAR},#{prod_img_id,
+		jdbcType=VARCHAR},#{price}, #{stock})
+	</insert>
+	<update id="update">
+		update product
+		set prod_name=#{prod_name},
+		detail=#{detail, jdbcType=VARCHAR},
+		price=#{price}, stock=#{stock}
+		where prod_id = #{prod_id}
+	</update>
+	<update id="updateFile">
+		update product
+		set prod_img=#{prod_img, jdbcType=VARCHAR}, prod_img_id=#{prod_img_id, jdbcType=VARCHAR}
+		where prod_id = #{prod_id}
+	</update>
+	<delete id="delete">
+	
+	</delete>
 </mapper>
 
 

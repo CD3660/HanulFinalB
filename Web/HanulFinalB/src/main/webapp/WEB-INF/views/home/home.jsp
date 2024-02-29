@@ -171,7 +171,7 @@
 					<div class="image-holder mb-4 jarallax">
 					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
 					<i class="fa-solid fa-rocket"></i>   신제품</h2>
-						<img src="<c:url value='/images/prod_img/cctv.png'/>" alt="CCTV"
+						<img src="https://drive.google.com/thumbnail?sz=w640&id=15bGe2zAC8W03uiaqn8o6LWlQSZCUEzqw" alt="CCTV"
 							class="img-fluid jarallax-img">
 					</div>
 				</div>
@@ -284,7 +284,7 @@
 					<div class="card-item" id=dust>
 						<div class="card border-0 bg-transparent">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/${list[3].prod_img}'/>" alt="dust"
+								<img src="https://drive.google.com/thumbnail?sz=w640&id=166Kmc1kiv4RAH5PiVNy8ztvaY8rQFDo_" alt="dust"
 									class="post-image img-fluid">
 							</div>
 						</div>
@@ -305,7 +305,7 @@
 					<div class="card-item" id=fire>
 						<div class="card border-0">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/${list[1].prod_img}'/>" alt="fire"
+								<img src="https://drive.google.com/thumbnail?sz=w640&id=1MvdY33BMN8K0DwNwd_pOeYGjegiy5hx1" alt="fire"
 									class="post-image img-fluid">
 							</div>
 						</div>
@@ -326,7 +326,7 @@
 					<div class="card-item" id=gas a href="">
 						<div class="card border-0">
 							<div class="card-image">
-								<img src="<c:url value='/images/prod_img/${list[2].prod_img}'/>" alt="gas"
+								<img src="https://drive.google.com/thumbnail?sz=w640&id=1FCYrY0wyDu29-E9ZC2Zko65xT0V7Q2--" alt="gas"
 									class="post-image img-fluid"></a>
 							</div>
 						</div>
