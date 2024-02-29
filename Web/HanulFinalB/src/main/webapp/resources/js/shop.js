@@ -66,6 +66,17 @@ $("[name=detail]").keyup(function() {
 	tag.next("span").text(str.length);
 });
 
+//설명 글자수 제한하기
+$("[name=request_msg]").change(function() {
+	tag = $("[name=request_msg]");
+	var str = tag.val();
+	if (str.length > 50) {
+		alert("50글자 이내로 작성하세요");
+		str = str.substr(0, 50)
+		tag.val(str)
+	}
+});
+
 $("#btn-insert").click(function() {
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	if (isNaN($("[name=price]").val())) { alert("판매가가 숫자가 아닙니다."); return; }
@@ -159,3 +170,23 @@ $("#post").click(function() {
 	}).open();
 
 });
+
+//포트원 결제
+$("#pay").click(function() {
+	IMP.init('가맹점 식별코드');
+	IMP.request_pay({
+      pg: "kcp.{TC0ONETIME}",
+      pay_method: "card",
+      merchant_uid: "ORD20180131-0000011",   // 주문번호
+      name: "${prod.prod_name}",
+      amount: "${vo.ea}",                         // 숫자 타입
+      buyer_email: "gildong@gmail.com",
+      buyer_name: "홍길동",
+      buyer_tel: "010-4242-4242",
+      buyer_addr: "서울특별시 강남구 신사동",
+      buyer_postcode: "01181"
+    }, function (rsp) { // callback
+      //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+    });
+});
+

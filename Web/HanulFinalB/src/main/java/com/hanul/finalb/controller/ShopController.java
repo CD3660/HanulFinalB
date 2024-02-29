@@ -2,6 +2,8 @@ package com.hanul.finalb.controller;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberVO;
+import com.hanul.finalb.product.ProductService;
 import com.hanul.finalb.product.ProductVO;
 import com.hanul.finalb.shop.OrderVO;
 import com.hanul.finalb.shop.ShopService;
@@ -22,6 +25,8 @@ public class ShopController {
 
 	@Autowired
 	private ShopService service;
+	@Autowired
+	private ProductService prodService;
 	@Autowired
 	private Common comm;
 
@@ -50,9 +55,11 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/order")
-	public String order(Model model, OrderVO vo) {
-		model.addAttribute("vo", vo);
-		model.addAttribute("list", service.list());
+	public String order(Model model, OrderVO vo, ProductVO prod) {
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		vo.setProd(prodService.info(vo.getProd_id()));
+		list.add(vo);
+		model.addAttribute("list", list);
 		MemberVO login = new MemberVO();
 		login.setAdmin("Y");
 		login.setName("김한울");

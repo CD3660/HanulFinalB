@@ -39,4 +39,9 @@ public class ShopService {
 		
 		return sql.delete("prod.delete", id);
 	}
+	/** 주문 명세 생성 */
+	public int createCart(String user_id, int prod_id, int ea) {
+		
+		return 0;
+	}
 }

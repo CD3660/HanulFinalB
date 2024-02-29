@@ -3,13 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
-	<insert id="insert">
-		insert into product
-		(prod_name, detail, prod_img,
-		prod_img_id, price, stock)
-		values (#{prod_name}, #{detail,
-		jdbcType=VARCHAR},
-		#{prod_img, jdbcType=VARCHAR},#{prod_img_id,
-		jdbcType=VARCHAR},#{price}, #{stock})
+	<insert id="cart">
+		insert into order_info
+		(ADDRESS, EA, RECIEVER, REQUEST_MSG, PROD_ID, PHONE, PRICE)
+		values (#{address}, #{ea}, #{reciever}, #{request_msg}, #{prod_id}, #{phone}, (select price from product where prod_id=#{prod_id}))
 	</insert>
+	<select id="price">
+	select price from product where prod_id=#{prod_id}
+	</select>
 </mapper>
