@@ -58,6 +58,8 @@ public class ShopController {
 		login.setName("김한울");
 		login.setEmail("email@email.com");
 		login.setPhone("010-0000-0000");
+		login.setAddress("502502");
+		login.setAddress2("광주광역시 서구 농성동 271-4");
 		model.addAttribute("loginInfo", login);
 
 		return "shop/order";
