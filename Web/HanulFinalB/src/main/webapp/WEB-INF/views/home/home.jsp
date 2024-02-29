@@ -167,15 +167,15 @@
 	<section id="NewProduct">
 		<div class="container-fluid" style="margin-top: 5em;">
 			<div class="row align-items-center justify-content-between g-5">
-				<div class="col-lg-6">
-					<div class="image-holder mb-4 jarallax">
-					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
+				<div class="col-lg-5">
+					<div class="image-holder mb-4 justify-content-between">
+					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em; margin-bottom: 30px;">
 					<i class="fa-solid fa-rocket"></i>   신제품</h2>
 						<img src="https://drive.google.com/thumbnail?sz=w640&id=15bGe2zAC8W03uiaqn8o6LWlQSZCUEzqw" alt="CCTV"
-							class="img-fluid jarallax-img">
+							class="img-fluid position-relative" style="margin-left: 40px;">
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-7">
 					<div class="detail p-5">
 						<div class="display-header">
 							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>

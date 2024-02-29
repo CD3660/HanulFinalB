@@ -180,7 +180,9 @@ public class Common {
 			if( list== null ) list = new ArrayList<FileVO>();
 			FileVO vo = new FileVO();
 			vo.setFilename( file.getOriginalFilename() );
-			vo.setFilepath( fileUpload( file ));
+			String file_id = fileUpload(file);
+			vo.setFile_id(file_id);
+			vo.setFilepath(fileURL(file_id));
 			list.add(vo);
 		}
 		return list;
