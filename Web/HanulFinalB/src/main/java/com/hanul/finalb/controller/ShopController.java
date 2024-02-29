@@ -1,14 +1,9 @@
 package com.hanul.finalb.controller;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberVO;
@@ -20,21 +15,14 @@ import com.hanul.finalb.shop.ShopService;
 @RequestMapping("/shop")
 public class ShopController {
 
-	@Autowired
-	private ShopService service;
-	@Autowired
-	private Common comm;
-
+	@Autowired private ShopService service;
+	
 	@RequestMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.list());
-		MemberVO vo = new MemberVO();
-		vo.setAdmin("Y");
-		model.addAttribute("loginInfo", vo);
-
+		
 		return "shop/list";
 	}
-
 	@RequestMapping("/info")
 	public String info(Model model, int id) {
 		model.addAttribute("vo", service.info(id));

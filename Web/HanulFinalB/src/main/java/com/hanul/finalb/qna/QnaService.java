@@ -11,43 +11,45 @@ import com.hanul.finalb.common.PageVO;
 
 @Service
 public class QnaService {
-	@Autowired
-	private SqlSession sql;
-
-	// 신규 방명록 글 저장처리
+	@Autowired private SqlSession sql;
+	
+	
+	
+	//신규 방명록 글 저장처리
 	public int qna_register(QnaVO vo) {
-		int dml = sql.insert("qna.register", vo);
-		if (dml == 1 && vo.getFileList() != null) {
-
+		int dml= sql.insert("qna.register", vo);
+		if ( dml ==1 && vo.getFileList() != null) {
+			
 		}
 		return dml;
 	}
-
-	// 방명록 목록 조회
+	
+	
+	//방명록 목록 조회
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
 		page.setList(sql.selectList("qna.list", page));
-
+		
 		return page;
 	}
 	
-	//������ ����� ���� ��ȸ
+	//선택한 방명록 정보 조회
 	public QnaVO qna_info(int qna_id) {
 		QnaVO vo = sql.selectOne("qna.info", qna_id);
-		//÷�ε� �������� ��ȸ
+		//첨부된 파일정보 조회
 		vo.setFileList(sql.selectList("qna.fileList", qna_id));
 		
 		return vo;
 	}
 	
-	//����� ���� ��������ó��
+	//방명록 정보 변경저장처리
 	
-	//����� ���� ��ȸ�� ��������
+	//방명록 정보 조회수 변경저장
 	public int qna_read(int qna_id) {
 		return sql.update("qna.read", qna_id);
 	}
 	
-	//����� ���� ����ó��
+	//방명록 정보 삭제처리
 	public int qna_delete(int qna_id) {
 		return sql.delete("qna.delete", qna_id);
 	}
@@ -57,41 +59,34 @@ public class QnaService {
 	
 	
 	
-	//��� �������ó��
-	//��� ��������ó��
-	//��� ����ó��
-	//��� �����ȸ
+	//댓글 등록저장처리
+	//댓글 변경저장처리
+	//댓글 삭제처리
+	//댓글 목록조회
 	
 	
 	
 	
 	
 	
-	//���ϸ�� ��ȸ
-	public List<FileVO> qna_file_list(int qna_id) {	//qna�� qna_id
+	//파일목록 조회
+	public List<FileVO> qna_file_list(int qna_id) {	//qna의 qna_id
 		return sql.selectList("qna.fileList", qna_id);
 	}
 	
-	//�������� ��ȸ
-	public FileVO qna_file_info(int file_id) { //qna_file�� file_id
+	//파일정보 조회
+	public FileVO qna_file_info(int file_id) { //qna_file의 file_id
 		return sql.selectOne("qna.fileInfo", file_id);
 	}
 	
 	
 	
-	//���ϻ���
+	//파일삭제
 	
 	
 
-	// 방명록 정보 삭제처리
-
-	// 댓글 등록저장처리
-	// 댓글 변경저장처리
-	// 댓글 삭제처리
-	// 댓글 목록조회
-
-	// 파일목록 조회
-	// 파일정보 조회
-	// 파일삭제
-
+	
+	
+	
+	
 }
