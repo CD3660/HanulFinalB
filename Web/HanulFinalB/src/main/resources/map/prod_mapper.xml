@@ -35,7 +35,7 @@
 		where prod_id = #{prod_id}
 	</update>
 	<delete id="delete">
-	
+		delete from product where prod_id = #{prod_id}
 	</delete>
 </mapper>
 

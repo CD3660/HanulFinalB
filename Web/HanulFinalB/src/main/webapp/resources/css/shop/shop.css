@@ -76,3 +76,6 @@
 .insert table, .insert th, .insert td {
   border: 1px solid lightgray;
 }
+.bg-lightgray {
+	background-color: #ebebeb;
+}

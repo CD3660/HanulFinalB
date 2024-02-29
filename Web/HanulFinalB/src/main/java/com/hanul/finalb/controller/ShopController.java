@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberVO;
 import com.hanul.finalb.product.ProductVO;
+import com.hanul.finalb.shop.OrderVO;
 import com.hanul.finalb.shop.ShopService;
 
 @Controller
@@ -49,8 +50,15 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/order")
-	public String order(Model model, int prod_id, int ea) {
-		
+	public String order(Model model, OrderVO vo) {
+		model.addAttribute("vo", vo);
+		model.addAttribute("list", service.list());
+		MemberVO login = new MemberVO();
+		login.setAdmin("Y");
+		login.setName("김한울");
+		login.setEmail("email@email.com");
+		login.setPhone("010-0000-0000");
+		model.addAttribute("loginInfo", login);
 
 		return "shop/order";
 	}

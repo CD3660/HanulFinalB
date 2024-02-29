@@ -1,7 +1,5 @@
 package com.hanul.finalb.shop;
 
-
-
 import java.sql.Date;
 
 import lombok.Getter;
