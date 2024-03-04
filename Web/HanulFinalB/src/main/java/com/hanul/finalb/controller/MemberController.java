@@ -38,6 +38,12 @@ public class MemberController {
 
 		return "member/join";
 	}
+	@RequestMapping("/login")
+	public String Search(Model model) {
+
+		return "member/join";
+	}
+	
 	@RequestMapping("/userSearch")
 	public String userSearch(Model model) {
 

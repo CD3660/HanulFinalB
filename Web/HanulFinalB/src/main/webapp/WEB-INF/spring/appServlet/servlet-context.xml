@@ -49,7 +49,7 @@
 
 	
 		
-	<beans:bean id="multipartResolver"
+	<beans:bean id="differentMultipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
 	
 	

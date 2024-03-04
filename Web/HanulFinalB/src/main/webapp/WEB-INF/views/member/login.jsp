@@ -49,7 +49,7 @@
 							<div class="col pb-4 mx-auto">
 								<ul class="lgacc-tab">
 									<li class="tab-item"><a class="tab-link"
-										id="btn-search-id" href="javascript:void(0);">아이디 찾기</a></li>
+										id="btn-search-id" href="http://localhost:8080/finalb/member/userSearch">아이디 찾기</a></li>
 									<li class="tab-item"><a id="reset-password"
 										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
 								</ul>

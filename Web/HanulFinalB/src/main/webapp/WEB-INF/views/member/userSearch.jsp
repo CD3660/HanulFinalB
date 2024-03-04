@@ -7,10 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/css/member/userSearch.css'/>">
 </head>
 <body>
+	
+
+	
 	<div class="full">
 		<div class="container">
+		<div class="input-form col-md-12 mx-auto">
+				<div class="card shadow-2-strong p-3" style="border-radius: 1rem;">
 			<div class="area_inputs wow fadeIn">
 				<div class="sub_title font-weight-bold text-black">
 					<h3>아이디/비밀번호 찾기</h3>
@@ -75,6 +81,8 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		</div>
 	</div>
 	<script type="text/javascript">
 	//체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
@@ -88,23 +96,7 @@
 		}
 	}
 	
-	$(document).ready(function() {
-		/////////모///달///기///능///////////
-		// 1. 모달창 히든 불러오기
-		$('#searchBtn').click(function() {
-			$('#background_modal').show();
-		});
-		// 2. 모달창 닫기 버튼
-		$('.close').on('click', function() {
-			$('#background_modal').hide();
-		});
-		// 3. 모달창 위도우 클릭 시 닫기
-		$(window).on('click', function() {
-			if (event.target == $('#background_modal').get(0)) {
-	            $('#background_modal').hide();
-	         }
-		});
-	});
+
 	
 	// 아이디 & 스토어 값 저장하기 위한 변수
 	var idV = "";

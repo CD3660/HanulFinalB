@@ -24,4 +24,10 @@
 	<select id="loginPOST" resultType="com.hanul.finalb.member.MemberVO">
 		select * from users where user_id = #{user_id} 
 	</select>
+	<!-- 아이디 찾기 -->
+	<select id="searchId" resultType="String">
+		select users(user_id, 0) from user_id 
+        where name = #{name} and phone = #{phone} and user_key = 'Y'
+	</select>
+	
 </mapper>
