@@ -4,14 +4,25 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
+import com.hanul.finalb.common.Common;
 import com.hanul.finalb.product.ProductVO;
 
 @Service
+@PropertySource("classpath:db/conninfo.properties")
 public class ShopService {
 	@Autowired
 	private SqlSession sql;
+	@Autowired
+	private Common comm;
+	
+	@Value("${portone.key}")
+	String imp_key;
+	@Value("${portone.secret}")
+	String imp_secret;
 
 	/** 전체 상품 내용 조회 */
 	public List<ProductVO> list() {
@@ -43,5 +54,9 @@ public class ShopService {
 	public int createCart(String user_id, int prod_id, int ea) {
 		
 		return 0;
+	}
+	public void getToken() {
+		String result = comm.requestAPI("api.iamport.kr/users/getToken", "imp_key="+imp_key+"&imp_secret="+imp_secret);
+		System.out.println(result);
 	}
 }

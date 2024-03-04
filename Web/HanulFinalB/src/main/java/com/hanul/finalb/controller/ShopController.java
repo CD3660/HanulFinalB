@@ -56,6 +56,7 @@ public class ShopController {
 	
 	@RequestMapping("/order")
 	public String order(Model model, OrderVO vo, ProductVO prod) {
+		//service.getToken();
 		List<OrderVO> list = new ArrayList<OrderVO>();
 		vo.setProd(prodService.info(vo.getProd_id()));
 		list.add(vo);
@@ -68,6 +69,8 @@ public class ShopController {
 		login.setAddress("502502");
 		login.setAddress2("광주광역시 서구 농성동 271-4");
 		model.addAttribute("loginInfo", login);
+		model.addAttribute("totalPrice", vo.getProd().getPrice()*vo.getEa());
+		model.addAttribute("name", vo.getProd().getProd_name());
 
 		return "shop/order";
 	}
@@ -134,5 +137,4 @@ public class ShopController {
 
 		return comm.fileURL(id);
 	}
-	
 }

@@ -1,26 +1,22 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -142,6 +138,43 @@ public class Common {
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+		}
+		return apiURL;
+	}
+
+	/* *
+	 * POST로 API 요청 보내기 
+	 */
+	public String requestAPI(String apiURL, String postData) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setRequestProperty("Content-Length", Integer.toString(postData.length()));
+            con.setUseCaches(false);
+            try (DataOutputStream dos = new DataOutputStream(con.getOutputStream())) {
+                dos.writeBytes(postData);
+            }
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
 			if (responseCode == 200) { // 정상 호출

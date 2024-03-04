@@ -100,10 +100,27 @@
 							</td>
 						</tr>
 					</c:forEach>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
 				</table>
 			</div>
-			<div class="d-flex justify-content-center" style="width: 100%; border: 2px solid gray;">
-				총 <span class="me-2 ms-2 text-info">${fn:length(list) }</span> 건
+			<div class="d-flex justify-content-center p-3" style="width: 100%; border: 2px solid gray;">
+				총 <span class="me-2 ms-2 text-info fw-bold">${fn:length(list) }</span> 건
+			</div>
+			<h3 class="mt-3">최종결제 정보</h3>
+			<div class="mt-3 mb-3 p-2" style="width: 100%; border: 2px solid gray;">
+				<div class="d-flex justify-content-between align-items-end">
+					<div class="fw-bold">결제 예정액</div>
+					<div class="fw-bold"><span class="fw-bold text-danger fs-3">${totalPrice}</span>원</div>
+				</div>
+				<hr>
+				<div class="d-flex justify-content-between align-items-end m-3">
+					<div class="d-flex justify-content-center align-items-center" role="button" onclick="pay('tosspayments.iamporttest_3', 'toss')" style="border-radius: 25px; background-color: white;width: 100px; height: 50px"><img src='<c:url value="/images/shop/TossPayments_Logo_Simple_Primary.png"/>' style="width: 100px; height: 40px"/></div>
+					<div class="d-flex justify-content-center align-items-center" role="button" onclick="pay('kakaopay.TC0ONETIME', 'kakao')" style="width: 100px; height: 50px"><img src='<c:url value="/images/shop/payment_icon_yellow_small.png"/>' style="width: 100px; height: 40px"/></div>
+					<div class="d-flex justify-content-center align-items-center" role="button" onclick="pay('tosspay.tosstest', 'tosspay')" style="border-radius: 25px; background-color: white;width: 100px; height: 50px"><img src='<c:url value="/images/shop/logo-toss-pay.png"/>' style="width: 80px; height: 20px;"/></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -111,3 +128,35 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src='<c:url value="/js/shop.js"/>'></script>
+<script type="text/javascript">
+IMP.init('imp75188550');
+var today = new Date();   
+var hours = today.getHours(); // 시
+var minutes = today.getMinutes();  // 분
+var seconds = today.getSeconds();  // 초
+var milliseconds = today.getMilliseconds();
+var makeMerchantUid = hours +""+  minutes + seconds + milliseconds;
+
+
+function pay(pg, uid) {
+	IMP.request_pay({
+	      pg: pg,
+	      pay_method: "card",
+	      merchant_uid: uid+makeMerchantUid,   // 주문번호
+	      name: "${name}",
+	      amount: "${totalPrice}",                         // 숫자 타입
+	      buyer_email: "${loginInfo.email}",
+	      buyer_name: "${loginInfo.name}",
+	      buyer_tel: "${loginInfo.phone}",
+	      buyer_addr: "${loginInfo.address2}",
+	      buyer_postcode: "${loginInfo.address}"
+	    }, function (rsp) { // callback
+	    	console.log(rsp);
+	    	if (rsp.success) {   
+	    	      
+	    	} else {
+	    	      
+	    	}
+	    });
+}
+</script>
