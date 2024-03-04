@@ -8,10 +8,9 @@
 		from product
 	</select>
 	<select id="info" resultType="prodVO">
-		select *
-		from product
-		where prod_id =
-		${id}
+		select * 
+		from product 
+		where prod_id = ${id}
 	</select>
 	<insert id="insert">
 		insert into product
@@ -35,7 +34,7 @@
 		where prod_id = #{prod_id}
 	</update>
 	<delete id="delete">
-	
+		delete from product where prod_id = #{prod_id}
 	</delete>
 </mapper>
 

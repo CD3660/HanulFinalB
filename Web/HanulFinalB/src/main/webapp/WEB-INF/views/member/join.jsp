@@ -9,7 +9,6 @@
 <title>회원가입</title>
 
 <link rel="stylesheet" href="<c:url value='/css/member/join.css'/>">
-
 </head>
 <body>
 	<div class="container">
@@ -84,7 +83,6 @@
 						<div class="mb-4"></div>
 
 						<button class="btn btn-primary btn-lg btn-block" type="submit"
-						
 							id = join-btn style="float: right; margin-left: 10px;">가입 완료</button>
 
 						<a href="http://localhost:8080/finalb/member/login"
@@ -120,8 +118,6 @@
 				}
 			}).open();
 		}
-		
-		
 	</script>
 </body>
 </html>
