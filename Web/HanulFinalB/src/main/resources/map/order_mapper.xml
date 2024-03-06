@@ -11,4 +11,16 @@
 	<select id="price">
 	select price from product where prod_id=#{prod_id}
 	</select>
+	<insert id="payNow">
+		insert into order_info
+		(USER_ID,EA, PROD_ID, PRICE, PAY_NOW)
+		values (,#{ea}, #{prod_id}, (select price from product where prod_id=#{prod_id}), 'Y')
+	</insert>
+	<select id="findPayNow" resultType="orderVO">
+		SELECT *
+		FROM order_info
+		where user_id = #{user_id} and pay_now = 'Y'
+		ORDER BY your_date_column DESC
+		LIMIT 1;
+	</select>
 </mapper>

@@ -3,7 +3,9 @@ package com.hanul.finalb.controller;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,13 @@ public class ShopController {
 	private ProductService prodService;
 	@Autowired
 	private Common comm;
-
+	
+	@ResponseBody
+	@RequestMapping("/token")
+	public String token() {
+		return service.getToken();
+	}
+	
 	@RequestMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.list());
@@ -61,6 +69,17 @@ public class ShopController {
 		vo.setProd(prodService.info(vo.getProd_id()));
 		list.add(vo);
 		model.addAttribute("list", list);
+		
+		model.addAttribute("loginInfo", tempLogin());
+		model.addAttribute("totalPrice", vo.getProd().getPrice()*vo.getEa());
+		String uid = UUID.randomUUID().toString();
+		model.addAttribute("uid", uid);
+		model.addAttribute("name", vo.getProd().getProd_name());
+		service.prepare(uid, vo.getProd().getPrice()*vo.getEa()) ;
+
+		return "shop/order";
+	}
+	public MemberVO tempLogin() {
 		MemberVO login = new MemberVO();
 		login.setAdmin("Y");
 		login.setName("김한울");
@@ -68,11 +87,14 @@ public class ShopController {
 		login.setPhone("010-0000-0000");
 		login.setAddress("502502");
 		login.setAddress2("광주광역시 서구 농성동 271-4");
-		model.addAttribute("loginInfo", login);
-		model.addAttribute("totalPrice", vo.getProd().getPrice()*vo.getEa());
-		model.addAttribute("name", vo.getProd().getProd_name());
+		return login;
+	}
+	@ResponseBody
+	@RequestMapping("/pay")
+	public String pay(Model model, OrderVO vo, ProductVO prod) {
+		
 
-		return "shop/order";
+		return service.paymentsCheck(vo.getImp_uid());
 	}
 
 	@RequestMapping("/insertPage")

@@ -130,19 +130,12 @@
 <script src='<c:url value="/js/shop.js"/>'></script>
 <script type="text/javascript">
 IMP.init('imp75188550');
-var today = new Date();   
-var hours = today.getHours(); // 시
-var minutes = today.getMinutes();  // 분
-var seconds = today.getSeconds();  // 초
-var milliseconds = today.getMilliseconds();
-var makeMerchantUid = hours +""+  minutes + seconds + milliseconds;
-
 
 function pay(pg, uid) {
 	IMP.request_pay({
 	      pg: pg,
 	      pay_method: "card",
-	      merchant_uid: uid+makeMerchantUid,   // 주문번호
+	      merchant_uid: "${uid}",   // 주문번호
 	      name: "${name}",
 	      amount: "${totalPrice}",                         // 숫자 타입
 	      buyer_email: "${loginInfo.email}",
@@ -153,9 +146,9 @@ function pay(pg, uid) {
 	    }, function (rsp) { // callback
 	    	console.log(rsp);
 	    	if (rsp.success) {   
-	    	      
+	    	      location = "pay?imp_uid="+rsp.imp_uid+"&merchant_uid=${uid}";
 	    	} else {
-	    	      
+	    		if(rsp.error_code=='F1002') alert("결제 정보가 일치하지 않습니다.");
 	    	}
 	    });
 }

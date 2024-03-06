@@ -1,6 +1,8 @@
 package com.hanul.finalb.shop;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.product.ProductVO;
 
@@ -50,13 +54,34 @@ public class ShopService {
 		
 		return sql.delete("prod.delete", id);
 	}
+	/** 즉시 구매하기 위한 주문정보 레코드 생성 */
+	public OrderVO payNow(OrderVO vo) {
+		int result = sql.insert("order.payNow", vo);
+		if(result == 1) {
+			vo = sql.selectOne("order.findPayNow", vo);
+		}
+		return vo;
+	}
 	/** 주문 명세 생성 */
 	public int createCart(String user_id, int prod_id, int ea) {
 		
 		return 0;
 	}
-	public void getToken() {
-		String result = comm.requestAPI("api.iamport.kr/users/getToken", "imp_key="+imp_key+"&imp_secret="+imp_secret);
+	public String getToken() {
+		String result = comm.requestAPI("https://api.iamport.kr/users/getToken", "imp_key="+imp_key+"&imp_secret="+imp_secret);
 		System.out.println(result);
+		Map<String, Object> map = new Gson().fromJson(result, new TypeToken<Map<String,Object>>(){}.getType());
+		Map<String, Object> response = (Map<String, Object>) map.get("response");
+		String token = (String) response.get("access_token");
+		return token;
+	}
+	public String prepare(String uid, int amount) {
+		String result = comm.portone("https://api.iamport.kr/payments/prepare", "merchant_uid="+uid+"&amount="+amount , getToken());
+		return result;
+	}
+	public String paymentsCheck(String uid) {
+		String result = comm.portone("https://api.iamport.kr/payments/"+uid, getToken());
+		System.out.println(result);
+		return result;
 	}
 }

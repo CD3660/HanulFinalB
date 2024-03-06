@@ -1,30 +1,18 @@
 package com.hanul.finalb;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hanul.finalb.shop.ShopService;
 
 public class test {
 
+	
 	@Test
-	public void test() {
-		java.io.File f = new java.io.File("src/main/webapp/resources/images/prod_img/cctv.png");
-		System.out.println(f.getAbsoluteFile());
+	public void testMethod() {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	@Test
-	public void join() {
-		
 
-		
-		
-		
-	}
 	
 
 }

@@ -160,7 +160,7 @@ public class Common {
 		return apiURL;
 	}
 
-	/* *
+	/**
 	 * POST로 API 요청 보내기 
 	 */
 	public String requestAPI(String apiURL, String postData) {
@@ -193,6 +193,76 @@ public class Common {
 			}
 		} catch (Exception e) {
 			// Exception 로깅
+			System.out.println(e.getMessage());
+		}
+		return apiURL;
+	}
+	/**
+	 * GET으로 portone API 요청 보내기 
+	 */
+	public String portone(String apiURL, String token) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Authorization", "Bearer "+token);
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+			System.out.println(e.getMessage());
+		}
+		return apiURL;
+	}
+	/**
+	 * POST로 portone API 요청 보내기 
+	 */
+	public String portone(String apiURL, String postData, String token) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setRequestProperty("Content-Length", Integer.toString(postData.length()));
+            con.setRequestProperty("Authorization", "Bearer "+token);
+            con.setUseCaches(false);
+            try (DataOutputStream dos = new DataOutputStream(con.getOutputStream())) {
+                dos.writeBytes(postData);
+            }
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+			System.out.println(e.getMessage());
 		}
 		return apiURL;
 	}
