@@ -90,23 +90,22 @@ function FileList() {
 	
 	
 	
-	this.showFile = function() {
-		var tag = ""
-		if( this.files.length > 0 ) { //파일목록에 파일이 있는 경우
-			for(i=0; i<this.files.length; i++) {
+	this.showFile = function(){
+		var tag = "";
+		if( this.files.length > 0 ){ //파일목록에 파일이 있는 경우
+			for(i=0; i<this.files.length; i++){
 				tag += `
-					<div class="file-item d flex gap-2">
+					<div class="file-item d-flex gap-2 my-1">
 						<button type="button" class="btn-close small" data-seq="${i}"></button>
 						<span>${ this.files[i].name }</span>
 					</div>
 				`;
-				
 			}
 		}else{
-		
+			tag = `<div class="py-3 text-center">첨부할 파일을 마우스로 끌어 오세요</div>`
 		}
 		$(".file-drag").html( tag );
-		console.log(">>  ", this )
+		console.log(">> ", this)		
 	}
 
 
@@ -117,6 +116,28 @@ function FileList() {
 
 
 
+
+
+
+	//폴더 제한하기
+	function filterFolder( transfer ) {
+	var files = [], folder = false;
+	for( i = 0; i<transfer.items.length; i++) {
+		var entry = transfer.items[i].webkitGetAsEntry();
+		
+	}	
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 
 
 
@@ -133,23 +154,27 @@ $(function() {
 
 	//드래그 앤 드롭
 	$(".file-drag")
-	.on("dragover dragleave drop", function(e) {
-		e.preventDefault();
+	.on("dragover dragleave drop", function(e){
+		e.preventDefault(); // 드롭을 허용하기 위해 기본 동작 취소
+		
+		//드래그 오버시 입력태그에 커서 있을때처럼 적용하기
+		if( e.type == "dragover" ) 	$(this).addClass("drag-over");
+		else 						$(this).removeClass("drag-over");
+		
 	})
 	
 	.on("drop", function(e){
-		colsole.log( "e>", e )
+		console.log( "e>", e )
 		console.log( "e>", e.originalEvent.dataTransfer.files )
-		
 		var files = filterFolder( e.originalEvent.dataTransfer );
-		
-		$(files).each( function() {
+		 
+		$(files).each(function(){
 			fileList.setFile( this )
 		})
-		
-		fileList.showFile();
-		
+		console.log( 'fileList> ', fileList )
+		fileList.showFile(); //끌어온 파일목록 보이게
 	})
+	
 	;	
 
 	
@@ -236,6 +261,10 @@ $(function() {
 		fileList.removeFile( $(this).data("seq")  )
 		fileList.showFile()
 	})
+	
+	
+	
+	
 	
 	
 	

@@ -18,7 +18,7 @@
 .shop-item:hover {
 	border: 1px solid;
 	border-color: lightgray;
-	box-shadow: 0 0 5px rgba(100, 100, 100, 0.5); /* ¸ðµç ¹æÇâÀ¸·Î µ¿ÀÏÇÑ ±×¸²ÀÚ */
+	box-shadow: 0 0 5px rgba(100, 100, 100, 0.5); /* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ */
 	cursor: pointer;
 	transition: 0.3s;
 }
@@ -75,4 +75,7 @@
 }
 .insert table, .insert th, .insert td {
   border: 1px solid lightgray;
+}
+.bg-lightgray {
+	background-color: #ebebeb;
 }

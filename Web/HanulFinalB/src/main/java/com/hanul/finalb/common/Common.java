@@ -1,12 +1,12 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -30,7 +29,6 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.FileContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -39,6 +37,8 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
+
+
 
 @Service
 @PropertySource("classpath:db/conninfo.properties")
@@ -98,8 +98,8 @@ public class Common {
 		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
 				.setApplicationName(APPLICATION_NAME).build();
 
-		// 멀티파트 파일을 이용해 파일 객체 생성, 임시 파일 생성
-		java.io.File f = new java.io.File("C://upload/"+multipartFile.getOriginalFilename());
+		// 멀티파트 파일을 이용해 파일 객체 생성
+		java.io.File f = new java.io.File(multipartFile.getOriginalFilename());
 		multipartFile.transferTo(f);
 
 		// 구글 드라이브에서 제공하는 파일 객체 생성
@@ -113,8 +113,6 @@ public class Common {
 		// 드라이브 서비스를 이용하여 구글드라이브에 업로드 한다. File과 FileContent 객체를 같이 묶어서 전송하고, 전송 결과를
 		// File의 형태로 반환한다.
 		File file = service.files().create(fileMetaData, fileContent).execute();
-		//임시 파일을 삭제한다.
-		f.delete();
 		// 저장한 파일의 id 반환
 		return file.getId();
 	}
@@ -133,41 +131,12 @@ public class Common {
 	}
 
 	/**
-	 * 파일 아이디로 구글드라이브 저장된 파일 다운로드
-	 */
-	public void fileDownload(FileVO vo, HttpServletRequest req, HttpServletResponse resp) throws GeneralSecurityException, IOException {
-		// Build a new authorized API client service.
-		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-				.setApplicationName(APPLICATION_NAME).build();
-
-		// id를 받아와서 구글드라이브 파일 삭제
-		try {
-			//구글드리이브에서 바이너리 데이터를 받는 부분
-			OutputStream outputStream = new ByteArrayOutputStream();
-			service.files().get(vo.getFile_id()).executeMediaAndDownloadTo(outputStream);
-			
-			//바이너리 데이터를 바이트 배열로 바꾸고 응답 객체에 담아서 반환하기
-			ByteArrayOutputStream byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
-			String filename = URLEncoder.encode(vo.getFilename(), "utf-8");
-			resp.setContentType(req.getSession().getServletContext().getMimeType(filename));
-			resp.setHeader("content-disposition", "attachment; filename=" + filename);
-			FileCopyUtils.copy(byteArrayOutputStream.toByteArray(), resp.getOutputStream());
-			
-		} catch (GoogleJsonResponseException e) {
-			// TODO(developer) - handle error appropriately
-			System.err.println("Unable to move file: " + e.getDetails());
-			throw e;
-		}
-	}
-
-	/**
 	 * HTML의 img 태그의 src에 들어갈 수 있는 형태의 URL을 반환
 	 */
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
 	}
-
+	
 	public String requestAPI(String apiURL) {
 		try {
 			URL url = new URL(apiURL);
@@ -194,4 +163,111 @@ public class Common {
 		}
 		return apiURL;
 	}
+	
+	
+	
+	
+	
+	
+	
+	//다중 파일업로드
+	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
+			HttpServletRequest request) throws GeneralSecurityException, IOException {
+
+		ArrayList<FileVO> list = null;
+		for( MultipartFile file: files ) {
+			if( file.isEmpty() ) continue;
+			if( list== null ) list = new ArrayList<FileVO>();
+			FileVO vo = new FileVO();
+			vo.setFilename( file.getOriginalFilename() );
+			vo.setFilepath( fileUpload( file ));
+			list.add(vo);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/* 구굴 드라이버로 사용
+	 * 
+	 * 
+	 * //단일 파일업로드 public String fileUpload (String category, MultipartFile file,
+	 * HttpServletRequest request ) {
+	 * 
+	 * String upload = "d://app/upload/" + category + new
+	 * SimpleDateFormat("/yyyy/MM/dd").format(new Date());
+	 * 
+	 * 
+	 * //해당 폴더가 있는지 확인해서 폴더가 없다면 폴더 만들기 java.io.File dir = new java.io.File( upload
+	 * ); if( ! dir.exists() ) dir.mkdirs();
+	 * 
+	 * 
+	 * //업로드할 파일명을 String filename = UUID.randomUUID().toString() + "." +
+	 * StringUtils.getFilenameExtension( file.getOriginalFilename()) ;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * try { file.transferTo(new java.io.File(upload, filename));
+	 * 
+	 * }catch(Exception e) {
+	 * 
+	 * }
+	 * 
+	 * 
+	 * return upload.replace("d://app/upload", fileURL(request)) + filename;
+	 * 
+	 * }
+	 */
+	
+	
+	
+
+	
+	
+//	구굴 드라이버로 사용
+//
+//	//파일서비스받을 URL
+//	public String fileURL(HttpServletRequest request) {
+//	  StringBuffer url = new StringBuffer("http://");
+//	  url.append(request.getServerName()).append(":");
+//	  url.append(request.getServerPort());
+//	  url.append("/file");
+//	  
+//	  return url.toString(); 
+//	}
+	
+	
+	
+	
+//	구굴 드라이버로 사용
+//	
+//	파일다운로드
+//	public void fileDownload(String filename, String filepath, HttpServletRequest request,
+//			HttpServletResponse response) throws FileNotFoundException, IOException {
+//		
+//	
+//	filepath = filepath.replace( fileURL(request), "d://app/upload");
+//	java.io.File file = new java.io.File( filepath );
+//	
+//	
+//	response.setContentType( request.getSession().getServletContext().getMimeType(filename));
+//	
+//	filename = URLEncoder.encode(filename, "utf-8");
+//	
+//	response.setHeader("content-disposition", "attachment; filename=" + filename);
+//	FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
+//	
+//	}
+	
+	
+	
+	
+	
 }
