@@ -33,11 +33,24 @@ public class QnaController {
 	
 	//방명록 수정저장처리 요청
 	@RequestMapping("/update")
-	public String update(QnaVO vo, PageVO page, MultipartFile file
+	public String update(QnaVO vo, FileVO filevo, PageVO page, MultipartFile file
 			, HttpServletRequest request ) throws Exception {
 	
+		//원래 글정보를 조회
+		QnaVO qna = service.qna_info(vo.getQna_id());
+		
+		//첨부파일이 없는 경우
+		if( file.isEmpty() ) {
+			//원래부터X -> 그대로
+			//원래O -> 그대로 : 원래DB의 파일정보를 담아야 한다
+			if( ! vo.getFileList().isEmpty() ) { // 수정하는 글인 vo에 파일이 있다면 
+				vo.setFileList( qna.getFileList() );  //**********************************************
+			
+			}
+		}
 		
 		
+		//첨부파일이 있는 경우
 		
 		
 		
