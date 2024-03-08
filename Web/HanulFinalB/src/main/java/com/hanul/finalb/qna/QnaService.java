@@ -89,4 +89,17 @@ public class QnaService {
 	
 	
 	
+	
+	
+	
+	
+	//신규답글저장
+	public int qna_replyRegister(QnaVO vo) {
+		return sql.insert("qna.replyRegister", vo);
+	}
+	
+	
+	
+	
+	
 }

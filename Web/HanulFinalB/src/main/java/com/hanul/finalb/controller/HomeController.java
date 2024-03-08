@@ -33,7 +33,7 @@ public class HomeController {
 	public String home(Model model, HttpSession session) {
 		
 		//테스트용 임시 로그인 처리---------------------------
-		String user_id = "hanul";
+		String user_id = "admin";
 		MemberVO vo = member.member_info(user_id);
 		session.setAttribute("loginInfo", vo);
 		

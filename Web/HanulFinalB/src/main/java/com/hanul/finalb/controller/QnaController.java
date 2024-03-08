@@ -1,6 +1,8 @@
 package com.hanul.finalb.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.util.List;
 
@@ -30,6 +32,17 @@ public class QnaController {
 
 	
 	//방명록 수정저장처리 요청
+	@RequestMapping("/update")
+	public String update(QnaVO vo, PageVO page, MultipartFile file
+			, HttpServletRequest request ) throws Exception {
+	
+		
+		
+		
+		
+		
+		return "";
+	}
 	
 	
 	//방명록 수정화면 요청
@@ -75,6 +88,14 @@ public class QnaController {
 	
 	
 	
+	
+	//방명록 신규등록화면 요청
+	@RequestMapping("/register")
+	public String register() {
+		return "qna/register";
+	}
+	
+	
 	//방명록 신규등록처리 요청
 	@RequestMapping("/insert")
 	public String insert(QnaVO vo, MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
@@ -88,15 +109,7 @@ public class QnaController {
 		
 	}
 	
-	
-	
-	
-	
-	//방명록 신규등록화면 요청
-	@RequestMapping("/register")
-	public String register() {
-		return "qna/register";
-	}
+
 	
 	//방명록 목록화면 조회
 	@RequestMapping("/list")
@@ -157,6 +170,32 @@ public class QnaController {
 	
 	
 	
+	
+ 	//답글쓰기화면 요청
+	@RequestMapping("/reply")
+	public String reply(int qna_id, PageVO page, Model model) {
+		 //원글정보를 조회해와 답글화면에 사용할 수 있도록 Model에 담기
+		 model.addAttribute("vo", service.qna_info(qna_id)); // 원글의 qna_id와 원글의 정보
+		 model.addAttribute("page", page); //원글의 PageVO 정보
+	 
+		 return "qna/reply";
+	 }
+	
+	
+	  
+	  
+	//답글저장처리 요청
+	@RequestMapping("/replyInsert")
+	public String replyInsert(QnaVO vo, PageVO page) throws UnsupportedEncodingException {
+		
+		
+		service.qna_replyRegister(vo); // -> 새로운 qna_id가 생성됨
+		
+		//답글의 위치와 상관없이 원글의 curPage로 이동 
+		return "redirect:list?curPage="+ page.getCurPage() + "&search=" + page.getSearch()
+							+ "&keyword=" + URLEncoder.encode( page.getKeyword(), "utf-8") ;
+		
+	}
 	
 	
 	
