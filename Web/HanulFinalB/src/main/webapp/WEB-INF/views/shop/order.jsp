@@ -29,7 +29,7 @@
 				</tr>
 			</table>
 			<h4>배송 정보</h4>
-			<form>
+			<form method="post" action="pay">
 				<table class="m-3"
 					style="width: 100%; border-bottom: 1px solid gray; border-top: 1px solid gray;">
 					<colgroup>
@@ -47,14 +47,14 @@
 						<td class="fw-bold p-2 bg-lightgray">배송 주소</td>
 						<td class="p-2">
 							<div class="d-flex mb-2">
-								<input class="form-control t-readonly me-2" type="text" name="address" value="${loginInfo.address }" style="outline:none;width:150px;" required readonly>
+								<input class="form-control t-readonly me-2" type="text" name="post" value="${loginInfo.address }" style="outline:none;width:150px;" required readonly>
 								<button class="btn btn-primary" id="post" type="button">우편번호 검색</button>
 							</div>
 							<div class="d-flex mb-2">
-								<input class="form-control t-readonly" type="text" name="address2-1" value="${loginInfo.address2 }" style="outline:none;width:400px;" required readonly>
+								<input class="form-control t-readonly" type="text" name="address2_1" value="${loginInfo.address2 }" style="outline:none;width:400px;" required readonly>
 							</div>
 							<div class="d-flex">
-								<input class="form-control" type="text" name="address2-2" value="" required>
+								<input class="form-control" type="text" name="address2_2" value="" required>
 							</div>
 						</td>
 					</tr>
@@ -62,7 +62,7 @@
 						<td class="fw-bold p-2 bg-lightgray" style="height: 50px;">핸드폰번호</td>
 						<td class="p-2">
 							<input type="text" style="width:150px;" class="form-control"
-							name="tel" value="${loginInfo.phone }" required>
+							name="phone" value="${loginInfo.phone }" required>
 						</td>
 					</tr>
 					<tr>
@@ -86,16 +86,16 @@
 					<c:forEach items="${list}" var="vo">
 						<tr style="height: 80px">
 							<td class="d-flex justify-content-center align-items-center" style="height: 80px">
-								<img src="${vo.prod.prod_img}" style="max-width: 80px; max-height: 80px">
+								<img src="${vo.prod_img}" style="max-width: 80px; max-height: 80px">
 							</td>
 							<td class="left-align" style="height: 80px;">
-								<div><span class="fw-bold">${vo.prod.prod_name}</span></div>
+								<div><span class="fw-bold">${vo.prod_name}</span></div>
 								<div style="margin:5px 0 5px 0;overflow:hidden;height:1px; border-top: #DDD 1px solid;">
 								</div>
 		                        <div>
-		                            <span>${vo.prod.price}원</span>
+		                            <span>${vo.price}원</span>
 		                            <span> / ${vo.ea}개</span>
-		                            <span class="span-goods-total-price">${vo.prod.price*vo.ea}원</span>
+		                            <span class="span-goods-total-price">${vo.price*vo.ea}원</span>
 		                        </div>
 							</td>
 						</tr>
@@ -145,8 +145,32 @@ function pay(pg, uid) {
 	      buyer_postcode: "${loginInfo.address}"
 	    }, function (rsp) { // callback
 	    	console.log(rsp);
-	    	if (rsp.success) {   
-	    	      location = "pay?imp_uid="+rsp.imp_uid+"&merchant_uid=${uid}";
+	    	if (rsp.success) {
+	    		$.ajax({
+	    			url:"pay",
+	    			data:{
+	    				amount:"${totalPrice}",
+	    				imp_uid:rsp.imp_uid,
+	    				merchant_uid:"${uid}",
+	    				user_id:"${loginInfo.user_id}",
+	    				order_id:"${order_id}",
+	    				reciever:$("[name=reciever]").val(),
+	    				post:$("[name=post]").val(),
+	    				address2_1:$("[name=address2_1]").val(),
+	    				address2_2:$("[name=address2_2]").val(),
+	    				phone:$("[name=phone]").val(),
+	    				request_msg:$("[name=request_msg]").val(),
+	    			}
+	    		}).done(function(resp) {
+	    			console.log(resp);
+					if(resp=='success'){
+						alert("결제 완료");
+						location="list";
+					} else {
+						alert("오류 발생");
+						location="order?prod_id=${order.prod_id}&ea=${order.ea}"
+					}
+				});
 	    	} else {
 	    		if(rsp.error_code=='F1002') alert("결제 정보가 일치하지 않습니다.");
 	    	}

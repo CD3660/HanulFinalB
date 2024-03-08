@@ -54,18 +54,33 @@ public class ShopService {
 		
 		return sql.delete("prod.delete", id);
 	}
-	/** 즉시 구매하기 위한 주문정보 레코드 생성 */
-	public OrderVO payNow(OrderVO vo) {
-		int result = sql.insert("order.payNow", vo);
-		if(result == 1) {
-			vo = sql.selectOne("order.findPayNow", vo);
-		}
-		return vo;
+	/** 즉시 구매하기 위한 주문정보 VO 생성 */
+	public void payNow(OrderVO vo) {
+		OrderVO temp = sql.selectOne("order.prod_info", vo);
+		vo.setPrice(temp.getPrice());
+		vo.setProd_name(temp.getProd_name());
+		vo.setProd_img(temp.getProd_img());
+		sql.insert("order.payNowOrder", vo);
+		vo.setOrder_id(sql.selectOne("order.payNowId", vo)+"");
 	}
 	/** 주문 명세 생성 */
-	public int createCart(String user_id, int prod_id, int ea) {
+	public int createCart(OrderVO vo) {
 		
-		return 0;
+		return sql.insert("order.to_cart", vo);
+	}
+	/** user_id로 카트 리스트 반환 */
+	public List<OrderVO> cartList(String user_id) {
+		
+		return sql.selectList("order.cartList", user_id);
+	}
+	/** 주문 명세 생성 */
+	public int insertPayments(PaymentVO vo) {
+		int result = sql.insert("order.payments",vo);
+		if(result == 1) {
+			sql.update("order.endPayment", vo);
+			
+		}
+		return result;
 	}
 	public String getToken() {
 		String result = comm.requestAPI("https://api.iamport.kr/users/getToken", "imp_key="+imp_key+"&imp_secret="+imp_secret);

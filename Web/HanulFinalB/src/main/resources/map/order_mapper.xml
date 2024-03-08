@@ -4,23 +4,40 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
 	<insert id="cart">
-		insert into order_info
+		<!-- insert into order_info
 		(ADDRESS, EA, RECIEVER, REQUEST_MSG, PROD_ID, PHONE, PRICE)
-		values (#{address}, #{ea}, #{reciever}, #{request_msg}, #{prod_id}, #{phone}, (select price from product where prod_id=#{prod_id}))
+		values (#{address}, #{ea}, #{reciever}, #{request_msg}, #{prod_id}, #{phone}, (select price from product where prod_id=#{prod_id})) -->
 	</insert>
-	<select id="price">
-	select price from product where prod_id=#{prod_id}
+	<select id="prod_info" resultType="OrderVO">
+		select price, prod_name, prod_img from product where prod_id=#{prod_id}
 	</select>
-	<insert id="payNow">
+	<select id="cartList" resultType="OrderVO">
+		select * from order_info where user_id = #{user_id} and imp_uid is null 
+	</select>
+	<select id="payNowId" resultType="integer">
+		select order_id 
+		from order_info 
+		where user_id = #{user_id} 
+			and pay_now = 'Y'
+		order by order_id desc
+		FETCH FIRST 1 ROW ONLY
+	</select>
+	<insert id="payNowOrder">
 		insert into order_info
-		(USER_ID,EA, PROD_ID, PRICE, PAY_NOW)
-		values (,#{ea}, #{prod_id}, (select price from product where prod_id=#{prod_id}), 'Y')
+		( EA, PROD_ID, USER_ID, PAY_NOW)
+		values (#{ea}, #{prod_id}, #{user_id}, 'Y')
 	</insert>
-	<select id="findPayNow" resultType="orderVO">
-		SELECT *
-		FROM order_info
-		where user_id = #{user_id} and pay_now = 'Y'
-		ORDER BY your_date_column DESC
-		LIMIT 1;
-	</select>
+	<insert id="to_cart">
+		insert into order_info
+		( EA, PROD_ID, USER_ID)
+		values (#{ea}, #{prod_id}, #{user_id})
+	</insert>
+	<insert id="payments">
+		insert into payments
+		(AMOUNT, RECIEVER, ADDRESS, PHONE, IMP_UID, MERCHANT_UID, REQUEST_MSG, USER_ID, POST)
+		values (#{amount}, #{reciever}, #{address}, #{phone}, #{imp_uid}, #{merchant_uid}, #{request_msg}, #{user_id}, #{post})
+	</insert>
+	<update id="endPayment">
+		update order_info set IMP_UID = #{imp_uid} where ORDER_ID in ${order_id}
+	</update>
 </mapper>
