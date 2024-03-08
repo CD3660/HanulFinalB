@@ -9,6 +9,7 @@ public class MemberService {
 
 	@Autowired
 	private SqlSession sql;
+	
 
 	public void memberJoin(MemberVO member) {
 
@@ -16,8 +17,22 @@ public class MemberService {
 
 	}
 	
+	public int idCheck(String id) {
+		
+		return sql.selectOne("idCheck", id);
+	}
 	
 	
+	public MemberVO login(String id) {
+		
+		return sql.selectOne("login", id);
+	}
+	@Autowired
+	 private MemberDAO memberDAO;
+
+	    public String findIdByEmail(String email) {
+	        return memberDAO.findIdByEmail(email);
+	    }
 	
 	
 	
