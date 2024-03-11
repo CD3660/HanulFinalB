@@ -17,5 +17,13 @@ public class QnaVO {
 	
 	private List<FileVO> fileList;
 	
+	
+	
+	
+	
+	private int root, step, indent, rid;
 
+	
+	
+	private String filename, filepath;
 }

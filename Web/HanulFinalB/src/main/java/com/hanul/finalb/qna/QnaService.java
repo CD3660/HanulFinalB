@@ -42,7 +42,16 @@ public class QnaService {
 		return vo;
 	}
 	
+	
+	
 	//방명록 정보 변경저장처리
+	public int qna_update(QnaVO vo) {
+		return sql.update("notice.upadate", vo);
+	}
+	
+	
+	
+	
 	
 	//방명록 정보 조회수 변경저장
 	public int qna_read(int qna_id) {
@@ -85,6 +94,19 @@ public class QnaService {
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	//신규답글저장
+	public int qna_replyRegister(QnaVO vo) {
+		return sql.insert("qna.replyRegister", vo);
+	}
+	
 	
 	
 	

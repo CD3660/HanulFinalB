@@ -16,6 +16,7 @@
 		<table class="table tb-row">
 			<colgroup>
 				<col width="180px">
+				<col>
 			</colgroup>
 
 			<tr>
@@ -26,7 +27,7 @@
 			<tr>
 				<th>내용</th>
 				<td><textarea name="content" title="내용"
-						class="check-empty form-control"></textarea></td>
+						class="check-empty form-control" style="height: 200px;"></textarea></td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>

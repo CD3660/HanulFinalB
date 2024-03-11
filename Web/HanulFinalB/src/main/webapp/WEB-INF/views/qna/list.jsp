@@ -17,7 +17,7 @@
 
 
 <h3 class="mt-4">Q&A</h3>
-<form method="post" action="list">
+<form id="listform" method="post" action="list">
 	<div class="row mb-2 justify-content-between">
 			<div class = "col-auto">
 				<div class="input-group">
@@ -68,6 +68,10 @@
 	
 			<input type="hidden" name="qna_id">
 			<input type="hidden" name="curPage" value="1">
+			
+			
+			<input type="hidden" name="search">
+			<input type="hidden" name="keyword">
 	
 	
 </form>
@@ -101,7 +105,11 @@
 			<c:forEach items="${page.list}" var="vo">
 				<tr>
 					<td>${vo.no}</td>
-					<td class="text-start"><a href="javascript:info( ${vo.qna_id } )">${vo.title }</a>
+					<td class="text-start">
+					<span style="margin-left: ${15*vo.indent }px"></span>
+					<c:if test="${vo.indent >0}"><i class="fa-regular fa-comment-dots"></i></c:if>
+					<a href="javascript:info( ${vo.qna_id } )">${vo.title }</a>
+					
 						<c:if test="${vo.filecnt gt 0}">
 							<i class="fa-solid fa-paperclip"></i>
 						</c:if></td>
@@ -118,7 +126,7 @@
 	</table>
 
 
-	<%-- <jsp:include page="/WEB-INF/views/include/page.jsp" /> --%>
+ <jsp:include page="/WEB-INF/views/include/page.jsp" /> 
 
 
 <script>
@@ -137,7 +145,9 @@ $("[name=pageList]").val( ${page.pageList}).prop("selected", true)
 function info(qna_id) {
 	$("[name=qna_id]").val(qna_id);
 	$("[name=curPage]").val( ${page.curPage} );
-	$("form").attr("action", "info").submit();
+	$("[name=search]").val( "${page.search}" );
+	$("[name=keyword]").val( "${page.keyword}" );
+	$("form#listform").attr("action", "info").submit();
 }
 
 

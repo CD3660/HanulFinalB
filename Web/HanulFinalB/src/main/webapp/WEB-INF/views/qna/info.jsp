@@ -56,12 +56,17 @@
 	<button class="btn btn-primary" id="btn-delete">정보삭제</button>
 	</c:if>
 
+	<!-- 운영자인 경우 답글쓰기 가능하다고 하자 -->
+	<c:if test="${ loginInfo.admin eq 'Y' }">
+	<button class="btn btn-primary" id="btn-reply">답글쓰기</button>
+	</c:if>
+
 </div>
 
 
 
 <!-- vo = QnaVO -->
-<form method="post">
+<form id="voform" method="post">
 <input type="hidden" name="qna_id" value="${vo.qna_id }">  
 <input type="hidden" name="curPage" value="${page.curPage }">
 <input type="hidden" name="search" value="${page.search }">
@@ -73,7 +78,7 @@
 
 
 
-
+<c:set var="params" value="curPage=${page.curPage}&search=${page.search}&keyword=${page.keyword}"/>
 
 <%-- <jsp:include page="comment.jsp"/> --%>
 
@@ -81,8 +86,8 @@
 
 $(".file-download").click(function() {
 	
-	$("[name=id]").val( $(this).data("file") )
-	$("form").attr("action", "download").submit();
+	$("[name=qna_id]").val( $(this).data("file") )
+	$("form#voform").attr("action", "download").submit();
 	
 	
 })
@@ -90,7 +95,7 @@ $(".file-download").click(function() {
 
 
 $("#btn-list, #btn-modify, #btn-delete").click(function() {
-	var id = $(this).attr("id");
+	var id = $(this).attr("id"); // 클린된 버튼에 대한 id="btn-modify, id="btn-delete", id="btn-reply"
 	id = id.substr( id.indexOf("-")+1 );
 	$("form").attr("action", id);
 	if( id == "delete" ) {
@@ -104,7 +109,9 @@ $("#btn-list, #btn-modify, #btn-delete").click(function() {
 
 
 
-
+$("#btn-reply").click(function() {
+	location = "reply?qna_id=${vo.qna_id}&${params}"
+})
 
 
 

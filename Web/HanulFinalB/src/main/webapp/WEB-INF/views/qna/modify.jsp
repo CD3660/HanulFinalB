@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <table class="table tb-row">
 <colgroup>
 	<col width="180px">
+	<col>
 </colgroup>
 <tr><th>제목</th>
 	<td><input type="text" title="제목" autofocus class="check-empty form-control" value="${vo.title }" name="title"></td>
@@ -82,7 +84,7 @@ fileList.setFile( urlToFile( "${f.filepath}", "${f.filename}" ), ${f.id} )
 </c:forEach>
 
 //문자열이 아닌 File 정보가 담기도록 처리한다
-function urlToFile( url, filename ) {
+function urlToFile( url, filename ) {   // ************ url부분 최종 확인하기
 	var file;
 	$.ajx({
 		url: url,
@@ -90,12 +92,9 @@ function urlToFile( url, filename ) {
 		async: false,
 	}).done(function ( response ) {
 		var blob = new Blob( [response] );
-		file = new File( [blob], filename)
-	})
-	
-	
+		file = new File( [blob], filename )
+	})	
 }
-
 
 
 
@@ -103,14 +102,14 @@ function urlToFile( url, filename ) {
 $("#btn-save").click(function() {
 	if( emptyCheck() ) { //입력이 되어 있는 경우만 서브밋
 		multipleFileUpload();
-		$("[name=remove]").val( fileList.info.remove)
+		$("[name=remove]").val( fileList.info.remove )
 		$("form#modifyForm").submit();
 	}
 })
 
 
 
-$("btn-cancel").click(function() {
+$("#btn-cancel").click(function() {
 	$("form#modifyForm").attr("action", "info").submit();
 })
 
