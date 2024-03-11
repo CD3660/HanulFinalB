@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,12 +14,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.common.FileVO;
 import com.hanul.finalb.common.PageVO;
+import com.hanul.finalb.qna.QnaCommentVO;
 import com.hanul.finalb.qna.QnaService;
 import com.hanul.finalb.qna.QnaVO;
 
@@ -171,14 +175,73 @@ public class QnaController {
 		return "include/redirect";
 	}
 
-	// 댓글 삭제처리 요청
-
-	// 댓글 변경저장처리 요청
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 댓글 목록조회
-
+	@RequestMapping("/comment/list/{qna_id}")
+	public String comment_list(@PathVariable int qna_id, Model model) {
+		model.addAttribute("list", service.qna_comment_list(qna_id));
+		model.addAttribute("crlf", "\r\n");
+		model.addAttribute("lf", "\n");
+		return "board/comment/comment_list";
+	}
+	
+	
+	
 	// 댓글 등록저장처리 요청
+	@ResponseBody @RequestMapping("/comment/register") 
+	public boolean comment_register(QnaCommentVO vo) {
+		return service.qna_comment_register(vo) == 1 ? true : false;
+	}
+	
+	
+	
+	//댓글 변경저장처리 요청
+	@ResponseBody @RequestMapping("/comment/update")
+	public Object comment_update(QnaCommentVO vo) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		if( service.qna_comment_update(vo)==1 ) {
+			map.put("success", true);
+			map.put("message", "성공^^");
+			map.put("content", vo.getContent());
+		}else{
+			map.put("success", false);
+			map.put("message", "실패ㅠㅠ");
+		}
+		return map;
+	}
+	
+	
+	
+	
+	
+	// 댓글 삭제처리 요청
 
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 답글쓰기화면 요청
 	@RequestMapping("/reply")
 	public String reply(int qna_id, PageVO page, Model model) {

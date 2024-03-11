@@ -136,4 +136,45 @@ where id = #{id}
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- 댓글목록조회  -->  <!-- 현재 회원가입시 profile사진 현재 처리한것 없음  -->
+<select id="commentList" resultType="qnaComment">
+select name, profile, c.* 
+from qna_comment c left outer join users u 
+						on c.writer = u.user_id
+where qna_id = #{qna_id}
+order by writedate desc
+</select>
+
+
+
+
+
+<!-- 댓글신규저장  -->
+<insert id="commentRegister">
+insert into qna_comment ( qna_id, content, writer )
+values ( #{qna_id}, #{content}, #{writer} )
+</insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

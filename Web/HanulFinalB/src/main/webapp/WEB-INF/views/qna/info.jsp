@@ -80,7 +80,14 @@
 
 <c:set var="params" value="curPage=${page.curPage}&search=${page.search}&keyword=${page.keyword}"/>
 
-<%-- <jsp:include page="comment.jsp"/> --%>
+
+
+
+<jsp:include page="comment.jsp"/>
+
+
+
+
 
 <script>
 
@@ -97,13 +104,13 @@ $(".file-download").click(function() {
 $("#btn-list, #btn-modify, #btn-delete").click(function() {
 	var id = $(this).attr("id"); // 클린된 버튼에 대한 id="btn-modify, id="btn-delete", id="btn-reply"
 	id = id.substr( id.indexOf("-")+1 );
-	$("form").attr("action", id);
+	$("form#voform").attr("action", id);
 	if( id == "delete" ) {
 		if( confirm("정말 삭제하시겠습니까?") ) {
-			$("form").submit();
+			$("form#voform").submit();
 		}
 		
-	}else $("form").submit();
+	}else $("form#voform").submit();
 	
 })
 

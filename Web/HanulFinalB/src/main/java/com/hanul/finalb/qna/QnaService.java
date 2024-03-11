@@ -68,10 +68,28 @@ public class QnaService {
 	
 	
 	
-	//댓글 등록저장처리
+	
 	//댓글 변경저장처리
 	//댓글 삭제처리
+	
 	//댓글 목록조회
+	public List<QnaCommentVO> qna_comment_list( int qna_id ) {
+		return sql.selectList("qna.commentList", qna_id);
+	}
+	
+	//댓글 등록저장처리
+	public int qna_comment_register(QnaCommentVO vo) {
+		return sql.insert("qna.commentRegister", vo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
