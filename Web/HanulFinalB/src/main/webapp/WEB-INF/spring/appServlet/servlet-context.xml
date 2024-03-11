@@ -41,14 +41,10 @@
 		<beans:property name="definitions"
 			value="/WEB-INF/views/tiles/config.xml" />
 	</beans:bean>
+	<beans:bean id="differentMultipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
 
 
-	    <!-- MultipartResolver 설정 -->
-    <beans:bean id="multipartResolver"
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <beans:property name="maxUploadSize" value="100000000" />
-        <beans:property name="maxInMemorySize" value="100000000" />
-    </beans:bean>
 
 	<context:component-scan
 		base-package="com.hanul.finalb" />
