@@ -94,14 +94,13 @@ where qna_id = #{qna_id}
 
 
 
-<!-- 방명록 글정보 조회 -->
+<!-- Q&A 글정보 조회 -->
 <select id="info" resultType="qnaVO">
 select *
 from qna q left outer join users u
 on q.writer = u.user_id
 where qna_id =#{qna_id}
 </select>
-
 
 
 <!-- 첨부파일목록 조회  -->
@@ -116,10 +115,23 @@ select * from qna_file where qna_id = #{qna_id}
 </select>
 
 
-<!-- 방명록글 삭제 -->
+<!-- Q&A글 삭제 -->
 <delete id="delete">
 delete from qna where qna_id = #{qna_id}
 </delete>
+
+
+
+
+
+<!-- Q&A글 변경 저장  -->
+<update id="update">
+update qna set title = #{title}, content = #{content},
+						filepath = #{filepath, jdbcType=VARCHAR},
+						filename = ${filename, jdbcType=VARCHAR}
+where id = #{id}
+</update>
+
 
 
 

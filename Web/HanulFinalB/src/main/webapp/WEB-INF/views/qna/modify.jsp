@@ -92,12 +92,9 @@ function urlToFile( url, filename ) {   // ************ url부분 최종 확인�
 		async: false,
 	}).done(function ( response ) {
 		var blob = new Blob( [response] );
-		file = new File( [blob], filename)
-	})
-	
-	
+		file = new File( [blob], filename )
+	})	
 }
-
 
 
 
@@ -112,7 +109,7 @@ $("#btn-save").click(function() {
 
 
 
-$("btn-cancel").click(function() {
+$("#btn-cancel").click(function() {
 	$("form#modifyForm").attr("action", "info").submit();
 })
 

@@ -31,47 +31,60 @@ public class QnaController {
 	@Autowired
 	private Common common;
 
-	/*
-	 * //방명록 수정저장처리 요청
-	 * 
-	 * @RequestMapping("/update") public String update(QnaVO vo, FileVO filevo,
-	 * PageVO page, MultipartFile file , HttpServletRequest request ) throws
-	 * Exception {
-	 * 
-	 * //원래 글정보를 조회 QnaVO qna = service.qna_info(vo.getQna_id());
-	 * 
-	 * 
-	 * 
-	 * //첨부파일이 없는 경우 if( file.isEmpty() ) { //원래부터X -> 그대로 //원래O -> 그대로 : 원래DB의
-	 * 파일정보를 담아야 한다 if( ! vo.getFileList().isEmpty() ) { // 수정하는 글인 vo에 파일이 있다면
-	 * vo.setFileList( qna.getFileList() );
-	 * //**********************************************
-	 * 
-	 * }
-	 * 
-	 * }else { //첨부파일이 있는 경우 //원래X -> 첨부 //원래O -> 바꿔서 첨부 vo.setFilename(
-	 * file.getOriginalFilename() ); vo.setFilepath( common.fileUpload("notice",
-	 * file, request) ); }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * //화면에서 변경입력한 정보로 DB에 변경저장하기 -> 정보화면연결 if( service.notice_update(vo)==1) {
-	 * //원래O -> 첨부파일을 없애는 경우(삭제) if( file.isEmpty() ) { if(
-	 * vo.getFilename().isEmpty() ) { //DB에 있으면 삭제
-	 * common.fileDelete(notice.getFilepath(), request); } }else { //원래O -> 바꿔서 첨부 :
-	 * 원래 첨부되어 있던 물리적파일 삭제 //DB에 있으면 삭제 common.fileDelete(notice.getFilepath(),
-	 * request); } }
-	 * 
-	 * return "redirect:info?id=" + vo.getId() + "&curPage=" + page.getCurPage() +
-	 * "&search=" + page.getSearch() + "&keyword=" +
-	 * URLEncoder.encode(page.getKeyword(), "utf-8" ) ;
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	
+	  //방명록 수정저장처리 요청
+	@RequestMapping("/update")
+	public String update(QnaVO vo, PageVO page, FileVO fileVo, MultipartFile file
+						, HttpServletRequest request ) throws Exception {
+		//원래 공지글정보를 조회해두자
+		QnaVO qna = service.qna_info(vo.getQna_id());
+		// vo의 filename, filepath 에 정보는 어떨때 담기는가..
+		// 화면에서 파일을 첨부하는 경우
+		
+		//첨부파일이 없는 경우
+		if( file.isEmpty() ) {
+			//원래부터X -> 그대로
+			//원래부터O -> 그대로 : 원래DB의 파일정보를 담아야 한다
+			if( ! vo.getFilename().isEmpty() ) {
+				vo.setFilepath( qna.getFilepath() );
+			}
+			
+		}else {
+		//첨부파일이 있는 경우
+			//원래X -> 첨부
+			//원래O -> 바꿔서 첨부
+			vo.setFilename( file.getOriginalFilename() );
+			vo.setFilepath( common.fileUpload(file) );
+		}
+		
+		//화면에서 변경입력한 정보로 DB에 변경저장하기 -> 정보화면연결
+		if( service.qna_update(vo)==1) {
+			//원래O -> 첨부파일을 없애는 경우(삭제)
+			if( file.isEmpty() ) {
+				if( vo.getFilename().isEmpty() ) {
+					//DB에 있으면 삭제
+					//common.fileDelete(qna.getFilepath(), request);
+					common.fileDelete(fileVo.getFile_id());
+				}
+			}else {
+			//원래O -> 바꿔서 첨부 : 원래 첨부되어 있던 물리적파일 삭제
+				//DB에 있으면 삭제
+				common.fileDelete(fileVo.getFile_id());
+			}
+		}
+		
+		return "redirect:info?id=" + vo.getQna_id()
+					+ "&curPage=" + page.getCurPage()
+					+ "&search=" + page.getSearch()
+					+ "&keyword=" + URLEncoder.encode(page.getKeyword(), "utf-8" )
+			;
+	}
 
+	
+	
+	
+	
+	
 	// 방명록 수정화면 요청
 	@RequestMapping("/modify")
 	public String modify(int qna_id, Model model, PageVO page) {

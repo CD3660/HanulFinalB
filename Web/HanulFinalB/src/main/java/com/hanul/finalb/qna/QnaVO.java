@@ -23,4 +23,7 @@ public class QnaVO {
 	
 	private int root, step, indent, rid;
 
+	
+	
+	private String filename, filepath;
 }
