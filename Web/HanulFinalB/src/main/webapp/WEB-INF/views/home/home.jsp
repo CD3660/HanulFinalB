@@ -167,15 +167,15 @@
 	<section id="NewProduct">
 		<div class="container-fluid" style="margin-top: 5em;">
 			<div class="row align-items-center justify-content-between g-5">
-				<div class="col-lg-6">
-					<div class="image-holder mb-4 jarallax">
-					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em;">
+				<div class="col-lg-5">
+					<div class="image-holder mb-4 justify-content-between">
+					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em; margin-bottom: 30px;">
 					<i class="fa-solid fa-rocket"></i>   신제품</h2>
 						<img src="https://drive.google.com/thumbnail?sz=w640&id=15bGe2zAC8W03uiaqn8o6LWlQSZCUEzqw" alt="CCTV"
-							class="img-fluid jarallax-img">
+							class="img-fluid position-relative" style="margin-left: 40px;">
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-7">
 					<div class="detail p-5">
 						<div class="display-header">
 							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>
@@ -214,38 +214,38 @@
 		<div class="container" style="padding-top: 7em; padding-bottom: 9em;">
 			<div class="row">
 				<div class="review-content position-relative">
-					<div
-						class="swiper-icon swiper-arrow swiper-arrow-prev position-absolute d-flex align-items-center justify-content-center">
-						<svg class="icon-arrow" width="25" height="25">
-                <use xlink:href="#arrow-left" />
-              </svg>
-					</div>
-					<div class="swiper testimonial-swiper">
+				
+				
+				
+				
+					
+					
+					
+				
 						<div class="quotation text-center">
 							<svg class="quote">
                   <use xlink:href="#quote" />
                 </svg>
 						</div>
 
-						<div class="swiper-wrapper">
+					
 							<div
-								class="swiper-slide text-center d-flex justify-content-center">
+								class="text-center d-flex justify-content-center">
 								<div class="review-item col-md-10">
 									<i class="icon icon-review"></i>
 									<blockquote class="fs-4">안전하고 신뢰성 있는 보안 솔루션으로 데이터 보호 및 암호화, 내구성 및 방수 기능을 갖추어 고객의 안전을 최우선에 두고 있습니다. 전문가 그룹의 기술 지원과 서비스를 통해 CCTV 설치, 유지보수, 사용자 교육 등 다양한 영역에서 고객에게 최상의 서비스를 제공합니다.</blockquote>
 									<div class="author-detail">
 										<div class="name text-primary text-uppercase pt-2">Hanul
 											Team B</div>
-											<div class="swiper testimonial-swiper">
+										
 						<div class="quotation text-center">
 											<svg class="quote">
                   <use xlink:href="#quote"></use>
-                </svg></div></div>
+                </svg></div>
+             
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

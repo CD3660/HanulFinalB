@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h3 class="mb-4">방명록 글등록</h3>
+	<h3 class="mb-4">Q&A 글등록</h3>
 
 	<form id="insertForm" method="post" action="insert"	enctype="multipart/form-data">
 		<input type="hidden" name="writer" value="${loginInfo.user_id}">
@@ -82,6 +82,7 @@
 			location = "list"
 		})
 	</script>
+
 
 
 

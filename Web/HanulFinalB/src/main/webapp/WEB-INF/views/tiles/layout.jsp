@@ -53,9 +53,9 @@
 <!-- script
     ================================================== -->
 <script src="<c:url value='/js/modernizr.js'/>"></script>
-<script src="<c:url value='/js/bootstrap.bundle.min.js'/>"></script>
 <script src="<c:url value='/js/jquery-1.11.0.min.js'/>"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="<c:url value='/js/bootstrap.bundle.min.js'/>"></script>
 <script src="<c:url value='/js/plugins.js'/>"></script>
 <script src="<c:url value='/js/script.js'/>"></script>
 <script src="<c:url value='/js/common.js'/>"></script>

@@ -126,7 +126,7 @@ $(".val_up").click(function() {
 });
 $(".val_down").click(function() {
 	tag = $("[name=ea]");
-	if(Number(tag.val())<2) return;
+	if (Number(tag.val()) < 2) return;
 	tag.val(Number(tag.val()) - 1);
 });
 
@@ -134,14 +134,28 @@ $(".val_down").click(function() {
 $(".to_cart").click(function() {
 	ea = $("[name=ea]").val();
 	prod_id = $("#prod_id").val();
-	location="to_cart?prod_id="+prod_id+"&ea="+ea;
-	
+	location = "to_cart?prod_id=" + prod_id + "&ea=" + ea;
+
 });
 //장바구니에 담기
 $(".order").click(function() {
 	ea = $("[name=ea]").val();
 	prod_id = $("#prod_id").val();
-	location="order?prod_id="+prod_id+"&ea="+ea;
-	
-});
+	location = "order?prod_id=" + prod_id + "&ea=" + ea;
 
+});
+//우편번호 검색
+$("#post").click(function() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			console.log(data)
+			$("[name=address]").val(data.zonecode);
+			if (data.addressType == "R") {
+				$("[name=address2-1]").val(data.roadAddress);
+			} else {
+				$("[name=address2-1]").val(data.jibunAddress);
+			}
+		}
+	}).open();
+
+});

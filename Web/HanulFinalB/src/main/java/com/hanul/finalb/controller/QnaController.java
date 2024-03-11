@@ -34,7 +34,9 @@ public class QnaController {
 	
 	//방명록 수정화면 요청
 	@RequestMapping("/modify")
-	public String modify() {
+	public String modify(int qna_id, Model model, PageVO page) {
+		model.addAttribute("vo", service.qna_info(qna_id));
+		model.addAttribute("page", page);
 		
 		
 		
