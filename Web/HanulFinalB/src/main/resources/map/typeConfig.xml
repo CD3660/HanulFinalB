@@ -8,7 +8,7 @@
 		<typeAlias type="com.hanul.finalb.qna.QnaVO" alias="qnaVO"/>
 		<typeAlias type="com.hanul.finalb.common.FileVO" alias="fileVO" />
 		<typeAlias type="com.hanul.finalb.member.MemberVO" alias="memberVO" />
-		
+		<typeAlias type="com.hanul.finalb.shop.OrderVO" alias="orderVO" />
 		
 	</typeAliases>
 </configuration>

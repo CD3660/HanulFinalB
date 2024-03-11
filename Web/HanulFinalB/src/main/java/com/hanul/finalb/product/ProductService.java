@@ -14,4 +14,8 @@ public class ProductService {
 	public List<ProductVO> list() {
 		return sql.selectList("prod.list");
 	}
+	/** 판매 제품 리스트를 가져오는 메소드 */
+	public ProductVO info(int prod_id) {
+		return sql.selectOne("prod.info", prod_id);
+	}
 }
