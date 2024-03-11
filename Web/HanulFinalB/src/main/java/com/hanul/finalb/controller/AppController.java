@@ -9,7 +9,7 @@ import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
 
 @RestController
-@RequestMapping("/app")
+@RequestMapping(value="/app",produces="application/text;charset=utf-8")
 public class AppController {
 	
 	@Autowired
@@ -17,7 +17,6 @@ public class AppController {
 	
 	@RequestMapping("/login")
 	public String login(MemberVO vo) {
-		System.out.println("연결");
 		return new Gson().toJson(memService.member_login(vo), MemberVO.class);
 	}
 }
