@@ -13,5 +13,6 @@ public class MemberVO {
        , phone
        , address2
        , email
-       , admin;
+       , admin
+       , social;
 }

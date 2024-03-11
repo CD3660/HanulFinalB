@@ -72,25 +72,23 @@
 	</div>
 	<script type="text/javascript">
 		function login(){
-			var userInfo = [];
+			var userInfo = {};
 			userInfo.user_id = $('#user_id').val();
 			userInfo.user_pw = $('#user_pw').val();
 			
 			$.ajax({
-				async : true,
-				type : 'POST',
 				data : userInfo,
 				url : "loginAction",
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
 					if(data.code === '0'){
 						console.log("성공");
+						location="/finalb/"
 					}else if(data.code === '-1'){
 						console.log("실패");
 					}
 				},
 				error : function(error) {
-
 					alert("err");
 				}
 			});
