@@ -307,7 +307,7 @@
 										
 										
 										<li>
-											<a href="<c:url value='/shop/list'/>">
+											<a href="<c:url value='/shop/cart'/>">
 												<svg class="cart" width="18" height="18">
                            							<use xlink:href="#cart"></use>
                          						</svg>

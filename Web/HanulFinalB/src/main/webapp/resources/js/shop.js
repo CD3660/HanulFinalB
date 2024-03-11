@@ -66,6 +66,17 @@ $("[name=detail]").keyup(function() {
 	tag.next("span").text(str.length);
 });
 
+//설명 글자수 제한하기
+$("[name=request_msg]").change(function() {
+	tag = $("[name=request_msg]");
+	var str = tag.val();
+	if (str.length > 50) {
+		alert("50글자 이내로 작성하세요");
+		str = str.substr(0, 50)
+		tag.val(str)
+	}
+});
+
 $("#btn-insert").click(function() {
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	if (isNaN($("[name=price]").val())) { alert("판매가가 숫자가 아닙니다."); return; }
@@ -159,3 +170,6 @@ $("#post").click(function() {
 	}).open();
 
 });
+
+
+

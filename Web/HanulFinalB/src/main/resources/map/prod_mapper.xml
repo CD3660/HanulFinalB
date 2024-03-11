@@ -10,7 +10,7 @@
 	<select id="info" resultType="prodVO">
 		select * 
 		from product 
-		where prod_id = ${id}
+		where prod_id = ${prod_id}
 	</select>
 	<insert id="insert">
 		insert into product
