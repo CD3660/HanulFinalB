@@ -166,7 +166,20 @@ values ( #{qna_id}, #{content}, #{writer} )
 
 
 
+<!-- 댓글변경저장  -->
+<update id="commentUpdate">
+update qna_comment
+set content = #{content}
+where comment_id = #{comment_id}
+</update>
 
+
+
+<!-- 댓글삭제  -->
+<delete id="commentDelete">
+delete from qna_comment
+where comment_id = #{comment_id}
+</delete>
 
 
 

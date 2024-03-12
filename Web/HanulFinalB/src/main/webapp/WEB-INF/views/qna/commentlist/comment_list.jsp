@@ -15,7 +15,7 @@
 
 <!-- 댓글이 있는 경우 -->
 <c:forEach items="${list}" var="vo">
-	<div class="comment w-pct80 py-3 border-bottom" data-id="${vo.id}">
+	<div class="comment w-pct80 py-3 border-bottom" data-id="${vo.comment_id}">
 		<div class="d-flex justify-content-between">
 			<div class="d-flex align-items-center mb-2">
 				<span class="me-2">
@@ -45,21 +45,17 @@
 
 
 
-
-
 <script>
-
-
 //수정/저장
 $(".btn-modify-save").click(function(){
 	var _comment = $(this).closest(".comment");
 	//수정
 	if( $(this).text()=="수정" ){
-		modifyStatus( _comment );  //***************************************************************
-	}else{ //"저장"
+		modifyStatus( _comment );
+	}else{
 		$.ajax({
 			url: "comment/update",
-			data: { id: _comment.data("id"), content: _comment.find("textarea").val() }
+			data: { id: _comment.data("comment_id"), content: _comment.find("textarea").val() }
 		}).done(function(response){
 			console.log( response );
 			alert( response.message );
@@ -73,11 +69,28 @@ $(".btn-modify-save").click(function(){
 	}
 })
 
-
-
-
-
-
+//삭제/취소
+$(".btn-delete-cancel").click(function(){
+	var _comment = $(this).closest(".comment");
+	//취소
+	if( $(this).text()=="취소" ){
+		infoStatus( _comment );
+	}else{
+		if( confirm("정말 댓글을 삭제하시겠습니까?") ){
+			$.ajax({
+				url: "comment/delete",
+				data: { id: _comment.data("comment_id") }
+			}).done(function( response ){
+				if( response.success ){
+					// 화면에서 해당 댓글 삭제
+					_comment.remove();
+				}else{
+					alert("댓글이 삭제되지 않았습니다");
+				}
+			})
+		}
+	}
+})
 
 //수정상태
 function modifyStatus( _comment ){
@@ -90,16 +103,9 @@ function modifyStatus( _comment ){
 	var _content = _comment.find(".content");
 	var content = _content.html().replace(/<br>/g, "\n");
 	_content.html(  `<textarea class="form-control">\${content}</textarea>`  );
-	_comment.find(".writing"). ( content.length );
+	_comment.find(".writing").text( content.length );
 	_comment.find(".hidden").html( `\${content}` );  //취소시 처리를 위한 정보
 }
-
-
-
-
-
-
-
 
 //정보상태
 function infoStatus( _comment ){
@@ -116,12 +122,5 @@ function infoStatus( _comment ){
 	_comment.find(".writing").text( _comment.find(".hidden").text().length )
 	_comment.find(".hidden").empty();
 }
-
-
-
-
-
-
-
 
 </script>

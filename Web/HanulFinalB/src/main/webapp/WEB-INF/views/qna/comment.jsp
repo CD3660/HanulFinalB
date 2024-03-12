@@ -11,7 +11,7 @@
 <div id="comment-regist" class="row my-4 justify-content-center">
 
 	<div class="w-pct80 justify-content-between d-flex pb-2 h-px40">
-		<span>댓글작성 [ <span class="writing">0</span> ] / 200 ]</span>
+		<span>댓글작성 [ <span class="writing">0</span> / 200 ]</span>
 		<a class="btn btn-outline-primary btn-sm d-none btn-register">댓글등록</a> 
 	</div>
 	
@@ -35,7 +35,7 @@ commentList();
 //댓글목록조회
 function commentList() {
 	$.ajax({
-		url: "commnet/list/${vo.qna_id}" 
+		url: "comment/list/${vo.qna_id}" 
 	}).done(function( response ) {
 		$("#comment-list").html( response )
 	})	
@@ -48,14 +48,14 @@ $(".btn-register").click(function() {
 		url: "comment/register",
 		data: { qna_id: ${vo.qna_id}
 				, content: $("#comment-regist textarea").val() 
-				, writer: "{loginInfo.user_id}"
+				, writer: "${loginInfo.user_id}"
 		},
 	
 	}).done(function ( response ) {
 		if(response) {
 			alert("댓글이 등록되었습니다");
 			initComment();  
-			commentlist();
+			commentList();
 		}else{
 			alert("댓글이 등록 실패ㅠㅠ");
 		}
@@ -93,8 +93,7 @@ $("#comment-regist .comment").click(function(){
 		if( $(this).children( ".guide" ).length == 1 ){
 			$(this).append( "<textarea class='form-control'></textarea>" );
 			$(this).children( "textarea" ).focus();
-			$(this).children( ".guide" ).remove(); 
-			// 삭제시 생기는 처리 ???????************************************
+			$(this).children( ".guide" ).remove();  
 		}
 	}
 })

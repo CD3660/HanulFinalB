@@ -142,10 +142,10 @@
       </symbol>
     </svg>
 
-	<div id="preloader">
+<!-- 	<div id="preloader">
 		<span class="loader"> <span class="loader-inner"></span>
 		</span>
-	</div>
+	</div> -->
 
 	<div class="search-box position-relative overflow-hidden w-100">
 		<div class="search-wrap">

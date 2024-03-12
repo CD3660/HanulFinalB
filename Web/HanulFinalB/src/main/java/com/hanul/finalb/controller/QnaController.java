@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -192,7 +193,7 @@ public class QnaController {
 		model.addAttribute("list", service.qna_comment_list(qna_id));
 		model.addAttribute("crlf", "\r\n");
 		model.addAttribute("lf", "\n");
-		return "board/comment/comment_list";
+		return "qna/commentlist/comment_list";
 	}
 	
 	
@@ -223,9 +224,18 @@ public class QnaController {
 	
 	
 	
-	
-	// 댓글 삭제처리 요청
 
+	//댓글 삭제처리 요청
+	@ResponseBody @RequestMapping("/comment/delete")
+	public Map<String,Object> comment_delete( int comment_id ) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		if( service.qna_comment_delete(comment_id)==1 ) {
+			map.put("success", true);
+		}else {
+			map.put("success", false);
+		}
+		return map; 
+	}
 
 
 	

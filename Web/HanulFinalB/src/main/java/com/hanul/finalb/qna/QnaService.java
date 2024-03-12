@@ -69,8 +69,7 @@ public class QnaService {
 	
 	
 	
-	//댓글 변경저장처리
-	//댓글 삭제처리
+
 	
 	//댓글 목록조회
 	public List<QnaCommentVO> qna_comment_list( int qna_id ) {
@@ -83,11 +82,15 @@ public class QnaService {
 	}
 	
 	
+	//댓글 변경저장처리
+	public int qna_comment_update(QnaCommentVO vo) {
+		return sql.update("qna.commentUpdate", vo);
+	}
 	
-	
-	
-	
-	
+	//댓글 삭제처리
+	public int qna_comment_delete(int comment_id) {
+		return sql.delete("qna.commentDelete", comment_id);
+	}
 	
 	
 	
