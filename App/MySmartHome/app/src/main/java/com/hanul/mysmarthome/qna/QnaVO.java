@@ -1,14 +1,11 @@
-package com.hanul.finalb.qna;
+package com.hanul.mysmarthome.qna;
+
+import com.hanul.mysmarthome.common.FileVO;
 
 import java.sql.Date;
 import java.util.List;
 
-import com.hanul.finalb.common.FileVO;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter @Setter
 public class QnaVO {
 	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
@@ -16,14 +13,11 @@ public class QnaVO {
 	
 	
 	private List<FileVO> fileList;
-	
-	
-	
-	
+
 	
 	private int root, step, indent, rid;
 
 	
 	
-	private String filename, file_id;
+	private String filename, filepath;
 }

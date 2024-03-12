@@ -20,13 +20,32 @@ values ( #{title}, #{content}, #{writer},
 <!-- 신규 글저장  -->
 <insert id="register">
 
- <selectKey>
+ <selectKey keyProperty="qna_id" resultType="integer" order="AFTER">
 	select seq_qna.currval from dual
  </selectKey>
 
 insert into qna ( title, content, writer )
 values ( #{title}, #{content}, #{writer} )
 </insert>
+
+
+<!-- 첨부파일 저장 -->
+<insert id="fileInsert">
+	<foreach collection="fileList" item="file" open="insert all" 
+							separator=" " close="select * from dual">
+		into qna_file ( qna_id, filename, file_id )
+		values ( #{qna_id}, #{file.filename}, #{file.file_id} )
+	</foreach>
+</insert>
+
+
+<!-- 삭제  -->
+
+
+
+
+
+
 
 
 
@@ -127,10 +146,62 @@ delete from qna where qna_id = #{qna_id}
 <!-- Q&A글 변경 저장  -->
 <update id="update">
 update qna set title = #{title}, content = #{content},
-						filepath = #{filepath, jdbcType=VARCHAR},
-						filename = ${filename, jdbcType=VARCHAR}
-where id = #{id}
+where qna_id = #{qna_id}
 </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 댓글목록조회  -->  <!-- 현재 회원가입시 profile사진 현재 처리한것 없음  -->
+<select id="commentList" resultType="qnaComment">
+select name, profile, c.* 
+from qna_comment c left outer join users u 
+						on c.writer = u.user_id
+where qna_id = #{qna_id}
+order by writedate desc
+</select>
+
+
+
+
+
+<!-- 댓글신규저장  -->
+<insert id="commentRegister">
+insert into qna_comment ( qna_id, content, writer )
+values ( #{qna_id}, #{content}, #{writer} )
+</insert>
+
+
+
+<!-- 댓글변경저장  -->
+<update id="commentUpdate">
+update qna_comment
+set content = #{content}
+where comment_id = #{comment_id}
+</update>
+
+
+
+<!-- 댓글삭제  -->
+<delete id="commentDelete">
+delete from qna_comment
+where comment_id = #{comment_id}
+</delete>
+
+
+
+
+
 
 
 

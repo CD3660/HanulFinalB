@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="mt-4">Q&A 답글쓰기</h3>
+<h3 class="mt-4">Q&amp;A 답글쓰기</h3>
 
 <form id="replyform" method="post" action="replyInsert">
 <input type="hidden" name="writer"  value="${loginInfo.user_id }">

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="mb-4">Q&A 글정보</h3>
+<h3 class="mb-4">Q&amp;A 글정보</h3>
 
 
 <table class="table tb-row">
@@ -65,10 +65,10 @@
 
 
 
-<!-- vo = QnaVO -->
+
 <form id="voform" method="post">
-<input type="hidden" name="qna_id" value="${vo.qna_id }">  
-<input type="hidden" name="curPage" value="${page.curPage }">
+<input type="hidden" name="qna_id" value="${vo.qna_id }">   <!-- QnaVO -->
+<input type="hidden" name="curPage" value="${page.curPage }"> <!-- PageVO -->
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">
 <input type="hidden" name="pageList" value="${page.pageList }">
@@ -80,7 +80,14 @@
 
 <c:set var="params" value="curPage=${page.curPage}&search=${page.search}&keyword=${page.keyword}"/>
 
-<%-- <jsp:include page="comment.jsp"/> --%>
+
+
+
+<jsp:include page="comment.jsp"/>
+
+
+
+
 
 <script>
 
@@ -97,13 +104,13 @@ $(".file-download").click(function() {
 $("#btn-list, #btn-modify, #btn-delete").click(function() {
 	var id = $(this).attr("id"); // 클린된 버튼에 대한 id="btn-modify, id="btn-delete", id="btn-reply"
 	id = id.substr( id.indexOf("-")+1 );
-	$("form").attr("action", id);
+	$("form#voform").attr("action", id);
 	if( id == "delete" ) {
 		if( confirm("정말 삭제하시겠습니까?") ) {
-			$("form").submit();
+			$("form#voform").submit();
 		}
 		
-	}else $("form").submit();
+	}else $("form#voform").submit();
 	
 })
 

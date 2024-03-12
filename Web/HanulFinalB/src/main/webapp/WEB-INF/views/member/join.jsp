@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
 <title>회원가입</title>
 

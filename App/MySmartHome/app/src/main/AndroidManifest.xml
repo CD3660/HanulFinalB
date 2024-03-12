@@ -53,6 +53,9 @@
             android:name=".cctv.CCTVActivity"
             android:exported="false" />
         <activity
+            android:name=".qna.QnaActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
