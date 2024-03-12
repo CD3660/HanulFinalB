@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     ActivityMainBinding binding;
     MyFragment myFragment = new MyFragment(this);
-    MyHomeFragment myHomeFragment = new MyHomeFragment();
+    MyHomeFragment myHomeFragment = new MyHomeFragment(this);
     MemberVO loginInfo;
     public MemberVO getMemberVO(){
         return loginInfo;

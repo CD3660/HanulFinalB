@@ -2,6 +2,8 @@ package com.hanul.mysmarthome.common;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.hanul.mysmarthome.R;
 import java.util.HashMap;
 import retrofit2.Call;
