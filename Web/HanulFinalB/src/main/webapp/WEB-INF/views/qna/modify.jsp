@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="mb-4">Q&A 글수정</h3>
+<h3 class="mb-4">Q&amp;A 글수정</h3>
 
 <form id="modifyForm" method="post" action="update" enctype="multipart/form-data">
 <input type="hidden" name="writer" value="${loginInfo.user_id }">
@@ -27,7 +27,7 @@
 	<td><div class="row">
 		<div>
 			<label>
-				<input class="form-control" id="file-multiple" type="file" name="files" multiple>
+				<input class="form-control" id="file-multiple" type="file" name="addfile" multiple>
 				<i role="button" class="me-4 fa-solid fa-file-circle-plus fs-2"></i>
 			</label>
 		

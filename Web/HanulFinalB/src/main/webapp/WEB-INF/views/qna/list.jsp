@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA 목록</title>
+<title>Q&amp;A 목록</title>
 
 
 

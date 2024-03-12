@@ -18,7 +18,6 @@ function emptyCheck() {
 
 
 
-
 function multipleFileUpload() {
 	//FileList 객체의 files의 파일정보를 input file태그에 넣기
 	var transfer = new DataTransfer();
@@ -188,6 +187,13 @@ $(function() {
 	.on("dragover dragleave drop", function(e){ 
 		e.preventDefault(); 
 	});
+
+
+
+
+
+
+
 
 
 

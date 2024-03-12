@@ -15,17 +15,17 @@ public class QnaService {
 	
 	
 	
-	//신규 방명록 글 저장처리
+	//신규 Q&A 글 저장처리
 	public int qna_register(QnaVO vo) {
 		int dml= sql.insert("qna.register", vo);
 		if ( dml ==1 && vo.getFileList() != null) {
-			
+			sql.insert( "qna.fileInsert", vo );
 		}
 		return dml;
 	}
 	
 	
-	//방명록 목록 조회
+	//Q&A 목록 조회
 	public PageVO qna_list(PageVO page) {
 		page.setTotalList(sql.selectOne("qna.totalList", page));
 		page.setList(sql.selectList("qna.list", page));
@@ -33,7 +33,7 @@ public class QnaService {
 		return page;
 	}
 	
-	//선택한 방명록 정보 조회
+	//선택한 Q&A 정보 조회
 	public QnaVO qna_info(int qna_id) {
 		QnaVO vo = sql.selectOne("qna.info", qna_id);
 		//첨부된 파일정보 조회
@@ -44,7 +44,7 @@ public class QnaService {
 	
 	
 	
-	//방명록 정보 변경저장처리
+	//Q&A 정보 변경저장처리
 	public int qna_update(QnaVO vo) {
 		return sql.update("notice.upadate", vo);
 	}
@@ -53,12 +53,12 @@ public class QnaService {
 	
 	
 	
-	//방명록 정보 조회수 변경저장
+	//Q&A 정보 조회수 변경저장
 	public int qna_read(int qna_id) {
 		return sql.update("qna.read", qna_id);
 	}
 	
-	//방명록 정보 삭제처리
+	//Q&A 정보 삭제처리
 	public int qna_delete(int qna_id) {
 		return sql.delete("qna.delete", qna_id);
 	}

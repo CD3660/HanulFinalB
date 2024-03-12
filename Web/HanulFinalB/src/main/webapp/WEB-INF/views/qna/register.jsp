@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h3 class="mb-4">Q&A 글등록</h3>
+	<h3 class="mb-4">Q&amp;A 글등록</h3>
 
 	<form id="insertForm" method="post" action="insert"	enctype="multipart/form-data">
 		<input type="hidden" name="writer" value="${loginInfo.user_id}">
@@ -35,9 +35,8 @@
 					<div class="row">
 
 						<div>
-
 							<label> <input class="form-control" id="file-multiple"
-								type="file" name="files" multiple> <i role="button"
+								type="file" name="addfile" multiple> <i role="button"
 								class="me-4 fa-solid fa-file-circle-plus fs-2"></i>
 							</label>
 
@@ -74,7 +73,9 @@
 
 		$("#btn-save").click(function() {
 			if (emptyCheck()) { //입력되어 있는 경우만 서브밋 
+				
 				multipleFileUpload();
+				
 				$("form#insertForm").submit();
 			}
 		})
