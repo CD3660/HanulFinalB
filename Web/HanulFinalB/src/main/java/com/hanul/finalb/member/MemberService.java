@@ -20,7 +20,7 @@ public class MemberService {
 
 	}
 
-	// 테스트용 임시 로그인처리 // 회원정보조회
+	// 안드로이드 로그인 처리
 	public MemberVO member_login(MemberVO vo) {
 		MemberVO info = sql.selectOne("member.info", vo.getUser_id());
 		if(pwEncoder.matches(vo.getUser_pw(), info.getUser_pw())) {
