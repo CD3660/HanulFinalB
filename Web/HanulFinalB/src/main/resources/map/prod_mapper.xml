@@ -15,17 +15,17 @@
 	<insert id="insert">
 		insert into product
 		(prod_name, detail, prod_img,
-		prod_img_id, price, stock)
+		prod_img_id, price)
 		values (#{prod_name}, #{detail,
 		jdbcType=VARCHAR},
 		#{prod_img, jdbcType=VARCHAR},#{prod_img_id,
-		jdbcType=VARCHAR},#{price}, #{stock})
+		jdbcType=VARCHAR},#{price})
 	</insert>
 	<update id="update">
 		update product
 		set prod_name=#{prod_name},
 		detail=#{detail, jdbcType=VARCHAR},
-		price=#{price}, stock=#{stock}
+		price=#{price}
 		where prod_id = #{prod_id}
 	</update>
 	<update id="updateFile">
