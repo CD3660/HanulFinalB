@@ -2,11 +2,12 @@ package com.hanul.mysmarthome.qna;
 
 import com.hanul.mysmarthome.common.FileDTO;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 
-public class QnaDTO {
+public class QnaDTO implements Serializable {
 	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
 	private Date writedate;

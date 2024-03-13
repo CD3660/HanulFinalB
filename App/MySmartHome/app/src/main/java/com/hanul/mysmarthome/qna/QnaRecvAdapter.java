@@ -26,7 +26,8 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(inflater, parent, false);
+        ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(LayoutInflater.from(context),parent,false);
+        //ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(inflater, parent, false);
 
         return new ViewHolder(binding);
     }

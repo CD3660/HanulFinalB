@@ -20,8 +20,15 @@ public class QnaActivity extends AppCompatActivity {
 
 
 
+        binding.qnaClose.setOnClickListener(v -> {
+            finish();
+        });
 
-        QnaDTO dto = (QnaDTO) getIntent().getSerializableExtra("dto");
+
+
+
+
+
 
 
 
