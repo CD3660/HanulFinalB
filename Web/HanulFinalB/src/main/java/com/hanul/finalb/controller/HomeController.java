@@ -58,8 +58,11 @@ public class HomeController {
 	}
 
 
-	
-	
+	@RequestMapping("/file/redirect")
+	public String auth() {
+		
+		return "redirect:/";
+	}
 	
 	
 	

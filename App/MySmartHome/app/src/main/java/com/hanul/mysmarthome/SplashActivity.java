@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("AutoLogin", Context.MODE_PRIVATE);
             String user_id = sharedPreferences.getString("user_id", "");
             String user_pw = sharedPreferences.getString("user_pw", "");
-            if (user_id == "") {
+            if (user_id.equals("")) {
                 Log.d("login", "로그인 정보 없음");
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
             } else {
                 CommonConn conn = new CommonConn(this, "login")
                         .addParamMap("user_id", user_id);
-                if (user_pw == null) {
+                if (user_pw.equals("")) {
                     conn.addParamMap("social", "Y");
                 } else {
                     conn.addParamMap("user_pw", user_pw);

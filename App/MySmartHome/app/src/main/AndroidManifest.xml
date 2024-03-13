@@ -4,6 +4,37 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+
+        <!-- WebView -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+        <!-- Camera -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <!-- Gallery -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+        </intent>
+        <!-- Youtube -->
+        <intent>
+            <action android:name="android.media.browse.MediaBrowserService" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +46,12 @@
         android:theme="@style/Theme.MySmartHome"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".showdata.ShowDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".cctv.CCTVActivity"
+            android:exported="false" />
         <activity
             android:name=".qna.QnaActivity"
             android:exported="false" />

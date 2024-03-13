@@ -9,6 +9,7 @@
 		<typeAlias type="com.hanul.finalb.common.FileVO" alias="fileVO" />
 		<typeAlias type="com.hanul.finalb.member.MemberVO" alias="memberVO" />
 		<typeAlias type="com.hanul.finalb.shop.OrderVO" alias="orderVO" />
+		<typeAlias type="com.hanul.finalb.app.UserSensorVO" alias="userSensorVO" />
 		<typeAlias type="com.hanul.finalb.qna.QnaCommentVO" alias="qnaComment" />
 		
 	</typeAliases>

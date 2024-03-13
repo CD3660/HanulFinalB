@@ -4,7 +4,15 @@ package com.hanul.mysmarthome.member;
 import java.io.Serializable;
 
 public class MemberVO implements Serializable {
-    private String user_id, user_pw, name, address, phone, address2, email, admin, social;
+    private String user_id, user_pw, name, address, phone, address2, email, admin, social, profile;
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
 
     public String getUser_id() {
         return user_id;
