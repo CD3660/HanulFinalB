@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services' version '4.4.1' apply false
 }
 
 android {
@@ -36,6 +37,9 @@ android {
 }
 
 dependencies {
+    //푸시알림을 위한 파이어베이스
+    implementation platform('com.google.firebase:firebase-bom:32.7.4')
+
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit 레트로핏 코어
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
 
