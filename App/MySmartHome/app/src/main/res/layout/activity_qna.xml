@@ -49,8 +49,7 @@
 
 
         <View
-            style="@style/gray_view_line1dp"
-            />
+            style="@style/gray_view_line1dp"/>
 
 
 
