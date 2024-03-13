@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hanul.finalb.app.AppSensorService;
+import com.hanul.finalb.app.DatasVO;
 import com.hanul.finalb.app.UserSensorVO;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
@@ -36,5 +37,19 @@ public class AppController {
 	@RequestMapping("/getCctvUrl")
 	public String getCctvUrl(int sensor_id) {
 		return appService.getCCTVURL(sensor_id);
+	}
+	@RequestMapping("/datas")
+	public String datas(int sensor_id) {
+		return new Gson().toJson(appService.getDatas(sensor_id), new TypeToken<List<DatasVO>>(){}.getType());
+	}
+	@RequestMapping("/light_on")
+	public String light_on() {
+		
+		return "redirect:sensor/led?led_mode=ON";
+	}
+	@RequestMapping("/light_off")
+	public String light_off() {
+		
+		return "redirect:sensor/led?led_mode=OFF";
 	}
 }
