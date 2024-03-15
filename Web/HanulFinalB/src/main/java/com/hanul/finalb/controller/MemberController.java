@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hanul.finalb.common.PageVO;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
 
@@ -45,13 +45,45 @@ public class MemberController {
 
 		return result;
 	}
-
-	/* ��ǰ �Ұ� ������ ��ȯ�� ���� ������ */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-
-		return "member/login";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 코멘트 만들면서 임시로 만듬. 연결된 코드들 수정 마무리 바람
+	//로그인 화면 요청
+	@RequestMapping(value = "/login")
+	public String login(Locale locale, Model model
+						, HttpSession session, String url, PageVO page, String qna_id) {
+		//방명록 정보화면에서 서브밋된 경우
+		if( url != null ) {
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("url", url);
+			map.put("page", page);
+			map.put("user_id", qna_id);
+			session.setAttribute("redirect", map); //redirect에 필요한 정보를 세션에 담기
+		}
+		
+		
+		
+		
+		session.setAttribute("category", "login");
+		
+		
+		return "default/member/login";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
 	public String join(Model model) {

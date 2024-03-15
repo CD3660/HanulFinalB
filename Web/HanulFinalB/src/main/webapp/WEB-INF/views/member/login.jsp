@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>로그인</title>
 <link rel="stylesheet" href="<c:url value='/css/member/login.css'/>">
 </head>

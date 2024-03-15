@@ -24,9 +24,6 @@
 			</div>
 			<div
 				style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray;">
-				<p class="m-2">
-					남은 수량:<span class="ms-3">${vo.stock}</span>
-				</p>
 				<div class="m-2 d-flex justify-content-start align-items-center">
 					구매 수량:<input class="ms-3" type="text" name="ea" value="1"
 						style="padding-right: 3; text-align: right; height: 18px; width: 35px;" />
@@ -45,6 +42,7 @@
 				</div>
 			</div>
 			<div class="d-flex justify-content-around p-3">
+				<input type="hidden" id="user_id" value="${loginInfo.user_id }"/>
 				<button class="btn btn-outline-primary to_cart" style="width: 45%">장바구니
 					담기</button>
 				<button class="btn btn-primary order" style="width: 45%">바로 구매 ></button>

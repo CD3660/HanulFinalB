@@ -142,10 +142,10 @@
       </symbol>
     </svg>
 
-	<div id="preloader">
+<!-- 	<div id="preloader">
 		<span class="loader"> <span class="loader-inner"></span>
 		</span>
-	</div>
+	</div> -->
 
 	<div class="search-box position-relative overflow-hidden w-100">
 		<div class="search-wrap">
@@ -307,7 +307,7 @@
 										
 										
 										<li>
-											<a href="<c:url value='/shop/list'/>">
+											<a href="<c:url value='/shop/cart'/>">
 												<svg class="cart" width="18" height="18">
                            							<use xlink:href="#cart"></use>
                          						</svg>

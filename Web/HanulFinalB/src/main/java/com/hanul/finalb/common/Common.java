@@ -1,26 +1,23 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -30,6 +27,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.FileContent;
+import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
@@ -37,6 +35,9 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.FileList;
+import com.google.auth.http.HttpCredentialsAdapter;
+import com.google.auth.oauth2.GoogleCredentials;
 
 
 
@@ -44,50 +45,54 @@ import com.google.api.services.drive.model.File;
 @PropertySource("classpath:db/conninfo.properties")
 public class Common {
 	/**
-	 * 어플 이름
-	 */
-	private static final String APPLICATION_NAME = "hanul-b";
-	/**
-	 * Global instance of the JSON factory.
-	 */
-	private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-	/**
-	 * 토큰 저장 위치 정보
-	 */
-	private static final String TOKENS_DIRECTORY_PATH = "tokens";
+	   * Application name.
+	   */
+	  private static final String APPLICATION_NAME = "hanul-finalb";
+	  /**
+	   * Global instance of the JSON factory.
+	   */
+	  private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+	  /**
+	   * Directory to store authorization tokens for this application.
+	   */
+	  private static final String TOKENS_DIRECTORY_PATH = "D:/tokens";
 
-	/**
-	 * Global instance of the scopes required by this quickstart. If modifying these
-	 * scopes, delete your previously saved tokens/ folder.
-	 *
-	 * 여기 권한을 수정해야 파일 읽기만 할건지 쓰기말한거지 등등을 결정할 수 있고, 매번 토큰 새로 처리하는게 아니라 StoredToken이
-	 * 저장되기 때문에 tokens폴더에 있는 StoredCredential를 삭제해줘야함
-	 */
-//    private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_METADATA_READONLY);
-	private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);
-	private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+	  /**
+	   * Global instance of the scopes required by this quickstart.
+	   * If modifying these scopes, delete your previously saved tokens/ folder.
+	   */
+	  private static final List<String> SCOPES =
+	      Collections.singletonList(DriveScopes.DRIVE);
+	  private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-	/**
-	 * 인증서 객체 생성
-	 */
-	private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-		// 인증서 파일정보 가져오기, Common 부분은 인증서 주소가 위치한 파일을 import, 현재는 Common파일에 저장되어있음.
-		InputStream in = Common.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
-		if (in == null) {
-			throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
-		}
-		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+	  /**
+	   * Creates an authorized Credential object.
+	   *
+	   * @param HTTP_TRANSPORT The network HTTP Transport.
+	   * @return An authorized Credential object.
+	   * @throws IOException If the credentials.json file cannot be found.
+	   */
+	  private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
+	      throws IOException {
+	    // Load client secrets.
+	    InputStream in = TestGoogle.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+	    if (in == null) {
+	      throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
+	    }
+	    GoogleClientSecrets clientSecrets =
+	        GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-		// Build flow and trigger user authorization request.
-		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
-				clientSecrets, SCOPES)
-				.setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-				.setAccessType("offline").build();
-		LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
-		Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
-		// returns an authorized Credential object.
-		return credential;
-	}
+	    // Build flow and trigger user authorization request.
+	    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+	        HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+	        .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+	        .setAccessType("offline")
+	        .build();
+	    LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+	    Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+	    //returns an authorized Credential object.
+	    return credential;
+	  }
 
 	/**
 	 * 구글드라이브에 파일 업로드 파일 저장 후 아이디 반환
@@ -95,8 +100,18 @@ public class Common {
 	public String fileUpload(MultipartFile multipartFile) throws GeneralSecurityException, IOException {
 		// Build a new authorized API client service.
 		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-				.setApplicationName(APPLICATION_NAME).build();
+	    Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+	        .setApplicationName(APPLICATION_NAME)
+	        .build();
+		/*
+		 * GoogleCredentials credentials =
+		 * GoogleCredentials.getApplicationDefault().createScoped(Arrays.asList(
+		 * DriveScopes.DRIVE)); HttpRequestInitializer requestInitializer = new
+		 * HttpCredentialsAdapter(credentials); Drive service = new Drive.Builder(new
+		 * NetHttpTransport(), GsonFactory.getDefaultInstance(), requestInitializer)
+		 * .setApplicationName("hanul-finalb").build();
+		 */
+		
 
 		// 멀티파트 파일을 이용해 파일 객체 생성
 		java.io.File f = new java.io.File(multipartFile.getOriginalFilename());
@@ -163,30 +178,141 @@ public class Common {
 		}
 		return apiURL;
 	}
-	
-	
-	
-	
-	
-	
-	
-	//다중 파일업로드
-	public ArrayList<FileVO> multipleFileUpload(String category, MultipartFile[] files,
-			HttpServletRequest request) throws GeneralSecurityException, IOException {
 
-		ArrayList<FileVO> list = null;
-		for( MultipartFile file: files ) {
-			if( file.isEmpty() ) continue;
-			if( list== null ) list = new ArrayList<FileVO>();
-			FileVO vo = new FileVO();
-			vo.setFilename( file.getOriginalFilename() );
-			String file_id = fileUpload(file);
-			vo.setFile_id(file_id);
-			vo.setFilepath(fileURL(file_id));
-			list.add(vo);
+	/**
+	 * POST로 API 요청 보내기 
+	 */
+	public String requestAPI(String apiURL, String postData) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setRequestProperty("Content-Length", Integer.toString(postData.length()));
+            con.setUseCaches(false);
+            try (DataOutputStream dos = new DataOutputStream(con.getOutputStream())) {
+                dos.writeBytes(postData);
+            }
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+			System.out.println(e.getMessage());
 		}
-		return list;
+		return apiURL;
 	}
+	/**
+	 * GET으로 portone API 요청 보내기 
+	 */
+	public String portone(String apiURL, String token) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Authorization", "Bearer "+token);
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+			System.out.println(e.getMessage());
+		}
+		return apiURL;
+	}
+	/**
+	 * POST로 portone API 요청 보내기 
+	 */
+	public String portone(String apiURL, String postData, String token) {
+		try {
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("POST");
+            con.setDoOutput(true);
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setRequestProperty("Content-Length", Integer.toString(postData.length()));
+            con.setRequestProperty("Authorization", "Bearer "+token);
+            con.setUseCaches(false);
+            try (DataOutputStream dos = new DataOutputStream(con.getOutputStream())) {
+                dos.writeBytes(postData);
+            }
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream(), "utf-8"));
+			}
+			String inputLine;
+			StringBuilder res = new StringBuilder();
+			while ((inputLine = br.readLine()) != null) {
+				res.append(inputLine);
+			}
+			br.close();
+			if (responseCode == 200) {
+				apiURL = res.toString();
+			}
+		} catch (Exception e) {
+			// Exception 로깅
+			System.out.println(e.getMessage());
+		}
+		return apiURL;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	 //다중 파일업로드
+	public ArrayList<FileVO> multipleFileUpload(String category,
+				MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
+	  
+	 ArrayList<FileVO> list = null;
+	 for( MultipartFile file: files ) {
+		 if( file.isEmpty() ) continue;
+		 
+		 if( list== null ) list = new ArrayList<FileVO>();
+		 
+		 FileVO vo = new FileVO();
+		 vo.setFilename( file.getOriginalFilename() );
+		 String file_id = fileUpload(file);
+		 vo.setFile_id(file_id);
+		 /* vo.setFilepath;(fileURL(file_id)); */
+		 list.add(vo);
+		 }
+	 		
+	 return list;
+	 }
 	
 	
 	
@@ -267,7 +393,6 @@ public class Common {
 //	FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
 //	
 //	}
-	
 	
 	
 	
