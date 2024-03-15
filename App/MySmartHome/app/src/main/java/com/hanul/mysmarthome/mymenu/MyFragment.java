@@ -15,11 +15,13 @@ import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.databinding.FragmentMyBinding;
 import com.hanul.mysmarthome.member.MemberInfoActivity;
 import com.hanul.mysmarthome.member.MemberVO;
+import com.hanul.mysmarthome.qna.QnaActivity;
 
 
 public class MyFragment extends Fragment {
     FragmentMyBinding binding;
     MainActivity mainActivity;
+
 
     public MyFragment(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -41,6 +43,15 @@ public class MyFragment extends Fragment {
             startActivity(intent);
         });
 
+
+        binding.notice.setOnClickListener(v->{
+
+
+            Intent intent = new Intent(getContext(), QnaActivity.class);
+
+            startActivity(intent);
+
+        });
 
 
         return binding.getRoot();

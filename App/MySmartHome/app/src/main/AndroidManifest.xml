@@ -58,6 +58,9 @@
             android:name=".member.MemberInfoActivity"
             android:exported="false" />
         <activity
+            android:name=".qna.QnaDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".showdata.ShowDataActivity"
             android:exported="false" />
         <activity

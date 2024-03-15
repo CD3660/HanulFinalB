@@ -12,7 +12,7 @@ import lombok.Setter;
 public class QnaVO {
 	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
-	private Date writedate;
+	private String writedate;
 	
 	
 	private List<FileVO> fileList;

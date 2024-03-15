@@ -1,5 +1,6 @@
 package com.hanul.finalb.qna;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +13,14 @@ import com.hanul.finalb.common.PageVO;
 @Service
 public class QnaService {
 	@Autowired private SqlSession sql;
+	
+	
+	//안드로이드 Q&A 목록 조회**************************************************
+	public List<QnaVO> appQnaList() {
+	   
+		List<QnaVO> list = sql.selectList("qna.appQnaList");
+		 return list;
+	}
 	
 	
 	
