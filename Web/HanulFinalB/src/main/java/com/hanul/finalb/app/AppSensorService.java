@@ -6,12 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hanul.finalb.app.firebase.FirebaseCloudMessageService;
+
 @Service
 public class AppSensorService {
 
 	@Autowired
 	SqlSession sql;
-
+	
 	// 유저 아이디로 유저의 센서 종류 정보를 가져오는 메소드
 	public List<UserSensorVO> userSensorList(String user_id) {
 

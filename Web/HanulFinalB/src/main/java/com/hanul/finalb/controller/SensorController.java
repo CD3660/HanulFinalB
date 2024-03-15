@@ -30,6 +30,11 @@ public class SensorController {
 		service.insertSensorData(vo);
 		return "connect success";
 	}
+	
+	@RequestMapping("/chart")
+	public String chart(SensorVO vo) {
+		return "default/sensor/chart";
+	}
 
 	@RequestMapping("/sensor")
 	public String sensor() {

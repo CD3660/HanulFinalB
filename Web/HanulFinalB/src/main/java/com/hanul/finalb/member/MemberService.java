@@ -24,6 +24,16 @@ public class MemberService {
 	public MemberVO member_login(MemberVO vo) {
 		MemberVO info = sql.selectOne("member.info", vo.getUser_id());
 		if(pwEncoder.matches(vo.getUser_pw(), info.getUser_pw())) {
+			String tokenUser = sql.selectOne("member.compareToken", vo);
+			if(tokenUser != null) {
+				if(!tokenUser.equals(vo.getUser_id())) {
+					// 토큰이 이미 등록 되었고, 현재 로그인한 유저와 db의 연동 유저가 같은 지 않은 경우 유저 아이디 변경(같은 기기로 로그인 유저만 바뀐경우)
+					sql.update("member.updateToken", vo); 
+				}
+			} else {
+				// 토큰이 이미 등록된 것이 아닌 경우 현재 로그인 유저 아이디로 토큰 정보 등록
+				sql.insert("member.saveToken", vo);
+			}
 			return info;
 		} else {
 			return null;
