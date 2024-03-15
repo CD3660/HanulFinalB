@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,9 +90,10 @@ public class MemberController {
 
 		return "member/join";
 	}
-
-	@PostMapping("/joinAction")
-	public String joinpass(MemberVO member) throws Exception {
+	
+	
+	@RequestMapping("/joinAction")
+	public String joinpass(MemberVO member) {
 
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
 		member.setUser_pw(encodingPw);
@@ -107,9 +109,9 @@ public class MemberController {
 			return "/member/find_id_form";
 		}
 
-	@RequestMapping(path = "/loginAction", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> loginpass(@RequestBody MemberVO member) throws Exception {
+	@RequestMapping("/loginAction")
+	public Map<String, Object> loginpass(MemberVO member, HttpSession session){
 		Map<String, Object> result = new HashMap<>();
 		// 프론트에서 사용자가 입력한 비밀번호
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
@@ -117,10 +119,11 @@ public class MemberController {
 		// 디비에서 가져온거
 		MemberVO checkInfo = service.login(member.getUser_id());
 		
-		
-		if(encodingPw.equals(checkInfo.getUser_pw())) {
+		if(pwEncoder.matches(member.getUser_pw(), checkInfo.getUser_pw())) {
 			//성공시
 			result.put("code", "0");
+			//회원 정보 풀버전 세션에 넣기
+			session.setAttribute("loginInfo", service.memberInfo(member.getUser_id()));
 		}else {
 			//실패시
 			result.put("code", "-1");
@@ -168,5 +171,15 @@ public class MemberController {
         
 	
     }
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginInfo");
+		return "redirect:/";
+	}
+	@RequestMapping("/mypage")
+	public String mypage(HttpSession session) {
+		
+		return "/member/mypage";
+	}
 
 }

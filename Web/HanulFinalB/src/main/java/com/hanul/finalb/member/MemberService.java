@@ -43,34 +43,24 @@ public class MemberService {
 	// 테스트용 임시 로그인처리 // 회원정보조회
 	
 	public int idCheck(String id) {
-		
+
 		return sql.selectOne("idCheck", id);
 	}
-	
-	
+
 	public MemberVO login(String id) {
-		
-		return sql.selectOne("login", id);
+
+		return sql.selectOne("member.login", id);
 	}
+
 	@Autowired
-	 private MemberDAO memberDAO;
+	private MemberDAO memberDAO;
 
-	    public String findIdByEmail(String email) {
-	        return memberDAO.findIdByEmail(email);
-	    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//테스트용 임시 로그인처리 // 회원정보조회
-	public MemberVO member_info(String user_id) {
-		return sql.selectOne("member.info", user_id);
+	public String findIdByEmail(String email) {
+		return memberDAO.findIdByEmail(email);
 	}
 
+	public MemberVO memberInfo(String user_id) {
+		return sql.selectOne("member.info", user_id);
+
+	}
 }

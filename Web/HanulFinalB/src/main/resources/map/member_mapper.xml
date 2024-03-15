@@ -32,7 +32,7 @@
    
    </select>
    
-   <select id="login">
+   <select id="login" resultType="memberVO">
    SELECT
    		USER_ID
    		, USER_PW
