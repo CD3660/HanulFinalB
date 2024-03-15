@@ -144,10 +144,10 @@ public class MemberController {
 		session.removeAttribute("loginInfo");
 		return "redirect:/";
 	}
-	@RequestMapping("/mypage")
-	public String mypage(HttpSession session) {
+	@RequestMapping("/myPage")
+	public String myPage(HttpSession session) {
 		
-		return "/member/mypage";
+		return "/member/myPage";
 	}
 
 }
