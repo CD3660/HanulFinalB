@@ -1,6 +1,5 @@
 package com.hanul.mysmarthome.mymenu;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.databinding.FragmentMyBinding;
-import com.hanul.mysmarthome.member.MemberVO;
 import com.hanul.mysmarthome.qna.QnaActivity;
 
 
@@ -38,11 +36,16 @@ public class MyFragment extends Fragment {
                 .into(binding.profile);
 
 
+
         binding.notice.setOnClickListener(v->{
+
+
             Intent intent = new Intent(getContext(), QnaActivity.class);
 
             startActivity(intent);
+
         });
+
 
         return binding.getRoot();
     }

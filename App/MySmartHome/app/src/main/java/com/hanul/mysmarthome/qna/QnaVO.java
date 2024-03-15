@@ -6,11 +6,17 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class QnaDTO implements Serializable {
+
+public class QnaVO implements Serializable {
 	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
-	private Date writedate;
+	private String writedate;
 	
 	
 	private List<FileDTO> fileList;
@@ -22,10 +28,9 @@ public class QnaDTO implements Serializable {
 	
 	private String filename, filepath;
 
-
-	public QnaDTO(int qna_id, int readcnt, int no, int filecnt, String title, String content, String writer,
-				  String name, Date writedate, List<FileDTO> fileList, int root, int step, int indent,
-				  int rid, String filename, String filepath) {
+	public QnaVO(int qna_id, int readcnt, int no, int filecnt, String title, String content, String writer,
+				 String name, String writedate, List<FileDTO> fileList, int root, int step, int indent,
+				 int rid, String filename, String filepath) {
 
 		this.qna_id = qna_id;
 		this.readcnt = readcnt;
@@ -112,11 +117,11 @@ public class QnaDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Date getWritedate() {
+	public String getWritedate() {
 		return writedate;
 	}
 
-	public void setWritedate(Date writedate) {
+	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
 

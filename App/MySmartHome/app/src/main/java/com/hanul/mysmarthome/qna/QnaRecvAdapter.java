@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hanul.mysmarthome.databinding.ItemQnaRecvBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHolder> {
     LayoutInflater inflater;
-    ArrayList<QnaDTO> list;
+    List<QnaVO> list;
     Context context;
 
-    public QnaRecvAdapter(LayoutInflater inflater, ArrayList<QnaDTO> list, Context context) {
+    public QnaRecvAdapter(LayoutInflater inflater, ArrayList<QnaVO> list, Context context) {
         this.inflater = inflater;
         this.list = list;
         this.context = context;
@@ -38,7 +39,7 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
         h.binding.itemQnaTitle.setText( list.get(i).getTitle());
 
         h.binding.itemQnaLinear.setOnClickListener(v -> {
-            Intent intent = new Intent(context, QnaActivity.class);
+            Intent intent = new Intent(context, QnaDetailActivity.class);
             intent.putExtra("dto", list.get(i));
             context.startActivity(intent);
         });
