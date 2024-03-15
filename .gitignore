@@ -149,3 +149,5 @@ Web/.metadata/version.ini
 googleDrive/credentials.json
 Web/HanulFinalB/src/main/resources/credentials.json
 Web/HanulFinalB/tokens/StoredCredential
+Web/HanulFinalB/src/main/webapp/resources/firebase/testapp-85e1d-firebase-adminsdk-cclot-d8712b7bdf.json
+Web/HanulFinalB/src/main/resources/firebase/testapp-85e1d-firebase-adminsdk-cclot-d8712b7bdf.json

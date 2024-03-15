@@ -59,6 +59,18 @@
   select * from users
   where user_id = #{user_id}
   </select>
+  <!-- 토큰 신규 저장 -->
+  <insert id="saveToken">
+  	insert into fcm_token (TOKEN, USER_ID) values (#{token}, #{user_id})
+  </insert>
+  <!-- 현재 로그인 기기의 토큰 정보가 이미 등록 되어 있는지 확인 -->
+  <select id="compareToken" resultType="String">
+  	select user_id from fcm_token where token = #{token}
+  </select>
+  <!-- 토큰 연결 아이디 수정 -->
+  <update id="updateToken">
+  	update fcm_token set user_id = #{user_id} where token = #{token}
+  </update>
    
    
 </mapper>
