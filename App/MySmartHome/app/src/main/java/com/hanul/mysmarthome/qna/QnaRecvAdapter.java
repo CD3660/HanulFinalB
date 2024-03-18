@@ -28,7 +28,6 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(LayoutInflater.from(context),parent,false);
-        //ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(inflater, parent, false);
 
         return new ViewHolder(binding);
     }
@@ -37,10 +36,14 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder h, int i) {
 
         h.binding.itemQnaTitle.setText( list.get(i).getTitle());
+        h.binding.itemQnaWriter.setText(list.get(i).getWriter());
+        h.binding.itemQnaWritedate.setText(list.get(i).getWritedate().substring(0,10));
 
-        h.binding.itemQnaLinear.setOnClickListener(v -> {
+
+
+        h.binding.detailQnaLinear.setOnClickListener(v -> {
             Intent intent = new Intent(context, QnaDetailActivity.class);
-            intent.putExtra("dto", list.get(i));
+            intent.putExtra("vo", list.get(i));
             context.startActivity(intent);
         });
 

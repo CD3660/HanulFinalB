@@ -37,13 +37,9 @@ public class MyFragment extends Fragment {
 
 
 
-        binding.notice.setOnClickListener(v->{
-
-
+        binding.qna.setOnClickListener(v->{
             Intent intent = new Intent(getContext(), QnaActivity.class);
-
             startActivity(intent);
-
         });
 
 
