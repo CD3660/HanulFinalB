@@ -90,13 +90,10 @@ public class MyFragment extends Fragment {
             builder.show();
         });
 
-        binding.notice.setOnClickListener(v -> {
 
-
+        binding.qna.setOnClickListener(v->{
             Intent intent = new Intent(getContext(), QnaActivity.class);
-
             startActivity(intent);
-
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             Glide.with(this).load(cameraUri).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임

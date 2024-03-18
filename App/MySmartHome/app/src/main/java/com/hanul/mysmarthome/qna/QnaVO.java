@@ -1,32 +1,28 @@
 package com.hanul.mysmarthome.qna;
 
-import com.hanul.mysmarthome.common.FileDTO;
+import com.hanul.mysmarthome.common.FileVO;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
-
-
 
 
 public class QnaVO implements Serializable {
 	private int qna_id, readcnt, no, filecnt;
 	private String title, content, writer, name;
 	private String writedate;
-	
-	
-	private List<FileDTO> fileList;
 
-	
+
+	private List<FileVO> fileList;
+
+
 	private int root, step, indent, rid;
 
-	
-	
-	private String filename, filepath;
+
+	private String filename, file_id;
 
 	public QnaVO(int qna_id, int readcnt, int no, int filecnt, String title, String content, String writer,
-				 String name, String writedate, List<FileDTO> fileList, int root, int step, int indent,
-				 int rid, String filename, String filepath) {
+				 String name, String writedate, List<FileVO> fileList, int root, int step, int indent,
+				 int rid, String filename, String file_id) {
 
 		this.qna_id = qna_id;
 		this.readcnt = readcnt;
@@ -43,10 +39,8 @@ public class QnaVO implements Serializable {
 		this.indent = indent;
 		this.rid = rid;
 		this.filename = filename;
-		this.filepath = filepath;
+		this.file_id = file_id;
 	}
-
-
 
 
 	public int getQna_id() {
@@ -121,11 +115,11 @@ public class QnaVO implements Serializable {
 		this.writedate = writedate;
 	}
 
-	public List<FileDTO> getFileList() {
+	public List<FileVO> getFileList() {
 		return fileList;
 	}
 
-	public void setFileList(List<FileDTO> fileList) {
+	public void setFileList(List<FileVO> fileList) {
 		this.fileList = fileList;
 	}
 
@@ -169,12 +163,14 @@ public class QnaVO implements Serializable {
 		this.filename = filename;
 	}
 
-	public String getFilepath() {
-		return filepath;
+	public String getFile_id() {
+		return file_id;
 	}
 
-	public void setFilepath(String filepath) {
-		this.filepath = filepath;
+	public void setFile_id(String file_id) {
+		this.file_id = file_id;
 	}
 }
+
+
 

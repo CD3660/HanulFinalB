@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.common.CommonConn;
 import com.hanul.mysmarthome.databinding.ActivityQnaBinding;
 
@@ -20,6 +21,7 @@ public class QnaActivity extends AppCompatActivity {
 
     ActivityQnaBinding binding;
     ArrayList<QnaVO> list ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,7 @@ public class QnaActivity extends AppCompatActivity {
 
            LinearLayoutManager manager = new LinearLayoutManager(this);
            // manager.setOrientation(LinearLayoutManager.VERTICAL);
-            binding.recvQna.setAdapter(new QnaRecvAdapter(getLayoutInflater(),list , this));
+            binding.recvQna.setAdapter(new QnaRecvAdapter(getLayoutInflater(), list , this));
             binding.recvQna.setLayoutManager(manager);
         });
     }
