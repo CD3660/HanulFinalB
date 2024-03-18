@@ -62,21 +62,10 @@ public class MemberService {
 		return memberDAO.findIdByEmail(email);
 	}
 
-	public MemberVO memberInfo(String user_id) {
-		return sql.selectOne("member.info", user_id);
+	public MemberVO memberInfo(String string) {
+		return sql.selectOne("member.info", string);
 
 	}
 	
-	public static MemberVO getCurrentMember() {
-        // Spring Security를 이용하여 현재 로그인한 사용자의 정보를 가져옵니다.
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        // 여기서는 임의의 방법으로 현재 사용자의 정보를 반환하도록 작성합니다.
-        // 실제로는 해당 로직을 프로젝트의 요구사항에 맞게 변경해야 합니다.
-        MemberVO member = new MemberVO();
-        member.setUser_id(userDetails.getUsername());
-        // 다른 회원 정보를 가져와서 설정하는 로직을 추가합니다.
-        return member;
-}
+	
 }

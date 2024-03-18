@@ -48,12 +48,7 @@ public class MemberController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	// 코멘트 만들면서 임시로 만듬. 연결된 코드들 수정 마무리 바람
 	//로그인 화면 요청
 	@RequestMapping(value = "/login")
@@ -78,12 +73,7 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 
 	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
 	public String join(Model model) {
@@ -176,11 +166,10 @@ public class MemberController {
 		session.removeAttribute("loginInfo");
 		return "redirect:/";
 	}
-	@GetMapping("/mypage")
+	@RequestMapping("/mypage")
 	public String showMyPage(Model model) {
-		MemberVO member = MemberService.getCurrentMember();
-		model.addAttribute("member", member);
-		return "/member/mypage";
+		
+		return "member/mypage";
 	}
 	@RequestMapping("/sidemenu")
 	public String sidemenu(HttpSession session) {

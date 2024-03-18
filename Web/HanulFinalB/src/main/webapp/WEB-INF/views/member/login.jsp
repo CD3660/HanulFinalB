@@ -71,6 +71,14 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	 $(document).ready(function() {
+	        $('#user_pw').keypress(function(e) {
+	            if (e.keyCode === 13) { // 엔터 키를 눌렀을 때
+	                login(); // 로그인 함수 호출
+	            }
+	        });
+	    });
+	
 		function login(){
 			var userInfo = {};
 			userInfo.user_id = $('#user_id').val();
@@ -85,7 +93,7 @@
 						console.log("성공");
 						location="/finalb/"
 					}else if(data.code === '-1'){
-						console.log("실패");
+						alert("실패");
 					}
 				},
 				error : function(error) {
