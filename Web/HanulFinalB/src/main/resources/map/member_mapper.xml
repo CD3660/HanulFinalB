@@ -45,7 +45,7 @@
    <!-- 아이디 찾기 -->
 	<select id="findIdByEmail" resultType="String">
         SELECT 
-        	NAME 
+        	user_id 
         FROM 
         	USERS 
         WHERE 

@@ -52,11 +52,10 @@ public class MemberService {
 		return sql.selectOne("member.login", id);
 	}
 
-	@Autowired
-	private MemberDAO memberDAO;
+	
 
 	public String findIdByEmail(String email) {
-		return memberDAO.findIdByEmail(email);
+		return sql.selectOne("member.findIdByEmail", email);
 	}
 
 	public MemberVO memberInfo(String user_id) {
