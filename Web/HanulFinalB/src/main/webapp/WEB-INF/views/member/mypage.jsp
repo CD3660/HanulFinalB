@@ -1,59 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<c:url value='/css/member/join.css'/>">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="col-sm-2"></div>
-                <div class="col-sm-9">
-                    <h2 class="text-center">회원 정보 보기</h2>
-                    <table class="table table-striped">
-                      <tr>
-                        <td>아이디</td>
-                        <td class="p-2">${loginInfo.user_id }</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>이메일</td>
-                      </tr>
-                       
-                      <tr>
-                        <td>전화</td>
-                      </tr>
-                       <tr>
-                        <td>주소</td>
-                      </tr>
-                       
-                    
-                       
-                      
-                       
-                     
-                       
-                     
-                       
-                    <tr>
-                         <td class="text-center" colspan="2">
-<button onclick="location.href='MemberUpdateForm.jsp?id=<%=  %>'" class="btn btn-primary">회원수정</button>
-<button onclick="location.href='MemberDeleteForm.jsp?id=<%=  %>'" class="btn btn-danger">회원삭제</button>
 
-                          
-                         </td>    
-                    </tr> 
-                 
-                       
-                    </table>
-                </div>
-        </div> <!-- col-sm-12 -->
-    </div><!-- row -->
-</div> <!-- container end-->
+<h1 align="center">회원정보수정</h1>
+	<div class="">
+		<form action="/member/mypage" method="post">
+			<table>
+				<tr>
+					<td>* 아이디</td>
+					<td><input type="text" id="memberId" name="memberId" value="${loginInfo.user_id }" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>* 비밀번호</td>
+					<td><input type="password" name="memberPw" value=""></td>
+				</tr>
+				<tr>
+					<td>* 비밀번호 확인</td>
+					<td><input type="password" name="memberPwck" value=""></td>
+				</tr>
+				<tr>
+					<td>* 이름</td>
+					<td><input type="text" name="memberName" value="${loginInfo.name }" readonly></td>
+				</tr>
+
+				<tr>
+					<td>* 이메일</td>
+					<td><input type="text" name="memberEmail" value="${loginInfo.email }"></td>
+				</tr>
+				<tr>
+					<td>* 전화번호</td>
+					<td><input type="text" name="memberPhone" value="${loginInfo.phone }"></td>
+				</tr>
+				<tr>
+					<td>* 우편번호</td>
+					<td><input type="text" name="post" value="${loginInfo.address }" ></td>
+					<!-- 배열로 값을 받았다면 ${addreess[0]}으로 표기하여 출력할수 있다-->
+				</tr>
+				<tr>
+					<td>* 주소</td>
+					<td><input type="text" name="address" value="${loginInfo.address2 }"></td>
+				</tr>
+				<tr>
+				<td colspan="2" align="center">
+			<input type="submit" value="수정하기">
+			<button type="button" onclick="removeMember();"> 탈퇴하기 </button>
+			<!-- //type을 button으로 꼭 적어줘야! submit이 되지 않는다!! 꼭 기억하기!
+				 -->
+				</td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+
+<script>
+
+
+function removeMember() {
+	if(window.confirm("탈퇴하시겠습니까?")){
+	location.href="/member/remove.kh";
+	}
+	
+}
+</script>
 </body>
 </html>

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,12 +48,7 @@ public class MemberController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	// 코멘트 만들면서 임시로 만듬. 연결된 코드들 수정 마무리 바람
 	//로그인 화면 요청
 	@RequestMapping(value = "/login")
@@ -78,12 +73,7 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 
 	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
 	public String join(Model model) {
@@ -174,9 +164,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	@RequestMapping("/mypage")
-	public String mypage(HttpSession session) {
+	public String showMyPage(Model model) {
 		
-		return "/member/mypage";
+		return "member/mypage";
+	}
+	@RequestMapping("/sidemenu")
+	public String sidemenu(HttpSession session) {
+		
+		return "/member/sidemenu";
 	}
 
 }
