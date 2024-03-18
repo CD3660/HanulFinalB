@@ -151,6 +151,12 @@ public class Common {
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
 	}
+	/**
+	 * URL에서 fileId 추출하는 코드
+	 */
+	public String fileId(String url) {
+		return url.replace("https://drive.google.com/thumbnail?sz=", "");
+	}
 	
 	public String requestAPI(String apiURL) {
 		try {

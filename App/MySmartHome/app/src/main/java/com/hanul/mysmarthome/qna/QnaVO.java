@@ -6,11 +6,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 
 public class QnaVO implements Serializable {

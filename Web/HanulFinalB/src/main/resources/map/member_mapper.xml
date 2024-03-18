@@ -71,6 +71,26 @@
   <update id="updateToken">
   	update fcm_token set user_id = #{user_id} where token = #{token}
   </update>
+  
+  <!-- 엡에서 주소, 폰, 이메일 정보 수정 -->
+  <update id="app_user_update">
+  	update users set 
+  	<if test="address != null">
+  		address = #{address}, address2 = #{address2}
+  	</if>
+  	<if test="phone != null">
+  		phone = #{phone}
+  	</if>
+  	<if test="email != null">
+  		email = #{email}
+  	</if>  	
+  	where user_id = #{user_id}
+  </update>
+  <update id="app_update_profile">
+  	update users set 
+  	profile = #{profile}
+  	where user_id = #{user_id}
+  </update>
    
    
 </mapper>
