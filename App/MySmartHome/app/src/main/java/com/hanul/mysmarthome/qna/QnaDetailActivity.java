@@ -31,11 +31,10 @@ public class QnaDetailActivity extends AppCompatActivity {
 
 
         QnaVO vo = (QnaVO) getIntent().getSerializableExtra("vo");
-        Log.d("내용", "onCreate: "+ vo);
-        binding.detailQnaTitle.setText(vo.getTitle());
-        binding.detailQnaContent.setText(vo.getContent());
-        binding.detailQnaReadcnt.setText(vo.getReadcnt());
-        binding.detailQnaFilecnt.setText(vo.getFilecnt());
+        binding.detailQnaTitle.setText(vo.getTitle().toString());
+        binding.detailQnaContent.setText(vo.getContent().toString());
+        binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
+        binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
 
 
 
@@ -45,28 +44,6 @@ public class QnaDetailActivity extends AppCompatActivity {
             finish();
         });
     }
-
-
-
-
-  /*  void getDetail() {
-
-        CommonConn conn = new CommonConn(this, "qnaDetail");
-        conn.addParamMap("qna_id", "qna_id");
-        conn.onExcute((isResult, data) -> {
-            Log.d("데이터", "getDetail: " + data);
-
-            Type QnaVO = new TypeToken<QnaVO>(){}.getType();
-            vo = new Gson().fromJson(data, QnaVO);
-            Log.d("데이터", "getDetail: " + vo);
-
-        });
-        }*/
-
-
-
-
-
 
 }
 

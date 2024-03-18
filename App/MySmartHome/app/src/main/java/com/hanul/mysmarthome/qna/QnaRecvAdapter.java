@@ -1,5 +1,6 @@
 package com.hanul.mysmarthome.qna;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.databinding.ItemQnaRecvBinding;
 
 import java.util.ArrayList;
@@ -17,6 +19,12 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     LayoutInflater inflater;
     List<QnaVO> list;
     Context context;
+
+    QnaActivity qnaActivity;
+
+    public QnaRecvAdapter(QnaActivity qnaActivity) {
+        this.qnaActivity = qnaActivity;
+    }
 
     public QnaRecvAdapter(LayoutInflater inflater, ArrayList<QnaVO> list, Context context) {
         this.inflater = inflater;
