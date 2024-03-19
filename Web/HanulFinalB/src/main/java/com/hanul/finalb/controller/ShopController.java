@@ -45,10 +45,6 @@ public class ShopController {
 	@RequestMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.list());
-		MemberVO vo = new MemberVO();
-		vo.setAdmin("Y");
-		model.addAttribute("loginInfo", vo);
-
 		return "shop/list";
 	}
 

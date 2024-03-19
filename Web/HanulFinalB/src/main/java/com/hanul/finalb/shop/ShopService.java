@@ -33,8 +33,8 @@ public class ShopService {
 		return sql.selectList("prod.list");
 	}
 	/** 아이디로 상품 개별 내용 조회 */
-	public ProductVO info(int id) {
-		return sql.selectOne("prod.info", id);
+	public ProductVO info(int prod_id) {
+		return sql.selectOne("prod.info", prod_id);
 	}
 	/** 상품 정보 등록 */
 	public int insert(ProductVO vo) {
@@ -99,4 +99,10 @@ public class ShopService {
 		System.out.println(result);
 		return result;
 	}
+
+	/* * 리뷰 정보를 가져오는 메소드 */
+	public List<ReviewVO> getReview(int prod_id){
+		return sql.selectList("review.list", prod_id);
+	}
+
 }

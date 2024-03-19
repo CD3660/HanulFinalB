@@ -5,8 +5,11 @@
 <html>
 <body>
 	<c:if test="${loginInfo.admin == 'Y'}">
-		<div class="col-auto">
-			<button type="button" class="btn btn-primary" id="btn-insert">상품 등록</button>
+		<div class="row justify-content-end">
+			<div class="col-auto">
+				<!-- 여기에 내용을 넣으세요 -->
+				<button type="button" class="btn btn-primary me-3" id="btn-insert">상품 등록</button>
+			</div>
 		</div>
 	</c:if>
 	<div class="container">
@@ -68,7 +71,7 @@
 									<fmt:formatNumber value="${vo.price}" pattern="###,###원" />
 								</p>
 								<div class="rate">
-									<span style="width: ${i.index*10}%"></span>
+									<span style="width: ${(vo.rate==null?0:vo.rate)*10}%"></span>
 								</div>
 							</div>
 						</c:forEach>

@@ -31,7 +31,6 @@
    
    
    </select>
-   
    <select id="login" resultType="memberVO">
    SELECT
    		USER_ID
