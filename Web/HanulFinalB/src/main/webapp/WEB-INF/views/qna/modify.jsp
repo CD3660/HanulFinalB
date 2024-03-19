@@ -77,7 +77,7 @@
 <script>
 
 
-var fileList = new fileList();
+var fileList = new FileList();
 //첨부된 파일정보를 fileList 객체 담기
 <c:forEach items="${vo.fileList}" var="f">
 fileList.setFile( urlToFile( "${f.filepath}", "${f.filename}" ), ${f.id} )

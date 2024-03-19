@@ -294,7 +294,7 @@ public class Common {
 	
 	
 	 //다중 파일업로드
-	public ArrayList<FileVO> multipleFileUpload(String category,
+	public ArrayList<FileVO> multipleFileUpload(int qna_id, String category,
 				MultipartFile[] files, HttpServletRequest request) throws GeneralSecurityException, IOException {
 	  
 	 ArrayList<FileVO> list = null;
@@ -307,12 +307,20 @@ public class Common {
 		 vo.setFilename( file.getOriginalFilename() );
 		 String file_id = fileUpload(file);
 		 vo.setFile_id(file_id);
-		 /* vo.setFilepath;(fileURL(file_id)); */
+		 vo.setQna_id(qna_id);
 		 list.add(vo);
 		 }
 	 		
 	 return list;
 	 }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

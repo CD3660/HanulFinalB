@@ -25,5 +25,5 @@ public class QnaVO {
 
 	
 	
-	private String filename, file_id;
+	//private String filename, file_id;
 }

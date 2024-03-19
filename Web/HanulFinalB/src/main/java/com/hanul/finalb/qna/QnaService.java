@@ -15,7 +15,7 @@ public class QnaService {
 	@Autowired private SqlSession sql;
 	
 	
-	//안드로이드 Q&A 목록 조회**************************************************
+	//안드로이드 Q&A 목록 조회
 	public List<QnaVO> appQnaList() {
 	   
 		List<QnaVO> list = sql.selectList("qna.appQnaList");
@@ -55,7 +55,12 @@ public class QnaService {
 	
 	//Q&A 정보 변경저장처리
 	public int qna_update(QnaVO vo) {
-		return sql.update("notice.upadate", vo);
+		int dml = sql.update("qna.update", vo);
+		//첨부파일저장
+		if( dml==1 && vo.getFileList()!=null ) {
+			sql.insert("qna.fileInsert", vo);
+		}
+		return dml;
 	}
 	
 	
@@ -113,14 +118,26 @@ public class QnaService {
 		return sql.selectList("qna.fileList", qna_id);
 	}
 	
+	public List<FileVO> qna_file_list(String remove){ //qna_file의 file_id들
+		return sql.selectList("qna.removeFileList", remove);
+	}
+	
+	
+	
+	
 	//파일정보 조회
-	public FileVO qna_file_info(int file_id) { //qna_file의 file_id
+	public FileVO qna_file_info(int file_id) { //qna_file의 file_id들
 		return sql.selectOne("qna.fileInfo", file_id);
 	}
 	
 	
 	
+	
+	
 	//파일삭제
+	public int qna_file_delete(String remove) {
+		return sql.delete("qna.fileDelete", remove);
+	}
 	
 	
 

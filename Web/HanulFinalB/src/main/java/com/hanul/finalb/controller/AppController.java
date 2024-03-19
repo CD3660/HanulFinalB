@@ -50,16 +50,11 @@ public class AppController {
 
 	@RequestMapping("/qna")
 	public String qnaList() {
-//		return new Gson().toJson(qnaService.appQnaList(), QnaVO.class);
 		
-		// QnaVO 객체들의 리스트를 가져옴*********************************
+		// QnaVO 객체들의 리스트를 가져옴
 		ArrayList<QnaVO> list = (ArrayList<QnaVO>)qnaService.appQnaList();
 
-	    // ArrayList<QnaVO>에 대한 Type 객체를 생성
-	   // Type listType = new TypeToken<ArrayList<QnaVO>>() {}.getType();
-
 	    // 생성된 Type을 사용하여 리스트를 JSON 문자열로 변환
-//	    return new Gson().toJson(list, listType);
 		System.out.println(">> "+ new Gson().toJson(list));
 	    return new Gson().toJson(list);
 		
