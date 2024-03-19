@@ -41,6 +41,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Notification notification = getNotificationBuilder(message.getNotification().getTitle(),message.getNotification().getBody(),pendingIntent).build();
                 notificationManager.notify(10, notification);
             }
+        } else {
+            Intent intent = new Intent(this, SplashActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(getResources().getString(R.string.default_notification_channel_id), "notice", NotificationManager.IMPORTANCE_HIGH);
+                channel.enableLights(true);
+                channel.setLightColor(Color.RED);
+                channel.enableVibration(true);
+                channel.setDescription("notification");
+                notificationManager.createNotificationChannel(channel);
+                Notification notification = getNotificationBuilder(message.getNotification().getTitle(),message.getNotification().getBody(),pendingIntent).build();
+                notificationManager.notify(10, notification);
+            }
         }
 
 

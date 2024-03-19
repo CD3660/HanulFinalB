@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sensor">
 	<select id="insert">
-		insert into datas (USER_ID, DUST, GAS, FIRE, TEMP, HUMID) values (#{user_id}, #{dust}, #{gas}, #{fire}, #{temp}, #{humid})
+		CALL INSERT_DATAS(#{dust},#{dust_sensor_id},#{gas},#{gas_sensor_id},#{fire},#{fire_sensor_id},#{temp},#{humid},#{temp_sensor_id},#{user_id})
 	</select>
 	<select id="info" resultType="sensVO">
 		select * 

@@ -46,18 +46,18 @@ public class UserSensorAdapter extends RecyclerView.Adapter<UserSensorAdapter.Us
         int prod_id = list.get(i).getProd_id();
         if(prod_id == 13){
             if(sp.getBoolean("light_mode", false)){
-                h.binding.sensorImg.setImageResource(R.drawable.icon_light_off);
-                h.binding.sensorCtrl.setText("전원 켜기");
-            } else {
                 h.binding.sensorImg.setImageResource(R.drawable.icon_light_on);
                 h.binding.sensorCtrl.setText("전원 끄기");
+            } else {
+                h.binding.sensorImg.setImageResource(R.drawable.icon_light_off);
+                h.binding.sensorCtrl.setText("전원 켜기");
             }
             h.binding.sensorLayout.setOnClickListener(v -> {
                 String url = "";
                 if(sp.getBoolean("light_mode", false)){
-                    url = "light_on";
-                } else {
                     url = "light_off";
+                } else {
+                    url = "light_on";
                 }
                 new CommonConn(context, url)
                         .addParamMap("user_id",loginInfo.getUser_id())
@@ -65,12 +65,12 @@ public class UserSensorAdapter extends RecyclerView.Adapter<UserSensorAdapter.Us
                         .onExcute((isResult, data) -> {
                     if(isResult){
                         if(data.equals("led_off")){
-                            sp.edit().putBoolean("light_mode", true);
+                            sp.edit().putBoolean("light_mode", false).apply();
                             h.binding.sensorImg.setImageResource(R.drawable.icon_light_off);
                             h.binding.sensorCtrl.setText("전원 켜기");
                             Toast.makeText(context, "led off", Toast.LENGTH_SHORT).show();
                         } else if(data.equals("led_on")){
-                            sp.edit().putBoolean("light_mode", false);
+                            sp.edit().putBoolean("light_mode", true).apply();
                             h.binding.sensorImg.setImageResource(R.drawable.icon_light_on);
                             h.binding.sensorCtrl.setText("전원 끄기");
                             Toast.makeText(context, "led on", Toast.LENGTH_SHORT).show();

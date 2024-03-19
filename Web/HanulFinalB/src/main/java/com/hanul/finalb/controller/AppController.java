@@ -72,15 +72,13 @@ public class AppController {
 	}
 	@RequestMapping("/light_on")
 	public String light_on() {
-		String url = "http://192.168.0.30:8000/led?led_mode=on";
-		System.out.println("led ON");
+		String url = "http://192.168.0.30:8000/led/?led_mode=on";
 		comm.requestAPI(url);
 		return "led_on";
 	}
 	@RequestMapping("/light_off")
 	public String light_off() {
-		String url = "http://192.168.0.30:8000/led?led_mode=off";
-		System.out.println("led OFF");
+		String url = "http://192.168.0.30:8000/led/?led_mode=off";
 		comm.requestAPI(url);
 		return "led_off";
 	}
