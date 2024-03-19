@@ -64,15 +64,16 @@ public class UserSensorAdapter extends RecyclerView.Adapter<UserSensorAdapter.Us
                         .addParamMap("sensor_id",list.get(i).getSensor_id())
                         .onExcute((isResult, data) -> {
                     if(isResult){
-                        if(data.equals("led_on")){
+                        if(data.equals("led_off")){
                             sp.edit().putBoolean("light_mode", true);
                             h.binding.sensorImg.setImageResource(R.drawable.icon_light_off);
                             h.binding.sensorCtrl.setText("전원 켜기");
-
-                        } else if(data.equals("led_off")){
+                            Toast.makeText(context, "led off", Toast.LENGTH_SHORT).show();
+                        } else if(data.equals("led_on")){
                             sp.edit().putBoolean("light_mode", false);
                             h.binding.sensorImg.setImageResource(R.drawable.icon_light_on);
                             h.binding.sensorCtrl.setText("전원 끄기");
+                            Toast.makeText(context, "led on", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(context, "연동 오류. 다시 시도하세요.", Toast.LENGTH_SHORT).show();

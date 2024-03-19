@@ -68,6 +68,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".mymenu.SetAlamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mymenu.AppInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".mymenu.PolicyActivity"
             android:exported="false" />
         <activity

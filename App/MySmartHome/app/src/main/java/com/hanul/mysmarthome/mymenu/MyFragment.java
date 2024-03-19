@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.ApiInterface;
+import com.hanul.mysmarthome.common.Common;
 import com.hanul.mysmarthome.common.CommonConn;
 import com.hanul.mysmarthome.common.CommonRetroClient;
 import com.hanul.mysmarthome.databinding.FragmentMyBinding;
@@ -121,6 +122,14 @@ public class MyFragment extends Fragment {
         });
         binding.policy.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PolicyActivity.class);
+            startActivity(intent);
+        });
+        binding.appVersion.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AppInfoActivity.class);
+            startActivity(intent);
+        });
+        binding.alertSetting.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), SetAlamActivity.class);
             startActivity(intent);
         });
 

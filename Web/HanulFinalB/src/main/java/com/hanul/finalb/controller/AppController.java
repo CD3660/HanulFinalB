@@ -72,13 +72,17 @@ public class AppController {
 	}
 	@RequestMapping("/light_on")
 	public String light_on() {
-		
-		return "redirect:sensor/led?led_mode=ON";
+		String url = "http://192.168.0.30:8000/led?led_mode=on";
+		System.out.println("led ON");
+		comm.requestAPI(url);
+		return "led_on";
 	}
 	@RequestMapping("/light_off")
 	public String light_off() {
-		
-		return "redirect:sensor/led?led_mode=OFF";
+		String url = "http://192.168.0.30:8000/led?led_mode=off";
+		System.out.println("led OFF");
+		comm.requestAPI(url);
+		return "led_off";
 	}
 		
 	//푸시 알림 테스트용
@@ -104,10 +108,10 @@ public class AppController {
 		if(file_id != null) {
 			//vo에서 얻은 기존 프로필 url응 이용해 file_id를 추출하고, 구글 드라이브에서 삭제 처리
 			String oldProfileId = comm.fileId(vo.getProfile());
-			comm.fileDelete(file_id);
 			//프로필 아이디를 수정하고, db에 저장처리
 			vo.setProfile(comm.fileURL(file_id));
 			memService.appUpdateProfile(vo);
+			comm.fileDelete(oldProfileId);
 		}
 		
 		return new Gson().toJson(memService.memberInfo(user_id), MemberVO.class);
