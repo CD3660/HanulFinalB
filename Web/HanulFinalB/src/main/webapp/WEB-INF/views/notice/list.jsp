@@ -11,7 +11,7 @@
 
 
 <h3 class="mt-4">공지사항 목록</h3>
-<form id="listform" method="post" action="list">
+<form id="listForm" method="post" action="list">
 	<div class="row mb-2 justify-content-between">
 			<div class = "col-auto">
 				<div class="input-group">
@@ -46,7 +46,7 @@
 		
 		
 				
-				<!-- 로그인되어 있는 경우만 -->
+				<!-- 관리자 로그인되어 있는 경우만 -->
 				<c:if test="${ loginInfo.admin eq 'Y' }">
 					<div class="col-auto">
 						<button type="button" class="btn btn-primary"
@@ -134,11 +134,11 @@ $("[name=pageList]").val( ${page.pageList}).prop("selected", true)
 
 
 function info(notice_id) {
-	$("[name=notice_id]").val(qna_id);
+	$("[name=notice_id]").val(notice_id);
 	$("[name=curPage]").val( ${page.curPage} );
 	$("[name=search]").val( "${page.search}" );
 	$("[name=keyword]").val( "${page.keyword}" );
-	$("form#listform").attr("action", "info").submit();
+	$("form#listForm").attr("action", "info").submit();
 }
 
 

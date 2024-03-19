@@ -10,16 +10,8 @@ import lombok.Setter;
 
 @Getter @Setter
 public class NoticeVO {
-	private int notice_id, readcnt, no, filecnt;
+	private int notice_id, readcnt, no;
 	private String title, content, writer, name;
 	private String writedate;
-
-	
-	
-	
-	
-	private int root, step, indent, rid;
-
-	
 	
 }
