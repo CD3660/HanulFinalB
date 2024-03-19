@@ -75,7 +75,7 @@ public class HomeController {
 	@RequestMapping("/download")
 	public void download(HttpServletRequest req, HttpServletResponse resp) {
 		try {
-			comm.fileDownload("1oNB5Q0DF2SZDrifjJvywaztddBwNGPcv", "profile.jpg", req, resp);
+			comm.fileDownload("19qyY9Ja52jfCCGrQ_l_2DNwIOWqDXRVb", "제목없음.png", req, resp);
 			
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();

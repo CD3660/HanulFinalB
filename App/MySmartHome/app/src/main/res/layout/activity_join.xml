@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.JoinActivity"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <TextView
+        android:text="회원가입"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconContentDescription="설명글자"
+        app:endIconMode="none"
+        app:helperTextEnabled="true"
+        app:helperText="아이디 입력"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        android:layout_margin="10dp"
+        android:hint="아이디">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconContentDescription="설명글자"
+        app:endIconMode="password_toggle"
+        android:layout_margin="10dp"
+        android:hint="비밀번호">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconContentDescription="설명글자"
+        app:endIconMode="password_toggle"
+        android:layout_margin="10dp"
+        android:hint="비밀번호 확인">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_pw_conf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconContentDescription="설명글자"
+        app:endIconMode="none"
+        app:helperTextEnabled="true"
+        app:helperText="이름 입력"
+        android:layout_margin="10dp"
+        android:hint="이름">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="none"
+        app:helperTextEnabled="true"
+        app:helperText="전화번호 입력"
+        android:layout_margin="10dp"
+        android:hint="전화번호">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="none"
+        app:helperTextEnabled="true"
+        android:layout_margin="10dp"
+        android:hint="주소">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/address2"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:endIconMode="none"
+            app:helperTextEnabled="true"
+            android:layout_margin="10dp"
+            android:hint="우편번호">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/btn_address"
+            android:layout_margin="10dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="주소찾기"
+            style="?attr/materialButtonOutlinedStyle"/>
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="none"
+        app:helperTextEnabled="true"
+        android:layout_margin="10dp"
+        app:helperText="이메일 입력"
+        android:hint="이메일">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile"
+            android:src="@drawable/d_profile_img"
+            android:layout_margin="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_profile"
+            android:layout_margin="10dp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="프로필 사진 선택"
+            style="?attr/materialButtonOutlinedStyle"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="회원가입"
+        style="?attr/materialButtonOutlinedStyle"/>
+
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
