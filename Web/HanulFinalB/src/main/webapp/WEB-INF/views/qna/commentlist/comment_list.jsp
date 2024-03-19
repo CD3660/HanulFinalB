@@ -79,7 +79,7 @@ $(".btn-delete-cancel").click(function(){
 		if( confirm("정말 댓글을 삭제하시겠습니까?") ){
 			$.ajax({
 				url: "comment/delete",
-				data: { id: _comment.data("comment_id") }
+				data: { comment_id: _comment.data("id") }
 			}).done(function( response ){
 				if( response.success ){
 					// 화면에서 해당 댓글 삭제

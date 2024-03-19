@@ -94,25 +94,12 @@ public class QnaController {
 	
 	  // Q&A 첨부파일 다운로드 요청*************************************************************************************************************************
 	  @RequestMapping("/download")
-	  public void download(int file_id, HttpServletRequest request, HttpServletResponse response) { // 해당 파일정보를 조회해와 클라이언트에 다운로드하기
+	  public void download(String file_id, HttpServletRequest request, HttpServletResponse response) throws GeneralSecurityException, IOException { // 해당 파일정보를 조회해와 클라이언트에 다운로드하기
 	  FileVO vo = service.qna_file_info(file_id);
 	  
-	  //common.fileDownload(vo.getFilename(), vo.getFilepath(), request, response);
-	 
-	  
-	  
+	  common.fileDownload(file_id, vo.getFilename(), request, response); 
 	  }
 	 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// Q&A 정보화면 요청
@@ -139,7 +126,7 @@ public class QnaController {
 			throws GeneralSecurityException, IOException {
 
 		// 첨부된 파일들을 QnaVO 의 fileList에 담기
-		vo.setFileList(common.multipleFileUpload(vo.getQna_id(), "qna", addfile, request));
+		vo.setFileList(common.multipleFileUpload("qna", addfile, request));
 
 		// 화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
 		service.qna_register(vo);

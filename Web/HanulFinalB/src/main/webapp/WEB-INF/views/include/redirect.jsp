@@ -5,7 +5,7 @@
     
 <form method="post" action="<c:url value='/${url}'/>">
 
-<input type="hidden" name="qna_id" value="/${qna_id }">
+<input type="hidden" name="qna_id" value="${qna_id }">
 <input type="hidden" name="curPage" value="${page.curPage }">
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">

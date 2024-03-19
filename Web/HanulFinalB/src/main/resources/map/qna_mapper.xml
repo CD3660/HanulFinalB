@@ -63,7 +63,7 @@ values ( #{title}, #{content}, #{writer} )
 
 <!-- 첨부파일목록 조회  -->
 <select id="fileList" resultType="fileVO">
-select * from qna_file where qna_id = #{qna_id}
+select q.*, #{url} || file_id filepath from qna_file q where qna_id = #{qna_id}
 </select>
 
 
@@ -182,7 +182,7 @@ delete from qna where qna_id = #{qna_id}
 
 <!-- Q&A글 변경 저장  -->
 <update id="update">
-update qna set title = #{title}, content = #{content},
+update qna set title = #{title}, content = #{content}
 where qna_id = #{qna_id}
 </update>
 

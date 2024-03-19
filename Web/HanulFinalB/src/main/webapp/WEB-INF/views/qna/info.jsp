@@ -68,6 +68,7 @@
 
 <form id="voform" method="post">
 <input type="hidden" name="qna_id" value="${vo.qna_id }">   <!-- QnaVO -->
+<input type="hidden" name="file_id" >
 <input type="hidden" name="curPage" value="${page.curPage }"> <!-- PageVO -->
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">
@@ -93,7 +94,7 @@
 
 $(".file-download").click(function() {
 	
-	$("[name=qna_id]").val( $(this).data("file") )
+	$("[name=file_id]").val( $(this).data("file") )
 	$("form#voform").attr("action", "download").submit();
 	
 	

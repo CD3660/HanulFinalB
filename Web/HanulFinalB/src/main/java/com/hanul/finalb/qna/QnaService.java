@@ -1,12 +1,13 @@
 package com.hanul.finalb.qna;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hanul.finalb.common.Common;
 import com.hanul.finalb.common.FileVO;
 import com.hanul.finalb.common.PageVO;
 
@@ -42,11 +43,15 @@ public class QnaService {
 		return page;
 	}
 	
+	@Autowired private Common common;
 	//선택한 Q&A 정보 조회
 	public QnaVO qna_info(int qna_id) {
 		QnaVO vo = sql.selectOne("qna.info", qna_id);
-		//첨부된 파일정보 조회
-		vo.setFileList(sql.selectList("qna.fileList", qna_id));
+		//첨부된 파일정보 조회		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("qna_id", qna_id);
+		map.put("url", common.fileURL());
+		vo.setFileList(sql.selectList("qna.fileList", map));
 		
 		return vo;
 	}
@@ -126,7 +131,7 @@ public class QnaService {
 	
 	
 	//파일정보 조회
-	public FileVO qna_file_info(int file_id) { //qna_file의 file_id들
+	public FileVO qna_file_info(String file_id) {
 		return sql.selectOne("qna.fileInfo", file_id);
 	}
 	

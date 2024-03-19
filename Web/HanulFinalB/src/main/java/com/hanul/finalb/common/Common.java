@@ -187,6 +187,9 @@ public class Common {
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
 	}
+	public String fileURL() {
+		return "https://drive.google.com/thumbnail?sz=w640&id=";
+	}
 	/**
 	 * URL에서 fileId 추출하는 코드
 	 */
