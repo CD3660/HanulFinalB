@@ -171,10 +171,16 @@ public class MemberController {
 		
 		return "member/mypage";
 	}
-	@RequestMapping("/sidemenu")
-	public String sidemenu(HttpSession session) {
+	
+	@RequestMapping("/changePw")
+	public String changePw(Model model) {
 		
-		return "/member/sidemenu";
+		return "member/changePw";
+	}
+	@RequestMapping("/secession")
+	public String secession(Model model) {
+		
+		return "member/secession";
 	}
 
 }
