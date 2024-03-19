@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -167,12 +168,16 @@ public class Common {
 			System.err.println("Unable to move file: " + e.getDetails());
 			throw e;
 		}
+		java.io.File dir = new java.io.File("/app/temp/");
+		if (!dir.exists())
+			dir.mkdirs();
 		//파일 경로는 서버 드라이브 루트부터 시작(하는듯)
 		java.io.File filePath = new java.io.File("/app/temp/", id+"_"+filename);
 		FileOutputStream fos = new FileOutputStream(filePath);
 		fos.write(byteArrayOutputStream.toByteArray());
 		fos.flush();
 		fos.close();
+		filename = URLEncoder.encode(filename, "utf-8");
 		resp.setContentType(req.getSession().getServletContext().getMimeType(filename));
 		resp.setHeader("content-disposition", "attachment; filename=" + filename);
 		FileCopyUtils.copy(new FileInputStream(filePath), resp.getOutputStream());
