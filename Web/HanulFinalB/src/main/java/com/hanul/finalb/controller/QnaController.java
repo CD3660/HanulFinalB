@@ -39,10 +39,9 @@ public class QnaController {
 	// Q&A 수정저장처리 요청
 	@RequestMapping("/update")
 	public String update(QnaVO vo, Model model, PageVO page, String remove, MultipartFile[] addfile, HttpServletRequest request) throws GeneralSecurityException, IOException {
-		
 		//화면에서 입력한 정보로DB에 변경저장한 후 정보화면으로 연결
 		//첨부파일이 있으면 QnaVO 의 fileList에 담기
-		vo.setFileList( common.multipleFileUpload(vo.getQna_id(),"qna", addfile, request) );
+		vo.setFileList( common.multipleFileUpload("qna", addfile, request) );
 		if( service.qna_update(vo)==1 ) {
 			//삭제된 첨부파일이 있으면 DB에서 삭제+물리적파일도 삭제
 			if( ! remove.isEmpty() ) {
