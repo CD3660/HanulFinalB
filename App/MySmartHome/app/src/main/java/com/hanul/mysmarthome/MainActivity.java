@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     public MemberVO getMemberVO(){
         return loginInfo;
     }
+
+    public void setLoginInfo(MemberVO loginInfo) {
+        this.loginInfo = loginInfo;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,8 +1,12 @@
 package com.hanul.finalb.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanul.finalb.HomeService;
+import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
 import com.hanul.finalb.product.ProductVO;
@@ -34,8 +39,8 @@ public class HomeController {
 		
 		//테스트용 임시 로그인 처리---------------------------
 		String user_id = "admin";
-		MemberVO vo = member.member_info(user_id);
-		session.setAttribute("loginInfo", vo);
+//		MemberVO vo = member.member_info(user_id);
+//		session.setAttribute("loginInfo", vo);
 		
 		//-----------------------------------------------
 		
@@ -64,7 +69,21 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	@Autowired
+	private Common comm;
 	
+	@RequestMapping("/download")
+	public void download(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			comm.fileDownload("1oNB5Q0DF2SZDrifjJvywaztddBwNGPcv", "profile.jpg", req, resp);
+			
+		} catch (GeneralSecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	

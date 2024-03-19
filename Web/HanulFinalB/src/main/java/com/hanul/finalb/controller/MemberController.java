@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,12 +48,7 @@ public class MemberController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	// 코멘트 만들면서 임시로 만듬. 연결된 코드들 수정 마무리 바람
 	//로그인 화면 요청
 	@RequestMapping(value = "/login")
@@ -77,21 +73,17 @@ public class MemberController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 
 	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
 	public String join(Model model) {
 
 		return "member/join";
 	}
-
-	@PostMapping("/joinAction")
-	public String joinpass(MemberVO member) throws Exception {
+	
+	
+	@RequestMapping("/joinAction")
+	public String joinpass(MemberVO member) {
 
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
 		member.setUser_pw(encodingPw);
@@ -103,13 +95,13 @@ public class MemberController {
 	}
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
-		public String find_id_form() throws Exception{
-			return "/member/find_id_form";
+		public String find_id_form() {
+			return "member/find_id_form";
 		}
 
-	@RequestMapping(path = "/loginAction", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> loginpass(@RequestBody MemberVO member) throws Exception {
+	@RequestMapping("/loginAction")
+	public Map<String, Object> loginpass(MemberVO member, HttpSession session){
 		Map<String, Object> result = new HashMap<>();
 		// 프론트에서 사용자가 입력한 비밀번호
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
@@ -117,10 +109,11 @@ public class MemberController {
 		// 디비에서 가져온거
 		MemberVO checkInfo = service.login(member.getUser_id());
 		
-		
-		if(encodingPw.equals(checkInfo.getUser_pw())) {
+		if(pwEncoder.matches(member.getUser_pw(), checkInfo.getUser_pw())) {
 			//성공시
 			result.put("code", "0");
+			//회원 정보 풀버전 세션에 넣기
+			session.setAttribute("loginInfo", service.memberInfo(member.getUser_id()));
 		}else {
 			//실패시
 			result.put("code", "-1");
@@ -155,18 +148,30 @@ public class MemberController {
 		System.out.println("falsePassword verify : " + pwEncoder.matches(falsePassword, encdoePassword1));
 
 	}
+	@ResponseBody
 	@PostMapping("/findId")
-    public ResponseEntity<String> findIdByEmail(@RequestBody String email) {
-        String name = service.findIdByEmail(email);
-
-        if (name != null) {
-            return new ResponseEntity<>(name, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("아이디를 찾을 수 없습니다.", HttpStatus.NOT_FOUND);
-            
-        }
+    public HashMap<String, String> findIdByEmail(String email) {
+		System.out.println("여기");
+        String user_id = service.findIdByEmail(email);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("user_id", user_id);
         
-	
+        return map;
     }
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginInfo");
+		return "redirect:/";
+	}
+	@RequestMapping("/mypage")
+	public String showMyPage(Model model) {
+		
+		return "member/mypage";
+	}
+	@RequestMapping("/sidemenu")
+	public String sidemenu(HttpSession session) {
+		
+		return "/member/sidemenu";
+	}
 
 }

@@ -1,23 +1,28 @@
 package com.hanul.finalb.common;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -26,8 +31,8 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.FileContent;
-import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
@@ -35,9 +40,6 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
-import com.google.auth.http.HttpCredentialsAdapter;
-import com.google.auth.oauth2.GoogleCredentials;
 
 
 
@@ -144,12 +146,52 @@ public class Common {
 		// id를 받아와서 구글드라이브 파일 삭제
 		service.files().delete(id).execute();
 	}
+	/**
+	 * 파일 아이디로 구글드라이브 저장된 파일 다운로드
+	 */
+	public void fileDownload(String id, String filename, HttpServletRequest req, HttpServletResponse resp) throws GeneralSecurityException, IOException {
+		// Build a new authorized API client service.
+		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME).build();
+
+		ByteArrayOutputStream byteArrayOutputStream;
+		try {
+			OutputStream outputStream = new ByteArrayOutputStream();
+
+			service.files().get(id).executeMediaAndDownloadTo(outputStream);
+
+			byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
+		} catch (GoogleJsonResponseException e) {
+			// TODO(developer) - handle error appropriately
+			System.err.println("Unable to move file: " + e.getDetails());
+			throw e;
+		}
+		//파일 경로는 서버 드라이브 루트부터 시작(하는듯)
+		java.io.File filePath = new java.io.File("/app/temp/", id+"_"+filename);
+		FileOutputStream fos = new FileOutputStream(filePath);
+		fos.write(byteArrayOutputStream.toByteArray());
+		fos.flush();
+		fos.close();
+		resp.setContentType(req.getSession().getServletContext().getMimeType(filename));
+		resp.setHeader("content-disposition", "attachment; filename=" + filename);
+		FileCopyUtils.copy(new FileInputStream(filePath), resp.getOutputStream());
+		filePath.delete();
+		
+	}
+	
 
 	/**
 	 * HTML의 img 태그의 src에 들어갈 수 있는 형태의 URL을 반환
 	 */
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
+	}
+	/**
+	 * URL에서 fileId 추출하는 코드
+	 */
+	public String fileId(String url) {
+		return url.replace("https://drive.google.com/thumbnail?sz=w640&id=", "");
 	}
 	
 	public String requestAPI(String apiURL) {
