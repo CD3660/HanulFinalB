@@ -96,7 +96,7 @@ public class MemberController {
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
 		public String find_id_form() throws Exception{
-			return "/member/find_id_form";
+			return "member/find_id_form";
 		}
 
 	@ResponseBody
