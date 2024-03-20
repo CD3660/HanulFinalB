@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="mb-4">Q&amp;A 글정보</h3>
+<h3 class="mb-4">공지사항 글정보</h3>
 
 
 <table class="table tb-row">
@@ -31,18 +31,6 @@
 <tr><th>내용</th>
 	<td colspan="5">${fn: replace( vo.content, crlf, "<br>" )}</td>
 </tr>
-<tr><th>첨부파일</th>
-	<td colspan="5">
-		<c:forEach items="${vo.fileList}" var="f">
-			<div class="row py-1">
-				<div class="col-auto">
-					<span class="file-name">${f.filename }</span>
-					<i role="button" data-file="${f.file_id }" class="file-download ms-4 fa-solid fa-file-arrow-down fs-2"></i> 
-				</div>
-			</div>		
-		</c:forEach>
-	</td>
-</tr>
 </table>
 
 
@@ -51,14 +39,9 @@
 	<button class="btn btn-primary" id="btn-list">목록으로</button>
 
 	<!-- 작성자로 로그인한 경우만 수정/삭제 보이게  -->
-	<c:if test="${loginInfo.user_id eq vo.writer}">
+	<c:if test="${loginInfo.admin eq 'Y'}">
 	<button class="btn btn-primary" id="btn-modify">정보수정</button>
 	<button class="btn btn-primary" id="btn-delete">정보삭제</button>
-	</c:if>
-
-	<!-- 운영자인 경우 답글쓰기 가능하다고 하자 -->
-	<c:if test="${ loginInfo.admin eq 'Y' }">
-	<button class="btn btn-primary" id="btn-reply">답글쓰기</button>
 	</c:if>
 
 </div>
@@ -67,13 +50,12 @@
 
 
 <form id="voform" method="post">
-<input type="hidden" name="qna_id" value="${vo.qna_id }">   <!-- QnaVO -->
-<input type="hidden" name="file_id" >
+<input type="hidden" name="notice_id" value="${vo.notice_id }">   <!-- QnaVO -->
 <input type="hidden" name="curPage" value="${page.curPage }"> <!-- PageVO -->
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">
 <input type="hidden" name="pageList" value="${page.pageList }">
-<input type="hidden" name="url" value="qna/info">
+<input type="hidden" name="url" value="notice/info">
 </form>
 
 
@@ -84,7 +66,7 @@
 
 
 
-<jsp:include page="comment.jsp"/>
+
 
 
 
@@ -92,18 +74,11 @@
 
 <script>
 
-$(".file-download").click(function() {
-	
-	$("[name=file_id]").val( $(this).data("file") )
-	$("form#voform").attr("action", "download").submit();
-	
-	
-})
 
 
 
 $("#btn-list, #btn-modify, #btn-delete").click(function() {
-	var id = $(this).attr("id"); // 클린된 버튼에 대한 id="btn-modify, id="btn-delete", id="btn-reply"
+	var id = $(this).attr("id"); // 클린된 버튼에 대한 id="btn-modify, id="btn-delete"
 	id = id.substr( id.indexOf("-")+1 );
 	$("form#voform").attr("action", id);
 	if( id == "delete" ) {
@@ -114,13 +89,6 @@ $("#btn-list, #btn-modify, #btn-delete").click(function() {
 	}else $("form#voform").submit();
 	
 })
-
-
-
-$("#btn-reply").click(function() {
-	location = "reply?qna_id=${vo.qna_id}&${params}"
-})
-
 
 
 </script>

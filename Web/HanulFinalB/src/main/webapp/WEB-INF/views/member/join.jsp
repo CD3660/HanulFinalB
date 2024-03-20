@@ -64,7 +64,7 @@
 						<div class="mb-3">
 							<label for="address">우편번호 <span class="text-muted">&nbsp;(선택사항)</span>
 								<span class="text-muted">
-									<button type="button" class="btn" id="check_btn"
+									<button type="button" class="btn" id="check_btn" 
 										onclick="searchAddress()">찾기</button>
 							</span>
 							</label> <input type="text" class="form-control" id="address"
@@ -101,6 +101,7 @@
 		// 상태 값
 		var pwCk = false;
 		var idCk = false;
+		
 		
 		// 서브밋
 		function join(){

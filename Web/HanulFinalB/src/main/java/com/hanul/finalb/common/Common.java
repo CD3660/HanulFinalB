@@ -192,6 +192,9 @@ public class Common {
 	public String fileURL(String id) {
 		return "https://drive.google.com/thumbnail?sz=w640&id=" + id;
 	}
+	public String fileURL() {
+		return "https://drive.google.com/thumbnail?sz=w640&id=";
+	}
 	/**
 	 * URL에서 fileId 추출하는 코드
 	 */
@@ -354,12 +357,20 @@ public class Common {
 		 vo.setFilename( file.getOriginalFilename() );
 		 String file_id = fileUpload(file);
 		 vo.setFile_id(file_id);
-		 /* vo.setFilepath;(fileURL(file_id)); */
+		 //vo.setQna_id(qna_id);
 		 list.add(vo);
 		 }
 	 		
 	 return list;
 	 }
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
