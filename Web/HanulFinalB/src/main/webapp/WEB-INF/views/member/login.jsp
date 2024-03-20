@@ -46,14 +46,14 @@
 								<ul class="lgacc-tab">
 									<li class="tab-item"><a class="tab-link"
 										id="btn-search-id"
-										href="http://localhost:8080/finalb/member/find_id_form">아이디
+										href="<c:url value='/member/find_id_form'/>">아이디
 											찾기</a></li>
 									<li class="tab-item"><a id="reset-password"
 										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
 								</ul>
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
-										href="http://localhost:8080/finalb/member/joinView"> 회원가입</a></li>
+										href="<c:url value='/member/joinView'/>"> 회원가입</a></li>
 
 								</ul>
 							</div>
