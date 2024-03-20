@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +37,15 @@ public class QnaController {
 	@Autowired
 	private Common common;
 
+	
+	@CrossOrigin("*")
+	@ResponseBody @RequestMapping("/drive.google")
+	public byte[] update( String id, String name, HttpServletRequest request, HttpServletResponse response  ) throws Exception{
+		byte[] file = common.fileLoad(id, name, request, response) ;
+		return file;
+	}
+
+	
 	// Q&A 수정저장처리 요청
 	@RequestMapping("/update")
 	public String update(QnaVO vo, Model model, PageVO page, String remove, MultipartFile[] addfile, HttpServletRequest request) throws GeneralSecurityException, IOException {

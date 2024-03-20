@@ -80,22 +80,22 @@
 var fileList = new FileList();
 //첨부된 파일정보를 fileList 객체 담기
 <c:forEach items="${vo.fileList}" var="f">
-fileList.setFile( urlToFile( "${f.filepath}", "${f.filename}" ), "${f.file_id}" )
+fileList.setFile( urlToFile( "${f.file_id}", "${f.filename}" ), "${f.file_id}" )
 </c:forEach>
 
 //문자열이 아닌 File 정보가 담기도록 처리한다
 function urlToFile( url, filename ) {   // ************ url부분 최종 확인하기
 	var file;
 	$.ajax({
-		url: url,
+		url: "drive.google",
+		data: { id: url, name: filename },
 		responseType: "blob",
 		async: false,
 	}).done(function ( response ) {
 		var blob = new Blob( [response] );
 		file = new File( [blob], filename )
-		
-		console.log( 'fileList>  ', fileList)
 	})	
+	return file;
 }
 
 
@@ -117,7 +117,7 @@ $("#btn-cancel").click(function() {
 
 
 
-
+console.log('fileList> ', fileList)
 
 </script>
 
