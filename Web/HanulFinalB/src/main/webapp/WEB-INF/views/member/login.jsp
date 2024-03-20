@@ -53,7 +53,7 @@
 								</ul>
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
-										href="http://localhost:8080/finalb/member/joinView"> 회원가입</a></li>
+										href="<c:url value='/member/joinView'/>"> 회원가입</a></li>
 
 								</ul>
 							</div>
