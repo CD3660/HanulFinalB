@@ -1,12 +1,15 @@
 @charset "UTF-8";
 
 
+.input-group .form-select { flex:initial; }
+
 
 /* 파일선택태그는 폰트이미지로 대체해서 사용  */
 input[type=file] { display: none; }
 
 
-
+a.text-link:hover { text-decoration: underline; font-weight: bold; }
+a.text-link { text-decoration: none; color: initial }
 
 
 .w-pct100 { width: 100%; }
@@ -23,3 +26,6 @@ input[type=file] { display: none; }
 .w-px200 { width: 200px !important; }
 .w-px250 { width: 250px !important; }
 .w-px300 { width: 300px !important; }
+
+
+

@@ -5,7 +5,7 @@
 
 
 
-<nav aria-label="Page navigation">
+<nav aria-label="page navigation">
 	<ul class = "pagination mt-4 justify-content-center">
 	
 	<!-- 첫번째 블럭이 아닌 경우 보이게  -->
@@ -17,10 +17,10 @@
 	
 	
 	
-	<c:forEach var="no" begin="${page.beginPage }" end="${page.endPage }" step="1">
+	<c:forEach var="no" begin="${page.beginPage}" end="${page.endPage}" step="1">
 	
-		<c:if test="${no eq page.curPage }">
-			<li class="page-item"><a class="page-link active" > ${no }</a></li>
+		<c:if test="${no eq page.curPage}">
+			<li class="page-item"><a class="page-link active" style="background:#787D62; color: #ffffff;" >${no}</a></li>
 		</c:if>
 		
 		<c:if test="${no ne page.curPage }">
@@ -50,7 +50,7 @@
 <script>
 function go_page( no ) {
 	$("[name=curPage]").val( no );
-	$("form").submit();
+	$("form#listForm").submit();
 }
 
 

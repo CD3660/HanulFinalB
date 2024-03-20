@@ -6,6 +6,7 @@
 		<typeAlias type="com.hanul.finalb.product.ProductVO" alias="prodVO"/>
 		<typeAlias type="com.hanul.finalb.sensor.SensorVO" alias="sensVO"/>
 		<typeAlias type="com.hanul.finalb.qna.QnaVO" alias="qnaVO"/>
+		<typeAlias type="com.hanul.finalb.notice.NoticeVO" alias="noticeVO"/>
 		<typeAlias type="com.hanul.finalb.common.FileVO" alias="fileVO" />
 		<typeAlias type="com.hanul.finalb.member.MemberVO" alias="memberVO" />
 		<typeAlias type="com.hanul.finalb.shop.OrderVO" alias="orderVO" />

@@ -90,12 +90,16 @@ public class MemberController {
 		
 		service.memberJoin(member);
 
-		return "redirect:/member/login";
+		return "redirect:member/login";
 
 	}
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
+
 		public String find_id_form() {
+
+		
+
 			return "member/find_id_form";
 		}
 

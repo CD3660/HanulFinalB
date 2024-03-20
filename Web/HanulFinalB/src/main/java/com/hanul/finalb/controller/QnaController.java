@@ -38,50 +38,41 @@ public class QnaController {
 
 	// Q&A 수정저장처리 요청
 	@RequestMapping("/update")
-	public String update(QnaVO vo, PageVO page, FileVO fileVo, MultipartFile addfile, HttpServletRequest request)
-			throws Exception {
-		// 원래 Q&A글정보를 조회해두자
-		QnaVO qna = service.qna_info(vo.getQna_id());
-		// vo의 filename, filepath 에 정보는 어떨때 담기는가..
-		// 화면에서 파일을 첨부하는 경우
-
-		// 첨부파일이 없는 경우
-		if (addfile.isEmpty()) {
-			// 원래부터X -> 그대로
-			// 원래부터O -> 그대로 : 원래DB의 파일정보를 담아야 한다
-			if (!vo.getFilename().isEmpty()) {
-				vo.setFile_id(qna.getFile_id());
-			}
-
-		} else {
-			// 첨부파일이 있는 경우
-			// 원래X -> 첨부
-			// 원래O -> 바꿔서 첨부
-			vo.setFilename(addfile.getOriginalFilename());
-			vo.setFile_id(common.fileUpload(addfile));
-
-		}
-
-		// 화면에서 변경입력한 정보로 DB에 변경저장하기 -> 정보화면연결
-		if (service.qna_update(vo) == 1) {
-			// 원래O -> 첨부파일을 없애는 경우(삭제)
-			if (addfile.isEmpty()) {
-				if (vo.getFilename().isEmpty()) {
-					// DB에 있으면 삭제
-					// common.fileDelete(qna.getFilepath(), request);
-					common.fileDelete(fileVo.getFile_id());
+	public String update(QnaVO vo, Model model, PageVO page, String remove, MultipartFile[] addfile, HttpServletRequest request) throws GeneralSecurityException, IOException {
+		//화면에서 입력한 정보로DB에 변경저장한 후 정보화면으로 연결
+		//첨부파일이 있으면 QnaVO 의 fileList에 담기
+		vo.setFileList( common.multipleFileUpload("qna", addfile, request) );
+		if( service.qna_update(vo)==1 ) {
+			//삭제된 첨부파일이 있으면 DB에서 삭제+물리적파일도 삭제
+			if( ! remove.isEmpty() ) {
+				List<FileVO> list = service.qna_file_list(remove);
+				if( service.qna_file_delete(remove) > 0 ) {
+					for( FileVO f : list ) {
+						common.fileDelete(f.getFile_id());
+					}
 				}
-			} else {
-				// 원래O -> 바꿔서 첨부 : 원래 첨부되어 있던 물리적파일 삭제
-				// DB에 있으면 삭제
-				common.fileDelete(fileVo.getFile_id());
 			}
 		}
-
-		return "redirect:info?id=" + vo.getQna_id() + "&curPage=" + page.getCurPage() + "&search=" + page.getSearch()
-				+ "&keyword=" + URLEncoder.encode(page.getKeyword(), "utf-8");
+		
+		model.addAttribute("qna_id", vo.getQna_id());
+		model.addAttribute("url", "qna/info");
+		model.addAttribute("page", page);
+		
+		return "include/redirect";
 	}
+		
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Q&A 수정화면 요청
 	@RequestMapping("/modify")
 	public String modify(int qna_id, Model model, PageVO page) {
@@ -100,29 +91,15 @@ public class QnaController {
 	
 	
 	
-	/*
-	 * // Q&A 첨부파일 다운로드 요청
-	 * 
-	 * @RequestMapping("/download") public void download(int no, HttpServletRequest
-	 * request, HttpServletResponse response) { // 해당 파일정보를 조회해와 클라이언트에 다운로드하기
-	 * FileVO vo = service.qna_file_info(no);
-	 * 
-	 * common.fileDownload(vo.getFilename(), vo.getFilepath(), request, response);
-	 * -> 다운로드처리 후 살려야함
-	 * 
-	 * 
-	 * }
-	 */
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	  // Q&A 첨부파일 다운로드 요청*************************************************************************************************************************
+	  @RequestMapping("/download")
+	  public void download(String file_id, HttpServletRequest request, HttpServletResponse response) throws GeneralSecurityException, IOException { // 해당 파일정보를 조회해와 클라이언트에 다운로드하기
+	  FileVO vo = service.qna_file_info(file_id);
+	  
+	  common.fileDownload(file_id, vo.getFilename(), request, response); 
+	  }
+	 
 	
 	
 	// Q&A 정보화면 요청
@@ -145,18 +122,11 @@ public class QnaController {
 
 	// Q&A 신규등록처리 요청
 	@RequestMapping("/insert")
-//	public String insert(QnaVO vo,  HttpServletRequest request)
 	public String insert(QnaVO vo, MultipartFile[] addfile, HttpServletRequest request)
 			throws GeneralSecurityException, IOException {
 
 		// 첨부된 파일들을 QnaVO 의 fileList에 담기
 		vo.setFileList(common.multipleFileUpload("qna", addfile, request));
-
-		/*
-		 * //파일을 첨부한 경우 if( ! addfile.isEmpty() ) { vo.setFilename(
-		 * addfile.getOriginalFilename() ); vo.setFile_id( common.fileUpload(addfile));
-		 * }
-		 */
 
 		// 화면에서 입력한 정보로 DB에 신규삽입저장처리 -> 화면연결:목록
 		service.qna_register(vo);
