@@ -41,8 +41,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary" id="btn${vo.prod_id}">상품
-						구매</button>
+					<button type="button" class="btn btn-primary" id="btn${vo.prod_id}">상품구매</button>
 				</div>
 			</div>
 		</div>

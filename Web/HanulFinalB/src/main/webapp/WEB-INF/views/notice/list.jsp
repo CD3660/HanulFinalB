@@ -10,6 +10,7 @@
 <body>
 
 
+
 <h3 class="mt-4">공지사항 목록</h3>
 <form id="listForm" method="post" action="list">
 	<div class="row mb-2 justify-content-between">
