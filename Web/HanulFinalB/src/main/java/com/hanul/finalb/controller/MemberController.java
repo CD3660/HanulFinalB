@@ -173,5 +173,15 @@ public class MemberController {
 		
 		return "/member/sidemenu";
 	}
+	@RequestMapping("/changePw")
+	public String changePw(Model model) {
+		
+		return "member/changePw";
 
+}
+	@RequestMapping("/secession")
+	public String secession(Model model) {
+		
+		return "member/secession";
+}
 }
