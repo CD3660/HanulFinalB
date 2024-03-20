@@ -95,7 +95,7 @@ public class MemberController {
 	}
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
-		public String find_id_form() {
+		public String find_id_form() throws Exception{
 			return "member/find_id_form";
 		}
 
@@ -168,10 +168,16 @@ public class MemberController {
 		
 		return "member/mypage";
 	}
-	@RequestMapping("/sidemenu")
-	public String sidemenu(HttpSession session) {
+	
+	@RequestMapping("/changePw")
+	public String changePw(Model model) {
 		
-		return "/member/sidemenu";
+		return "member/changePw";
+	}
+	@RequestMapping("/secession")
+	public String secession(Model model) {
+		
+		return "member/secession";
 	}
 
 }
