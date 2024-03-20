@@ -15,7 +15,7 @@
 	<div class="row mb-2 justify-content-between">
 			<div class = "col-auto">
 				<div class="input-group">
-					<select name="search" class="form-select" style="width:130px">
+					<select name="search" class="form-select" style="width:120px">
 						<option value="s1" ${page.search eq "s1" ? "selected" : ""}>전체</option>
 						<option value="s2"  <c:if test="${page.search eq 's2'}">selected</c:if> >제목</option>
 						<option value="s3" ${page.search eq "s3" ? "selected" : ""}>내용</option>
@@ -24,7 +24,7 @@
 					</select>
 					
 					<input type="text" name="keyword" class="form-control"
-								value="${page.keyword }">
+								value="${page.keyword }" style="width:170px">
 								
 					<button class="btn btn-primary">
 						 <i class="fa-solid fa-magnifying-glass"></i>
@@ -47,7 +47,7 @@
 		
 				
 				<!-- 관리자 로그인되어 있는 경우만 -->
-				<c:if test="${ loginInfo.admin eq 'Y' }">
+				<c:if test="${ loginInfo.admin eq 'Y'or loginInfo.admin eq 'y' }">
 					<div class="col-auto">
 						<button type="button" class="btn btn-primary"
 							onclick="location='register'">글쓰기</button>
@@ -99,11 +99,8 @@
 			<c:forEach items="${page.list}" var="vo">
 				<tr>
 					<td>${vo.no}</td>
-					<td class="text-start">
-					<span style="margin-left: ${15*vo.indent }px"></span>
-					<c:if test="${vo.indent >0}"><i class="fa-regular fa-comment-dots"></i></c:if>
-					<a href="javascript:info( ${vo.notice_id } )">${vo.title }</a>
-
+					<td class="text-start">					
+					<a href="javascript:info( ${vo.notice_id } )">${vo.title }</a></td>
 					<td>${vo.name }</td>
 					<td>${vo.writedate }</td>
 					<td>${vo.readcnt }</td>
@@ -124,7 +121,7 @@
 
 
 $("[name=pageList]").change(function(){
-	$("form").submit()
+	$("form#listForm").submit()
 })
 
 

@@ -21,13 +21,13 @@
 	<td><input type="text" title="제목" autofocus class="check-empty form-control" value="${vo.title }" name="title"></td>
 </tr>
 <tr><th>내용</th>
-	<td><textarea name="content" title="내용" class="check-empty form-control">${vo.content }</textarea></td>
+	<td><textarea name="content" title="내용" class="check-empty form-control" style="height: 200px;">${vo.content }</textarea></td>
 </tr>
 
 
 
 </table>
-<input type="hidden" name="qna_id" value="${vo.notice_id }">
+<input type="hidden" name="notice_id" value="${vo.notice_id }">
 <input type="hidden" name="curPage" value="${page.curPage }">
 <input type="hidden" name="search" value="${page.search }">
 <input type="hidden" name="keyword" value="${page.keyword }">

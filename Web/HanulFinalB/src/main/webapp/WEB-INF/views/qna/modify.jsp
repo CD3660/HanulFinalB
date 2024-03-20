@@ -21,7 +21,7 @@
 	<td><input type="text" title="제목" autofocus class="check-empty form-control" value="${vo.title }" name="title"></td>
 </tr>
 <tr><th>내용</th>
-	<td><textarea name="content" title="내용" class="check-empty form-control">${vo.content }</textarea></td>
+	<td><textarea name="content" title="내용" class="check-empty form-control" style="height: 200px;">${vo.content }</textarea></td>
 </tr>
 <tr><th>첨부파일</th>
 	<td><div class="row">

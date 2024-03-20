@@ -31,17 +31,14 @@ public class NoticeController {
 
 	// Notice 수정저장처리 요청
 	@RequestMapping("/update")
-	public String update(NoticeVO vo, Model model, PageVO page, String remove, MultipartFile[] addfile, HttpServletRequest request) throws GeneralSecurityException, IOException {
+	public String update(NoticeVO vo, Model model, PageVO page, HttpServletRequest request){
 		//화면에서 입력한 정보로DB에 변경저장한 후 정보화면으로 연결
 		
+		service.notice_update(vo);
 		
-		//******************************************************
-		if( service.notice_update(vo)==1 ) {
-			
-		}
 		
-		model.addAttribute("qna_id", vo.getNotice_id());
-		model.addAttribute("url", "qna/info");
+		model.addAttribute("notice_id", vo.getNotice_id());
+		model.addAttribute("url", "notice/info");
 		model.addAttribute("page", page);
 		
 		return "include/redirect";
@@ -109,16 +106,13 @@ public class NoticeController {
 			throws GeneralSecurityException, IOException {
 		
 		// 해당 Q&A 글을 DB에서 삭제하기
-		// qna를 삭제하면 table설계시 fk(외래키)에 on delete cascade에 의해 qna_file도 함께 자동 삭제
-		//****************************************************************************************
-		if (service.notice_delete(notice_id) == 1) {
+		service.notice_delete(notice_id);
 			
-		}
 
 		// 삭제후 목록화면으로 연결
 		model.addAttribute("page", page);
-		model.addAttribute("qna_id", notice_id);
-		model.addAttribute("url", "qna/list");
+		model.addAttribute("notice_id", notice_id);
+		model.addAttribute("url", "notice/list");
 
 		return "include/redirect";
 	}
