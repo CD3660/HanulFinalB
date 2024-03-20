@@ -127,4 +127,11 @@
 		location="delete_review?review_id="+review_id+"&prod_id="+${vo.prod_id };
 		
 	}
+	$("#btn-review").click(function() {
+		$.ajax({
+			
+		}).done(function() {
+			
+		})
+	})
 </script>
