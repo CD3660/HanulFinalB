@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,13 @@ public class SensorController {
 	public String gas_alert(@PathVariable String user_id,int code) {
 		try {
 			fcmService.sendMessageTo(sql.selectOne("member.getToken",user_id), "가스센서 경고", "가스 누출이 감지되었습니다. 확인이 필요합니다.", "none");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("user_id", user_id);
+			map.put("sensor_id", 4);
+			map.put("title", "가스센서 경고");
+			map.put("body", "가스 누출이 감지되었습니다. 확인이 필요합니다.");
+			map.put("data_value", code);
+			sql.insert("sensor.insert_history", map);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

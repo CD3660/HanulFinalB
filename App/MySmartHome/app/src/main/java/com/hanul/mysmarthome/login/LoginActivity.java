@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("user_pw",user_pw);
                 editor.apply();
             }
+
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
                 if (!task.isSuccessful()) {
                     Log.w(TAG, "Fetching FCM registration token failed", task.getException());
@@ -67,6 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             });
+        });
+
+        binding.tvJoin.setOnClickListener(v -> {
+            Intent intent = new Intent(this, JoinActivity.class);
+            startActivity(intent);
         });
     }
 }

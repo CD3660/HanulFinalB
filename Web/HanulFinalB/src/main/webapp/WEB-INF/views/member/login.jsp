@@ -20,8 +20,7 @@
 
 						<div class="form-outline mb-4">
 							<label class="form-label" for="typeEmailX-2">아이디</label> <input
-								type="text" id="user_id"
-								class="form-control form-control-lg" />
+								type="text" id="user_id" class="form-control form-control-lg" />
 
 						</div>
 
@@ -38,14 +37,17 @@
 								id="form1Example3" /> <label class="form-check-label"
 								for="form1Example3"> Remember password </label>
 						</div>
-						<button class="btn btn-primary btn-lg btn-block" type="button" onclick="login()">로그인</button>
+						<button class="btn btn-primary btn-lg btn-block" type="button"
+							onclick="login()">로그인</button>
 						<hr class="my-4">
 
 						<div class="row pt-3 justify-content-center">
 							<div class="col pb-4 mx-auto">
 								<ul class="lgacc-tab">
 									<li class="tab-item"><a class="tab-link"
-										id="btn-search-id" href="http://localhost:8080/finalb/member/find_id_form">아이디 찾기</a></li>
+										id="btn-search-id"
+										href="http://localhost:8080/finalb/member/find_id_form">아이디
+											찾기</a></li>
 									<li class="tab-item"><a id="reset-password"
 										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
 								</ul>
@@ -71,28 +73,28 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	 $(document).ready(function() {
-	        $('#user_pw').keypress(function(e) {
-	            if (e.keyCode === 13) { // 엔터 키를 눌렀을 때
-	                login(); // 로그인 함수 호출
-	            }
-	        });
-	    });
-	
-		function login(){
+		$(document).ready(function() {
+			$('#user_pw').keypress(function(e) {
+				if (e.keyCode === 13) { // 엔터 키를 눌렀을 때
+					login(); // 로그인 함수 호출
+				}
+			});
+		});
+
+		function login() {
 			var userInfo = {};
 			userInfo.user_id = $('#user_id').val();
 			userInfo.user_pw = $('#user_pw').val();
-			
+
 			$.ajax({
 				data : userInfo,
 				url : "loginAction",
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
-					if(data.code === '0'){
+					if (data.code === '0') {
 						console.log("성공");
-						location="/finalb/"
-					}else if(data.code === '-1'){
+						location = "/finalb/"
+					} else if (data.code === '-1') {
 						alert("실패");
 					}
 				},

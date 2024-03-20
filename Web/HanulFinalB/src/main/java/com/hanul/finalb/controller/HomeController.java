@@ -75,7 +75,7 @@ public class HomeController {
 	@RequestMapping("/download")
 	public void download(HttpServletRequest req, HttpServletResponse resp) {
 		try {
-			comm.fileDownload("1oNB5Q0DF2SZDrifjJvywaztddBwNGPcv", "profile.jpg", req, resp);
+			comm.fileDownload("19qyY9Ja52jfCCGrQ_l_2DNwIOWqDXRVb", "제목없음.png", req, resp);
 			
 		} catch (GeneralSecurityException e) {
 			e.printStackTrace();
@@ -85,7 +85,15 @@ public class HomeController {
 		
 	}
 	
-	
+	@RequestMapping("/error")
+	public String error(HttpServletRequest req, Model model) {
+		int errorCode = (int) req.getAttribute("javax.servlet.error.status_code");
+		if(errorCode==500) {
+			Throwable exception = (Throwable) req.getAttribute("javax.servlet.error.exception");
+			model.addAttribute("error", exception.toString());
+		}
+		return "default/error/" + (errorCode==404?404:"common");
+	}
 	
 
 }

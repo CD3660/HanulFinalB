@@ -4,13 +4,32 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="prod">
 	<select id="list" resultType="prodVO">
-		select *
-		from product
+		select
+		p.*,
+		(select AVG(rate) from review r where r.prod_id = p.prod_id) as rate,
+		(select count(*) from review r where r.prod_id = p.prod_id) as review_cnt
+		from
+		product p
+	</select>
+	<select id="list_keyword" resultType="prodVO">
+		select
+		p.*,
+		(select AVG(rate) from review r where r.prod_id = p.prod_id) as rate,
+		(select count(*) from review r where r.prod_id = p.prod_id) as review_cnt
+		from
+		product p
+		where p.PROD_NAME like '%'||#{keyword}||'%'
 	</select>
 	<select id="info" resultType="prodVO">
-		select * 
-		from product 
-		where prod_id = ${prod_id}
+		select
+		p.*,
+		(select AVG(rate) from review r where r.prod_id = p.prod_id) as rate,
+		(select count(*) from review r where r.prod_id = p.prod_id) as review_cnt
+		from
+		product p
+		where
+		p.prod_id = ${prod_id}
+
 	</select>
 	<insert id="insert">
 		insert into product
@@ -26,12 +45,15 @@
 		set prod_name=#{prod_name},
 		detail=#{detail, jdbcType=VARCHAR},
 		price=#{price}
-		where prod_id = #{prod_id}
+		where prod_id =
+		#{prod_id}
 	</update>
 	<update id="updateFile">
 		update product
-		set prod_img=#{prod_img, jdbcType=VARCHAR}, prod_img_id=#{prod_img_id, jdbcType=VARCHAR}
-		where prod_id = #{prod_id}
+		set prod_img=#{prod_img,
+		jdbcType=VARCHAR}, prod_img_id=#{prod_img_id, jdbcType=VARCHAR}
+		where
+		prod_id = #{prod_id}
 	</update>
 	<delete id="delete">
 		delete from product where prod_id = #{prod_id}

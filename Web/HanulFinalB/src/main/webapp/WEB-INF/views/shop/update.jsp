@@ -35,13 +35,7 @@
 							class="form-control d-inline me-3" type="text" name="price"
 							style="width: 30%" value="${vo.price}"></td>
 					</tr>
-					<tr>
-						<td class="p-2 ps-3"><span class="fw-bold me-2">재고</span><span
-							class="text-info">(필수)</span></td>
-						<td class="p-2 ps-3"><input
-							class="form-control d-inline me-3" type="text" name="stock"
-							style="width: 30%" value="${vo.stock}"></td>
-					</tr>
+
 					<tr>
 						<td class="p-2 ps-3"><span class="fw-bold me-2">상품 간략
 								설명</span></td>

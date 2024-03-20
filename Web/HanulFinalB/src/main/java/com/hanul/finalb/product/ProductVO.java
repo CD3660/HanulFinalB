@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class ProductVO {
 	private String  prod_name, detail, prod_img, prod_img_id;
-	private int prod_id, price;
+	private int prod_id, price, review_cnt;
+	private float rate;
 }

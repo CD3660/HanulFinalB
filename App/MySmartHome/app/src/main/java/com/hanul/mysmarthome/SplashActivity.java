@@ -70,6 +70,7 @@ public class SplashActivity extends AppCompatActivity {
 
                     // Get new FCM registration token
                     String token = task.getResult();
+                    Log.d("TAG", "onCreate: "+token);
                     CommonConn conn = new CommonConn(this, "login")
                             .addParamMap("user_id", user_id)
                             .addParamMap("token",token);

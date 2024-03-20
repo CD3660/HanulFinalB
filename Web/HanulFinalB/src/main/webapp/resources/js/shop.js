@@ -81,8 +81,6 @@ $("#btn-insert").click(function() {
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	if (isNaN($("[name=price]").val())) { alert("판매가가 숫자가 아닙니다."); return; }
 	if ($("[name=price]").val().length > 9) { alert("판매가 입력 범위 초과"); return; }
-	if (isNaN($("[name=stock]").val())) { alert("재고가 숫자가 아닙니다."); return; }
-	if ($("[name=stock]").val().length > 9) { alert("재고 입력 범위 초과"); return; }
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	$("form").submit();
 });
@@ -91,8 +89,6 @@ $("#btn-update").click(function() {
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	if (isNaN($("[name=price]").val())) { alert("판매가가 숫자가 아닙니다."); return; }
 	if ($("[name=price]").val().length > 9) { alert("판매가 입력 범위 초과"); return; }
-	if (isNaN($("[name=stock]").val())) { alert("재고가 숫자가 아닙니다."); return; }
-	if ($("[name=stock]").val().length > 9) { alert("재고 입력 범위 초과"); return; }
 	if ($("[name=prod_name]").val().length > 100) { alert("상품명은 100글자 이내여야 합니다."); return; }
 	$("form").submit();
 });
@@ -143,16 +139,26 @@ $(".val_down").click(function() {
 
 //장바구니에 담기
 $(".to_cart").click(function() {
-	ea = $("[name=ea]").val();
-	prod_id = $("#prod_id").val();
-	location = "to_cart?prod_id=" + prod_id + "&ea=" + ea;
+	const ea = $("[name=ea]").val();
+	const prod_id = $("#prod_id").val();
+	const user_id = $("#user_id").val();
+	if(user_id == ""){
+		alert("로그인 후 이용해주세요");
+		return;
+	}
+	location = "to_cart?prod_id=" + prod_id + "&ea=" + ea +"&user_id=" + user_id;
 
 });
-//장바구니에 담기
+//즉시 구매창 띄우기
 $(".order").click(function() {
-	ea = $("[name=ea]").val();
-	prod_id = $("#prod_id").val();
-	location = "order?prod_id=" + prod_id + "&ea=" + ea;
+	const ea = $("[name=ea]").val();
+	const prod_id = $("#prod_id").val();
+	const user_id = $("#user_id").val();
+	if(user_id == ""){
+		alert("로그인 후 이용해주세요");
+		return;
+	}
+	location = "order?prod_id=" + prod_id + "&ea=" + ea +"&user_id=" + user_id;
 
 });
 //우편번호 검색
@@ -160,9 +166,9 @@ $("#post").click(function() {
 	new daum.Postcode({
 		oncomplete: function(data) {
 			console.log(data)
-			$("[name=address]").val(data.zonecode);
+			$("[name=post]").val(data.zonecode);
 			if (data.addressType == "R") {
-				$("[name=address2-1]").val(data.roadAddress);
+				$("[name=address2_1]").val(data.roadAddress);
 			} else {
 				$("[name=address2-1]").val(data.jibunAddress);
 			}
@@ -170,6 +176,17 @@ $("#post").click(function() {
 	}).open();
 
 });
-
+$("#btn-updatePage").click(function () {
+	const prod_id = $("#prod_id").val();
+	location = "updatePage?id="+prod_id;
+})
+$("#btn-delete").click(function () {
+	const prod_id = $("#prod_id").val();
+	if(confirm("정말 삭제하시겠습니까?")){
+		location = "delete?id="+prod_id;
+	} else {
+		return;
+	}
+})
 
 
