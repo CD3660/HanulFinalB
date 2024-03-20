@@ -2,7 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 인터넷 연결 확인 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 실제로 권한 요청을 받아와야하는것 ↓ -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 카메라의 경우 안드로이드 하드웨어이기때문에 아래 속성을 추가해줘야한ㄷ. required가 false인경우 미사용도 가능. -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
     <queries>
 
@@ -54,6 +67,21 @@
         android:theme="@style/Theme.MySmartHome"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".login.JoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mymenu.SetAlamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mymenu.AppInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mymenu.PolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".member.AddressActivity"
+            android:exported="false" />
         <activity
             android:name=".member.MemberInfoActivity"
             android:exported="false" />

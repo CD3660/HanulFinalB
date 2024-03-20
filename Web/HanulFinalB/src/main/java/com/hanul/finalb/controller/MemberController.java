@@ -95,7 +95,7 @@ public class MemberController {
 	}
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
-		public String find_id_form() throws Exception{
+		public String find_id_form() {
 			return "member/find_id_form";
 		}
 
@@ -148,18 +148,15 @@ public class MemberController {
 		System.out.println("falsePassword verify : " + pwEncoder.matches(falsePassword, encdoePassword1));
 
 	}
+	@ResponseBody
 	@PostMapping("/findId")
-    public ResponseEntity<String> findIdByEmail(@RequestBody String email) {
-        String name = service.findIdByEmail(email);
-
-        if (name != null) {
-            return new ResponseEntity<>(name, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("아이디를 찾을 수 없습니다.", HttpStatus.NOT_FOUND);
-            
-        }
+    public HashMap<String, String> findIdByEmail(String email) {
+		System.out.println("여기");
+        String user_id = service.findIdByEmail(email);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("user_id", user_id);
         
-	
+        return map;
     }
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
@@ -171,16 +168,10 @@ public class MemberController {
 		
 		return "member/mypage";
 	}
-	
-	@RequestMapping("/changePw")
-	public String changePw(Model model) {
+	@RequestMapping("/sidemenu")
+	public String sidemenu(HttpSession session) {
 		
-		return "member/changePw";
-	}
-	@RequestMapping("/secession")
-	public String secession(Model model) {
-		
-		return "member/secession";
+		return "/member/sidemenu";
 	}
 
 }

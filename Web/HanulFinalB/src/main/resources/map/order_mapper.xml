@@ -12,7 +12,11 @@
 		select price, prod_name, prod_img from product where prod_id=#{prod_id}
 	</select>
 	<select id="cartList" resultType="OrderVO">
-		select * from order_info where user_id = #{user_id} and imp_uid is null 
+		select ORDER_ID, PROD_ID, IMP_UID, EA, PAY_NOW, USER_ID, prod_img, price, prod_name
+		from order_info
+		left outer join	product
+		USING(prod_id)
+		where user_id = #{user_id} and imp_uid is null and pay_now = 'N'
 	</select>
 	<select id="payNowId" resultType="integer">
 		select order_id 
@@ -32,6 +36,9 @@
 		( EA, PROD_ID, USER_ID)
 		values (#{ea}, #{prod_id}, #{user_id})
 	</insert>
+	<delete id="delete_cart">
+		delete from order_info where order_id = #{orfer_id}
+	</delete>
 	<insert id="payments">
 		insert into payments
 		(AMOUNT, RECIEVER, ADDRESS, PHONE, IMP_UID, MERCHANT_UID, REQUEST_MSG, USER_ID, POST)

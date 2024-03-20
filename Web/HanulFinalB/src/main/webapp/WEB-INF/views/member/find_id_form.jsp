@@ -14,7 +14,7 @@
 <body>
 	<div class="w3-content w3-container w3-margin-top">
 		<div class="w3-container w3-card-4">
-			<form action="../member/find_id_form" method="post">
+			
 				<div class="w3-center w3-large w3-margin-top">
 					<h3>아이디 찾기</h3>
 				</div>
@@ -31,7 +31,6 @@
 							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">취소</button>
 					</p>
 				</div>
-			</form>
 		</div>
 	</div>
 	<!-- Add this script tag in the head section of your HTML -->
@@ -44,24 +43,27 @@
 			$("#findBtn").click(function() {
 				var email = $("#email").val();
 
-				// Ajax request to find the username
-				$.ajax({
-					type : "POST",
-					url : "/findId", // Your controller mapping
-					data : {
-						email : email
-					},
-					success : function(name) {
-						// Handle success, update the UI with the found username
-						alert("아이디: " + name);
-					},
-					error : function() {
-						// Handle error
-						alert("아이디를 찾을 수 없습니다.");
-					}
-				});
-			});
-		});
-	</script>
+            // Ajax request to find the username
+            $.ajax({
+                type: "POST",
+                url: "findId", // Your controller mapping
+                data: { email: email },
+                success: function(data) {
+                	if(data.user_id != null){
+                		alert("아이디: " + data.user_id);
+            		} else {
+            			alert("해당 아이디 없음");
+            		}
+                    // Handle success, update the UI with the found username
+                    
+                },
+                error: function() {
+                    // Handle error
+                    alert("아이디를 찾을 수 없습니다.");
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

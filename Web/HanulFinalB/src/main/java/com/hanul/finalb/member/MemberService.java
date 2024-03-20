@@ -55,16 +55,25 @@ public class MemberService {
 		return sql.selectOne("member.login", id);
 	}
 
-	@Autowired
-	private MemberDAO memberDAO;
+	
 
 	public String findIdByEmail(String email) {
-		return memberDAO.findIdByEmail(email);
+		return sql.selectOne("member.findIdByEmail", email);
 	}
 
-	public MemberVO memberInfo(String string) {
-		return sql.selectOne("member.info", string);
-
+	public MemberVO memberInfo(String user_id) {
+		return sql.selectOne("member.info", user_id);
+	}
+	public void appMemberUpdate(MemberVO vo) {
+		if(sql.update("member.app_user_update", vo)==1) {
+			System.out.println("수정 성공");
+		};
+	}
+	public void appUpdateProfile(MemberVO vo) {
+		if(sql.update("member.app_update_profile", vo)==1) {
+			
+			System.out.println("수정 성공");
+		};
 	}
 	
 	

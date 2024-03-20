@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SensorVO {
-	private int dust, gas, fire, temp, humid;
+	private float dust, gas, fire, temp, humid;
+	private int dust_sensor_id, gas_sensor_id, fire_sensor_id, temp_sensor_id;
 	private String user_id;
 }

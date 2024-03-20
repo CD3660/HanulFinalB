@@ -55,7 +55,7 @@
 				$('#modal${vo.prod_id}').modal("show");
 			});
 			$('#btn${vo.prod_id}').click(function(e) {
-				 window.open("/shop/info?prod_id=${vo.prod_id}", '_blank');
+				 window.open("/finalb/shop/info?prod_id=${vo.prod_id}", '_blank');
 			});
 		</script>
 	</c:forEach>

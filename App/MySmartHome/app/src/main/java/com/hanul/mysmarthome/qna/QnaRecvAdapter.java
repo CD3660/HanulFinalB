@@ -1,5 +1,6 @@
 package com.hanul.mysmarthome.qna;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.databinding.ItemQnaRecvBinding;
 
 import java.util.ArrayList;
@@ -17,6 +19,12 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     LayoutInflater inflater;
     List<QnaVO> list;
     Context context;
+
+    QnaActivity qnaActivity;
+
+    public QnaRecvAdapter(QnaActivity qnaActivity) {
+        this.qnaActivity = qnaActivity;
+    }
 
     public QnaRecvAdapter(LayoutInflater inflater, ArrayList<QnaVO> list, Context context) {
         this.inflater = inflater;
@@ -28,7 +36,6 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(LayoutInflater.from(context),parent,false);
-        //ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(inflater, parent, false);
 
         return new ViewHolder(binding);
     }
@@ -37,10 +44,14 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder h, int i) {
 
         h.binding.itemQnaTitle.setText( list.get(i).getTitle());
+        h.binding.itemQnaWriter.setText(list.get(i).getWriter());
+        h.binding.itemQnaWritedate.setText(list.get(i).getWritedate().substring(0,10));
 
-        h.binding.itemQnaLinear.setOnClickListener(v -> {
+
+
+        h.binding.detailQnaLinear.setOnClickListener(v -> {
             Intent intent = new Intent(context, QnaDetailActivity.class);
-            intent.putExtra("dto", list.get(i));
+            intent.putExtra("vo", list.get(i));
             context.startActivity(intent);
         });
 

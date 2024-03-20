@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+	<select id="list" resultType="reviewVO">
+		select REVIEW_ID, CONTENT, RATE, USER_ID, PROD_ID, REVIEW_DATE, PROFILE from review r left outer join users u using(user_id) where prod_id = #{prod_id}
+    </select>
+    <delete id="delete">
+    	delete from review where review_id = #{review_id} 
+    </delete>
+    <insert id="insert">
+    	insert into review (CONTENT, RATE, USER_ID, PROD_ID) values (#{content}, #{rate}, #{user_id}, #{prod_id})
+    </insert>
+</mapper>
+
+

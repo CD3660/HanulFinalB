@@ -31,7 +31,6 @@
    
    
    </select>
-   
    <select id="login" resultType="memberVO">
    SELECT
    		USER_ID
@@ -45,7 +44,7 @@
    <!-- 아이디 찾기 -->
 	<select id="findIdByEmail" resultType="String">
         SELECT 
-        	NAME 
+        	user_id 
         FROM 
         	USERS 
         WHERE 
@@ -70,6 +69,30 @@
   <!-- 토큰 연결 아이디 수정 -->
   <update id="updateToken">
   	update fcm_token set user_id = #{user_id} where token = #{token}
+  </update>
+  <!-- 아이디로 토큰 정보 가져오기 -->
+  <select id="getToken" resultType="String">
+  	select token from fcm_token where user_id = #{user_id}
+  </select>
+  
+  <!-- 엡에서 주소, 폰, 이메일 정보 수정 -->
+  <update id="app_user_update">
+  	update users set 
+  	<if test="address != null">
+  		address = #{address}, address2 = #{address2}
+  	</if>
+  	<if test="phone != null">
+  		phone = #{phone}
+  	</if>
+  	<if test="email != null">
+  		email = #{email}
+  	</if>  	
+  	where user_id = #{user_id}
+  </update>
+  <update id="app_update_profile">
+  	update users set 
+  	profile = #{profile}
+  	where user_id = #{user_id}
   </update>
    
    
