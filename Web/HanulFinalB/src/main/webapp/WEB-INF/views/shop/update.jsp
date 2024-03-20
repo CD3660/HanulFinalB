@@ -68,6 +68,4 @@
 	</div>
 </div>
 
-<jsp:useBean id="today" class="java.util.Date" />
-<fmt:formatDate value="${today}" pattern="yyyyMMdd" var="nowDate"/>
-<script src='<c:url value="/js/shop.js"><c:param name="dt" value="${nowDate}"/></c:url>'></script>
+<script src='<c:url value="/js/shop.js"/>'></script>

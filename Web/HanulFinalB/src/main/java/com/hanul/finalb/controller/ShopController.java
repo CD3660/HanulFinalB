@@ -35,61 +35,86 @@ public class ShopController {
 	private ProductService prodService;
 	@Autowired
 	private Common comm;
-	
+
 	@ResponseBody
 	@RequestMapping("/token")
 	public String token() {
 		return service.getToken();
 	}
-	
+
 	@RequestMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("list", service.list());
+	public String list(Model model, String keyword) {
+		if (keyword == null) {
+			model.addAttribute("list", service.list());
+		} else {
+			model.addAttribute("list", service.list(keyword));
+			model.addAttribute("keyword", keyword);
+		}
+
 		return "shop/list";
 	}
 
 	@RequestMapping("/info")
-	public String info(Model model, int id) {
-		model.addAttribute("vo", service.info(id));
-
+	public String info(Model model, int prod_id) {
+		model.addAttribute("vo", service.info(prod_id));
+		model.addAttribute("list", service.getReview(prod_id));
 		return "shop/info";
 	}
-	
+
 	@RequestMapping("/to_cart")
 	public String to_cart(HttpSession session, OrderVO vo) {
-		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
-		vo.setUser_id(loginInfo.getUser_id());
 		service.createCart(vo);
 
 		return "redirect:/shop/list";
 	}
-	
+
 	@RequestMapping("/cart")
 	public String cart(HttpSession session, Model model) {
 		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
-		model.addAttribute("list", service.cartList(loginInfo.getUser_id()));
+		List<OrderVO> list = service.cartList(loginInfo.getUser_id());
+		model.addAttribute("list", list);
 
 		return "shop/cart";
 	}
-	
-	@RequestMapping("/order")
-	public String order(Model model, OrderVO vo) {
-		List<OrderVO> list = new ArrayList<OrderVO>(); 
-		list.add(vo);
-		model.addAttribute("loginInfo", tempLogin()); 
-		vo.setUser_id("hanul");
-		service.payNow(vo);
+	@RequestMapping("/delete_cart")
+	public String delete_cart(HttpSession session, int order_id) {
+		service.deleteCart(order_id);
+
+		return "redirect:/shop/cart";
+	}
+	@RequestMapping("/order_cart")
+	public String order_cart(HttpSession session, Model model) {
+		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+		List<OrderVO> list = service.cartList(loginInfo.getUser_id());
+		
 		model.addAttribute("list", list);
-		model.addAttribute("order", vo);
-		model.addAttribute("totalPrice", vo.getPrice()*vo.getEa()); 
-		model.addAttribute("name", vo.getProd_name()); 
-		model.addAttribute("order_id", "("+vo.getOrder_id()+")"); 
+		int totalprice = service.getTotalPrice(list);
+		model.addAttribute("totalPrice", totalprice);
+		model.addAttribute("name", list.get(0).getProd_name()+"등 "+list.size()+"개");
+		model.addAttribute("order_id", service.inOrderId(list));
 		String uid = UUID.randomUUID().toString().substring(0, 10);
 		model.addAttribute("uid", uid);
-		service.prepare(uid, vo.getPrice()*vo.getEa());
-		
+		service.prepare(uid, totalprice);
+
 		return "shop/order";
 	}
+
+	@RequestMapping("/order")
+	public String order(Model model, OrderVO vo) {
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		list.add(vo);
+		service.payNow(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("totalPrice", vo.getPrice() * vo.getEa());
+		model.addAttribute("name", vo.getProd_name());
+		model.addAttribute("order_id", "(" + vo.getOrder_id() + ")");
+		String uid = UUID.randomUUID().toString().substring(0, 10);
+		model.addAttribute("uid", uid);
+		service.prepare(uid, vo.getPrice() * vo.getEa());
+
+		return "shop/order";
+	}
+
 	public MemberVO tempLogin() {
 		MemberVO login = new MemberVO();
 		login.setAdmin("Y");
@@ -101,13 +126,13 @@ public class ShopController {
 		login.setUser_id("hanul");
 		return login;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/pay")
 	public String pay(Model model, PaymentVO vo, String address2_1, String address2_2, String order_id) {
-		String address = address2_1 +" "+ address2_2;
+		String address = address2_1 + " " + address2_2;
 		vo.setAddress(address);
-		if(service.insertPayments(vo)==1) {
+		if (service.insertPayments(vo) == 1) {
 			return "success";
 		} else {
 			return "fail";
@@ -158,12 +183,13 @@ public class ShopController {
 
 		return "redirect:/shop/info?id=" + vo.getProd_id();
 	}
+
 	@RequestMapping("/delete")
 	public String delete(int id) throws GeneralSecurityException, IOException {
 		ProductVO vo = service.info(id);
-			if (vo.getProd_img_id() != null) {
-				comm.fileDelete(vo.getProd_img_id());
-			}
+		if (vo.getProd_img_id() != null) {
+			comm.fileDelete(vo.getProd_img_id());
+		}
 		service.delete(id);
 
 		return "redirect:/shop/list";
@@ -175,5 +201,12 @@ public class ShopController {
 		String id = comm.fileUpload(file);
 
 		return comm.fileURL(id);
+	}
+	
+	@RequestMapping("/delete_review")
+	public String delete_review(HttpSession session, int review_id, int prod_id) {
+		service.deleteReview(review_id);
+
+		return "redirect:/shop/info?prod_id="+prod_id;
 	}
 }

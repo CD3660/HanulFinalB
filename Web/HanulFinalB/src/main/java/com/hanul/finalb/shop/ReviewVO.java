@@ -1,5 +1,7 @@
 package com.hanul.finalb.shop;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,5 +9,6 @@ import lombok.Setter;
 @Setter
 public class ReviewVO {
     private int review_id, prod_id, rate;
-    private String content, user_id;
+    private String content, user_id, profile;
+    private Date review_date;
 }

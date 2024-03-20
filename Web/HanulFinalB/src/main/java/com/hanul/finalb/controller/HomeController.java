@@ -85,7 +85,15 @@ public class HomeController {
 		
 	}
 	
-	
+	@RequestMapping("/error")
+	public String error(HttpServletRequest req, Model model) {
+		int errorCode = (int) req.getAttribute("javax.servlet.error.status_code");
+		if(errorCode==500) {
+			Throwable exception = (Throwable) req.getAttribute("javax.servlet.error.exception");
+			model.addAttribute("error", exception.toString());
+		}
+		return "default/error/" + (errorCode==404?404:"common");
+	}
 	
 
 }

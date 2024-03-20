@@ -141,14 +141,24 @@ $(".val_down").click(function() {
 $(".to_cart").click(function() {
 	const ea = $("[name=ea]").val();
 	const prod_id = $("#prod_id").val();
-	location = "to_cart?prod_id=" + prod_id + "&ea=" + ea;
+	const user_id = $("#user_id").val();
+	if(user_id == ""){
+		alert("로그인 후 이용해주세요");
+		return;
+	}
+	location = "to_cart?prod_id=" + prod_id + "&ea=" + ea +"&user_id=" + user_id;
 
 });
-//장바구니에 담기
+//즉시 구매창 띄우기
 $(".order").click(function() {
 	const ea = $("[name=ea]").val();
 	const prod_id = $("#prod_id").val();
-	location = "order?prod_id=" + prod_id + "&ea=" + ea;
+	const user_id = $("#user_id").val();
+	if(user_id == ""){
+		alert("로그인 후 이용해주세요");
+		return;
+	}
+	location = "order?prod_id=" + prod_id + "&ea=" + ea +"&user_id=" + user_id;
 
 });
 //우편번호 검색
@@ -156,9 +166,9 @@ $("#post").click(function() {
 	new daum.Postcode({
 		oncomplete: function(data) {
 			console.log(data)
-			$("[name=address]").val(data.zonecode);
+			$("[name=post]").val(data.zonecode);
 			if (data.addressType == "R") {
-				$("[name=address2-1]").val(data.roadAddress);
+				$("[name=address2_1]").val(data.roadAddress);
 			} else {
 				$("[name=address2-1]").val(data.jibunAddress);
 			}
