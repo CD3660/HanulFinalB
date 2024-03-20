@@ -7,7 +7,7 @@ public class CommonRetroClient {
 
     public static Retrofit getRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.57/finalb/app/")
+                .baseUrl("http://118.40.91.135:8057/finalb/app/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
 

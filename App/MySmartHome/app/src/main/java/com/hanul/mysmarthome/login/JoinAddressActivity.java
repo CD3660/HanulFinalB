@@ -1,8 +1,9 @@
-package com.hanul.mysmarthome.member;
+package com.hanul.mysmarthome.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,20 +21,21 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.hanul.mysmarthome.NetworkStatus;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.CommonConn;
-import com.hanul.mysmarthome.databinding.ActivityAddressBinding;
+import com.hanul.mysmarthome.databinding.ActivityJoinAddressBinding;
+import com.hanul.mysmarthome.member.AddressActivity;
+import com.hanul.mysmarthome.member.MemberInfoActivity;
+import com.hanul.mysmarthome.member.MemberVO;
 
-public class AddressActivity extends AppCompatActivity {
-    ActivityAddressBinding binding;
-
+public class JoinAddressActivity extends AppCompatActivity {
+    ActivityJoinAddressBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAddressBinding.inflate(getLayoutInflater());
+        binding = ActivityJoinAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         int status = NetworkStatus.getConnectivityStatus(this);
@@ -45,7 +47,6 @@ public class AddressActivity extends AppCompatActivity {
         }
 
     }
-
     WebView webView;
     Handler handler;
 
@@ -67,7 +68,7 @@ public class AddressActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
         // JavaScript이벤트에 대응할 함수를 정의 한 클래스를 붙여줌
-        webView.addJavascriptInterface(new AndroidBridge(this), "My");
+        webView.addJavascriptInterface(new JoinAddressActivity.AndroidBridge(this), "My");
 
         //DOMStorage 허용
         webView.getSettings().setDomStorageEnabled(true);
@@ -126,23 +127,11 @@ public class AddressActivity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    new CommonConn(context, "user/update")
-                            .addParamMap("address", post)
-                            .addParamMap("address2", address)
-                            .addParamMap("user_id", getIntent().getStringExtra("user_id"))
-                            .onExcute((isResult, data) -> {
-                                if (isResult) {
-                                    Toast.makeText(context, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
-                                    Intent goIntent = new Intent(context, MemberInfoActivity.class);
-                                    MemberVO loginInfo = new Gson().fromJson(data, MemberVO.class);
-                                    goIntent.putExtra("user_id", loginInfo.getUser_id());
-                                    startActivity(goIntent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(context, "연결오류", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                            });
+                    Intent intent = new Intent(JoinAddressActivity.this, JoinActivity.class);
+                    intent.putExtra("address",address);
+                    intent.putExtra("post",post);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
                 }
             });
         }

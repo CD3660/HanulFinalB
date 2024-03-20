@@ -161,5 +161,9 @@ public class ShopService {
 	public List<ReviewVO> getReview(int prod_id) {
 		return sql.selectList("review.list", prod_id);
 	}
+	/* * 리뷰 작성 대상자인지 확인 */
+	public List<OrderVO> can_review_check(ReviewVO vo) {
+		return sql.selectList("review.can_review_check", vo);
+	}
 
 }

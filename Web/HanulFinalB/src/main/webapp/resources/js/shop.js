@@ -183,7 +183,7 @@ $("#btn-updatePage").click(function () {
 $("#btn-delete").click(function () {
 	const prod_id = $("#prod_id").val();
 	if(confirm("정말 삭제하시겠습니까?")){
-		location = "delete?id="+prod_id;
+		location = "delete?prod_id="+prod_id;
 	} else {
 		return;
 	}

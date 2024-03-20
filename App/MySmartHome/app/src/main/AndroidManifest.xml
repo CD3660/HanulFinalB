@@ -68,6 +68,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".login.JoinAddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.JoinActivity"
             android:exported="false" />
         <activity
