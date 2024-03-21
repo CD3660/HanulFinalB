@@ -1,5 +1,7 @@
 package com.hanul.finalb.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -101,6 +103,15 @@ public class MemberService {
 			// 토큰이 이미 등록된 것이 아닌 경우 현재 로그인 유저 아이디로 토큰 정보 등록
 			sql.insert("member.saveToken", vo);
 		}
+	}
+	public List<PaymentVO> getPaymentList(String user_id) {
+		
+		return sql.selectList("member.paymentList", user_id);
+	}
+	public PaymentVO getPaymentInfo(String imp_uid) {
+		PaymentVO vo = sql.selectOne("member.paymentInfo", imp_uid);
+		vo.setList(sql.selectList("member.orderList", imp_uid));
+		return vo;
 	}
 	
 	

@@ -45,7 +45,7 @@ public class QnaDetailActivity extends AppCompatActivity {
             finish();
         });
 
-        binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater()), commentlist, this);
+        //binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater()), commentlist, this);
 
 
     }

@@ -1,6 +1,7 @@
 package com.hanul.finalb.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hanul.finalb.common.PageVO;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
+import com.hanul.finalb.member.PaymentVO;
 
 @Controller
 @RequestMapping("/member")
@@ -46,86 +48,72 @@ public class MemberController {
 
 		return result;
 	}
-	
-	
-	
 
 	// 코멘트 만들면서 임시로 만듬. 연결된 코드들 수정 마무리 바람
-	//로그인 화면 요청
+	// 로그인 화면 요청
 	@RequestMapping(value = "/login")
-	public String login(Locale locale, Model model
-						, HttpSession session, String url, PageVO page, String qna_id) {
-		//방명록 정보화면에서 서브밋된 경우
-		if( url != null ) {
+	public String login(Locale locale, Model model, HttpSession session, String url, PageVO page, String qna_id) {
+		// 방명록 정보화면에서 서브밋된 경우
+		if (url != null) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("url", url);
 			map.put("page", page);
 			map.put("user_id", qna_id);
-			session.setAttribute("redirect", map); //redirect에 필요한 정보를 세션에 담기
+			session.setAttribute("redirect", map); // redirect에 필요한 정보를 세션에 담기
 		}
-		
-		
-		
-		
+
 		session.setAttribute("category", "login");
-		
-		
+
 		return "default/member/login";
 	}
-	
-	
-
 
 	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
 	public String join(Model model) {
 
 		return "member/join";
 	}
-	
-	
+
 	@RequestMapping("/joinAction")
 	public String joinpass(MemberVO member) {
 
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
 		member.setUser_pw(encodingPw);
-		
+
 		service.memberJoin(member);
 
 		return "redirect:login";
 
 	}
+
 	// 아이디 찾기 폼
-		@RequestMapping(value = "/find_id_form")
+	@RequestMapping(value = "/find_id_form")
 
-		public String find_id_form() {
+	public String find_id_form() {
 
-		
-
-			return "member/find_id_form";
-		}
+		return "member/find_id_form";
+	}
 
 	@ResponseBody
 	@RequestMapping("/loginAction")
-	public Map<String, Object> loginpass(MemberVO member, HttpSession session){
+	public Map<String, Object> loginpass(MemberVO member, HttpSession session) {
 		Map<String, Object> result = new HashMap<>();
 		// 프론트에서 사용자가 입력한 비밀번호
 		String encodingPw = pwEncoder.encode(member.getUser_pw());
-		
+
 		// 디비에서 가져온거
 		MemberVO checkInfo = service.login(member.getUser_id());
-		
-		if(pwEncoder.matches(member.getUser_pw(), checkInfo.getUser_pw())) {
-			//성공시
+
+		if (pwEncoder.matches(member.getUser_pw(), checkInfo.getUser_pw())) {
+			// 성공시
 			result.put("code", "0");
-			//회원 정보 풀버전 세션에 넣기
+			// 회원 정보 풀버전 세션에 넣기
 			session.setAttribute("loginInfo", service.memberInfo(member.getUser_id()));
-		}else {
-			//실패시
+		} else {
+			// 실패시
 			result.put("code", "-1");
 		}
-		
-		
-		//service.memberJoin(member);
+
+		// service.memberJoin(member);
 
 		return result;
 
@@ -153,46 +141,75 @@ public class MemberController {
 		System.out.println("falsePassword verify : " + pwEncoder.matches(falsePassword, encdoePassword1));
 
 	}
+
 	@ResponseBody
 	@PostMapping("/findId")
-    public HashMap<String, String> findIdByEmail(String email) {
+	public HashMap<String, String> findIdByEmail(String email) {
 		System.out.println("여기");
-        String user_id = service.findIdByEmail(email);
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("user_id", user_id);
-        
-        return map;
-    }
+		String user_id = service.findIdByEmail(email);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("user_id", user_id);
+
+		return map;
+	}
+
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginInfo");
 		return "redirect:/";
 	}
+
 	@RequestMapping("/mypage")
-	public String MyPage(HttpSession session ,Model model) {
+	public String MyPage(HttpSession session, Model model) {
 		MemberVO vo = (MemberVO) session.getAttribute("loginInfo");
 		session.setAttribute("loginInfo", service.memberInfo(vo.getUser_id()));
 		return "member/mypage";
 	}
+
 	@RequestMapping("/memberUpdate")
 	public String memberUpdate(@ModelAttribute MemberVO vo) {
 		service.updateMember(vo);
 		return "redirect:mypage";
 	}
+
 	@RequestMapping("/sidemenu")
 	public String sidemenu(HttpSession session) {
-		
+
 		return "/member/sidemenu";
 	}
+
 	@RequestMapping("/changePw")
 	public String changePw(Model model) {
-		
+
 		return "member/changePw";
 
-}
+	}
+
 	@RequestMapping("/secession")
 	public String secession(Model model) {
-		
+
 		return "member/secession";
-}
+	}
+	
+	@RequestMapping("/paymentList")
+	public String paymentList(HttpSession session, Model model) {
+		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+		if(loginInfo == null) {
+			model.addAttribute("url", "member/login");
+			return "shop/redirect";
+		}
+		List<PaymentVO> list = service.getPaymentList(loginInfo.getUser_id());
+		model.addAttribute("list", list);
+		
+		return "member/paymentList";
+	}
+	@RequestMapping("/paymentInfo")
+	public String paymentInfo(HttpSession session, Model model, String imp_uid) {
+		
+		PaymentVO vo = service.getPaymentInfo(imp_uid);
+		model.addAttribute("vo", vo);
+		model.addAttribute("list", vo.getList());
+		
+		return "member/paymentInfo";
+	}
 }

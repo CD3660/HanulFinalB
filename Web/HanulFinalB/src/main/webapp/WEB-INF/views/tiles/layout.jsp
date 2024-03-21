@@ -263,6 +263,9 @@
 											<li><a href="<c:url value='/member/mypage'/>"
 												class="dropdown-item item-anchor">마이페이지 <span
 													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+											<li><a href="<c:url value='/member/paymentList'/>"
+												class="dropdown-item item-anchor">구매 내역 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
 													
 													
 											<li><a href="<c:url value='/member/logout'/>"
