@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -168,9 +169,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	@RequestMapping("/mypage")
-	public String showMyPage(Model model) {
+	public String MyPage(Model model) {
 		
 		return "member/mypage";
+	}
+	@RequestMapping("/memberUpdate")
+	public String memberUpdate(@ModelAttribute MemberVO vo) {
+		service.updateMember(vo);
+		return "member/memberUpdate";
 	}
 	@RequestMapping("/sidemenu")
 	public String sidemenu(HttpSession session) {

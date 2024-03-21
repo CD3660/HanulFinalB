@@ -95,11 +95,11 @@
 						console.log("성공");
 						location = "/finalb/"
 					} else if (data.code === '-1') {
-						alert("실패");
+						alert("아이디 또는 패스워드가 틀립니다");
 					}
 				},
 				error : function(error) {
-					alert("err");
+					alert("아이디 또는 패스워드가 틀립니다");
 				}
 			});
 		}
