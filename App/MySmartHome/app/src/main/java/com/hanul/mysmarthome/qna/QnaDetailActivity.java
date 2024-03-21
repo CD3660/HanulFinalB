@@ -19,6 +19,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ActivityQnaDetailBinding binding;
 
+    ArrayList<QnaCommentVO> commentlist;
 
 
     @Override
@@ -43,7 +44,18 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding.qnaDetailClose.setOnClickListener(v -> {
             finish();
         });
+
+        binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater()), commentlist, this);
+
+
     }
+
+
+
+
+
+
+
 
 }
 
