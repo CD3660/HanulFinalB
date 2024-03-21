@@ -52,15 +52,15 @@
     </select>
     <!-- 04. 회원정보 수정처리 -->
     <update id="updateMember">
-        UPDATE USERS
-        SET
-            USER_PW = #{userPw},
-            
-            EMAIL = #{Email},
-            
-        WHERE
-            USER_ID = #{id}    
-    </update>
+    UPDATE users
+    SET
+        PHONE = #{phone},
+        EMAIL = #{email},
+        ADDRESS = #{address},
+        ADDRESS2 = #{address2}
+    WHERE
+        USER_ID = #{user_id}    
+</update>
    
    
    

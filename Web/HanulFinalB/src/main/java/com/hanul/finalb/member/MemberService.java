@@ -60,7 +60,7 @@ public class MemberService {
 	public String findIdByEmail(String email) {
 		return sql.selectOne("member.findIdByEmail", email);
 	}
-
+	//회원 정보
 	public MemberVO memberInfo(String user_id) {
 		return sql.selectOne("member.info", user_id);
 	}
@@ -69,6 +69,7 @@ public class MemberService {
 	        sql.update("member.updateMember", vo);
 	 
 	    }
+	 
 	 
 	 
 	public void appMemberUpdate(MemberVO vo) {

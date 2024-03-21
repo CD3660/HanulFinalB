@@ -14,7 +14,7 @@
 				<div class="card shadow-2-strong" style="border-radius: 1rem;">
 					<div class="card-body p-5 text-center">
 
-						<h1 align="center">회원정보</h1>
+						<h1 align="center">회원정보 수정</h1>
 						<div class="">
 							<form action="/member/memberUpdate" method="post">
 								<table>
