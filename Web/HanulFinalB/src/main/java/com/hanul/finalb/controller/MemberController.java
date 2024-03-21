@@ -91,7 +91,7 @@ public class MemberController {
 		
 		service.memberJoin(member);
 
-		return "redirect:member/login";
+		return "redirect:login";
 
 	}
 	// 아이디 찾기 폼
