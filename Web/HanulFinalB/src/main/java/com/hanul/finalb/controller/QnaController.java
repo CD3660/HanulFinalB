@@ -56,7 +56,7 @@ public class QnaController {
 			//삭제된 첨부파일이 있으면 DB에서 삭제+물리적파일도 삭제
 			if( ! remove.isEmpty() ) {
 //				String files[]= remove.split(",");
-				List<FileVO> list = service.qna_file_list(remove); //조회 해놓음.
+				List<FileVO> list = service.qna_file_list(remove); //조회해서 정보를 list에 저장해 놓음.
 				if( service.qna_file_delete(remove) > 0 ) { //DB에서삭제
 					for( FileVO f : list ) {
 						common.fileDelete(f.getFile_id()); //구글에서삭제

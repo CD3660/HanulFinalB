@@ -56,6 +56,9 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
         });
 
 
+
+
+
     }
 
     @Override
