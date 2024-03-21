@@ -19,12 +19,12 @@
 		<div class="d-flex justify-content-between">
 			<div class="d-flex align-items-center mb-2">
 				<span class="me-2">
-					<c:if test="${empty vo.profile}">
+					<%-- <c:if test="${empty vo.profile}"> --%>
 						<i class="font-profile fa-regular fa-user"></i>
-					</c:if>
-					<c:if test="${not empty vo.profile}">
+					<%-- </c:if> --%>
+					<%-- <c:if test="${not empty vo.profile}">
 						<img class="profile" src="${vo.profile}">
-					</c:if>
+					</c:if> --%>
 				</span>
 				<span>${vo.name} [ ${vo.writedate} ]</span>
 			</div>
