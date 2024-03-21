@@ -37,6 +37,10 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
 		
+		//테스트용 임시 로그인 처리---------------------------
+		String user_id = "admin";
+		MemberVO vo = member.memberInfo(user_id);
+		//session.setAttribute("loginInfo", vo);
 		
 		
 		session.removeAttribute("category");
@@ -47,10 +51,10 @@ public class HomeController {
 		
 
 		List<ProductVO> list = new ArrayList<ProductVO>();
-		list.add(service.product_info(2)); //0 cctv
-		list.add(service.product_info(3)); //1 화재
-		list.add(service.product_info(4)); //2 가스
-		list.add(service.product_info(6)); //3 미세먼지
+		list.add(service.product_info(14)); //0 cctv
+		list.add(service.product_info(15)); //1 화재
+		list.add(service.product_info(16)); //2 가스
+		list.add(service.product_info(18)); //3 미세먼지
 	
 		model.addAttribute("list", list);
 

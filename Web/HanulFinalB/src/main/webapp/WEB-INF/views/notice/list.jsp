@@ -10,6 +10,7 @@
 <body>
 
 
+
 <h3 class="mt-4">공지사항 목록</h3>
 <form id="listForm" method="post" action="list">
 	<div class="row mb-2 justify-content-between">
@@ -63,9 +64,6 @@
 			<input type="hidden" name="notice_id">
 			<input type="hidden" name="curPage" value="1">
 			
-			
-			<input type="hidden" name="search">
-			<input type="hidden" name="keyword">
 	
 	
 </form>
@@ -133,8 +131,6 @@ $("[name=pageList]").val( ${page.pageList}).prop("selected", true)
 function info(notice_id) {
 	$("[name=notice_id]").val(notice_id);
 	$("[name=curPage]").val( ${page.curPage} );
-	$("[name=search]").val( "${page.search}" );
-	$("[name=keyword]").val( "${page.keyword}" );
 	$("form#listForm").attr("action", "info").submit();
 }
 

@@ -65,10 +65,6 @@
 	
 			<input type="hidden" name="qna_id">
 			<input type="hidden" name="curPage" value="1">
-			
-			
-<!-- 			<input type="hidden" name="search"> -->
-<!-- 			<input type="hidden" name="keyword"> -->
 	
 	
 </form>
@@ -142,8 +138,6 @@ $("[name=pageList]").val( ${page.pageList}).prop("selected", true)
 function info(qna_id) {
 	$("[name=qna_id]").val(qna_id);
 	$("[name=curPage]").val( ${page.curPage} );
-// 	$("[name=search]").val( "${page.search}" );
-// 	$("[name=keyword]").val( "${page.keyword}" );
 	$("form#listForm").attr("action", "info").submit();
 }
 

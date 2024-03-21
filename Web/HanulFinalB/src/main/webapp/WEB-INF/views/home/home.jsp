@@ -65,22 +65,26 @@
 			
 			
 				<div class="col-lg-3 col-md-6 pb-3">
+				<a href="<c:url value='/prod/list'/>">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
 							<svg class="gift">
                   				<use xlink:href="#gift" />
                 			</svg>
 						</div>
+						
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/prod/list'/>">제품소개</a></h3>
+							<h3 class="card-title text-uppercase text-dark">제품소개</h3>
 						</div>
 					</div>
+				</a>
 				</div>
 
 
 
 
 				<div class="col-lg-3 col-md-6 pb-3">
+				<a href="<c:url value='/shop/list'/>">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
 							<svg class="shipping-fast">
@@ -88,15 +92,17 @@
                				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/shop/list'/>">제품구매</a></h3>
+							<h3 class="card-title text-uppercase text-dark">제품구매</h3>
 						</div>
 					</div>
+					</a>
 				</div>
 				
 				
 				
 				
 				<div class="col-lg-3 col-md-6 pb-3">
+				<a id="cart">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
 							<svg class="shopping-cart">
@@ -107,12 +113,14 @@
 							<h3 class="card-title text-uppercase text-dark">장바구니</h3>
 						</div>
 					</div>
+					</a>
 				</div>
 				
 				
 				
 				
 				<div class="col-lg-3 col-md-6 pb-3">
+				<a href="<c:url value='/member/login'/>">
 					<div class="icon-box d-flex align-items-center">
 						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
 							<svg class="return">
@@ -120,9 +128,10 @@
                				</svg>
 						</div>
 						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/member/login'/>">로그인</a></h3>
+							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/member/login'/>">로그인</h3>
 						</div>
 					</div>
+					</a>
 				</div>
 				
 				
@@ -366,11 +375,11 @@
 				console.log("cctv클릭");
 				e.preventDefault();
 			
-				$('#modal2').modal("show");
+				$('#modal14').modal("show");
 		    });
 
-			$('#btn2').click(function(e) {
-				window.open("/shop/info?prod_id=2", '_blank');
+			$('#btn14').click(function(e) {
+				window.open("shop/info?prod_id=14", '_blank');
 			});
 			
 			
@@ -380,11 +389,11 @@
 			$('#dust').click(function(e) {
 				e.preventDefault();
 			
-				$('#modal6').modal("show");
+				$('#modal18').modal("show");
 		    });
 
-			$('#btn6').click(function(e) {
-				window.open("/shop/info?prod_id=6", '_blank');
+			$('#btn18').click(function(e) {
+				window.open("shop/info?prod_id=18", '_blank');
 			});
 			
 			
@@ -395,11 +404,11 @@
 			$('#fire').click(function(e) {
 				e.preventDefault();
 			
-				$('#modal3').modal("show");
+				$('#modal15').modal("show");
 		    });
 
-			$('#btn3').click(function(e) {
-				window.open("/shop/info?prod_id=3", '_blank');
+			$('#btn15').click(function(e) {
+				window.open("shop/info?prod_id=15", '_blank');
 			});
 			
 			
@@ -410,13 +419,39 @@
 			$('#gas').click(function(e) {
 				e.preventDefault();
 			
-				$('#modal4').modal("show");
+				$('#modal16').modal("show");
 		    });
 
-			$('#btn4').click(function(e) {
-				window.open("/shop/info?prod_id=4", '_blank');
+			$('#btn16').click(function(e) {
+				window.open("shop/info?prod_id=16", '_blank');
 			});
+			
+			
+			
+			
+			
+			
+			
+			$('a#cart').click(function(e) {
+			
+				e.preventDefault();
+				if ( ${empty loginInfo} ) {
+					alert('로그인하세요')
+				}else{
+					location='shop/cart'
+				}
+			})
+			
+			
+			
+			
+			
+			
 		</script>
+
+
+
+
 
 
 

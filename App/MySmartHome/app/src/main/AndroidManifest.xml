@@ -71,6 +71,12 @@
             android:name=".login.JoinAddressActivity"
             android:exported="false" />
         <activity
+            android:name=".notice.NoticeDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notice.NoticeActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.JoinActivity"
             android:exported="false" />
         <activity

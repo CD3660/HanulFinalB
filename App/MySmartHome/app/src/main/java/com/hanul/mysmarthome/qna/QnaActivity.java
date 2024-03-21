@@ -26,7 +26,6 @@ public class QnaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         binding = ActivityQnaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -34,8 +33,6 @@ public class QnaActivity extends AppCompatActivity {
             finish();
         });
         getQnaList();
-
-
     }
     void getQnaList() {
 
@@ -50,18 +47,10 @@ public class QnaActivity extends AppCompatActivity {
             Log.d("데이터", "list: " + list);
 
 
-
-
            LinearLayoutManager manager = new LinearLayoutManager(this);
            // manager.setOrientation(LinearLayoutManager.VERTICAL);
             binding.recvQna.setAdapter(new QnaRecvAdapter(getLayoutInflater(), list , this));
             binding.recvQna.setLayoutManager(manager);
         });
     }
-
-
-
-
-
-
 }
