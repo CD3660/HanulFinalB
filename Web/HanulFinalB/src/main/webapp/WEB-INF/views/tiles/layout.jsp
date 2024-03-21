@@ -238,7 +238,7 @@
 													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
 													
 													
-											<li><a href="<c:url value='/member/join'/>"
+											<li><a href="<c:url value='/member/joinView'/>"
 													class="dropdown-item item-anchor">회원가입 <span
 													class="badge bg-secondary text-dark ms-2">신규</span></a></li>
 										</ul>
