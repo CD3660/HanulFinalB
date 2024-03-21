@@ -55,7 +55,7 @@ $(".btn-modify-save").click(function(){
 	}else{
 		$.ajax({
 			url: "comment/update",
-			data: { id: _comment.data("comment_id"), content: _comment.find("textarea").val() }
+			data: { comment_id: _comment.data("id"), content: _comment.find("textarea").val() }
 		}).done(function(response){
 			console.log( response );
 			alert( response.message );
