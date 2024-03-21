@@ -176,7 +176,7 @@
 
 		$("#memberPw").keyup(function() {
 			$('#memberPwCheck').val("");
-			$('#memberPwCheck').focus();
+// 			$('#memberPwCheck').focus();
 			pwCk = false;
 		});
 	</script>

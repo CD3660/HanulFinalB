@@ -46,7 +46,7 @@
 								<ul class="lgacc-tab">
 									<li class="tab-item"><a class="tab-link"
 										id="btn-search-id"
-										href="http://localhost:8080/finalb/member/find_id_form">아이디
+										href="<c:url value='/member/find_id_form'/>">아이디
 											찾기</a></li>
 									<li class="tab-item"><a id="reset-password"
 										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
@@ -95,11 +95,11 @@
 						console.log("성공");
 						location = "/finalb/"
 					} else if (data.code === '-1') {
-						alert("실패");
+						alert("아이디 또는 패스워드가 틀립니다");
 					}
 				},
 				error : function(error) {
-					alert("err");
+					alert("아이디 또는 패스워드가 틀립니다");
 				}
 			});
 		}

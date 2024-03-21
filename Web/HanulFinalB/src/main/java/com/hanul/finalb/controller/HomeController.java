@@ -42,7 +42,6 @@ public class HomeController {
 		MemberVO vo = member.memberInfo(user_id);
 		//session.setAttribute("loginInfo", vo);
 		
-		//-----------------------------------------------
 		
 		session.removeAttribute("category");
 		

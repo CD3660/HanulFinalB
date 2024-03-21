@@ -11,14 +11,16 @@
 	   					       , ADDRESS
 	   					       , ADDRESS2
 	   					       , EMAIL
-	   					       , PHONE)
+	   					       , PHONE
+	   					       , PROFILE)
 	                  VALUES(    #{user_id} 
 	                 		   , #{user_pw}
 	                 		   , #{name}
 	                 		   , #{address}
 	                 		   , #{address2}
 	                 		   , #{email}
-	                 		   , #{phone})
+	                 		   , #{phone}
+	                 		   , #{profile, jdbcType=VARCHAR})
     </insert>
    
    <select id="idCheck" parameterType="String" resultType="Integer">
@@ -50,6 +52,17 @@
         WHERE 
         	EMAIL = #{email}
     </select>
+    <!-- 04. 회원정보 수정처리 -->
+    <update id="updateMember">
+    UPDATE users
+    SET
+        PHONE = #{phone},
+        EMAIL = #{email},
+        ADDRESS = #{address},
+        ADDRESS2 = #{address2}
+    WHERE
+        USER_ID = #{user_id}    
+</update>
    
    
    
@@ -94,6 +107,8 @@
   	profile = #{profile}
   	where user_id = #{user_id}
   </update>
-   
+	<insert id="naverJoin">
+		insert into users (user_id, name, email, phone, social) values (#{user_id}, #{name}, #{email}, #{phone}, #{social})
+	</insert>
    
 </mapper>

@@ -22,10 +22,10 @@
 		</div>
 		<div class="col-6 p-3">
 			<h3>${vo.prod_name }</h3>
-			<input type="hidden" id="prod_id" value="" />
+			<input type="hidden" id="prod_id" value="${vo.prod_id }" />
 			<%-- 상품평과 별점 만드어야함--%>
 			<div class="rate">
-				<span style="width: ${(vo.rate==null?0:vo.rate)*10}%;"></span>
+				<span style="width: ${(vo.rate==null?0:vo.rate)*20}%;"></span>
 			</div>
 			<span style="color: red;">${vo.review_cnt}개의 상품평</span>
 			<%-- 상품평과 별점 만드어야함--%>
@@ -127,4 +127,20 @@
 		location="delete_review?review_id="+review_id+"&prod_id="+${vo.prod_id };
 		
 	}
+	$("#btn-review").click(function() {
+		console.log("로그");
+		$.ajax({
+			url:"/finalb/shop/can_review_check",
+			data:{
+				user_id: '${loginInfo.user_id}',
+				prod_id: ${vo.prod_id}
+			}
+		}).done(function(resp) {
+			if(resp == "success"){
+				location="reviewPage?prod_id="+${vo.prod_id};
+			} else if(resp == "fail") {
+				alert("리뷰 대상자가 아닙니다.\n구매 후 7일 이내에만 리뷰를 작성할 수 있습니다.");
+			}
+		});
+	})
 </script>

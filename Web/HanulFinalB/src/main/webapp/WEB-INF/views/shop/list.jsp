@@ -41,7 +41,7 @@
 									<fmt:formatNumber value="${vo.price}" pattern="###,###원" />
 								</p>
 								<div class="rate">
-									<span style="width: ${(vo.rate==null?0:vo.rate)*10}%"></span>
+									<span style="width: ${(vo.rate==null?0:vo.rate)*20}%"></span>
 								</div>
 							</div>
 						</c:forEach>

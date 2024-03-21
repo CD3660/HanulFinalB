@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -90,12 +91,16 @@ public class MemberController {
 		
 		service.memberJoin(member);
 
-		return "redirect:/member/login";
+		return "redirect:member/login";
 
 	}
 	// 아이디 찾기 폼
 		@RequestMapping(value = "/find_id_form")
-		public String find_id_form() throws Exception{
+
+		public String find_id_form() {
+
+		
+
 			return "member/find_id_form";
 		}
 
@@ -164,20 +169,30 @@ public class MemberController {
 		return "redirect:/";
 	}
 	@RequestMapping("/mypage")
-	public String showMyPage(Model model) {
-		
+	public String MyPage(HttpSession session ,Model model) {
+		MemberVO vo = (MemberVO) session.getAttribute("loginInfo");
+		session.setAttribute("loginInfo", service.memberInfo(vo.getUser_id()));
 		return "member/mypage";
 	}
-	
+	@RequestMapping("/memberUpdate")
+	public String memberUpdate(@ModelAttribute MemberVO vo) {
+		service.updateMember(vo);
+		return "redirect:mypage";
+	}
+	@RequestMapping("/sidemenu")
+	public String sidemenu(HttpSession session) {
+		
+		return "/member/sidemenu";
+	}
 	@RequestMapping("/changePw")
 	public String changePw(Model model) {
 		
 		return "member/changePw";
-	}
+
+}
 	@RequestMapping("/secession")
 	public String secession(Model model) {
 		
 		return "member/secession";
-	}
-
+}
 }
