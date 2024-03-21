@@ -390,7 +390,6 @@ public class Common {
 		 vo.setFilename( file.getOriginalFilename() );
 		 String file_id = fileUpload(file);
 		 vo.setFile_id(file_id);
-		 //vo.setQna_id(qna_id);
 		 list.add(vo);
 		 }
 	 		

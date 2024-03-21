@@ -77,7 +77,7 @@ function FileList() {
 	this.info.upload.splice(i,1);	
 		
 		if( typeof this.info.id[i] != "undefined" ) {
-			this.info.remove.push( this.info.id[i]); //remove에 넣기
+			this.info.remove.push( "'" + this.info.id[i] + "'"); //remove에 넣기
 			this.info.id.splice(i,1); //id에서 삭제하기
 			
 		}

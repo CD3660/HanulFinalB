@@ -84,7 +84,7 @@ fileList.setFile( urlToFile( "${f.file_id}", "${f.filename}" ), "${f.file_id}" )
 </c:forEach>
 
 //문자열이 아닌 File 정보가 담기도록 처리한다
-function urlToFile( url, filename ) {   // ************ url부분 최종 확인하기
+function urlToFile( url, filename ) {   
 	var file;
 	$.ajax({
 		url: "drive.google",
