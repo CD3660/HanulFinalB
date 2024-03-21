@@ -182,7 +182,7 @@ public class ShopController {
 		}
 		service.update(vo, maintain);
 
-		return "redirect:/shop/info?id=" + vo.getProd_id();
+		return "redirect:info?prod_id=" + vo.getProd_id();
 	}
 
 	@RequestMapping("/delete")

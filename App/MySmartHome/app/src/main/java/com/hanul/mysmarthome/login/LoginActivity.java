@@ -97,48 +97,48 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, JoinActivity.class);
             startActivity(intent);
         });
-        getHashKey();
-        initLogin();
-        binding.naverLogin.setOAuthLogin(new OAuthLoginCallback() {
-            @Override
-            public void onSuccess() {
-                new NidOAuthLogin().callProfileApi(new NidProfileCallback<NidProfileResponse>() {
-                    @Override
-                    public void onSuccess(NidProfileResponse nidProfileResponse) {
-                        MemberVO vo = new MemberVO();
-                        vo.setPhone(nidProfileResponse.getProfile().getMobile());
-                        vo.setName(nidProfileResponse.getProfile().getName());
-                        vo.setUser_id(nidProfileResponse.getProfile().getId());
-                        vo.setEmail(nidProfileResponse.getProfile().getEmail());
-                        Log.d(TAG, "onSuccess: "+vo.getUser_id()+vo.getName());
-                        socialLogin(vo);
-                    }
-
-                    @Override
-                    public void onFailure(int i, @NonNull String s) {
-
-                    }
-
-                    @Override
-                    public void onError(int i, @NonNull String s) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(int i, @NonNull String s) {
-                Toast.makeText(LoginActivity.this, "네이버 로그인이 취소되었습니다.", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(int i, @NonNull String s) {
-
-            }
-        });
-        binding.imgvKakaoLogin.setOnClickListener(v -> {
-            kakaoLoginClick();
-        });
+//        getHashKey();
+//        initLogin();
+//        binding.naverLogin.setOAuthLogin(new OAuthLoginCallback() {
+//            @Override
+//            public void onSuccess() {
+//                new NidOAuthLogin().callProfileApi(new NidProfileCallback<NidProfileResponse>() {
+//                    @Override
+//                    public void onSuccess(NidProfileResponse nidProfileResponse) {
+//                        MemberVO vo = new MemberVO();
+//                        vo.setPhone(nidProfileResponse.getProfile().getMobile());
+//                        vo.setName(nidProfileResponse.getProfile().getName());
+//                        vo.setUser_id(nidProfileResponse.getProfile().getId());
+//                        vo.setEmail(nidProfileResponse.getProfile().getEmail());
+//                        Log.d(TAG, "onSuccess: "+vo.getUser_id()+vo.getName());
+//                        socialLogin(vo);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int i, @NonNull String s) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(int i, @NonNull String s) {
+//
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onFailure(int i, @NonNull String s) {
+//                Toast.makeText(LoginActivity.this, "네이버 로그인이 취소되었습니다.", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onError(int i, @NonNull String s) {
+//
+//            }
+//        });
+//        binding.imgvKakaoLogin.setOnClickListener(v -> {
+//            kakaoLoginClick();
+//        });
     }
     public void initLogin(){
         NaverIdLoginSDK.INSTANCE.initialize(this, BuildConfig.NAVER_CLIENT_ID, BuildConfig.NAVER_CLIENT_SECRET, BuildConfig.NAVER_CLIENT_NAME);
