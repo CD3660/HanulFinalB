@@ -24,10 +24,14 @@ public interface ApiInterface {
     @GET("{mapping}")
     Call<String> clientGetMethod(@Path("mapping") String url, @QueryMap HashMap<String, Object> params);
 
+//    @Multipart//파일 전송 시 필요한 어노테이션
+//    @POST
+//    Call<String> clientSendFile(@Url String url, @PartMap HashMap<String, RequestBody> maps, @Part MultipartBody.Part file);
+    //@PartMap HashMap<String, MultipartBody.Part> fileMap
+
     @Multipart//파일 전송 시 필요한 어노테이션
     @POST
-    Call<String> clientSendFile(@Url String url, @PartMap HashMap<String, RequestBody> maps, @Part MultipartBody.Part file);
-    //@PartMap HashMap<String, MultipartBody.Part> fileMap
+    Call<String> clientSendFile(@Url String url, @QueryMap HashMap<String, Object> params, @Part MultipartBody.Part file);
 
     @Multipart//파일 전송 시 필요한 어노테이션
     @POST

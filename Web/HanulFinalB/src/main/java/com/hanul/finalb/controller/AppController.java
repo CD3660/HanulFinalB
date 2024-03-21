@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,10 +47,45 @@ public class AppController {
 	@Autowired
 	Common comm;
 	
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
+	
 	@RequestMapping("/login")
 	public String login(MemberVO vo) {
 		
 		return new Gson().toJson(memService.member_login(vo), MemberVO.class);
+	}
+	@RequestMapping("/naverLogin")
+	public String naverLogin(MemberVO vo) {
+		if(memService.idCheck(vo.getUser_id())==0){
+			System.out.println(vo.getUser_id());
+			return new Gson().toJson(memService.naverJoin(vo), MemberVO.class);
+		}
+		memService.compareToken(vo);
+		return new Gson().toJson(memService.memberInfo(vo.getUser_id()), MemberVO.class);
+	}
+	@RequestMapping("/join")
+	public String join(MemberVO vo, MultipartFile profile_file) {
+		if(memService.idCheck(vo.getUser_id())!=0) {
+			return "duplicate id";
+		}
+		if(profile_file != null) {
+			try {
+				String file_id = comm.fileUpload(profile_file);
+				String profile_url = comm.fileURL(file_id);
+				vo.setProfile(profile_url);
+				
+			} catch (GeneralSecurityException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		String pw = vo.getUser_pw();
+		vo.setUser_pw(pwEncoder.encode(pw));
+		memService.memberJoin(vo);
+		
+		return "success";
 	}
 	@RequestMapping("/userInfo")
 	public String userInfo(MemberVO vo) {

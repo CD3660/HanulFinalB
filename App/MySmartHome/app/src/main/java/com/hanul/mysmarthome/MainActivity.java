@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         setContentView(binding.getRoot());
         Intent intent = getIntent();
         loginInfo = (MemberVO) intent.getSerializableExtra("loginInfo");
-        new MemberService().replaceImgURL(loginInfo);
+        if(loginInfo.getProfile() != null){
+            new MemberService().replaceImgURL(loginInfo);
+        }
 
         binding.btmNav.setOnItemSelectedListener(this);
         onItemSelect(0);
