@@ -52,6 +52,17 @@
         WHERE 
         	EMAIL = #{email}
     </select>
+    <!-- 04. 회원정보 수정처리 -->
+    <update id="updateMember">
+    UPDATE users
+    SET
+        PHONE = #{phone},
+        EMAIL = #{email},
+        ADDRESS = #{address},
+        ADDRESS2 = #{address2}
+    WHERE
+        USER_ID = #{user_id}    
+</update>
    
    
    

@@ -60,10 +60,18 @@ public class MemberService {
 	public String findIdByEmail(String email) {
 		return sql.selectOne("member.findIdByEmail", email);
 	}
-
+	//회원 정보
 	public MemberVO memberInfo(String user_id) {
 		return sql.selectOne("member.info", user_id);
 	}
+	//회원 수정처리
+	 public void updateMember(MemberVO vo) {
+	        sql.update("member.updateMember", vo);
+	 
+	    }
+	 
+	 
+	 
 	public void appMemberUpdate(MemberVO vo) {
 		if(sql.update("member.app_user_update", vo)==1) {
 			System.out.println("수정 성공");

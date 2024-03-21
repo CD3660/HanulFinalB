@@ -24,8 +24,6 @@
 							id="email" name="email" required>
 					</p>
 					<p class="w3-center">
-						<button id="findBtn" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">아이디 찾기</button>
-						<button type="button" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">취소</button>
 						<button type="submit" id=findBtn
 							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">아이디
 							찾기</button>
@@ -45,24 +43,27 @@
 			$("#findBtn").click(function() {
 				var email = $("#email").val();
 
-				// Ajax request to find the username
-				$.ajax({
-					type : "POST",
-					url : "/findId", // Your controller mapping
-					data : {
-						email : email
-					},
-					success : function(name) {
-						// Handle success, update the UI with the found username
-						alert("아이디: " + name);
-					},
-					error : function() {
-						// Handle error
-						alert("아이디를 찾을 수 없습니다.");
-					}
-				});
-			});
-		});
-	</script>
+            // Ajax request to find the username
+            $.ajax({
+                type: "POST",
+                url: "findId", // Your controller mapping
+                data: { email: email },
+                success: function(data) {
+                	if(data.user_id != null){
+                		alert("아이디: " + data.user_id);
+            		} else {
+            			alert("해당 아이디 없음");
+            		}
+                    // Handle success, update the UI with the found username
+                    
+                },
+                error: function() {
+                    // Handle error
+                    alert("아이디를 찾을 수 없습니다.");
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

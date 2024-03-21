@@ -10,13 +10,13 @@
             <c:choose>
                 <c:when test="${loginMember.loginST=='Y'}">
                     
-                    <li class="myPage-list"><a href="${contextPath}/finalb/member/mypage">회원 정보 변경</a></li>
+                    <li class="myPage-list"><a href="${contextPath}/finalb/member/memberUpdate">회원 정보 변경</a></li>
                     <li class="myPage-list"><a href="${contextPath}/finalb/member/secession">회원 탈퇴</a></li>
                 </c:when>
            
                 <c:otherwise>
                 
-                    <li class="myPage-list"><a href="${contextPath}/finalb/member/mypage">회원 정보 변경</a></li>
+                    <li class="myPage-list"><a href="${contextPath}/finalb/member/memberUpdate">회원 정보 변경</a></li>
                     <li class="myPage-list"><a href="${contextPath}/finalb/member/changePw">비밀번호 변경</a></li>
                     <li class="myPage-list"><a href="${contextPath}/finalb/member/secession">회원 탈퇴</a></li>
                 </c:otherwise>
