@@ -31,16 +31,16 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding = ActivityQnaDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        new CommonConn(this, "qnaDetail/"+getIntent().getStringExtra("qna_id"))
+        qna_id = getIntent().getIntExtra("qna_id", 0);
+        new CommonConn(this, "qnaDetail/"+qna_id)
                 .onExcute((isResult, data) -> {
-                    QnaVO vo = new Gson().fromJson(data, new TypeToken<QnaCommentVO>(){}.getType());
+                    QnaVO vo = new Gson().fromJson(data, new TypeToken<QnaVO>(){}.getType());
                     binding.detailQnaTitle.setText(vo.getTitle().toString());
                     binding.detailQnaContent.setText(vo.getContent().toString());
                     binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
                     binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
-                    qna_id = vo.getQna_id();
-                    getCommentList();
+
+
                 });
 
 
@@ -53,7 +53,7 @@ public class QnaDetailActivity extends AppCompatActivity {
         });
 
 
-
+        getCommentList(qna_id);
 
 
 
@@ -66,7 +66,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
 
 
-    void getCommentList() {
+    void getCommentList(int qna_id) {
 
 
             CommonConn conn = new CommonConn(this, "qnaComment");
