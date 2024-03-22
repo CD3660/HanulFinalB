@@ -16,18 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHolder> {
-    LayoutInflater inflater;
+    //LayoutInflater inflater;
     List<QnaVO> list;
+
     Context context;
 
-    QnaActivity qnaActivity;
 
-    public QnaRecvAdapter(QnaActivity qnaActivity) {
-        this.qnaActivity = qnaActivity;
-    }
-
-    public QnaRecvAdapter(LayoutInflater inflater, ArrayList<QnaVO> list, Context context) {
-        this.inflater = inflater;
+    public QnaRecvAdapter(ArrayList<QnaVO> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -35,7 +30,12 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(LayoutInflater.from(context),parent,false);
+
+          ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(LayoutInflater.from(context), parent,false);
+
+        //ItemQnaRecvBinding binding = ItemQnaRecvBinding.inflate(inflater, parent,false);
+
+
 
         return new ViewHolder(binding);
     }
