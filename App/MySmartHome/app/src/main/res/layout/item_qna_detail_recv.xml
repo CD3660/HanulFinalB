@@ -58,7 +58,7 @@
 
         <View
             style="@style/gray_view_line1dp"
-            android:paddingTop="10"/>
+            android:paddingTop="10dp"/>
 
 
     </LinearLayout>
