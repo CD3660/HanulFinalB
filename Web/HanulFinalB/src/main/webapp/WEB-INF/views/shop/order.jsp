@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <h3 class="m-2">주문 / 결제</h3>
@@ -93,9 +94,10 @@
 								<div style="margin:5px 0 5px 0;overflow:hidden;height:1px; border-top: #DDD 1px solid;">
 								</div>
 		                        <div>
-		                            <span>${vo.price}원</span>
+		                            <span><fmt:formatNumber value="${vo.price}" pattern="###,###원" /></span>
 		                            <span> / ${vo.ea}개</span>
-		                            <span class="span-goods-total-price">${vo.price*vo.ea}원</span>
+		                            <span class="span-goods-total-price"><fmt:formatNumber
+							value="${vo.price*vo.ea}" pattern="###,###원" /></span>
 		                        </div>
 							</td>
 						</tr>
@@ -113,7 +115,7 @@
 			<div class="mt-3 mb-3 p-2" style="width: 100%; border: 2px solid gray;">
 				<div class="d-flex justify-content-between align-items-end">
 					<div class="fw-bold">결제 예정액</div>
-					<div class="fw-bold"><span class="fw-bold text-danger fs-3">${totalPrice}</span>원</div>
+					<div class="fw-bold"><span class="fw-bold text-danger fs-3"><fmt:formatNumber value="${totalPrice}" pattern="###,###원" /></span></div>
 				</div>
 				<hr>
 				<div class="d-flex justify-content-between align-items-end m-3">

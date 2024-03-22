@@ -49,7 +49,7 @@ public class QnaActivity extends AppCompatActivity {
 
            LinearLayoutManager manager = new LinearLayoutManager(this);
            // manager.setOrientation(LinearLayoutManager.VERTICAL);
-            binding.recvQna.setAdapter(new QnaRecvAdapter(getLayoutInflater(), list , this));
+            binding.recvQna.setAdapter(new QnaRecvAdapter(list , this));
             binding.recvQna.setLayoutManager(manager);
         });
     }

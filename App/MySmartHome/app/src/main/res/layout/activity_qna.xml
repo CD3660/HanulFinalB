@@ -64,7 +64,7 @@
                     android:layout_height="match_parent"
                     android:text="제목"
                     android:textStyle="bold"
-                    android:textSize="17dp"
+                    android:textSize="19dp"
                     android:layout_margin="5dp"
                     />
 
@@ -75,7 +75,7 @@
                     android:layout_height="match_parent"
                     android:text="작성자"
                     android:textStyle="bold"
-                    android:textSize="17dp"
+                    android:textSize="19dp"
                     android:layout_margin="5dp"
                     />
 
@@ -87,7 +87,7 @@
                     android:layout_height="match_parent"
                     android:text="작성일"
                     android:textStyle="bold"
-                    android:textSize="17dp"
+                    android:textSize="19dp"
                     android:layout_margin="5dp"
                     />
 

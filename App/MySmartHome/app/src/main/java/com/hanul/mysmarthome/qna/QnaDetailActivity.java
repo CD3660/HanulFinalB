@@ -20,7 +20,6 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ActivityQnaDetailBinding binding;
 
-    ArrayList<QnaCommentVO> commentList;
 
     int qna_id;
 
@@ -31,15 +30,22 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding = ActivityQnaDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //QnaVO vo = getIntent().getSerializableExtra("vo");
+        qna_id = getIntent().getIntExtra("qna_id", 0);
+
+        new CommonConn(this, "qnaDetail/"+qna_id)
+                .onExcute((isResult, data) -> {
+                    QnaVO vo = new Gson().fromJson(data, new TypeToken<QnaVO>(){}.getType());
+                    binding.detailQnaTitle.setText(vo.getTitle().toString());
+                    binding.detailQnaContent.setText(vo.getContent().toString());
+                    binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
+                    binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
 
 
-        QnaVO vo = (QnaVO) getIntent().getSerializableExtra("vo");
-        binding.detailQnaTitle.setText(vo.getTitle().toString());
-        binding.detailQnaContent.setText(vo.getContent().toString());
-        binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
-        binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
+                });
 
-        qna_id = vo.getQna_id();
+
+
 
 
 
@@ -48,8 +54,8 @@ public class QnaDetailActivity extends AppCompatActivity {
         });
 
 
+        getCommentList(qna_id);
 
-        getCommentList();
 
 
 
@@ -61,7 +67,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
 
 
-    void getCommentList() {
+    void getCommentList(int qna_id) {
 
 
             CommonConn conn = new CommonConn(this, "qnaComment");
@@ -72,9 +78,9 @@ public class QnaDetailActivity extends AppCompatActivity {
                     Log.d("데이터2", "getCommentList: " + data);
 
                 Type listType = new TypeToken<ArrayList<QnaCommentVO>>(){}.getType();
-                commentList = new Gson().fromJson(data, listType);
+                ArrayList<QnaCommentVO> commentList = new Gson().fromJson(data, listType);
 
-                    Log.d("리스트2", "getCommentList: " + commentList);
+                Log.d("리스트2", "getCommentList: " + commentList);
 
                 binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater(), commentList, this));
                 binding.commentRecvQna.setLayoutManager(new LinearLayoutManager(this));

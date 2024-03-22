@@ -11,7 +11,7 @@
 <select id="appNoticeList" resultType="noticeVO">
 
 select n1.*
-from ( select n.*, name, row_number() over(order by notice_id desc) no
+from ( select n.*, name, row_number() over(order by notice_id) no
 		from notice n left outer join users u on n.writer = u.user_id ) n1
 order by no desc
 
@@ -87,7 +87,7 @@ select count(notice_id) from notice <include refid="searchWhere"/>
 <!-- notice 글목록 조회 /해당페이지의 10건의 정보목록 조회 -->
 <select id="list" resultType="noticeVO">
 select n1.*
-from ( select n.*, name, row_number() over(order by notice_id desc) no
+from ( select n.*, name, row_number() over(order by notice_id) no
 		from notice n left outer join users u on n.writer = u.user_id <include refid="searchWhere"/> ) n1
 where no between #{beginList} and #{endList}
 order by no desc

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <body>
@@ -9,6 +10,11 @@
 <div class="d-block">
 	<div class="d-flex justify-content-center">
 		<div style="border: solid 1px gray; width: 500px; min-height: 500px">
+			<c:if test="${empty list }">
+				<div class="d-flex justify-content-center mt-4">
+					<span>결제 내역이 없습니다.</span>
+				</div>
+			</c:if>
 			<c:forEach items="${list}" var="vo">
 				<div class="row">
 					<div class="col-12 p-4">
@@ -19,7 +25,8 @@
 							style="margin: 5px 0 5px 0; overflow: hidden; height: 1px; border-top: #DDD 1px solid;">
 						</div>
 						<div>
-							<span class="fs-5">총 결제 금액 : <span class="text-danger fw-bold">${vo.amount}</span>원</span>						</div>
+							<span class="fs-5">총 결제 금액 : <span class="text-danger fw-bold"><fmt:formatNumber
+							value="${vo.amount}" pattern="###,###원" /></span></span>						</div>
 					</div>
 				</div>
 			</c:forEach>
