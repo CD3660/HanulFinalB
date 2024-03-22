@@ -20,7 +20,6 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ActivityQnaDetailBinding binding;
 
-    ArrayList<QnaCommentVO> commentList;
 
     int qna_id;
 
@@ -77,9 +76,9 @@ public class QnaDetailActivity extends AppCompatActivity {
                     Log.d("데이터2", "getCommentList: " + data);
 
                 Type listType = new TypeToken<ArrayList<QnaCommentVO>>(){}.getType();
-                commentList = new Gson().fromJson(data, listType);
+                ArrayList<QnaCommentVO> commentList = new Gson().fromJson(data, listType);
 
-                    Log.d("리스트2", "getCommentList: " + commentList);
+                Log.d("리스트2", "getCommentList: " + commentList);
 
                 binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater(), commentList, this));
                 binding.commentRecvQna.setLayoutManager(new LinearLayoutManager(this));

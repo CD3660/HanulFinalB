@@ -25,6 +25,8 @@ import com.hanul.finalb.app.firebase.RequestDTO;
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
+import com.hanul.finalb.notice.NoticeService;
+import com.hanul.finalb.notice.NoticeVO;
 import com.hanul.finalb.qna.QnaCommentVO;
 import com.hanul.finalb.qna.QnaService;
 import com.hanul.finalb.qna.QnaVO;
@@ -166,12 +168,34 @@ public class AppController {
 	    return new Gson().toJson(list);
 		
 	}
+	@Autowired
+	NoticeService noticeService;
+	
+	@RequestMapping("/notice")
+	public String notice() {
+		
+		// QnaVO 객체들의 리스트를 가져옴
+		List<NoticeVO> list = noticeService.appNoticeList();
+
+	    // 생성된 Type을 사용하여 리스트를 JSON 문자열로 변환
+		System.out.println(">> "+ new Gson().toJson(list));
+	    return new Gson().toJson(list);
+		
+	}
 	
 	@RequestMapping("/qnaDetail/{qna_id}")
 	public String qnaDetail(@PathVariable int qna_id) {
 		
 		String json = new Gson().toJson(qnaService.qna_info(qna_id));
 	    
+		System.out.println(">> "+ json);
+	    return json;
+	}
+	@RequestMapping("/noticeDetail/{notice_id}")
+	public String noticeDetail(@PathVariable int notice_id) {
+		
+		String json = new Gson().toJson(noticeService.notice_info(notice_id));
+		noticeService.notice_read(notice_id);
 		System.out.println(">> "+ json);
 	    return json;
 	}

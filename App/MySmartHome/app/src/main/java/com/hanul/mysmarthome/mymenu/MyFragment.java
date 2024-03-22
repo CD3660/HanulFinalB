@@ -39,6 +39,7 @@ import com.hanul.mysmarthome.common.CommonRetroClient;
 import com.hanul.mysmarthome.databinding.FragmentMyBinding;
 import com.hanul.mysmarthome.member.MemberInfoActivity;
 import com.hanul.mysmarthome.member.MemberVO;
+import com.hanul.mysmarthome.notice.NoticeActivity;
 import com.hanul.mysmarthome.qna.QnaActivity;
 
 import java.io.File;
@@ -94,6 +95,10 @@ public class MyFragment extends Fragment {
 
         binding.qna.setOnClickListener(v->{
             Intent intent = new Intent(getContext(), QnaActivity.class);
+            startActivity(intent);
+        });
+        binding.notice.setOnClickListener(v->{
+            Intent intent = new Intent(getContext(), NoticeActivity.class);
             startActivity(intent);
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
