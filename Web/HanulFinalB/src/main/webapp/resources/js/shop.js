@@ -103,6 +103,7 @@ function remove_img() {
 	$(".preview").html("");
 	$("[name=file]").val("");
 	$("[name=maintain]").val("false");
+	$("[name=prod_img]").val("");
 }
 
 //상품 개수 직접 입력에 대한 제어
@@ -183,7 +184,7 @@ $("#btn-updatePage").click(function () {
 $("#btn-delete").click(function () {
 	const prod_id = $("#prod_id").val();
 	if(confirm("정말 삭제하시겠습니까?")){
-		location = "delete?id="+prod_id;
+		location = "delete?prod_id="+prod_id;
 	} else {
 		return;
 	}

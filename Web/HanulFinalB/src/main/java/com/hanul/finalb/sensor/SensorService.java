@@ -2,6 +2,7 @@ package com.hanul.finalb.sensor;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,10 @@ public class SensorService {
 				action = "119";
 			}
 			try {
-				fcmService.sendMessageTo(sql.selectOne("member.getToken", vo.getUser_id()), title, body, action);
+				List<String> list = sql.selectList("member.getToken", vo.getUser_id());
+				for (String token : list) {
+					fcmService.sendMessageTo(token , title, body, action);
+				}
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("user_id", vo.getUser_id());
 				map.put("sensor_id", vo.getFire_sensor_id());

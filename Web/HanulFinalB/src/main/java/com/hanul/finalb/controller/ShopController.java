@@ -3,7 +3,6 @@ package com.hanul.finalb.controller;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hanul.finalb.common.Common;
@@ -23,6 +21,7 @@ import com.hanul.finalb.product.ProductService;
 import com.hanul.finalb.product.ProductVO;
 import com.hanul.finalb.shop.OrderVO;
 import com.hanul.finalb.shop.PaymentVO;
+import com.hanul.finalb.shop.ReviewVO;
 import com.hanul.finalb.shop.ShopService;
 
 @Controller
@@ -71,9 +70,13 @@ public class ShopController {
 	@RequestMapping("/cart")
 	public String cart(HttpSession session, Model model) {
 		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+		if(loginInfo == null) {
+			model.addAttribute("url", "member/login");
+			return "shop/redirect";
+		}
 		List<OrderVO> list = service.cartList(loginInfo.getUser_id());
 		model.addAttribute("list", list);
-
+		
 		return "shop/cart";
 	}
 	@RequestMapping("/delete_cart")
@@ -181,16 +184,16 @@ public class ShopController {
 		}
 		service.update(vo, maintain);
 
-		return "redirect:/shop/info?id=" + vo.getProd_id();
+		return "redirect:info?prod_id=" + vo.getProd_id();
 	}
 
 	@RequestMapping("/delete")
-	public String delete(int id) throws GeneralSecurityException, IOException {
-		ProductVO vo = service.info(id);
+	public String delete(int prod_id) throws GeneralSecurityException, IOException {
+		ProductVO vo = service.info(prod_id);
 		if (vo.getProd_img_id() != null) {
 			comm.fileDelete(vo.getProd_img_id());
 		}
-		service.delete(id);
+		service.delete(prod_id);
 
 		return "redirect:/shop/list";
 	}
@@ -204,9 +207,34 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/delete_review")
-	public String delete_review(HttpSession session, int review_id, int prod_id) {
+	public String delete_review(int review_id, int prod_id) {
 		service.deleteReview(review_id);
 
 		return "redirect:/shop/info?prod_id="+prod_id;
+	}
+	@ResponseBody
+	@RequestMapping("/can_review_check")
+	public String can_review_check(ReviewVO vo) {
+		if(service.can_review_check(vo).size()==0) {
+			//주문 내역이 없는 경우 리뷰 작성 불가
+			return "fail";
+		} else {
+			//주문 내역이 있는 경우 리뷰 작성 가능
+			return "success";
+		}
+	}
+	@RequestMapping("/reviewPage")
+	public String reviewPage(HttpSession session, Model model ,int prod_id) {
+		model.addAttribute("prod_id", prod_id);
+		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+		model.addAttribute("user_id", loginInfo.getUser_id());
+
+		return "shop/review";
+	}
+	@RequestMapping("/insert_review")
+	public String insert_review(ReviewVO vo) {
+		service.createReview(vo);
+
+		return "redirect:/shop/info?prod_id="+vo.getProd_id();
 	}
 }

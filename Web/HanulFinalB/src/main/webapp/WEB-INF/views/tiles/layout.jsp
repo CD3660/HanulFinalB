@@ -74,12 +74,14 @@
 	data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
 	tabindex="0">
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="search" xmlns="http://www.w3.org/2000/svg"
+	
+      <!-- <symbol id="search" xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 32 32">
         <title>Search</title>
         <path fill="currentColor"
 			d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
-      </symbol>
+      </symbol> -->
+      
       <symbol xmlns="http://www.w3.org/2000/svg" id="user"
 			viewBox="0 0 16 16">
         <path
@@ -154,13 +156,16 @@
             <use xlink:href="#close"></use>
           </svg>
 			</div>
-			<form id="search-form" class="text-center pt-3" action="" method="">
-				<input type="text" class="search-input fs-5 p-4 bg-transparent"
-					placeholder="Search...">
-				<svg class="search" width="22" height="22">
-            <use xlink:href="#search"></use>
-          </svg>
-			</form>
+			
+			<!-- 검색**********************************************************************************************  -->
+<!-- 			<form id="search-form" class="text-center pt-3" action="" method="">
+				<input type="text" class="search-input fs-5 p-4 bg-transparent"	placeholder="검색어를 입력하세요">
+					<svg class="search" width="22" height="22">
+	            		<use xlink:href="#search"></use>
+	          		</svg>
+			</form> -->
+			
+			
 		</div>
 	</div>
 
@@ -258,6 +263,9 @@
 											<li><a href="<c:url value='/member/mypage'/>"
 												class="dropdown-item item-anchor">마이페이지 <span
 													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+											<li><a href="<c:url value='/member/paymentList'/>"
+												class="dropdown-item item-anchor">구매 내역 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
 													
 													
 											<li><a href="<c:url value='/member/logout'/>"
@@ -276,15 +284,25 @@
 							<li class="nav-item">
 								<div class="user-items ps-5">
 									<ul class="d-flex justify-content-end list-unstyled">
-									
-									
+								 	
+								    	<!-- 검색*************************************************************************************  -->
+<!-- 								    	
 										<li class="search-item pe-3" data-bs-toggle="collapse"
 													data-bs-target="#search-box" aria-controls="search-box"
 													aria-expanded="false" aria-label="Toggle navigation">
 											<svg class="search" width="18" height="18">
                          				 		<use xlink:href="#search"></use>
                        					 	</svg>
-                        				</li>
+                        				</li> -->
+                        				
+                        				
+                        				
+                        				
+                        				
+                        				
+                        				
+                        				
+                        				
                         				
                         				
 										<li class="pe-3">
@@ -373,7 +391,9 @@
 								</li>
 								<li class="menu-item pb-2"><a href="<c:url value='/shop/list'/>">제품구매</a>
 								</li>
-								<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								<c:if test="${empty loginInfo }">
+									<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
@@ -405,5 +425,9 @@
 			</div>
 		</div>
 	</footer>
+	
+	
+
+	
 </body>
 </html>

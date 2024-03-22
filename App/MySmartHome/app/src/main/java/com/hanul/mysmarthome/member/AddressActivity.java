@@ -111,7 +111,7 @@ public class AddressActivity extends AppCompatActivity {
         });
 
         // webview url load. php or html 파일 주소
-        webView.loadUrl("http://192.168.0.57/finalb/resources/roadSearch.html");
+        webView.loadUrl("http://118.40.91.135:8057/finalb/resources/roadSearch.html");
     }
 
     class AndroidBridge {

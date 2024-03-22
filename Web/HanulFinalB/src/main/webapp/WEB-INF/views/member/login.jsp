@@ -31,42 +31,20 @@
 
 						</div>
 
-						<!-- Checkbox -->
-						<div class="form-check d-flex justify-content-start mb-4">
-							<input class="form-check-input" type="checkbox" value=""
-								id="form1Example3" /> <label class="form-check-label"
-								for="form1Example3"> Remember password </label>
-						</div>
 						<button class="btn btn-primary btn-lg btn-block" type="button"
 							onclick="login()">로그인</button>
 						<hr class="my-4">
 
 						<div class="row pt-3 justify-content-center">
 							<div class="col pb-4 mx-auto">
-								<ul class="lgacc-tab">
-									<li class="tab-item"><a class="tab-link"
-										id="btn-search-id"
-										href="<c:url value='/member/find_id_form'/>">아이디
-											찾기</a></li>
-									<li class="tab-item"><a id="reset-password"
-										class="tab-link" href="javascript:void(0)">비밀번호 재설정</a>
-								</ul>
 								<ul class="lgacc-tab justify-content-center">
 									<li class="tab-item"><a id="btn-register" class="tab-link"
-										href="<c:url value='/member/joinView'/>"> 회원가입</a></li>
+										href="<c:url value='/member/joinView'/>">아직 회원이 아니라면? <span class="text-danger fw-bold">회원가입</span></a></li>
 
 								</ul>
 							</div>
 						</div>
 
-						<!-- Register buttons -->
-						<div class="text-center">
-							<p>다른 계정으로 로그인</p>
-							<button type="button" class="btn btn-link btn-floating mx-1">
-								<i class="fab fa-naver-f"></i>
-							</button>
-
-						</div>
 					</div>
 				</div>
 			</div>

@@ -185,6 +185,39 @@ public class Common {
 		
 	}
 	
+	public byte[] fileLoad(String id, String filename, HttpServletRequest req, HttpServletResponse resp) throws GeneralSecurityException, IOException {
+		// Build a new authorized API client service.
+		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME).build();
+
+		ByteArrayOutputStream byteArrayOutputStream;
+		try {
+			OutputStream outputStream = new ByteArrayOutputStream();
+
+			service.files().get(id).executeMediaAndDownloadTo(outputStream);
+
+			byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
+			
+		} catch (GoogleJsonResponseException e) {
+			// TODO(developer) - handle error appropriately
+			System.err.println("Unable to move file: " + e.getDetails());
+			throw e;
+		}
+		return byteArrayOutputStream.toByteArray();
+//		java.io.File dir = new java.io.File("/app/temp/");
+//		if (!dir.exists())
+//			dir.mkdirs();
+//		//파일 경로는 서버 드라이브 루트부터 시작(하는듯)
+//		java.io.File filePath = new java.io.File("/app/temp/", id+"_"+filename);
+//		FileOutputStream fos = new FileOutputStream(filePath);
+//		fos.write(byteArrayOutputStream.toByteArray());
+//		fos.flush();
+//		fos.close();
+//		filename = URLEncoder.encode(filename, "utf-8");
+//		FileCopyUtils.copy(new FileInputStream(filePath), resp.getOutputStream());
+//		return filePath;
+	}
 
 	/**
 	 * HTML의 img 태그의 src에 들어갈 수 있는 형태의 URL을 반환
@@ -357,7 +390,6 @@ public class Common {
 		 vo.setFilename( file.getOriginalFilename() );
 		 String file_id = fileUpload(file);
 		 vo.setFile_id(file_id);
-		 //vo.setQna_id(qna_id);
 		 list.add(vo);
 		 }
 	 		

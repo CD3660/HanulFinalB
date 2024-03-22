@@ -7,8 +7,71 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
-	<div class="container py-5 h-100">
+<div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				<div class="card shadow-2-strong p-3" style="border-radius: 1rem;">
+					<h4 class="mb-3">회원가입</h4>	
+					<form method="post" id="join_form">
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="memberName">이름</label> <input type="text"
+									class="form-control" id="memberName" name="name"
+									placeholder="이름을 입력해주세요" value="${empty loginInfo.name? '':loginInfo.name}" required> <span
+									class="memberNamechk"></span>
+
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="email">이메일</label> <input type="text"
+								class="form-control" id="email" name="email"
+								placeholder="mysmarthome@example.com" value="${empty loginInfo.email? '':loginInfo.email}">
+							<span class="emailchk"></span>
+						</div>
+
+						<div class="mb-3">
+							<label for="phoneNumber">휴대폰 번호</label> <input type="text"
+								class="form-control" id="phoneNumber" name="phone" value="${empty loginInfo.phone? '':loginInfo.phone}"> <span
+								class="phchk"></span>
+						</div>
+
+						<div class="mb-3">
+							<label for="address">우편번호
+								<span class="text-muted">
+									<button type="button" class="btn" id="check_btn" 
+										onclick="searchAddress()">찾기</button>
+							</span>
+							</label> <input type="text" class="form-control" id="address"
+								name="address" placeholder="찾기를 눌러 주소를 입력하세요" value="${empty loginInfo.address? '':loginInfo.address}" readonly>
+						</div>
+
+						<div class="mb-3">
+							<label for="address2">주소</label>
+							<input type="text" class="form-control" id="address2" value="${empty loginInfo.address2? '':loginInfo.address2}"
+								name="address2" placeholder="주소를 입력해주세요." readonly>
+						</div>
+
+
+
+						<div class="mb-4"></div>
+
+						<button class="btn btn-primary btn-lg btn-block" type="button"
+							id=join-btn style="float: right; margin-left: 10px;" onclick="join()">가입
+							완료</button>
+
+						<a href="http://localhost:8080/finalb/member/login"
+							class="btn btn-primary btn-lg btn-block" id=back-btn
+							style="float: right; display: block;">뒤로가기</a>
+
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<%-- <div class="container py-5 h-100">
 		<div class="row d-flex justify-content-center align-items-center h-95">
 			<div class="col-12 col-md-8 col-lg-6 col-xl-5">
 				<div class="card shadow-2-strong" style="border-radius: 1rem;">
@@ -66,7 +129,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 
 	<script>
 		function removeMember() {

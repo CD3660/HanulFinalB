@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +37,15 @@ public class QnaController {
 	@Autowired
 	private Common common;
 
+	
+	@CrossOrigin("*")
+	@ResponseBody @RequestMapping("/drive.google")
+	public byte[] update( String id, String name, HttpServletRequest request, HttpServletResponse response  ) throws Exception{
+		byte[] file = common.fileLoad(id, name, request, response) ;
+		return file;
+	}
+
+	
 	// Q&A 수정저장처리 요청
 	@RequestMapping("/update")
 	public String update(QnaVO vo, Model model, PageVO page, String remove, MultipartFile[] addfile, HttpServletRequest request) throws GeneralSecurityException, IOException {
@@ -45,10 +55,11 @@ public class QnaController {
 		if( service.qna_update(vo)==1 ) {
 			//삭제된 첨부파일이 있으면 DB에서 삭제+물리적파일도 삭제
 			if( ! remove.isEmpty() ) {
-				List<FileVO> list = service.qna_file_list(remove);
-				if( service.qna_file_delete(remove) > 0 ) {
+//				String files[]= remove.split(",");
+				List<FileVO> list = service.qna_file_list(remove); //조회해서 정보를 list에 저장해 놓음.
+				if( service.qna_file_delete(remove) > 0 ) { //DB에서삭제
 					for( FileVO f : list ) {
-						common.fileDelete(f.getFile_id());
+						common.fileDelete(f.getFile_id()); //구글에서삭제
 					}
 				}
 			}

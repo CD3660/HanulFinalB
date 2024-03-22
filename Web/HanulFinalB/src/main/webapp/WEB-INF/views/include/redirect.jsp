@@ -19,5 +19,5 @@
     
     
 <script>
-$("form#listForm").submit()
+$("form").submit()
 </script>

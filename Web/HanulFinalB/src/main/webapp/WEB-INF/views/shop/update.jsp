@@ -11,9 +11,9 @@
 			<span class="text-white">상품 정보 수정</span>
 		</div>
 		<div class="p-3">
-			<form class="update" method="post" enctype="multipart/form-data"
-				action="update">
+			<form class="update" method="post" enctype="multipart/form-data" action="update">
 				<input type="hidden" name="maintain" value="true"/>
+				<input type="hidden" name="prod_img" value="${vo.prod_img == null ? '': vo.prod_img}"/>
 				<input type="hidden" name="prod_id" value="${vo.prod_id }"/>
 				<table class="w-100">
 					<colgroup>

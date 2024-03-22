@@ -1,6 +1,7 @@
 package com.hanul.mysmarthome.qna;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,9 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ActivityQnaDetailBinding binding;
 
+    ArrayList<QnaCommentVO> commentList;
 
+    int qna_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,56 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
         binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
 
-
+        qna_id = vo.getQna_id();
 
 
 
         binding.qnaDetailClose.setOnClickListener(v -> {
             finish();
         });
+
+
+
+        getCommentList();
+
+
+
     }
+
+
+
+
+
+
+
+    void getCommentList() {
+
+
+            CommonConn conn = new CommonConn(this, "qnaComment");
+                conn.addParamMap("qna_id", qna_id );
+
+                conn.onExcute((isResult, data) -> {
+
+                    Log.d("데이터2", "getCommentList: " + data);
+
+                Type listType = new TypeToken<ArrayList<QnaCommentVO>>(){}.getType();
+                commentList = new Gson().fromJson(data, listType);
+
+                    Log.d("리스트2", "getCommentList: " + commentList);
+
+                binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater(), commentList, this));
+                binding.commentRecvQna.setLayoutManager(new LinearLayoutManager(this));
+
+                });
+
+
+
+
+    }
+
+
+
+
 
 }
 

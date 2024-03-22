@@ -12,6 +12,13 @@
     <insert id="insert">
     	insert into review (CONTENT, RATE, USER_ID, PROD_ID) values (#{content}, #{rate}, #{user_id}, #{prod_id})
     </insert>
+    <select id="can_review_check" resultType="OrderVO">
+    	select order_id 
+    	from order_info o
+    	left outer join payments
+    	using(imp_uid)
+    	where o.user_id = #{user_id} and prod_id = #{prod_id} and imp_uid is not null and payment_time >= sysdate -7
+    </select>
 </mapper>
 
 

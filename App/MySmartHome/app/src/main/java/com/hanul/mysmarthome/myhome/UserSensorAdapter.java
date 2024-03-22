@@ -93,7 +93,7 @@ public class UserSensorAdapter extends RecyclerView.Adapter<UserSensorAdapter.Us
             h.binding.sensorCtrl.setText("데이터 보기");
             h.binding.sensorLayout.setOnClickListener(v -> {
                 Intent intent = new Intent(context, ShowDataActivity.class);
-                intent.putExtra("sensor_id", list.get(i).getSensor_id());
+                intent.putExtra("sensor_id", list.get(i).getSensor_id()+"");
                 context.startActivity(intent);
             });
         }

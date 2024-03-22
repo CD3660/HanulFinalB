@@ -38,14 +38,31 @@ public class MyHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentMyHomeBinding.inflate(inflater, container, false);
         loginInfo = mainActivity.getMemberVO();
+
         SharedPreferences sp = getContext().getSharedPreferences("UserSensor", Context.MODE_PRIVATE);
-        String userSensorListJson = sp.getString("list", "");
-        List<UserSensorVO> list = new Gson().fromJson(userSensorListJson, new TypeToken<List<UserSensorVO>>() {
-        }.getType());
-        if (list != null) {
-            UserSensorAdapter adapter = new UserSensorAdapter(list, sp, loginInfo);
-            binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-            binding.recyclerView.setAdapter(adapter);
+        if(sp.getString("user_id","").equals(mainActivity.getMemberVO().getUser_id())) {
+            String userSensorListJson = sp.getString("list", "");
+            List<UserSensorVO> list = new Gson().fromJson(userSensorListJson, new TypeToken<List<UserSensorVO>>() {
+            }.getType());
+            if (list != null) {
+                UserSensorAdapter adapter = new UserSensorAdapter(list, sp, loginInfo);
+                binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                binding.recyclerView.setAdapter(adapter);
+            }
+        } else {
+            new CommonConn(getContext(), "updateSensor")
+                    .addParamMap("user_id", loginInfo.getUser_id())
+                    .onExcute((isResult, data) -> {
+                        if (isResult) {
+                            this.
+                                    getContext().getSharedPreferences("UserSensor", Context.MODE_PRIVATE).edit().putString("list", data).putString("user_id", mainActivity.getMemberVO().getUser_id()).commit();
+                            List<UserSensorVO> list2 = new Gson().fromJson(data, new TypeToken<List<UserSensorVO>>() {
+                            }.getType());
+                            UserSensorAdapter adapter2 = new UserSensorAdapter(list2, sp, loginInfo);
+                            binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                            binding.recyclerView.setAdapter(adapter2);
+                        }
+                    });
         }
         binding.refreshSensor.setOnClickListener(v -> {
             new CommonConn(getContext(), "updateSensor")
@@ -53,7 +70,7 @@ public class MyHomeFragment extends Fragment {
                     .onExcute((isResult, data) -> {
                         if (isResult) {
                             this.
-                            getContext().getSharedPreferences("UserSensor", Context.MODE_PRIVATE).edit().putString("list", data).commit();
+                            getContext().getSharedPreferences("UserSensor", Context.MODE_PRIVATE).edit().putString("list", data).putString("user_id", mainActivity.getMemberVO().getUser_id()).commit();
                             List<UserSensorVO> list2 = new Gson().fromJson(data, new TypeToken<List<UserSensorVO>>() {
                             }.getType());
                             UserSensorAdapter adapter2 = new UserSensorAdapter(list2, sp, loginInfo);

@@ -18,7 +18,7 @@
 		select url from cctv_link where sensor_id = #{sensor_id}
 	</select>
 	<select id="datas" resultType="datasVO">
-		select ID, USER_ID, SENSOR_ID, SENSOR_DATA1, SENSOR_DATA2, DATA_NAME1, DATA_NAME2, TIME from datas where sensor_id = #{sensor_id} order by time
+		select DATA_ID, USER_ID, SENSOR_ID, SENSOR_DATA1, SENSOR_DATA2, DATA_NAME1, DATA_NAME2, TIME from datas where sensor_id = #{sensor_id} order by time desc
 	</select>
 	<insert id="insert_history">
 		insert into ALERT_HISTORY (user_id, sensor_id, title, body, data_value) values (#{user_id}, #{sensor_id}, #{title}, #{body}, #{data_value})

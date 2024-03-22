@@ -16,12 +16,39 @@ public class QnaService {
 	@Autowired private SqlSession sql;
 	
 	
+	
+//----------------안드로이드------------------------------------------------------	
+	
+	
+	
 	//안드로이드 Q&A 목록 조회
 	public List<QnaVO> appQnaList() {
 	   
 		List<QnaVO> list = sql.selectList("qna.appQnaList");
 		 return list;
 	}
+	
+	
+	//안드로이드 코멘트 목록 조회
+	public List<QnaCommentVO> appQnaCommentList(int qna_id) {
+		
+		List<QnaCommentVO> list = sql.selectList("qna.appQnaCommentList", qna_id);
+		qna_read(qna_id);
+		return list;
+	}
+	
+	
+	
+	
+	
+//------------------------------------------------------------------------------	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
