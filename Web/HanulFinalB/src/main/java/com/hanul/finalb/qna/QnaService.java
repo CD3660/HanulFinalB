@@ -30,9 +30,9 @@ public class QnaService {
 	
 	
 	//안드로이드 코멘트 목록 조회
-	public List<QnaCommentVO> appQnaCommentList() {
+	public List<QnaCommentVO> appQnaCommentList(int qna_id) {
 		
-		List<QnaCommentVO> list = sql.selectList("qna.appQnaCommentList");
+		List<QnaCommentVO> list = sql.selectList("qna.appQnaCommentList", qna_id);
 		return list;
 	}
 	

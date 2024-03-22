@@ -170,10 +170,10 @@ public class AppController {
 	
 	
 	@RequestMapping("/qnaComment")
-	public String qnaCommentList() {
+	public String qnaCommentList(int qna_id) {
 		
 		//서비스에서 List로 보내고, 그걸 받아서 ArrayList로 변환해줌
-		ArrayList<QnaCommentVO> list = (ArrayList<QnaCommentVO>)qnaService.appQnaCommentList();
+		ArrayList<QnaCommentVO> list = (ArrayList<QnaCommentVO>)qnaService.appQnaCommentList(qna_id);
 
 	    // 생성된 Type을 사용하여 리스트를 JSON 문자열로 변환
 		System.out.println(">> "+ new Gson().toJson(list));

@@ -212,7 +212,7 @@ where qna_id = #{qna_id}
 
 
 
-<!-- 댓글목록조회  -->  <!-- 현재 회원가입시 profile사진 현재 처리한것 없음  -->
+<!-- 댓글목록조회  -->  
 <select id="commentList" resultType="commentVO">
 select name, profile, c.* 
 from qna_comment c left outer join users u 
