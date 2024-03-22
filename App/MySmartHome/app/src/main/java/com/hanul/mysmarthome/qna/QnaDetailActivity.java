@@ -31,7 +31,9 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding = ActivityQnaDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //QnaVO vo = getIntent().getSerializableExtra("vo");
         qna_id = getIntent().getIntExtra("qna_id", 0);
+
         new CommonConn(this, "qnaDetail/"+qna_id)
                 .onExcute((isResult, data) -> {
                     QnaVO vo = new Gson().fromJson(data, new TypeToken<QnaVO>(){}.getType());
