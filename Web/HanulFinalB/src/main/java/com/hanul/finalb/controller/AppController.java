@@ -167,6 +167,15 @@ public class AppController {
 		
 	}
 	
+	@RequestMapping("/qnaDetail/{qna_id}")
+	public String qnaDetail(@PathVariable int qna_id) {
+		
+		String json = new Gson().toJson(qnaService.qna_info(qna_id));
+	    
+		System.out.println(">> "+ json);
+	    return json;
+	}
+	
 	
 	
 	@RequestMapping("/qnaComment")
