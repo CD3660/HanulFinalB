@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="6dp"
     android:orientation="vertical">
 
 
@@ -12,8 +12,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingTop="10dp"
             >
 
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="33dp"
+                android:src="@drawable/baseline_person_pin"
+                android:paddingRight="5dp"/>
 
             <TextView
                 android:id="@+id/detail_qna_comment_writer"
@@ -53,12 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="코멘트내용"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:paddingBottom="15dp"/>
 
 
         <View
-            style="@style/gray_view_line1dp"
-            android:paddingTop="10dp"/>
+            style="@style/gray_view_line1dp"/>
 
 
     </LinearLayout>
