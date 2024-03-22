@@ -40,7 +40,7 @@ public class QnaDetailRecvAdapter extends RecyclerView.Adapter<QnaDetailRecvAdap
 
           h.binding.detailQnaCommentWriter.setText(commentList.get(i).getWriter());
           h.binding.detailQnaCommentWritedate.setText(commentList.get(i).getWritedate());
-          h.binding.detailQnaCommentContent.setText(commentList.get(i).getWritedate());
+          h.binding.detailQnaCommentContent.setText(commentList.get(i).getContent());
 
 
 
