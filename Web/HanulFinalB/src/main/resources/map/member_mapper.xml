@@ -40,8 +40,11 @@
    FROM
    		USERS
    WHERE
-   		USER_ID = #{id}
+   		USER_ID = #{id} and resign = 'N'
    </select>
+   <update id="resign">
+   		update users set resign = 'Y', profile= '' where user_id = #{user_id}
+   </update>
    
    <!-- 아이디 찾기 -->
 	<select id="findIdByEmail" resultType="String">
@@ -59,7 +62,8 @@
         PHONE = #{phone},
         EMAIL = #{email},
         ADDRESS = #{address},
-        ADDRESS2 = #{address2}
+        ADDRESS2 = #{address2},
+        profile = #{profile}
     WHERE
         USER_ID = #{user_id}    
 </update>
@@ -69,7 +73,7 @@
   <!-- 테스트용 임시 로그인처리 // 아이디에 해당하는 회원정보조회  -->
   <select id="info" resultType="memberVO">
   select * from users
-  where user_id = #{user_id}
+  where user_id = #{user_id} and resign = 'N'
   </select>
   <!-- 토큰 신규 저장 -->
   <insert id="saveToken">

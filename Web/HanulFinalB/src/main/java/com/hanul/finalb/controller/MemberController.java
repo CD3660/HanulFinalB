@@ -1,5 +1,7 @@
 package com.hanul.finalb.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.hanul.finalb.common.Common;
 import com.hanul.finalb.common.PageVO;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
@@ -36,9 +40,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
-	@PostMapping("/idCheck")
 	@ResponseBody
-	public Map<String, Object> idCheck(@RequestBody String id) {
+	@RequestMapping("/idCheck")
+	public Map<String, Object> idCheck(String id) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		// 디비에서 아이디 갯수 확인하는 변수
@@ -67,30 +71,26 @@ public class MemberController {
 		return "default/member/login";
 	}
 
-	@RequestMapping(value = "/joinView", method = RequestMethod.GET)
-	public String join(Model model) {
-
+	@RequestMapping("/joinView")
+	public String join(HttpSession session ,Model model) {
+		session.setAttribute("category", "signin");
 		return "member/join";
 	}
 
 	@RequestMapping("/joinAction")
-	public String joinpass(MemberVO member) {
+	public String joinpass(MemberVO vo, MultipartFile file) throws GeneralSecurityException, IOException {
+		if (!file.isEmpty()) {
+			String id = comm.fileUpload(file);
+			vo.setProfile(comm.fileURL(id));
+		}
+		
+		String encodingPw = pwEncoder.encode(vo.getUser_pw());
+		vo.setUser_pw(encodingPw);
 
-		String encodingPw = pwEncoder.encode(member.getUser_pw());
-		member.setUser_pw(encodingPw);
-
-		service.memberJoin(member);
+		service.memberJoin(vo);
 
 		return "redirect:login";
 
-	}
-
-	// 아이디 찾기 폼
-	@RequestMapping(value = "/find_id_form")
-
-	public String find_id_form() {
-
-		return "member/find_id_form";
 	}
 
 	@ResponseBody
@@ -102,7 +102,10 @@ public class MemberController {
 
 		// 디비에서 가져온거
 		MemberVO checkInfo = service.login(member.getUser_id());
-
+		if(checkInfo == null) {
+			result.put("code", "-1");
+			return result;
+		}
 		if (pwEncoder.matches(member.getUser_pw(), checkInfo.getUser_pw())) {
 			// 성공시
 			result.put("code", "0");
@@ -118,39 +121,20 @@ public class MemberController {
 		return result;
 
 	}
-
-	@RequestMapping(value = "/secuTest", method = RequestMethod.GET)
-	public void secuTest() {
-
-		String rawPassword = "hanul123"; // ���ڵ� �� �޼���
-		String encdoePassword1; // ���ڵ��� �޼���
-		String encdoePassword2; // �Ȱ��� ��й�ȣ �����͸� encdoe()�޼��带 ������� �� ������ ���ڵ��� ���� ��������
-								// Ȯ���ϱ� ���� �߰�
-
-		encdoePassword1 = pwEncoder.encode(rawPassword);
-		encdoePassword2 = pwEncoder.encode(rawPassword);
-
-		// ���ڵ��� �н����� ���
-		System.out.println("encdoePassword1 : " + encdoePassword1);
-		System.out.println(" encdoePassword2 : " + encdoePassword2);
-
-		String truePassowrd = "hanul123";
-		String falsePassword = "asdfjlasf";
-
-		System.out.println("truePassword verify : " + pwEncoder.matches(truePassowrd, encdoePassword1));
-		System.out.println("falsePassword verify : " + pwEncoder.matches(falsePassword, encdoePassword1));
-
-	}
-
-	@ResponseBody
-	@PostMapping("/findId")
-	public HashMap<String, String> findIdByEmail(String email) {
-		System.out.println("여기");
-		String user_id = service.findIdByEmail(email);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("user_id", user_id);
-
-		return map;
+	
+	@RequestMapping("/resign")
+	public String resign(HttpSession session) throws GeneralSecurityException, IOException {
+		MemberVO vo = (MemberVO) session.getAttribute("loginInfo");
+		if(vo==null) {
+			return "shop/redirect";
+		}
+		if(service.memberResign(vo.getUser_id())==1) {
+			if(vo.getProfile()!=null) {
+				comm.fileDelete(comm.fileId(vo.getProfile()));
+			}
+			session.removeAttribute("loginInfo");
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping("/logout")
@@ -165,9 +149,20 @@ public class MemberController {
 		session.setAttribute("loginInfo", service.memberInfo(vo.getUser_id()));
 		return "member/mypage";
 	}
-
+	@Autowired
+	Common comm;
 	@RequestMapping("/memberUpdate")
-	public String memberUpdate(@ModelAttribute MemberVO vo) {
+	public String memberUpdate(MemberVO vo, MultipartFile file, boolean maintain) throws GeneralSecurityException, IOException {
+		String remove_img = service.memberInfo(vo.getUser_id()).getProfile();
+		if (!file.isEmpty()) {
+			String id = comm.fileUpload(file);
+			vo.setProfile(comm.fileURL(id));
+		}
+		if (!maintain) {
+			if (remove_img != null) {
+				comm.fileDelete(comm.fileId(remove_img));
+			}
+		}
 		service.updateMember(vo);
 		return "redirect:mypage";
 	}

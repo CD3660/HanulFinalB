@@ -391,7 +391,9 @@
 								</li>
 								<li class="menu-item pb-2"><a href="<c:url value='/shop/list'/>">제품구매</a>
 								</li>
-								<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								<c:if test="${empty loginInfo }">
+									<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>

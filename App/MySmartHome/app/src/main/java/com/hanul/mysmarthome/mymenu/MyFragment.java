@@ -128,11 +128,6 @@ public class MyFragment extends Fragment {
             Intent intent = new Intent(getContext(), AppInfoActivity.class);
             startActivity(intent);
         });
-        binding.alertSetting.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), SetAlamActivity.class);
-            startActivity(intent);
-        });
-
 
         return binding.getRoot();
     }
