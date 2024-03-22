@@ -77,6 +77,7 @@ public class MyFragment extends Fragment {
             intent.putExtra("user_id", mainActivity.getMemberVO().getUser_id());
             startActivity(intent);
         });
+        binding.userName.setText(mainActivity.getMemberVO().getName());
         binding.profile.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("프로필 사진 변경");
