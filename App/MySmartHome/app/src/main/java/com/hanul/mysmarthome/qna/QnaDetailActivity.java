@@ -22,6 +22,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ArrayList<QnaCommentVO> commentList;
 
+    int qna_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class QnaDetailActivity extends AppCompatActivity {
         binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );
         binding.detailQnaFilecnt.setText(vo.getFilecnt()+"");
 
-
+        qna_id = vo.getQna_id();
 
 
 
@@ -64,6 +65,8 @@ public class QnaDetailActivity extends AppCompatActivity {
 
 
             CommonConn conn = new CommonConn(this, "qnaComment");
+                conn.addParamMap("qna_id", qna_id );
+
                 conn.onExcute((isResult, data) -> {
 
                     Log.d("데이터2", "getCommentList: " + data);
