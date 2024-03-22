@@ -40,8 +40,11 @@
    FROM
    		USERS
    WHERE
-   		USER_ID = #{id}
+   		USER_ID = #{id} and resign = 'N'
    </select>
+   <update id="resign">
+   		update users set resign = 'Y', profile= '' where user_id = #{user_id}
+   </update>
    
    <!-- 아이디 찾기 -->
 	<select id="findIdByEmail" resultType="String">
@@ -59,7 +62,8 @@
         PHONE = #{phone},
         EMAIL = #{email},
         ADDRESS = #{address},
-        ADDRESS2 = #{address2}
+        ADDRESS2 = #{address2},
+        profile = #{profile}
     WHERE
         USER_ID = #{user_id}    
 </update>
@@ -69,7 +73,7 @@
   <!-- 테스트용 임시 로그인처리 // 아이디에 해당하는 회원정보조회  -->
   <select id="info" resultType="memberVO">
   select * from users
-  where user_id = #{user_id}
+  where user_id = #{user_id} and resign = 'N'
   </select>
   <!-- 토큰 신규 저장 -->
   <insert id="saveToken">
@@ -110,5 +114,30 @@
 	<insert id="naverJoin">
 		insert into users (user_id, name, email, phone, social) values (#{user_id}, #{name}, #{email}, #{phone}, #{social})
 	</insert>
+	<select id="paymentList" resultType="PaymentVO">
+		select 
+		(select p.prod_name from product p left outer join order_info o on p.prod_id=o.prod_id
+        where o.imp_uid=p.imp_uid and rownum =1 ) prod_name
+		, (select count(order_id) from order_info o where  p.imp_uid=o.imp_uid ) count,  p.* 
+		from payments p 
+		where p.user_id = #{user_id}
+		order by payment_time desc
+	</select>
+	<select id="paymentInfo" resultType="PaymentVO">
+		select 
+		(select p.prod_name from product p left outer join order_info o on p.prod_id=o.prod_id
+        where o.imp_uid=p.imp_uid and rownum =1 ) prod_name
+		, (select count(order_id) from order_info o where  p.imp_uid=o.imp_uid ) count,  p.* 
+		from payments p 
+		where p.imp_uid = #{imp_uid}
+		
+	</select>
+	<select id="orderList" resultType="OrderVO">
+		select PROD_ID, IMP_UID, EA, USER_ID, prod_img, price, prod_name
+		from order_info
+		left outer join	product
+		USING(prod_id)
+		where imp_uid = #{imp_uid}
+	</select>
    
 </mapper>

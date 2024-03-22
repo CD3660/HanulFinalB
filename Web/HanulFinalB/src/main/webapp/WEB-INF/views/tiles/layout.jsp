@@ -263,6 +263,9 @@
 											<li><a href="<c:url value='/member/mypage'/>"
 												class="dropdown-item item-anchor">마이페이지 <span
 													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
+											<li><a href="<c:url value='/member/paymentList'/>"
+												class="dropdown-item item-anchor">구매 내역 <span
+													class="badge bg-secondary text-dark ms-2">기존</span></a></li>
 													
 													
 											<li><a href="<c:url value='/member/logout'/>"
@@ -388,7 +391,9 @@
 								</li>
 								<li class="menu-item pb-2"><a href="<c:url value='/shop/list'/>">제품구매</a>
 								</li>
-								<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								<c:if test="${empty loginInfo }">
+									<li class="menu-item pb-2"><a href="<c:url value='/member/login'/>">로그인</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>

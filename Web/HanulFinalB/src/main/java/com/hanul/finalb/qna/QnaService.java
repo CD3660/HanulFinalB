@@ -33,6 +33,7 @@ public class QnaService {
 	public List<QnaCommentVO> appQnaCommentList(int qna_id) {
 		
 		List<QnaCommentVO> list = sql.selectList("qna.appQnaCommentList", qna_id);
+		qna_read(qna_id);
 		return list;
 	}
 	

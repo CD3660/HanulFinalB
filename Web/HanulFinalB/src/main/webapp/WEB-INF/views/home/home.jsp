@@ -118,21 +118,22 @@
 				
 				
 				
-				
-				<div class="col-lg-3 col-md-6 pb-3">
-				<a href="<c:url value='/member/login'/>">
-					<div class="icon-box d-flex align-items-center">
-						<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
-							<svg class="return">
-                 				 <use xlink:href="#return" />
-               				</svg>
+				<c:if test="${empty loginInfo }">
+					<div class="col-lg-3 col-md-6 pb-3">
+						<a href="<c:url value='/member/login'/>">
+							<div class="icon-box d-flex align-items-center">
+							<div class="icon-box-icon pt-3 pe-3 pb-3 ps-3">
+								<svg class="return">
+	                 				 <use xlink:href="#return" />
+	               				</svg>
+							</div>
+							<div class="icon-box-content ps-3">
+								<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/member/login'/>">로그인</h3>
+							</div>
 						</div>
-						<div class="icon-box-content ps-3">
-							<h3 class="card-title text-uppercase text-dark"><a href="<c:url value='/member/login'/>">로그인</h3>
-						</div>
+						</a>
 					</div>
-					</a>
-				</div>
+				</c:if>
 				
 				
 							

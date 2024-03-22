@@ -55,31 +55,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"/>
     </LinearLayout>
-    <View
-        android:background="@color/gray"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"/>
-    <LinearLayout
-        android:id="@+id/alert_setting"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="15dp">
-        <TextView
-            android:textSize="20dp"
-            android:text="알림설정"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <View
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="30dp"/>
-        <ImageView
-            android:src="@drawable/arrow_right"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
-    </LinearLayout>
+
     <View
         android:background="@color/gray"
         android:layout_width="match_parent"

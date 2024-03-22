@@ -3,7 +3,6 @@ package com.hanul.finalb.controller;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hanul.finalb.common.Common;
@@ -72,9 +70,13 @@ public class ShopController {
 	@RequestMapping("/cart")
 	public String cart(HttpSession session, Model model) {
 		MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+		if(loginInfo == null) {
+			model.addAttribute("url", "member/login");
+			return "shop/redirect";
+		}
 		List<OrderVO> list = service.cartList(loginInfo.getUser_id());
 		model.addAttribute("list", list);
-
+		
 		return "shop/cart";
 	}
 	@RequestMapping("/delete_cart")
@@ -182,7 +184,7 @@ public class ShopController {
 		}
 		service.update(vo, maintain);
 
-		return "redirect:/shop/info?id=" + vo.getProd_id();
+		return "redirect:info?prod_id=" + vo.getProd_id();
 	}
 
 	@RequestMapping("/delete")
