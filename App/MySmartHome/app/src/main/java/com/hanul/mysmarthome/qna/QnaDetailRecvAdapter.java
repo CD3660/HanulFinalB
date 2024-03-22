@@ -38,7 +38,9 @@ public class QnaDetailRecvAdapter extends RecyclerView.Adapter<QnaDetailRecvAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder h, int i) {
 
-        h.binding.detailQnaCommentWriter
+          h.binding.detailQnaCommentWriter.setText(commentList.get(i).getWriter());
+          h.binding.detailQnaCommentWritedate.setText(commentList.get(i).getWritedate());
+          h.binding.detailQnaCommentContent.setText(commentList.get(i).getWritedate());
 
 
 
@@ -46,10 +48,6 @@ public class QnaDetailRecvAdapter extends RecyclerView.Adapter<QnaDetailRecvAdap
 
     @Override
     public int getItemCount() { return commentList.size(); }
-
-
-
-
 
 
 

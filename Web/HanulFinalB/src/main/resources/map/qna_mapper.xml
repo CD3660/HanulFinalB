@@ -18,6 +18,20 @@ order by no desc
 </select>
 
 
+<!-- 안드로이드 코멘트 목록 조회 -->
+<select id="appQnaCommentList" resultType="commentVO">
+select name, c.* 
+from qna_comment c left outer join users u 
+						on c.writer = u.user_id
+where qna_id = #{qna_id}
+order by writedate desc
+</select>
+
+
+
+
+
+
 
 
 
@@ -199,7 +213,7 @@ where qna_id = #{qna_id}
 
 
 <!-- 댓글목록조회  -->  <!-- 현재 회원가입시 profile사진 현재 처리한것 없음  -->
-<select id="commentList" resultType="qnaComment">
+<select id="commentList" resultType="commentVO">
 select name, profile, c.* 
 from qna_comment c left outer join users u 
 						on c.writer = u.user_id
