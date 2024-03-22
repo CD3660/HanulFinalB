@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
-<title>È¸¿ø°¡ÀÔ</title>
+<title>íšŒì›ê°€ì…</title>
 
 <link rel="stylesheet" href="<c:url value='/css/member/join.css'/>">
 </head>
@@ -15,75 +15,75 @@
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<div class="card shadow-2-strong p-3" style="border-radius: 1rem;">
-					<h4 class="mb-3">È¸¿ø°¡ÀÔ</h4>	
+					<h4 class="mb-3">íšŒì›ê°€ì…</h4>	
 					<form method="post" id="join_form" method="post" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-md-4 mb-3">
-								<label for="memberId">¾ÆÀÌµğ</label> <input type="text"
+								<label for="memberId">ì•„ì´ë””</label> <input type="text"
 									class="form-control" id="memberId" name="user_id"
-									maxlength="50" placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä"> <span
+									maxlength="50" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”"> <span
 									class="idchk"></span>
 							</div>
 							<div class="col-md-2 mb-3">
-								<input class="btn btn-primary mt-4" type="button" id="idCheck" value="Áßº¹ Ã¼Å©">
+								<input class="btn btn-primary mt-4" type="button" id="idCheck" value="ì¤‘ë³µ ì²´í¬">
 							</div>
 							<div class="col-md-6 mb-3">
-								<label for="memberName">ÀÌ¸§</label> <input type="text"
+								<label for="memberName">ì´ë¦„</label> <input type="text"
 									class="form-control" id="memberName" name="name"
-									placeholder="ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä" value=""> <span
+									placeholder="ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”" value=""> <span
 									class="memberNamechk"></span>
 
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<label for="memberPw">ºñ¹Ğ¹øÈ£</label> <input type="password"
+								<label for="memberPw">ë¹„ë°€ë²ˆí˜¸</label> <input type="password"
 									class="form-control" id="memberPw" name="user_pw"
-									placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä" value=""> <span
+									placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”" value=""> <span
 									class="pwchk1"></span>
 							</div>
 
 							<div class="col-md-6 mb-3">
-								<label for="memberPwCheck">ºñ¹Ğ¹øÈ£ È®ÀÎ</label> <span class="checkPwInfo"></span>
+								<label for="memberPwCheck">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</label> <span class="checkPwInfo"></span>
 								<input type="password" class="form-control" id="memberPwCheck"
-									name="user_pw_chk" placeholder="ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÇÑ¹ø ÀÔ·ÂÇØÁÖ¼¼¿ä" value="">
+									name="user_pw_chk" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í•œë²ˆ ì…ë ¥í•´ì£¼ì„¸ìš”" value="">
 								<span class="pwchk"></span>
 							</div>
 
 						</div>
 						<div class="mb-3">
-							<label for="email">ÀÌ¸ŞÀÏ<span class="text-muted">&nbsp;(¼±ÅÃ»çÇ×)</span></label> <input type="text"
+							<label for="email">ì´ë©”ì¼<span class="text-muted">&nbsp;(ì„ íƒì‚¬í•­)</span></label> <input type="text"
 								class="form-control" id="email" name="email"
 								placeholder="mysmarthome@example.com">
 							<span class="emailchk"></span>
 						</div>
 
 						<div class="mb-3">
-							<label for="phoneNumber">ÈŞ´ëÆù ¹øÈ£<span class="text-muted">&nbsp;(¼±ÅÃ»çÇ×)</span></label> <input type="text"
+							<label for="phoneNumber">íœ´ëŒ€í° ë²ˆí˜¸<span class="text-muted">&nbsp;(ì„ íƒì‚¬í•­)</span></label> <input type="text"
 								class="form-control" id="phoneNumber" name="phone"> <span
 								class="phchk"></span>
 						</div>
 
 						<div class="mb-3">
-							<label for="address">¿ìÆí¹øÈ£ <span class="text-muted">&nbsp;(¼±ÅÃ»çÇ×)</span>
+							<label for="address">ìš°í¸ë²ˆí˜¸ <span class="text-muted">&nbsp;(ì„ íƒì‚¬í•­)</span>
 								<span class="text-muted">
 									<button type="button" class="btn" id="check_btn" 
-										onclick="searchAddress()">Ã£±â</button>
+										onclick="searchAddress()">ì°¾ê¸°</button>
 							</span>
 							</label> <input type="text" class="form-control" id="address"
-								name="address" placeholder="Ã£±â¸¦ ´­·¯ ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
+								name="address" placeholder="ì°¾ê¸°ë¥¼ ëˆŒëŸ¬ ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”">
 						</div>
 
 						<div class="mb-3">
-							<label for="address2">ÁÖ¼Ò<span class="text-muted">&nbsp;(¼±ÅÃ»çÇ×)</span></label>
+							<label for="address2">ì£¼ì†Œ<span class="text-muted">&nbsp;(ì„ íƒì‚¬í•­)</span></label>
 							<input type="text" class="form-control" id="address2"
-								name="address2" placeholder="ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+								name="address2" placeholder="ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.">
 						</div>
 						<div class="mb-4" class="d-block">
-							<label for="file">ÇÁ·ÎÇÊ »çÁø</label> 
+							<label for="file">í”„ë¡œí•„ ì‚¬ì§„</label> 
 							<label class="label me-3">
 								<input type="file" name="file" />
-								<span class="btn btn-primary">ÀÌ¹ÌÁö Ã·ºÎ</span>
+								<span class="btn btn-primary">ì´ë¯¸ì§€ ì²¨ë¶€</span>
 							</label>
 								<i role="button" class="d-none fa-solid fa-trash-can fs-8 text-danger remover"></i>
 							<div class="m-2" style="max-width: 700px; word-break: break-word;"></div>
@@ -92,12 +92,12 @@
 						</div>
 
 						<button class="btn btn-primary btn-lg btn-block" type="button"
-							id=join-btn style="float: right; margin-left: 10px;" onclick="join()">°¡ÀÔ
-							¿Ï·á</button>
+							id=join-btn style="float: right; margin-left: 10px;" onclick="join()">ê°€ì…
+							ì™„ë£Œ</button>
 
 						<a href="/finalb/member/login"
 							class="btn btn-primary btn-lg btn-block" id=back-btn
-							style="float: right; display: block;">µÚ·Î°¡±â</a>
+							style="float: right; display: block;">ë’¤ë¡œê°€ê¸°</a>
 
 					</form>
 
@@ -108,23 +108,23 @@
 
 	</div>
 	<script>
-		// »óÅÂ °ª
+		// ìƒíƒœ ê°’
 		var pwCk = false;
 		var idCk = false;
 		
 		
-		// ¼­ºê¹Ô
+		// ì„œë¸Œë°‹
 		function join(){
 			if($('#memberId').val()==""){
-				alert("¾ÆÀÌµğ´Â ÇÊ¼ö ÀÔ·ÂÀÔ´Ï´Ù.");
+				alert("ì•„ì´ë””ëŠ” í•„ìˆ˜ ì…ë ¥ì…ë‹ˆë‹¤.");
 				return;
 			}
 			if($('#memberName').val()==""){
-				alert("ÀÌ¸§Àº ÇÊ¼ö ÀÔ·ÂÀÔ´Ï´Ù.");
+				alert("ì´ë¦„ì€ í•„ìˆ˜ ì…ë ¥ì…ë‹ˆë‹¤.");
 				return;
 			}
 			if($('#memberPw').val()==""){
-				alert("ºñ¹Ğ¹øÈ£´Â ÇÊ¼ö ÀÔ·ÂÀÔ´Ï´Ù.");
+				alert("ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ ì…ë ¥ì…ë‹ˆë‹¤.");
 				return;
 			}
 			if(!validateEmail()){
@@ -137,9 +137,9 @@
 				$("#join_form").attr("action", "/finalb/member/joinAction");
 				$("#join_form").submit();
 			}else if(!idCk){
-				alert("¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.");
+				alert("ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”.");
 			}else if(!pwCk){
-				alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù");
+				alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
 				$('#memberPw').focus();
 			}
 			
@@ -147,21 +147,21 @@
 
 		
 
-		//Daum ÁÖ¼Ò°Ë»ö ÇÔ¼ö
+		//Daum ì£¼ì†Œê²€ìƒ‰ í•¨ìˆ˜
 		function searchAddress() {
 			new daum.Postcode({
 				oncomplete : function(data) {
-					// ¼±ÅÃÇÑ ÁÖ¼Ò Á¤º¸¸¦ ÇÊ¿äÇÑ ºÎºĞ¿¡ Àû¿ë
-					document.getElementById('address').value = data.zonecode; // ¿ìÆí¹øÈ£
-					document.getElementById('address2').value = data.address; // ÁÖ¼Ò
+					// ì„ íƒí•œ ì£¼ì†Œ ì •ë³´ë¥¼ í•„ìš”í•œ ë¶€ë¶„ì— ì ìš©
+					document.getElementById('address').value = data.zonecode; // ìš°í¸ë²ˆí˜¸
+					document.getElementById('address2').value = data.address; // ì£¼ì†Œ
 				}
 			}).open();
 		}
-		//¾ÆÀÌµğ Áßº¹ È®ÀÎ
+		//ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 		$("#idCheck").click(function() {
 			var id = $('#memberId').val();
 			if(id==""){
-				alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+				alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 				return;
 			}
 			$.ajax({
@@ -170,35 +170,35 @@
 				url : "idCheck",
 				success : function(data) {
 					if (data.cnt > 0) {
-						alert("¾ÆÀÌµğ°¡ Á¸ÀçÇÕ´Ï´Ù. ´Ù¸¥ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						alert("ì•„ì´ë””ê°€ ì¡´ì¬í•©ë‹ˆë‹¤. ë‹¤ë¥¸ ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 						idCk = false;
 					} else {
-						alert("»ç¿ë°¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+						alert("ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 						idCk = true;
 					}
 				},
 				error : function(error) {
-					alert("¼­¹ö ¿À·ù. ´Ù½Ã ½ÃµµÇÏ¼¼¿ä.");
+					alert("ì„œë²„ ì˜¤ë¥˜. ë‹¤ì‹œ ì‹œë„í•˜ì„¸ìš”.");
 				}
 			});
 		});
 
-		// ÆĞ½º¿öµå Áßº¹°Ë»ç
+		// íŒ¨ìŠ¤ì›Œë“œ ì¤‘ë³µê²€ì‚¬
 		$('#memberPwCheck').keyup(function() {
 			var pw = $('#memberPw').val();
 			var pwCheck = $('#memberPwCheck').val();
 
 			if (pw === pwCheck) {
-				//alert("ºñ¹ø ÀÏÄ¡");
-				$(".checkPwInfo").html("ºñ¹Ğ¹øÈ£ ÀÏÄ¡");
+				//alert("ë¹„ë²ˆ ì¼ì¹˜");
+				$(".checkPwInfo").html("ë¹„ë°€ë²ˆí˜¸ ì¼ì¹˜");
 				$(".checkPwInfo").removeClass("text-danger");
 				$(".checkPwInfo").addClass("text-success");
 				pwCk = true;
 			} else {
-				$(".checkPwInfo").html("ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡");
+				$(".checkPwInfo").html("ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜");
 				$(".checkPwInfo").removeClass("text-success");
 				$(".checkPwInfo").addClass("text-danger");
-				//alert("ºñ¹ø ºÒÀÏÄ¡");
+				//alert("ë¹„ë²ˆ ë¶ˆì¼ì¹˜");
 				pwCk = false;
 			}
 
@@ -223,7 +223,7 @@
 				$(".preview").html("<img class='pre_img' style='max-width: 300px;  max - height: 300px; '/>");
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					// ÀÌ¹ÌÁö¸¦ img ÅÂ±×¿¡ Ç¥½Ã
+					// ì´ë¯¸ì§€ë¥¼ img íƒœê·¸ì— í‘œì‹œ
 					$(".pre_img").attr('src', e.target.result);
 				}
 				reader.readAsDataURL(this.files[0]);
@@ -257,7 +257,7 @@
 			if (emailCheck(email)) {
 				return true;
 			} else {
-				alert('À¯È¿ÇÏÁö ¾ÊÀº ÀÌ¸ŞÀÏ ÁÖ¼ÒÀÔ´Ï´Ù.');
+				alert('ìœ íš¨í•˜ì§€ ì•Šì€ ì´ë©”ì¼ ì£¼ì†Œì…ë‹ˆë‹¤.');
 				$("#email").focus();
 				return false;
 			}
@@ -268,7 +268,7 @@
 			if (emailCheck(email)) {
 				return true;
 			} else {
-				alert('À¯È¿ÇÏÁö ¾ÊÀº ÀüÈ­¹øÈ£ÀÔ´Ï´Ù.');
+				alert('ìœ íš¨í•˜ì§€ ì•Šì€ ì „í™”ë²ˆí˜¸ì…ë‹ˆë‹¤.');
 				$("#phone").focus();
 				return false;
 			}
