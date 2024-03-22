@@ -1,6 +1,7 @@
 package com.hanul.mysmarthome.qna;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
     ActivityQnaDetailBinding binding;
 
-    ArrayList<QnaCommentVO> commentlist;
+    ArrayList<QnaCommentVO> commentList;
 
 
     @Override
@@ -45,13 +46,42 @@ public class QnaDetailActivity extends AppCompatActivity {
             finish();
         });
 
-        //binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater()), commentlist, this);
+
+
+        getCommentList();
+
 
 
     }
 
 
 
+
+
+
+
+    void getCommentList() {
+
+
+            CommonConn conn = new CommonConn(this, "qnaComment");
+                conn.onExcute((isResult, data) -> {
+
+                    Log.d("데이터2", "getCommentList: " + data);
+
+                Type listType = new TypeToken<ArrayList<QnaCommentVO>>(){}.getType();
+                commentList = new Gson().fromJson(data, listType);
+
+                    Log.d("리스트2", "getCommentList: " + commentList);
+
+                binding.commentRecvQna.setAdapter(new QnaDetailRecvAdapter(getLayoutInflater(), commentList, this));
+                binding.commentRecvQna.setLayoutManager(new LinearLayoutManager(this));
+
+                });
+
+
+
+
+    }
 
 
 

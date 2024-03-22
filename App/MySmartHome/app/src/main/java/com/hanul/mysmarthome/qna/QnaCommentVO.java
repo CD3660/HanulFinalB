@@ -7,17 +7,16 @@ import java.io.Serializable;
 
 public class QnaCommentVO implements Serializable {
 	private int comment_id, qna_id;
-	private String content, writer, name, profile;
+	private String content, writer, name;
 	private String writedate;
 
 
-	public QnaCommentVO(int comment_id, int qna_id, String content, String writer, String name, String profile, String writedate) {
+	public QnaCommentVO(int comment_id, int qna_id, String content, String writer, String name, String writedate) {
 		this.comment_id = comment_id;
 		this.qna_id = qna_id;
 		this.content = content;
 		this.writer = writer;
 		this.name = name;
-		this.profile = profile;
 		this.writedate = writedate;
 	}
 
@@ -60,14 +59,6 @@ public class QnaCommentVO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getProfile() {
-		return profile;
-	}
-
-	public void setProfile(String profile) {
-		this.profile = profile;
 	}
 
 	public String getWritedate() {

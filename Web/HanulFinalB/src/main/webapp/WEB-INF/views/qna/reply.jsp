@@ -35,7 +35,7 @@
 
 <div class="btn-toolbar justify-content-center gap-2">
 	<button class="btn btn-primary px-4" id="btn-save">저장</button>
-	<button class="btn btn-outline-primary px-4" id="btn-cancel">저장</button>
+	<button class="btn btn-outline-primary px-4" id="btn-cancel">취소</button>
 </div>
 
 

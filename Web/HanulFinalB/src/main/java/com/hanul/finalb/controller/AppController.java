@@ -25,6 +25,7 @@ import com.hanul.finalb.app.firebase.RequestDTO;
 import com.hanul.finalb.common.Common;
 import com.hanul.finalb.member.MemberService;
 import com.hanul.finalb.member.MemberVO;
+import com.hanul.finalb.qna.QnaCommentVO;
 import com.hanul.finalb.qna.QnaService;
 import com.hanul.finalb.qna.QnaVO;
 
@@ -165,6 +166,21 @@ public class AppController {
 	    return new Gson().toJson(list);
 		
 	}
+	
+	
+	
+	@RequestMapping("/qnaComment")
+	public String qnaCommentList() {
+		
+		//서비스에서 List로 보내고, 그걸 받아서 ArrayList로 변환해줌
+		ArrayList<QnaCommentVO> list = (ArrayList<QnaCommentVO>)qnaService.appQnaCommentList();
+
+	    // 생성된 Type을 사용하여 리스트를 JSON 문자열로 변환
+		System.out.println(">> "+ new Gson().toJson(list));
+	    return new Gson().toJson(list);
+		
+	}
+	
 	
 
 
