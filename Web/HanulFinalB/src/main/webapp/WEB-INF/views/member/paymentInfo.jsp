@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <h3 class="m-2">결제 상세 내역</h3>
 <hr style="color: lightgray;" />
@@ -72,9 +73,9 @@
 								<div style="margin:5px 0 5px 0;overflow:hidden;height:1px; border-top: #DDD 1px solid;">
 								</div>
 		                        <div>
-		                            <span>${item.price}원</span>
+		                            <span><fmt:formatNumber value="${item.price}" pattern="###,###원" /></span>
 		                            <span> / ${item.ea}개</span>
-		                            <span class="span-goods-total-price">${item.price*item.ea}원</span>
+		                            <span class="span-goods-total-price"><fmt:formatNumber value="${item.price*item.ea}" pattern="###,###원" /></span>
 		                        </div>
 							</td>
 						</tr>
@@ -92,9 +93,12 @@
 			<div class="mt-3 mb-3 p-2" style="width: 100%; border: 2px solid gray;">
 				<div class="d-flex justify-content-between align-items-end">
 					<div class="fw-bold">결제 완료 금액</div>
-					<div class="fw-bold"><span class="fw-bold text-danger fs-3">${vo.amount}</span>원</div>
+					<div class="fw-bold"><span class="fw-bold text-danger fs-3"><fmt:formatNumber value="${vo.amount}" pattern="###,###원" /></span></div>
 				</div>
 			</div>
+			<a href="/finalb/member/paymentList"
+							class="btn btn-primary btn-lg btn-block" id=back-btn
+							style="float: right; display: block;">구매내역으로</a>
 		</div>
 	</div>
 </div>
