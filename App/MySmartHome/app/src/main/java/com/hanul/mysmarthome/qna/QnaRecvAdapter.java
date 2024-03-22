@@ -3,8 +3,10 @@ package com.hanul.mysmarthome.qna;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,8 +44,15 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder h, int i) {
+        StringBuilder sb = new StringBuilder();
 
-        h.binding.itemQnaTitle.setText( list.get(i).getTitle());
+        for (int n =0; n<list.get(i).getIndent(); n++){
+            sb.append("    ");
+        }
+        if(list.get(i).getIndent()!=0){
+            sb.append("ㄴ");
+        }
+        h.binding.itemQnaTitle.setText( sb.toString() + list.get(i).getTitle());
         h.binding.itemQnaWriter.setText(list.get(i).getWriter());
         h.binding.itemQnaWritedate.setText(list.get(i).getWritedate().substring(0,10));
 

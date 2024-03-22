@@ -151,12 +151,14 @@
 			}
 		}
 		function phoneNumberCheck(number){
-		    let result = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-		    return result.test(number);
+			var regExp = /^\d{3}-\d{3,4}-\d{4}$/
+		    return regExp.test(number);
 		}
 		function validateEmail() {
 			var email = $("#email").val();
-
+			if(email==""){
+				return true;
+			}
 			if (emailCheck(email)) {
 				return true;
 			} else {
@@ -166,9 +168,11 @@
 			}
 		}
 		function validatePhoneNumber() {
-			var email = $("#phone").val();
-
-			if (emailCheck(email)) {
+			var phone = $("#phone").val();
+			if(phone==""){
+				return true;
+			}
+			if (emailCheck(phone)) {
 				return true;
 			} else {
 				alert('유효하지 않은 전화번호입니다.');
