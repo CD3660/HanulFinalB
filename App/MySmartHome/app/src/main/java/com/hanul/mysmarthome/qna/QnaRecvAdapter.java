@@ -51,7 +51,7 @@ public class QnaRecvAdapter extends RecyclerView.Adapter<QnaRecvAdapter.ViewHold
 
         h.binding.detailQnaLinear.setOnClickListener(v -> {
             Intent intent = new Intent(context, QnaDetailActivity.class);
-            intent.putExtra("vo", list.get(i));
+            intent.putExtra("qna_id", list.get(i).getQna_id());
             context.startActivity(intent);
         });
 
