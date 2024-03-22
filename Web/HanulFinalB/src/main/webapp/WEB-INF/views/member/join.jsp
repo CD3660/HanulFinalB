@@ -57,7 +57,7 @@
 
 						<div class="mb-3">
 							<label for="phoneNumber">휴대폰 번호</label> <input type="text"
-								class="form-control" id="phoneNumber" name="phone"> <span
+								class="form-control" id="phoneNumber" name="phone" placeholder="휴대폰 번호를 입력해주세요"> <span
 								class="phchk"></span>
 						</div>
 
