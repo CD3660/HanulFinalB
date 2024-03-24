@@ -23,7 +23,7 @@ public class NoticeDetailActivity extends AppCompatActivity {
         notice_id = getIntent().getIntExtra("notice_id", 0);
         new CommonConn(this, "noticeDetail/"+notice_id)
                 .onExcute((isResult, data) -> {
-                    NoticeVO vo = new Gson().fromJson(data, new TypeToken<NoticeVO>(){}.getType());
+                    NoticeVO vo = new Gson().fromJson(data, NoticeVO.class);
                     binding.detailNoticeTitle.setText(vo.getTitle().toString());
                     binding.detailNoticeContent.setText(vo.getContent().toString());
                     binding.detailNoticeReadcnt.setText(String.valueOf( vo.getReadcnt()) );

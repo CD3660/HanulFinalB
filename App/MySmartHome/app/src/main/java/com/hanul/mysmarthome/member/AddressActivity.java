@@ -3,6 +3,7 @@ package com.hanul.mysmarthome.member;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,6 +27,8 @@ import com.hanul.mysmarthome.NetworkStatus;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.CommonConn;
 import com.hanul.mysmarthome.databinding.ActivityAddressBinding;
+import com.hanul.mysmarthome.login.JoinActivity;
+import com.hanul.mysmarthome.login.JoinAddressActivity;
 
 public class AddressActivity extends AppCompatActivity {
     ActivityAddressBinding binding;
@@ -133,10 +136,10 @@ public class AddressActivity extends AppCompatActivity {
                             .onExcute((isResult, data) -> {
                                 if (isResult) {
                                     Toast.makeText(context, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
-                                    Intent goIntent = new Intent(context, MemberInfoActivity.class);
-                                    MemberVO loginInfo = new Gson().fromJson(data, MemberVO.class);
-                                    goIntent.putExtra("user_id", loginInfo.getUser_id());
-                                    startActivity(goIntent);
+                                    Intent intent = new Intent(AddressActivity.this, MemberInfoActivity.class);
+                                    intent.putExtra("address",address);
+                                    intent.putExtra("post",post);
+                                    setResult(Activity.RESULT_OK, intent);
                                     finish();
                                 } else {
                                     Toast.makeText(context, "연결오류", Toast.LENGTH_SHORT).show();

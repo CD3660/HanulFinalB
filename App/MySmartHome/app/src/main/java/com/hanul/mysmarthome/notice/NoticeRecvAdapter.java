@@ -44,7 +44,7 @@ public class NoticeRecvAdapter extends RecyclerView.Adapter<NoticeRecvAdapter.Vi
 
         h.binding.detailQnaLinear.setOnClickListener(v -> {
             Intent intent = new Intent(context, NoticeDetailActivity.class);
-            intent.putExtra("notice", list.get(i).getNotice_id());
+            intent.putExtra("notice_id", list.get(i).getNotice_id());
             context.startActivity(intent);
         });
     }

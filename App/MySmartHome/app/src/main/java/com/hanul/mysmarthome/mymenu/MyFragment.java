@@ -1,5 +1,6 @@
 package com.hanul.mysmarthome.mymenu;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.ApiInterface;
@@ -103,28 +105,31 @@ public class MyFragment extends Fragment {
             startActivity(intent);
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            Glide.with(this).load(cameraUri).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
-            File cameraFile = new File(getRealPath(cameraUri));
-            //Multipart
-            RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), cameraFile);
+            if (result.getResultCode()!=RESULT_CANCELED) {
 
-            MultipartBody.Part filePart = MultipartBody.Part.createFormData("profile", mainActivity.getMemberVO().getUser_id() + "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
-            ApiInterface service = CommonRetroClient.getRetrofit().create(ApiInterface.class);
-            service.clientSendFile("user/updateProfile/"+mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if (response.isSuccessful()) {
-                        mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class));
-                    } else {
-                        Toast.makeText(getContext(), "서버 오류", Toast.LENGTH_SHORT).show();
+                File cameraFile = new File(getRealPath(cameraUri));
+                //Multipart
+                RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), cameraFile);
+
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("profile", mainActivity.getMemberVO().getUser_id() + "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
+                ApiInterface service = CommonRetroClient.getRetrofit().create(ApiInterface.class);
+                service.clientSendFile("user/updateProfile/" + mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class));
+                            Glide.with(MyFragment.this).load(mainActivity.getMemberVO().getProfile()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
+                        } else {
+                            Toast.makeText(getContext(), "서버 오류", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(getContext(), "시스템 오류", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(getContext(), "시스템 오류", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
         binding.policy.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PolicyActivity.class);
@@ -189,7 +194,7 @@ public class MyFragment extends Fragment {
 
 
         if (requestCode == GALLARY_REQ && resultCode == RESULT_OK) {
-            Glide.with(this).load(data.getData()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
+
             String filePath = getRealPath(data.getData());
 
             //Multipart
@@ -199,7 +204,8 @@ public class MyFragment extends Fragment {
             service.clientSendFile("user/updateProfile/"+mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-
+                    mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class ));
+                    Glide.with(MyFragment.this).load(mainActivity.getMemberVO().getProfile()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
                 }
 
                 @Override

@@ -35,7 +35,7 @@ public class QnaDetailActivity extends AppCompatActivity {
 
         new CommonConn(this, "qnaDetail/"+qna_id)
                 .onExcute((isResult, data) -> {
-                    QnaVO vo = new Gson().fromJson(data, new TypeToken<QnaVO>(){}.getType());
+                    QnaVO vo = new Gson().fromJson(data, QnaVO.class);
                     binding.detailQnaTitle.setText(vo.getTitle().toString());
                     binding.detailQnaContent.setText(vo.getContent().toString());
                     binding.detailQnaReadcnt.setText(String.valueOf( vo.getReadcnt()) );

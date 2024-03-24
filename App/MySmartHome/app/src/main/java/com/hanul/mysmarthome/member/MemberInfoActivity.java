@@ -1,5 +1,7 @@
 package com.hanul.mysmarthome.member;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -21,6 +23,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     ActivityMemberInfoBinding binding;
     MemberVO loginInfo;
+    ActivityResultLauncher<Intent> launcher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +82,7 @@ public class MemberInfoActivity extends AppCompatActivity {
                                 Toast.makeText(this, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
                                 binding.phoneText.setText(phone);
                                 loginInfo = new Gson().fromJson(data, MemberVO.class);
+                                dialog.dismiss();
                             } else {
                                 Toast.makeText(this, "연결오류", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
@@ -97,8 +101,9 @@ public class MemberInfoActivity extends AppCompatActivity {
                         .onExcute((isResult, data) -> {
                             if(isResult){
                                 Toast.makeText(this, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
-                                binding.phoneText.setText(email);
+                                binding.emailText.setText(email);
                                 loginInfo = new Gson().fromJson(data, MemberVO.class);
+                                dialog.dismiss();
                             } else {
                                 Toast.makeText(this, "연결오류", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
@@ -107,10 +112,25 @@ public class MemberInfoActivity extends AppCompatActivity {
             });
             dialog.show();
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if(result.getResultCode()==RESULT_CANCELED){
+
+            } else {
+                String address = result.getData().getStringExtra("address");
+                String post = result.getData().getStringExtra("post");
+                binding.addressText.setText(address);
+            }
+        });
         binding.addressLayout.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddressActivity.class);
             intent.putExtra("user_id", loginInfo.getUser_id());
-            startActivity(intent);
+            launcher.launch(intent);
         });
     }
 }
