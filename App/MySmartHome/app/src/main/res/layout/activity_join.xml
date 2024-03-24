@@ -25,7 +25,7 @@
         app:startIconContentDescription="설명글자"
         app:endIconMode="none"
         app:helperTextEnabled="true"
-        app:helperText="아이디 입력"
+        app:helperText="아이디 입력(필수)"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         android:layout_margin="10dp"
@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconContentDescription="설명글자"
+        app:helperText="비밀번호 입력(필수)"
         app:endIconMode="password_toggle"
         android:layout_margin="10dp"
         android:hint="비밀번호">
@@ -68,7 +69,7 @@
         app:startIconContentDescription="설명글자"
         app:endIconMode="none"
         app:helperTextEnabled="true"
-        app:helperText="이름 입력"
+        app:helperText="이름 입력(필수)"
         android:layout_margin="10dp"
         android:hint="이름">
         <com.google.android.material.textfield.TextInputEditText

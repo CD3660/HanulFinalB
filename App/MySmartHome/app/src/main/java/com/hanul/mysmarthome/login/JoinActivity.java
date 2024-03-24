@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -99,6 +100,14 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 binding.userPw.requestFocus();
                 return;
+            }
+            if(!binding.email.getText().toString().equals("")&&!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()){
+                Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                binding.email.requestFocus();
+            }
+            if(!binding.phone.getText().toString().equals("")&&!Patterns.PHONE.matcher(binding.phone.getText().toString()).matches()){
+                Toast.makeText(this, "전화번호 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                binding.phone.requestFocus();
             }
             HashMap<String, Object> map = new HashMap<>();
             map.put("name",binding.name.getText().toString());

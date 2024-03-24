@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -74,6 +75,11 @@ public class MemberInfoActivity extends AppCompatActivity {
             DataEditDialog dialog = new DataEditDialog(this,"전화번호 수정", null, loginInfo.getPhone());
             dialog.setSubmitListener(v1 -> {
                 String phone = dialog.getBinding().editData.getText().toString();
+                if(!Patterns.PHONE.matcher(phone).matches()){
+                    Toast.makeText(this, "전화번호 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    return;
+                }
                 new CommonConn(this, "user/update")
                         .addParamMap("phone", phone)
                         .addParamMap("user_id", getIntent().getStringExtra("user_id"))
@@ -95,6 +101,11 @@ public class MemberInfoActivity extends AppCompatActivity {
             DataEditDialog dialog = new DataEditDialog(this,"이메일 수정", null, loginInfo.getEmail());
             dialog.setSubmitListener(v1 -> {
                 String email = dialog.getBinding().editData.getText().toString();
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    Toast.makeText(this, "이메일 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    return;
+                }
                 new CommonConn(this, "user/update")
                         .addParamMap("email", email)
                         .addParamMap("user_id", getIntent().getStringExtra("user_id"))
