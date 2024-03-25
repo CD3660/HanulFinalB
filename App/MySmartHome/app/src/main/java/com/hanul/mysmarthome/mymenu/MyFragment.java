@@ -145,7 +145,7 @@ public class MyFragment extends Fragment {
             startActivity(intent);
         });
         binding.appVersion.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), UserInfoActivity.class);
+            Intent intent = new Intent(getContext(), AppInfoActivity.class);
             startActivity(intent);
         });
 
