@@ -124,15 +124,12 @@ public class JoinAddressActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public void result(String address, String post) {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(JoinAddressActivity.this, JoinActivity.class);
-                    intent.putExtra("address",address);
-                    intent.putExtra("post",post);
-                    setResult(Activity.RESULT_OK, intent);
-                    finish();
-                }
+            handler.post(() -> {
+                Intent intent = new Intent(JoinAddressActivity.this, JoinActivity.class);
+                intent.putExtra("address",address);
+                intent.putExtra("post",post);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             });
         }
     }

@@ -269,7 +269,7 @@
 			if(phone==""){
 				return true;
 			}
-			if (emailCheck(phone)) {
+			if (phoneNumberCheck(phone)) {
 				return true;
 			} else {
 				alert('유효하지 않은 전화번호입니다.');
