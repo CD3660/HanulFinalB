@@ -33,8 +33,14 @@
 							<div class="d-flex mb-2">
 								<input class="form-control t-readonly" type="text" name="address2_1" value="${vo.address }" style="outline:none;width:400px;" required readonly>
 							</div>
+							
+						</td>
+					</tr>
+					<tr style="border-bottom: 1px solid lightgray;" style="height:50px;">
+						<td class="fw-bold p-2 bg-lightgray">결제 시각</td>
+						<td class="p-2">
 							<div class="d-flex">
-								<input class="form-control" type="text" name="address2_2" value="결제 시각 : ${vo.payment_time }" required readonly>
+								<input class="form-control" type="text" name="payment_time" value="<fmt:formatDate value='${vo.payment_time }' pattern='yyyy/MM/dd HH:mm' type='date'/>" required readonly>
 							</div>
 						</td>
 					</tr>

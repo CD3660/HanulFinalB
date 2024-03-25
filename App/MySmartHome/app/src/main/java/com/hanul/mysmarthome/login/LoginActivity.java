@@ -53,6 +53,16 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(v -> {
             String user_id = binding.userId.getText().toString();
             String user_pw = binding.userPw.getText().toString();
+            if("".equals(user_id)){
+                Toast.makeText(this, "아이디를 입력하세요", Toast.LENGTH_SHORT).show();
+                binding.userId.requestFocus();
+                return;
+            }
+            if("".equals(user_pw)){
+                Toast.makeText(this, "비밀번호를 입력하세요", Toast.LENGTH_SHORT).show();
+                binding.userPw.requestFocus();
+                return;
+            }
             if(binding.autoLogin.isChecked()){
                 SharedPreferences sp = getSharedPreferences("AutoLogin", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();

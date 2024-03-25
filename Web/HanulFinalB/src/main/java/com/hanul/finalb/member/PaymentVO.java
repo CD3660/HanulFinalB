@@ -1,6 +1,7 @@
 package com.hanul.finalb.member;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 
 import com.hanul.finalb.shop.OrderVO;

@@ -1,5 +1,6 @@
 package com.hanul.mysmarthome.mymenu;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
@@ -30,6 +31,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hanul.mysmarthome.MainActivity;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.ApiInterface;
@@ -77,14 +79,24 @@ public class MyFragment extends Fragment {
             intent.putExtra("user_id", mainActivity.getMemberVO().getUser_id());
             startActivity(intent);
         });
+        binding.userName.setText(mainActivity.getMemberVO().getName());
         binding.profile.setOnClickListener(v -> {
+            checkPermission();
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("프로필 사진 변경");
             builder.setSingleChoiceItems(new String[]{"갤러리", "카메라"}, -1, (dialog, i) -> {
                 if (i == 0) {
-                    showGallary();
+                    if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        showGallary();
+                    } else {
+                        Toast.makeText(mainActivity, "권한이 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 } else if (i == 1) {
-                    showCamera();
+                    if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        showCamera();
+                    } else {
+                        Toast.makeText(mainActivity, "권한이 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 dialog.dismiss();
             });
@@ -93,44 +105,47 @@ public class MyFragment extends Fragment {
         });
 
 
-        binding.qna.setOnClickListener(v->{
+        binding.qna.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), QnaActivity.class);
             startActivity(intent);
         });
-        binding.notice.setOnClickListener(v->{
+        binding.notice.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), NoticeActivity.class);
             startActivity(intent);
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            Glide.with(this).load(cameraUri).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
-            File cameraFile = new File(getRealPath(cameraUri));
-            //Multipart
-            RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), cameraFile);
+            if (result.getResultCode() != RESULT_CANCELED) {
 
-            MultipartBody.Part filePart = MultipartBody.Part.createFormData("profile", mainActivity.getMemberVO().getUser_id() + "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
-            ApiInterface service = CommonRetroClient.getRetrofit().create(ApiInterface.class);
-            service.clientSendFile("user/updateProfile/"+mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    if (response.isSuccessful()) {
-                        mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class));
-                    } else {
-                        Toast.makeText(getContext(), "서버 오류", Toast.LENGTH_SHORT).show();
+                File cameraFile = new File(getRealPath(cameraUri));
+                //Multipart
+                RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), cameraFile);
+
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("profile", mainActivity.getMemberVO().getUser_id() + "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
+                ApiInterface service = CommonRetroClient.getRetrofit().create(ApiInterface.class);
+                service.clientSendFile("user/updateProfile/" + mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class));
+                            Glide.with(MyFragment.this).load(mainActivity.getMemberVO().getProfile()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
+                        } else {
+                            Toast.makeText(getContext(), "서버 오류", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(getContext(), "시스템 오류", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(getContext(), "시스템 오류", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
         binding.policy.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PolicyActivity.class);
             startActivity(intent);
         });
         binding.appVersion.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), AppInfoActivity.class);
+            Intent intent = new Intent(getContext(), UserInfoActivity.class);
             startActivity(intent);
         });
 
@@ -188,17 +203,18 @@ public class MyFragment extends Fragment {
 
 
         if (requestCode == GALLARY_REQ && resultCode == RESULT_OK) {
-            Glide.with(this).load(data.getData()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
+
             String filePath = getRealPath(data.getData());
 
             //Multipart
             RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath));
             MultipartBody.Part filePart = MultipartBody.Part.createFormData("profile", mainActivity.getMemberVO().getUser_id() + "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
             ApiInterface service = CommonRetroClient.getRetrofit().create(ApiInterface.class);
-            service.clientSendFile("user/updateProfile/"+mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
+            service.clientSendFile("user/updateProfile/" + mainActivity.getMemberVO().getUser_id(), new HashMap<>(), filePart).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-
+                    mainActivity.setLoginInfo(new Gson().fromJson(response.body(), MemberVO.class));
+                    Glide.with(MyFragment.this).load(mainActivity.getMemberVO().getProfile()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
                 }
 
                 @Override
@@ -248,17 +264,9 @@ public class MyFragment extends Fragment {
             //내가 모든 권한이 필요하다면 전체 권한을 하나씩 체크해서 허용 안됨이 있는경우 다시 요청을 하게 만든다.
             if (ActivityCompat.checkSelfPermission(getContext(), permissions[i]) == PackageManager.PERMISSION_DENIED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, permissions[i])) {
-                    //최초 앱이 설치되고 실행 시 false가 나옴.=>사용자가 거부 후 true 재거부=>false
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle("권한 요청").setMessage("권한이 반드시 필요합니다.!!미허용시 앱 사용 불가!");
-                    builder.setPositiveButton("확인(권한허용)", (dialog, which) -> {
-                        //2.권한 설명 후 다시보여줌.
-                        ActivityCompat.requestPermissions(mainActivity, permissions, REQ_PERMISSION_DENY);
-                    });
-                    builder.setNegativeButton("종료(권한허용불가)", (dialog, which) -> {
 
-                    });
-                    builder.create().show();//<==넣어줘야함.
+                    ActivityCompat.requestPermissions(mainActivity, permissions, REQ_PERMISSION_DENY);
+
                 } else {
                     //1.
                     ActivityCompat.requestPermissions(mainActivity, permissions, REQ_PERMISSION);
@@ -270,7 +278,8 @@ public class MyFragment extends Fragment {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (REQ_PERMISSION == requestCode) {
             for (int i = 0; i < grantResults.length; i++) {

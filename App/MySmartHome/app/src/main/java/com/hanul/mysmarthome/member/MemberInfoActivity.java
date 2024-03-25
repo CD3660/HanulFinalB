@@ -1,5 +1,7 @@
 package com.hanul.mysmarthome.member;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -21,6 +24,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     ActivityMemberInfoBinding binding;
     MemberVO loginInfo;
+    ActivityResultLauncher<Intent> launcher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,11 @@ public class MemberInfoActivity extends AppCompatActivity {
             DataEditDialog dialog = new DataEditDialog(this,"전화번호 수정", null, loginInfo.getPhone());
             dialog.setSubmitListener(v1 -> {
                 String phone = dialog.getBinding().editData.getText().toString();
+                if(!Patterns.PHONE.matcher(phone).matches()){
+                    Toast.makeText(this, "전화번호 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    return;
+                }
                 new CommonConn(this, "user/update")
                         .addParamMap("phone", phone)
                         .addParamMap("user_id", getIntent().getStringExtra("user_id"))
@@ -79,6 +88,7 @@ public class MemberInfoActivity extends AppCompatActivity {
                                 Toast.makeText(this, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
                                 binding.phoneText.setText(phone);
                                 loginInfo = new Gson().fromJson(data, MemberVO.class);
+                                dialog.dismiss();
                             } else {
                                 Toast.makeText(this, "연결오류", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
@@ -91,14 +101,20 @@ public class MemberInfoActivity extends AppCompatActivity {
             DataEditDialog dialog = new DataEditDialog(this,"이메일 수정", null, loginInfo.getEmail());
             dialog.setSubmitListener(v1 -> {
                 String email = dialog.getBinding().editData.getText().toString();
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    Toast.makeText(this, "이메일 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    return;
+                }
                 new CommonConn(this, "user/update")
                         .addParamMap("email", email)
                         .addParamMap("user_id", getIntent().getStringExtra("user_id"))
                         .onExcute((isResult, data) -> {
                             if(isResult){
                                 Toast.makeText(this, "회원정보 수정 완료", Toast.LENGTH_SHORT).show();
-                                binding.phoneText.setText(email);
+                                binding.emailText.setText(email);
                                 loginInfo = new Gson().fromJson(data, MemberVO.class);
+                                dialog.dismiss();
                             } else {
                                 Toast.makeText(this, "연결오류", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
@@ -107,10 +123,25 @@ public class MemberInfoActivity extends AppCompatActivity {
             });
             dialog.show();
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if(result.getResultCode()==RESULT_CANCELED){
+
+            } else {
+                String address = result.getData().getStringExtra("address");
+                String post = result.getData().getStringExtra("post");
+                binding.addressText.setText(address);
+            }
+        });
         binding.addressLayout.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddressActivity.class);
             intent.putExtra("user_id", loginInfo.getUser_id());
-            startActivity(intent);
+            launcher.launch(intent);
         });
     }
 }

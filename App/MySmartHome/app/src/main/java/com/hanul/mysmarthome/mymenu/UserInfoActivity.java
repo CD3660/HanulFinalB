@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hanul.mysmarthome.R;
-import com.hanul.mysmarthome.databinding.ActivityAppInfoBinding;
+import com.hanul.mysmarthome.databinding.ActivityUserInfoBinding;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AppInfoActivity extends AppCompatActivity {
+public class UserInfoActivity extends AppCompatActivity {
 
-    ActivityAppInfoBinding binding;
+    ActivityUserInfoBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAppInfoBinding.inflate(getLayoutInflater());
+        binding = ActivityUserInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         try{
             // InputStream으로 raw 파일 읽기

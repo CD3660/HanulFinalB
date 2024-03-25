@@ -5,15 +5,19 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hanul.mysmarthome.R;
 import com.hanul.mysmarthome.common.ApiInterface;
 import com.hanul.mysmarthome.common.CommonRetroClient;
@@ -38,26 +42,32 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityJoinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        new ClearCacheTask(this).execute();
 
     }
-
+    final int GALLARY_REQ = 1000;
     @Override
     protected void onStart() {
         super.onStart();
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            String address = result.getData().getStringExtra("address");
-            String post = result.getData().getStringExtra("post");
-            binding.address.setText(post);
-            binding.address2.setText(address);
+            if (result.getResultCode()==RESULT_CANCELED){
+
+            } else {
+                String address = result.getData().getStringExtra("address");
+                String post = result.getData().getStringExtra("post");
+                binding.address.setText(post);
+                binding.address2.setText(address);
+            }
         });
         launcher_album = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            Glide.with(this).load(result.getData().getData()).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
-            String filePath = getRealPath(result.getData().getData());
-            RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath));
-            filePart = MultipartBody.Part.createFormData("profile_file", "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
-
-
+            if (result.getResultCode() != RESULT_CANCELED) {
+                binding.profile.setImageURI(result.getData().getData());
+//                Glide.with(this).load(result.getData().getData()).skipMemoryCache(true)
+//                        .diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.profile);//불러온 이미지를 이미지뷰에 붙임
+                String filePath = getRealPath(result.getData().getData());
+                RequestBody file = RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath));
+                filePart = MultipartBody.Part.createFormData("profile_file", "profile.jpg", file);//name:servlet구분자, 실제 파일명, 실제 파일
+            }
         });
         binding.btnAddress.setOnClickListener(v -> {
             Intent intent = new Intent(this, JoinAddressActivity.class);
@@ -90,6 +100,14 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 binding.userPw.requestFocus();
                 return;
+            }
+            if(!binding.email.getText().toString().equals("")&&!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()){
+                Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                binding.email.requestFocus();
+            }
+            if(!binding.phone.getText().toString().equals("")&&!Patterns.PHONE.matcher(binding.phone.getText().toString()).matches()){
+                Toast.makeText(this, "전화번호 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                binding.phone.requestFocus();
             }
             HashMap<String, Object> map = new HashMap<>();
             map.put("name",binding.name.getText().toString());
@@ -148,5 +166,19 @@ public class JoinActivity extends AppCompatActivity {
         Log.d("갤러리", "getRealPath: " + res);
 
         return res;
+    }
+    class ClearCacheTask extends AsyncTask<Void, Void, Void> {
+        private Context context;
+
+        public ClearCacheTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Glide.get(context).clearDiskCache();
+//            Glide.get(context).clearMemory();
+            return null;
+        }
     }
 }
