@@ -37,9 +37,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpSession session) {
 		
-		String user_id = "hanul";		
-		MemberVO vo = member.login(user_id);
-		session.setAttribute("loginInfo", vo);
+
 		session.removeAttribute("category");
 		
 		
