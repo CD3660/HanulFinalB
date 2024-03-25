@@ -79,11 +79,11 @@
 				<col width='100px'>
 			</colgroup>
 			<tr>
-				<th>번호</th>
+				<th style="text-align: center;">번호</th>
 				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일자</th>
-				<th>조회수</th>
+				<th style="text-align: center;">작성자</th>
+				<th style="text-align: center;">작성일자</th>
+				<th style="text-align: center;">조회수</th>
 			</tr>
 
 
@@ -97,8 +97,8 @@
 		<c:if test="${not empty page.list}">
 			<c:forEach items="${page.list}" var="vo">
 				<tr>
-					<td>${vo.no}</td>
-					<td class="text-start">
+					<td  style="text-align: center;">${vo.no}</td>
+					<td class="align-middle">
 					<span style="margin-left: ${15*vo.indent }px"></span>
 					<c:if test="${vo.indent >0}"><i class="fa-regular fa-comment-dots"></i></c:if>
 					<a href="javascript:info( ${vo.qna_id } )">${vo.title }</a>
@@ -106,9 +106,9 @@
 						<c:if test="${vo.filecnt gt 0}">
 							<i class="fa-solid fa-paperclip"></i>
 						</c:if></td>
-					<td>${vo.name }</td>
-					<td>${vo.writedate }</td>
-					<td>${vo.readcnt }</td>
+					<td style="text-align: center;">${vo.name }</td>
+					<td style="text-align: center;">${vo.writedate }</td>
+					<td style="text-align: center;">${vo.readcnt }</td>
 				</tr>
 			</c:forEach>
 		</c:if>

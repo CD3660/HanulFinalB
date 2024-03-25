@@ -78,11 +78,11 @@
 				<col width='100px'>
 			</colgroup>
 			<tr>
-				<th>번호</th>
+				<th style="text-align: center;">번호</th>
 				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일자</th>
-				<th>조회수</th>
+				<th style="text-align: center;">작성자</th>
+				<th style="text-align: center;">작성일자</th>
+				<th style="text-align: center;">조회수</th>
 			</tr>
 
 
@@ -96,12 +96,12 @@
 		<c:if test="${not empty page.list}">
 			<c:forEach items="${page.list}" var="vo">
 				<tr class="align-middle">
-					<td class="ps-3">${vo.no}</td>
+					<td  style="text-align: center;">${vo.no}</td>
 					<td class="text-start">					
 					<a href="javascript:info( ${vo.notice_id } )">${vo.title }</a></td>
-					<td>${vo.name }</td>
-					<td>${vo.writedate }</td>
-					<td>${vo.readcnt }</td>
+					<td style="text-align: center;">${vo.name }</td>
+					<td style="text-align: center;">${vo.writedate }</td>
+					<td style="text-align: center;">${vo.readcnt }</td>
 				</tr>
 			</c:forEach>
 		</c:if>
