@@ -102,7 +102,7 @@
 					<span style="margin-left: ${15*vo.indent }px"></span>
 					<c:if test="${vo.indent >0}"><i class="fa-regular fa-comment-dots"></i></c:if>
 					<a href="javascript:info( ${vo.qna_id } )">${vo.title }</a>
-					S
+					
 						<c:if test="${vo.filecnt gt 0}">
 							<i class="fa-solid fa-paperclip"></i>
 						</c:if></td>
