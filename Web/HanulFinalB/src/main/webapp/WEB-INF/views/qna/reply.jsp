@@ -17,7 +17,7 @@
 	<col>
 </colgroup>
 <tr><th>제목</th>
-	<td><input type="text"  name="title" title="제목" class="form-control check-empty"></td>
+	<td><input type="text"  name="title" title="제목" class="form-control check-empty" value="RE: ${vo.title }"></td>
 <tr><th>내용</th>
 	<td><textarea name="content" title="내용"  class="check-empty form-control" style="height: 200px;" ></textarea></td>
 </table>

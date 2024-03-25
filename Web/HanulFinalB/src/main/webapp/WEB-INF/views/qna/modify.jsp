@@ -24,7 +24,7 @@
 	<td><textarea name="content" title="내용" class="check-empty form-control" style="height: 200px;">${vo.content }</textarea></td>
 </tr>
 
-<c:if test = "${vo.indent eq 0}">
+
 <tr><th>첨부파일</th>
 	<td><div class="row">
 		<div>
@@ -54,7 +54,7 @@
 		 </div>
 		 </div>
 	</td></tr>
-	</c:if>
+
 
 
 </table>
