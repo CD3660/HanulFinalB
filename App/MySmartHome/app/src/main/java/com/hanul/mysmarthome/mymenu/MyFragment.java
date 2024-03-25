@@ -256,19 +256,12 @@ public class MyFragment extends Fragment {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
 
-        };//카메라 권한을 String으로 가져옴.
-
-
-        // ContextCompat(액티비티가 아닌곳) , ActivityCompat(액티비티)
+        };
         for (int i = 0; i < permissions.length; i++) {
-            //내가 모든 권한이 필요하다면 전체 권한을 하나씩 체크해서 허용 안됨이 있는경우 다시 요청을 하게 만든다.
             if (ActivityCompat.checkSelfPermission(getContext(), permissions[i]) == PackageManager.PERMISSION_DENIED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, permissions[i])) {
-
                     ActivityCompat.requestPermissions(mainActivity, permissions, REQ_PERMISSION_DENY);
-
                 } else {
-                    //1.
                     ActivityCompat.requestPermissions(mainActivity, permissions, REQ_PERMISSION);
                 }
                 break;
