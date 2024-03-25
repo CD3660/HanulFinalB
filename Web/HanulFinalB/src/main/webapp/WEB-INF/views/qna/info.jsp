@@ -57,7 +57,7 @@
 	</c:if>
 
 	<!-- 운영자인 경우 답글쓰기 가능하다고 하자 -->
-	<c:if test="${ loginInfo.admin eq 'Y' or loginInfo.user_id eq vo.writer}" >
+	<c:if test="${ loginInfo.admin eq 'Y' or loginInfo.user_id eq vo.root_writer}" >
 	<button class="btn btn-primary" id="btn-reply">답글쓰기</button>
 	</c:if>
 

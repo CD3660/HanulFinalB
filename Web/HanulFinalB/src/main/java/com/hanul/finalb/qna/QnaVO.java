@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter @Setter
 public class QnaVO {
 	private int qna_id, readcnt, no, filecnt;
-	private String title, content, writer, name;
+	private String title, content, writer, name, root_writer;
 	private String writedate;
 	
 	

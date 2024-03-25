@@ -174,7 +174,7 @@ where qna_id = #{qna_id}
 
 <!-- Q&A 글정보 조회 -->
 <select id="info" resultType="qnaVO">
-select *
+select (select writer from qna where qna_id = q.root) root_writer, q.*, u.* 
 from qna q left outer join users u
 on q.writer = u.user_id
 where qna_id =#{qna_id}
