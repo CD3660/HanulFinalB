@@ -95,8 +95,8 @@
 
 		<c:if test="${not empty page.list}">
 			<c:forEach items="${page.list}" var="vo">
-				<tr>
-					<td>${vo.no}</td>
+				<tr class="align-middle">
+					<td class="ps-3">${vo.no}</td>
 					<td class="text-start">					
 					<a href="javascript:info( ${vo.notice_id } )">${vo.title }</a></td>
 					<td>${vo.name }</td>

@@ -197,16 +197,15 @@
 					<div class="image-holder mb-4 justify-content-between">
 					<h2 class="display-2 text-dark text-uppercase" style="font-size: 2.7em; margin-bottom: 30px;">
 					<i class="fa-solid fa-rocket"></i>   신제품</h2>
-						<img src="https://drive.google.com/thumbnail?sz=w640&id=15bGe2zAC8W03uiaqn8o6LWlQSZCUEzqw" alt="CCTV"
+						<img src="${list.get(0).prod_img }" alt="CCTV"
 							class="img-fluid position-relative" style="margin-left: 40px;">
 					</div>
 				</div>
 				<div class="col-lg-7">
 					<div class="detail p-5">
 						<div class="display-header">
-							<h2 class="display-2 text-uppercase text-dark pb-2">CCTV</h2>
-							<p class="pb-3">
-높은 해상도의 고품질 영상과 최첨단 기술을 적용한 CCTV 제품을 소개합니다. 저조도 및 야간 감시 기능으로 24시간 안전을 지키며, 스마트폰이나 웹 브라우저를 통한 원격 모니터링과 제어가 가능합니다. 또한, 이벤트 알림을 통해 실시간으로 상황에 대응할 수 있습니다.</p>
+							<h2 class="display-2 text-uppercase text-dark pb-2">${list.get(0).prod_name }</h2>
+							<p class="pb-3">${list.get(0).detail }</p>
 							
 							
 							<a class="btn btn-medium btn-arrow outline-dark position-relative mt-3" id="cctv">
@@ -281,6 +280,7 @@
 
 	<section id="BestSeller">
 		<div class="container-fluid" style="margin-bottom: 8em;">
+		
 			<div class="row">
 				<div class="col-md-12">
 					<div
@@ -306,20 +306,21 @@
 
 			
 			<div class="row g-3 post-grid">
+			
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item" id=dust>
 						<div class="card border-0 bg-transparent">
 							<div class="card-image">
-								<img src="https://drive.google.com/thumbnail?sz=w640&id=166Kmc1kiv4RAH5PiVNy8ztvaY8rQFDo_" alt="dust"
+								<img src="${list.get(3).prod_img }" style="height: 420px; width: 420px;" alt="dust"
 									class="post-image img-fluid">
 							</div>
 						</div>
 						<div class="card-body p-0 mt-4">
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">미세먼지모듈</a>
+								<a href="">${list.get(3).prod_name }</a>
 							</h3>
-							<p>미세먼지측정모듈입니다.</p>
-							<a href="single-post.html"
+							<p id=3>${list.get(3).detail }</p>
+							<a href=""
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 															
 						</div>
@@ -329,18 +330,17 @@
 				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
 					<div class="card-item" id=fire>
-						<div class="card border-0">
+						<div class="card border-0 bg-transparent">
 							<div class="card-image">
-								<img src="https://drive.google.com/thumbnail?sz=w640&id=1MvdY33BMN8K0DwNwd_pOeYGjegiy5hx1" alt="fire"
-									class="post-image img-fluid">
+								<img src="${list.get(1).prod_img }" style="height: 420px; width: 420px;" alt="fire">
 							</div>
 						</div>
 						<div class="card-body p-0 mt-4" >
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">화재감지모듈</a>
+								<a href="">${list.get(1).prod_name }</a>
 							</h3>
-							<p>화재감지모듈입니다.</p>
-							<a href="single-post.html"
+							<p id=1>${list.get(1).detail }</p>
+							<a href=""
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 															
 						</div>
@@ -349,24 +349,24 @@
 				
 				
 				<div class="col-lg-4 col-md-6 col-sm-12 mb-5">
-					<div class="card-item" id=gas a href="">
-						<div class="card border-0">
+					<div class="card-item" id=gas>
+						<div class="card border-0 bg-transparent">
 							<div class="card-image">
-								<img src="https://drive.google.com/thumbnail?sz=w640&id=1FCYrY0wyDu29-E9ZC2Zko65xT0V7Q2--" alt="gas"
-									class="post-image img-fluid"></a>
+								<img src="${list.get(2).prod_img }" style="height: 420px; width: 420px;" alt="gas">
 							</div>
 						</div>
 						<div class="card-body p-0 mt-4" >
 							<h3 class="card-title text-uppercase">
-								<a href="single-post.html">가스누출감지모듈</a>
+								<a href="">${list.get(2).prod_name }</a>
 							</h3>
-							<p>가스누출감지모듈입니다.</p>
-							<a href="single-post.html"
+							<p id=2>${list.get(2).detail}</p>
+							<a href=""
 								class="btn btn-normal text-uppercase p-0"><em>자세히 보기</em></a>
 														
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</section>
@@ -461,9 +461,30 @@
 			
 			
 			
+		
 			
+		function createPreview(text, maxLength) {
 			
-			
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
+            
+        } else {
+            return text;
+        }
+        
+    	};
+
+		
+    	
+    	
+    	$(function(){
+    		   $(".card-body p").each(function(){
+    		      $(this).text( createPreview( $(this).text(), 50 ) );
+    		   });
+    		});
+		
+		
+		
 		</script>
 
 
