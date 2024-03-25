@@ -2,11 +2,15 @@ package com.hanul.mysmarthome.login;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -23,6 +27,7 @@ import com.hanul.mysmarthome.common.ApiInterface;
 import com.hanul.mysmarthome.common.CommonRetroClient;
 import com.hanul.mysmarthome.databinding.ActivityJoinBinding;
 import com.hanul.mysmarthome.member.AddressActivity;
+import com.hanul.mysmarthome.mymenu.MyFragment;
 
 import java.io.File;
 import java.util.HashMap;
@@ -74,10 +79,15 @@ public class JoinActivity extends AppCompatActivity {
             launcher.launch(intent);
         });
         binding.btnProfile.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_PICK);
-            launcher_album.launch(intent);
+            checkPermission();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                launcher_album.launch(intent);
+            } else {
+                Toast.makeText(this, "권한이 없습니다.", Toast.LENGTH_SHORT).show();
+            }
         });
 
         binding.btnJoin.setOnClickListener(v -> {
@@ -179,6 +189,63 @@ public class JoinActivity extends AppCompatActivity {
             Glide.get(context).clearDiskCache();
 //            Glide.get(context).clearMemory();
             return null;
+        }
+    }
+    public final int REQ_PERMISSION = 900;
+    public final int REQ_PERMISSION_DENY = 901;
+
+    private void checkPermission() {
+
+        String[] permissions = {Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_MEDIA_LOCATION,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+        };//카메라 권한을 String으로 가져옴.
+
+
+        // ContextCompat(액티비티가 아닌곳) , ActivityCompat(액티비티)
+        for (int i = 0; i < permissions.length; i++) {
+            //내가 모든 권한이 필요하다면 전체 권한을 하나씩 체크해서 허용 안됨이 있는경우 다시 요청을 하게 만든다.
+            if (ActivityCompat.checkSelfPermission(this, permissions[i]) == PackageManager.PERMISSION_DENIED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) {
+
+                    ActivityCompat.requestPermissions(this, permissions, REQ_PERMISSION_DENY);
+
+                } else {
+                    //1.
+                    ActivityCompat.requestPermissions(this, permissions, REQ_PERMISSION);
+                }
+                break;
+            }
+        }
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (REQ_PERMISSION == requestCode) {
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                    //거절된권한이있음.
+                    checkPermission();
+                    break;
+                }
+            }
+
+            Log.d("권한", "onRequestPermissionsResult: 권한 요청 완료 ");
+        } else if (REQ_PERMISSION_DENY == requestCode) {
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                    Log.d("권한", "onRequestPermissionsResult: 다시 권한요청 화면을 띄울수가 없음.2회 거절당함. ");
+                    //editor.putInt("permission" , -2);
+                    //3.
+                    //viewSetting();
+                    //checkPermission();
+                }
+            }
+
         }
     }
 }

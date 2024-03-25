@@ -19,9 +19,9 @@ public class MemberService {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 
-	public void memberJoin(MemberVO member) {
+	public int memberJoin(MemberVO member) {
 
-		sql.insert("member.register", member);
+		return sql.insert("member.register", member);
 
 	}
 
