@@ -127,7 +127,16 @@ public class AppController {
 		
 		return ResponseEntity.ok().build();
 	}
-	
+	@RequestMapping("/resign")
+	public String resign(MemberVO vo) throws GeneralSecurityException, IOException {
+		vo = memService.memberInfo(vo.getUser_id());
+		if(memService.memberResign(vo.getUser_id())==1) {
+			if(vo.getProfile()!=null) {
+				comm.fileDelete(comm.fileId(vo.getProfile()));
+			}
+		}
+		return "success";
+	}
 	@RequestMapping("/user/update")
 	public String userUpdate(MemberVO vo) {
 		memService.appMemberUpdate(vo);
