@@ -78,7 +78,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/joinAction")
-	public String joinpass(MemberVO vo, MultipartFile file) throws GeneralSecurityException, IOException {
+	public String joinpass(MemberVO vo, MultipartFile file, Model model) throws GeneralSecurityException, IOException {
 		if (!file.isEmpty()) {
 			String id = comm.fileUpload(file);
 			vo.setProfile(comm.fileURL(id));
@@ -87,9 +87,13 @@ public class MemberController {
 		String encodingPw = pwEncoder.encode(vo.getUser_pw());
 		vo.setUser_pw(encodingPw);
 
-		service.memberJoin(vo);
-
-		return "redirect:login";
+		if(service.memberJoin(vo)==1) {
+			model.addAttribute("url", "member/login");
+			return "member/redirect";
+		} else {
+			return "redirect:joinView";
+		}
+		
 
 	}
 
