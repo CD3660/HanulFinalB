@@ -8,7 +8,7 @@
 			<div class="card-header">
 				<h3 class="text-center font-weight-light my-4">
 					<a href="<c:url value='/'/>"><img
-						src="<c:url value='/images/hanul.logo.png'/>" /> </a>
+						src="<c:url value='/images/logo-main-w-icon.png'/>" /> </a>
 				</h3>
 			</div>
 			<div class="card-body">
