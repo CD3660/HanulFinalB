@@ -127,12 +127,12 @@ delete from qna_file where file_id in ( ${remove} )
 
 	<!-- 제목  -->
 	<when test=" search == 's2' ">
-	where title like '%' || #{keyword} || '$'
+	where title like '%' || #{keyword} || '%'
 	</when>
 	
 	<!-- 제목 + 내용  -->
 	<when test=" search == 's3' ">
-	where title like '%' || #{keyword} || '$'
+	where title like '%' || #{keyword} || '%'
 	or content  like '%' || #{keyword} || '%'
 	</when>
 	
